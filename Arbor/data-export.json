@@ -1,0 +1,273 @@
+{
+  "metadata": {
+    "projectName": "ESG Portfolio Management Platform",
+    "exportDate": "2026-03-14",
+    "description": "Sample data for ESG software platform with hierarchical real asset structure",
+    "structure": "Investment Entities → Properties → Buildings → Spaces, with Meters attached to Buildings or Spaces",
+    "totalNodes": "~285 nodes",
+    "counts": {
+      "investmentEntities": 10,
+      "properties": "20-30 (2-3 per fund)",
+      "buildings": "20-60 (1-2 per property)",
+      "spaces": "60-300 (3-5 per building)",
+      "meters": "20-120 (1-2 per building)"
+    }
+  },
+  "dataStructure": {
+    "InvestmentEntity": {
+      "id": "string (ie-1, ie-2, etc.)",
+      "name": "string",
+      "type": "investment-entity",
+      "description": "string (optional)",
+      "totalProperties": "number",
+      "createdAt": "string (MMM YYYY)",
+      "updatedAt": "string (MMM YYYY)"
+    },
+    "Property": {
+      "id": "string (prop-1, prop-2, etc.)",
+      "name": "string",
+      "type": "property",
+      "parentEntityId": "string (references Investment Entity id)",
+      "address": "string",
+      "city": "string",
+      "postalCode": "string",
+      "country": "string",
+      "sector": "string (Residential|Commercial|Retail|Industrial|Healthcare|Education|Hospitality|Mixed-Use)",
+      "subSector": "string (varies by sector)",
+      "floorArea": "number (m²)",
+      "assetReference": "string (REF-XXXX)",
+      "energyRating": "string (A-E rating)",
+      "purchaseDate": "string (MMM YYYY)",
+      "fund": "string (optional)",
+      "lifecycleStatus": "string (acquisition|operation|disposal)",
+      "certifications": "string (LEED|BREEAM|Green Star|Energy Star|DGNB)",
+      "totalBuildings": "number",
+      "createdAt": "string (MMM YYYY)",
+      "updatedAt": "string (MMM YYYY)"
+    },
+    "Building": {
+      "id": "string (build-1, build-2, etc.)",
+      "name": "string",
+      "type": "building",
+      "parentPropertyId": "string (references Property id)",
+      "buildingType": "string (Office Tower|Residential Tower|Mixed-Use Building|etc.)",
+      "floorArea": "number (m²)",
+      "floors": "number",
+      "constructionYear": "number",
+      "lifecycleStatus": "string (active|renovation|inactive)",
+      "certifications": "string (LEED|BREEAM|Green Star|Energy Star|DGNB)",
+      "totalSpaces": "number",
+      "createdAt": "string (MMM YYYY)",
+      "updatedAt": "string (MMM YYYY)"
+    },
+    "Space": {
+      "id": "string (space-1, space-2, etc.)",
+      "name": "string",
+      "type": "space",
+      "parentBuildingId": "string (references Building id)",
+      "spaceType": "string (internal|external)",
+      "function": "string (Residential Unit|Office Suite|Retail Store|etc.)",
+      "floorArea": "number (m²)",
+      "floor": "number",
+      "tenant": "string (optional, only if occupied)",
+      "occupancyStatus": "string (occupied|vacant|common-area)",
+      "leaseStartDate": "string (optional, MMM YYYY)",
+      "leaseEndDate": "string (optional, MMM YYYY)",
+      "createdAt": "string (MMM YYYY)",
+      "updatedAt": "string (MMM YYYY)"
+    },
+    "Meter": {
+      "id": "string (meter-1, meter-2, etc.)",
+      "name": "string",
+      "type": "meter",
+      "parentId": "string (references Building or Space id)",
+      "parentType": "string (building|space)",
+      "meterId": "string (MTR-XXXXX)",
+      "utility": "string (electricity|water|gas|district-heating|district-cooling|fuel-oil|steam)",
+      "supplier": "string",
+      "granularity": "string (day|week|month)",
+      "measurementUnit": "string (kWh|m³|therms|kg|l)",
+      "status": "string (active|inactive|faulty)",
+      "lastCollectedDate": "string (MMM YYYY)",
+      "lastCollectedValue": "number",
+      "createdAt": "string (MMM YYYY)",
+      "updatedAt": "string (MMM YYYY)"
+    }
+  },
+  "referenceData": {
+    "countries": [
+      "United Kingdom", "Germany", "France", "Spain", "Italy", "Netherlands", 
+      "Belgium", "Poland", "Sweden", "Denmark", "Ireland", "Portugal", 
+      "Austria", "Switzerland", "Norway", "Finland"
+    ],
+    "sectors": [
+      "Residential", "Commercial", "Retail", "Industrial", "Healthcare", 
+      "Education", "Hospitality", "Mixed-Use"
+    ],
+    "subSectors": {
+      "Residential": ["Multi-family Housing", "Single-family Housing", "Student Housing", "Senior Living", "Affordable Housing"],
+      "Commercial": ["Office", "Business Park", "Corporate Campus", "Flex Space", "Coworking"],
+      "Retail": ["Shopping Center", "High Street Retail", "Outlet Mall", "Supermarket", "Department Store"],
+      "Industrial": ["Warehouse", "Distribution Center", "Manufacturing", "Logistics Hub", "Data Center"],
+      "Healthcare": ["Medical Facility", "Hospital", "Clinic", "Laboratory", "Pharmacy"],
+      "Education": ["School", "University", "Training Center", "Research Facility", "Library"],
+      "Hospitality": ["Hotel", "Resort", "Conference Center", "Restaurant", "Serviced Apartments"],
+      "Mixed-Use": ["Residential/Retail", "Office/Retail", "Residential/Office", "Multi-purpose Complex", "Transit-Oriented Development"]
+    },
+    "buildingTypes": [
+      "Office Tower", "Residential Tower", "Mixed-Use Building", "Warehouse", 
+      "Shopping Mall", "Medical Center", "Educational Facility", "Hotel", "Industrial Building"
+    ],
+    "spaceFunctions": [
+      "Residential Unit", "Office Suite", "Retail Store", "Storage Area", 
+      "Common Area - Lobby", "Common Area - Parking", "Medical Suite", 
+      "Classroom", "Conference Room", "Restaurant Space"
+    ],
+    "utilities": [
+      "electricity", "water", "gas", "district-heating", "district-cooling", "fuel-oil", "steam"
+    ],
+    "suppliers": [
+      "EcoPower", "GreenEnergy", "CityUtilities", "AquaFlow", "WaterWorks", 
+      "NaturalGas Co", "DistrictHeat", "ClimateControl", "PowerGrid", "UtilityPro"
+    ],
+    "energyRatings": [
+      "A - very good", "B - good", "C - average", "D - below average", "E - poor"
+    ],
+    "certifications": [
+      "LEED", "BREEAM", "Green Star", "Energy Star", "DGNB"
+    ],
+    "tenantNames": [
+      "TechCorp Inc", "Global Retail Ltd", "Smith & Associates", "Johnson Enterprises", 
+      "Healthcare Plus", "Education Services", "Local Business", "International Group", 
+      "StartUp Co", "Family Business"
+    ],
+    "lifecycleStatuses": {
+      "property": ["acquisition", "operation", "disposal"],
+      "building": ["active", "renovation", "inactive"]
+    },
+    "occupancyStatuses": ["occupied", "vacant", "common-area"],
+    "meterStatuses": ["active", "inactive", "faulty"],
+    "granularities": ["day", "week", "month"],
+    "measurementUnits": ["kWh", "m³", "therms", "kg", "l"]
+  },
+  "hierarchy": {
+    "description": "Strict hierarchy: Investment Entities → Properties → Buildings → Spaces, with Meters attached to Buildings or Spaces",
+    "rules": [
+      "Each Property must have a parentEntityId referencing an Investment Entity",
+      "Each Building must have a parentPropertyId referencing a Property",
+      "Each Space must have a parentBuildingId referencing a Building",
+      "Each Meter must have a parentId and parentType (either 'building' or 'space')",
+      "Investment Entities have no parent",
+      "All IDs follow pattern: {type}-{number} (e.g., ie-1, prop-1, build-1, space-1, meter-1)"
+    ]
+  },
+  "sampleRecords": {
+    "investmentEntity": {
+      "id": "ie-1",
+      "name": "Global Portfolio Fund 1",
+      "type": "investment-entity",
+      "description": "Investment portfolio focused on commercial assets",
+      "totalProperties": 3,
+      "createdAt": "Jun 2021",
+      "updatedAt": "Mar 2024"
+    },
+    "property": {
+      "id": "prop-1",
+      "name": "The Heights Tower 1",
+      "type": "property",
+      "parentEntityId": "ie-1",
+      "address": "123 Main Street",
+      "city": "London",
+      "postalCode": "5432",
+      "country": "United Kingdom",
+      "sector": "Commercial",
+      "subSector": "Office",
+      "floorArea": 25000,
+      "assetReference": "REF-4567",
+      "energyRating": "B - good",
+      "purchaseDate": "Jan 2018",
+      "fund": "Global Portfolio Fund 1",
+      "lifecycleStatus": "operation",
+      "certifications": "LEED",
+      "totalBuildings": 2,
+      "createdAt": "Jun 2021",
+      "updatedAt": "Mar 2024"
+    },
+    "building": {
+      "id": "build-1",
+      "name": "Main Building - 1",
+      "type": "building",
+      "parentPropertyId": "prop-1",
+      "buildingType": "Office Tower",
+      "floorArea": 12000,
+      "floors": 15,
+      "constructionYear": 2005,
+      "lifecycleStatus": "active",
+      "certifications": "BREEAM",
+      "totalSpaces": 4,
+      "createdAt": "Jun 2021",
+      "updatedAt": "Mar 2024"
+    },
+    "space": {
+      "id": "space-1",
+      "name": "Office Suite 1",
+      "type": "space",
+      "parentBuildingId": "build-1",
+      "spaceType": "internal",
+      "function": "Office Suite",
+      "floorArea": 250,
+      "floor": 8,
+      "tenant": "TechCorp Inc",
+      "occupancyStatus": "occupied",
+      "leaseStartDate": "Mar 2022",
+      "leaseEndDate": "Sep 2024",
+      "createdAt": "Jun 2021",
+      "updatedAt": "Mar 2024"
+    },
+    "meter": {
+      "id": "meter-1",
+      "name": "Electricity Meter - Building 1",
+      "type": "meter",
+      "parentId": "build-1",
+      "parentType": "building",
+      "meterId": "MTR-45678",
+      "utility": "electricity",
+      "supplier": "EcoPower",
+      "granularity": "day",
+      "measurementUnit": "kWh",
+      "status": "active",
+      "lastCollectedDate": "Mar 2024",
+      "lastCollectedValue": 25000,
+      "createdAt": "Jun 2021",
+      "updatedAt": "Mar 2024"
+    }
+  },
+  "generationParameters": {
+    "investmentEntities": 10,
+    "propertiesPerEntity": "2-3 (random)",
+    "buildingsPerProperty": "1-2 (random)",
+    "spacesPerBuilding": "3-5 (random)",
+    "metersPerBuilding": "1-2 (random, building-level only)",
+    "dateRanges": {
+      "createdAt": "Jan 2020 - Dec 2023",
+      "updatedAt": "Jan 2024 - Dec 2024",
+      "purchaseDate": "Jan 2010 - Dec 2023",
+      "lastCollectedDate": "Jan 2024 - Dec 2024"
+    },
+    "numericalRanges": {
+      "propertyFloorArea": "5000-50000 m²",
+      "buildingFloorArea": "2000-20000 m²",
+      "spaceFloorArea": "50-500 m²",
+      "buildingFloors": "3-25",
+      "constructionYear": "1980-2023",
+      "assetReference": "1000-9999",
+      "meterId": "10000-99999",
+      "lastCollectedValue": "5000-50000"
+    }
+  },
+  "usage": {
+    "description": "This data structure can be used to generate mock ESG portfolio data for testing and development",
+    "implementation": "Use the generateMockData() function pattern from App.tsx or implement your own generator using these specifications",
+    "csvUploadFormat": "The platform supports bulk CSV upload with node type-specific templates matching these field structures"
+  }
+}
