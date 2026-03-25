@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Mbanefo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── HERO WRAPPER ── */
+.hero {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #fff;
+}
+
+/* ── BOARD ── */
+.board {
+  background: linear-gradient(180deg, #f5f5f7 0%, #eaeaec 100%);
+  border-radius: clamp(20px, 3vw, 36px);
+  padding: clamp(24px, 3.5vw, 48px) clamp(28px, 4vw, 56px) clamp(32px, 4.5vw, 60px);
+  box-shadow:
+    0 4px 0 #c8c8cc,
+    0 8px 40px rgba(0,0,0,0.13),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  position: relative;
+}
+
+/* ── KEYS ROW ── */
+.keys-row {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 36px);
+  align-items: flex-end;
+}
+
+/* ── KEY ── */
+.key {
+  position: relative;
+  width: clamp(140px, 18vw, 260px);
+  height: clamp(140px, 18vw, 260px);
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.key-t { animation: drop-in 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.2s forwards; }
+.key-m { animation: drop-in 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.45s forwards; }
+
+@keyframes drop-in { to { opacity: 1; transform: translateY(0); } }
+
+.key-base {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 91%;
+  border-radius: clamp(12px, 1.8vw, 22px);
+  background: #1a1a2e;
+  transition: height 0.08s ease;
+}
+
+.key-top {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 91%;
+  border-radius: clamp(10px, 1.6vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #2d2d4e 0%, #1e1e38 100%);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.55),
+    inset 0 -3px 0 rgba(0,0,0,0.18),
+    inset 3px 0 0 rgba(255,255,255,0.18),
+    inset -3px 0 0 rgba(0,0,0,0.12);
+}
+
+.key-letter {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(60px, 8vw, 120px);
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+  top: -4px;
+  transition: transform 0.08s ease;
+  background: linear-gradient(135deg, #FF5F35 0%, #FF2D87 55%, #A020F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 18px rgba(255,45,135,0.45));
+}
+
+/* Pressed state */
+.key.pressed .key-top {
+  transform: translateY(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(0,0,0,0.25),
+    inset 2px 0 0 rgba(255,255,255,0.1),
+    inset -2px 0 0 rgba(0,0,0,0.15);
+}
+.key.pressed .key-base { height: 83%; }
+.key.pressed .key-letter { transform: translateY(2px); }
+
+/* ── TOOLTIP on hover ── */
+.key-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #1a1a2e;
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+/* little arrow */
+.key-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1a2e;
+}
+
+.key:hover .key-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── LED ── */
+.led {
+  position: absolute;
+  bottom: clamp(10px, 1.5vw, 18px);
+  right: clamp(14px, 2vw, 24px);
+  width: clamp(5px, 0.6vw, 8px);
+  height: clamp(5px, 0.6vw, 8px);
+  border-radius: 50%;
+  background: #FF2D87;
+  box-shadow: 0 0 8px 3px rgba(255,45,135,0.55);
+  opacity: 0;
+  animation: led-on 0.3s ease 1.5s forwards;
+}
+@keyframes led-on { to { opacity: 1; } }
+
+/* ── NAMEPLATE ── */
+.nameplate {
+  margin-top: clamp(24px, 3.5vw, 48px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fade-up 0.6s ease 1.4s forwards;
+}
+@keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+
+.wm {
+  font-size: clamp(11px, 1.2vw, 15px);
+  font-weight: 300;
+  letter-spacing: clamp(4px, 0.6vw, 7px);
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+.rl {
+  font-size: clamp(8px, 0.9vw, 11px);
+  font-weight: 300;
+  letter-spacing: clamp(3px, 0.5vw, 5.5px);
+  color: #aaa;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ── CLICK-TO-ENTER HINT ── */
+.enter-hint {
+  position: absolute;
+  bottom: clamp(28px, 4vh, 52px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #bbb;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fade-up 0.6s ease 2s forwards;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.enter-hint::before,
+.enter-hint::after {
+  content: '';
+  width: clamp(20px, 3vw, 48px);
+  height: 1px;
+  background: #ddd;
+  display: block;
+}
+
+/* ── FLASH OVERLAY (on navigate) ── */
+.flash {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: opacity 0.35s ease;
+}
+.flash.active { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="board">
+    <div class="keys-row">
+
+      <!-- T KEY -->
+      <div class="key key-t" id="keyT">
+        <div class="key-tooltip">Click to enter</div>
+        <div class="key-base"></div>
+        <div class="key-top"><span class="key-letter">T</span></div>
+      </div>
+
+      <!-- M KEY -->
+      <div class="key key-m" id="keyM">
+        <div class="key-tooltip">Click to enter</div>
+        <div class="key-base"></div>
+        <div class="key-top"><span class="key-letter">M</span></div>
+      </div>
+
+    </div>
+    <div class="led"></div>
+  </div>
+
+  <div class="nameplate">
+    <div class="wm">Thomas Mbanefo</div>
+    <div class="rl">Product Designer</div>
+  </div>
+</div>
+
+<div class="flash" id="flash"></div>
+
+<script>
+// ── Config ────────────────────────────────────────────
+const HOMEPAGE = 'Home.html'; // ← change to your actual page
+
+// ── Refs ──────────────────────────────────────────────
+const T = document.getElementById('keyT');
+const M = document.getElementById('keyM');
+const flash = document.getElementById('flash');
+
+// ── Navigate with flash ───────────────────────────────
+function navigateTo(url) {
+  flash.classList.add('active');
+  setTimeout(() => { window.location.href = url; }, 380);
+}
+
+// ── Press util ────────────────────────────────────────
+function pressKey(el, delay) {
+  setTimeout(() => {
+    el.classList.add('pressed');
+    setTimeout(() => el.classList.remove('pressed'), 140);
+  }, delay);
+}
+
+// ── Intro animation ───────────────────────────────────
+pressKey(T, 900);
+pressKey(M, 1150);
+setTimeout(() => { pressKey(T, 0); pressKey(M, 0); }, 1600);
+
+// ── Mouse interactions ────────────────────────────────
+[T, M].forEach(key => {
+  key.addEventListener('mousedown', () => key.classList.add('pressed'));
+  key.addEventListener('mouseup', () => key.classList.remove('pressed'));
+  key.addEventListener('mouseleave', () => key.classList.remove('pressed'));
+
+  key.addEventListener('click', () => {
+    // Brief press then navigate
+    key.classList.add('pressed');
+    setTimeout(() => {
+      key.classList.remove('pressed');
+      navigateTo(HOMEPAGE);
+    }, 160);
+  });
+});
+
+// ── Keyboard interactions ─────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 't' || e.key === 'T') T.classList.add('pressed');
+  if (e.key === 'm' || e.key === 'M') M.classList.add('pressed');
+});
+document.addEventListener('keyup', e => {
+  if (e.key === 't' || e.key === 'T') {
+    T.classList.remove('pressed');
+    navigateTo(HOMEPAGE);
+  }
+  if (e.key === 'm' || e.key === 'M') {
+    M.classList.remove('pressed');
+    navigateTo(HOMEPAGE);
+  }
+});
+
+</script>
+</body>
+</html>
