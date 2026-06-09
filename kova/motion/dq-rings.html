@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="viewport" content="width=device-width, initial-scale=1"><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<meta charset="UTF-8">
+<title>Kova · Data quality</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#faf8f5; --bg-2:#f3efe9; --surface:#ffffff;
+  --ink:#15110d; --ink-2:#3a342d; --muted:#8a8278; --muted-2:#b4ab9f;
+  --border:#ebe6df; --border-2:#f0ebe4;
+  --accent:#b85c38; --accent-l:rgba(184,92,56,.08); --accent-ll:rgba(184,92,56,.16);
+  --green:#2a7a5a; --green-l:rgba(42,122,90,.10);
+  --red:#c64545; --red-l:rgba(198,69,69,.10);
+  --amber:#c6892b; --amber-l:rgba(198,137,43,.12);
+  --serif:'Bricolage Grotesque',serif; --sans:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+  --radius-md:8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:1080px; height:1080px; background:var(--bg); font-family:var(--sans); color:var(--ink); overflow:hidden; margin:0; }
+.mg { position:relative; width:100%; height:100%; background:var(--bg); overflow:hidden; }
+.mg-grid { position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(21,17,13,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,17,13,.025) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 90%);
+}
+.mg-eyebrow { font-family:var(--mono); font-size:12px; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); }
+.mg-title { font-family:var(--serif); font-weight:700; letter-spacing:-.025em; color:var(--ink); line-height:1.05; }
+.mg-watermark { position:absolute; left:56px; bottom:56px; display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.mg-watermark .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); }
+.mg-watermark strong { color:var(--ink); font-weight:500; }
+.mg-corner-tag { position:absolute; right:56px; top:56px; font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:8px; white-space:nowrap; }
+.mg-corner-tag > span:first-child { display:inline-block; width:6px; height:6px; background:var(--ink); border-radius:50%; }
+.k-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; box-shadow:0 1px 2px 0 rgba(21,17,13,.05); }
+.k-card-title { font-family:var(--serif); font-weight:600; font-size:16px; letter-spacing:-.01em; color:var(--ink); }
+.k-card-sub { font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+
+@keyframes mg-fade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes mg-rise   { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+@keyframes mg03-ring-draw {
+  0%, 100% { stroke-dashoffset: var(--circ); }
+  10%      { stroke-dashoffset: var(--circ); }
+  44%      { stroke-dashoffset: var(--target); }
+  88%      { stroke-dashoffset: var(--target); }
+  96%      { stroke-dashoffset: var(--circ); }
+}
+@keyframes mg03-meter-fill {
+  0%, 100% { width: 0%; }
+  40%      { width: 0%; }
+  64%      { width: var(--pct); }
+  88%      { width: var(--pct); }
+  96%      { width: 0%; }
+}
+@keyframes mg03-row-in {
+  0%, 100% { opacity: 0; transform: translateX(12px); }
+  36%      { opacity: 0; transform: translateX(12px); }
+  48%      { opacity: 1; transform: translateX(0); }
+  88%      { opacity: 1; transform: translateX(0); }
+  96%      { opacity: 0; transform: translateX(-6px); }
+}
+@keyframes mg03-pct-in {
+  0%, 100% { opacity: 0; transform: translateY(8px); }
+  46%      { opacity: 0; transform: translateY(8px); }
+  58%      { opacity: 1; transform: translateY(0); }
+  88%      { opacity: 1; transform: translateY(0); }
+  96%      { opacity: 0; }
+}
+
+body:not(.mg-play) *, body:not(.mg-play) *::before, body:not(.mg-play) *::after { animation-name:none !important; }
+body.mg-play { animation: mg-page-in 700ms cubic-bezier(.2,.6,.2,1) both; }
+@keyframes mg-page-in { from { opacity:0; transform:scale(.985); } to { opacity:1; transform:scale(1); } }
+</style>
+</head>
+<body class="mg-play">
+<div class="mg" style="background:var(--bg)">
+  <div class="mg-grid"></div>
+
+  <div style="position:absolute; top:56px; left:56px; right:56px; animation:mg-fade-in 1s ease both;">
+    <div class="mg-title" style="font-size:60px; margin-top:12px; letter-spacing:-.035em;">
+      Three layers, one<br>quality score.
+    </div>
+  </div>
+
+  <div style="position:absolute; left:56px; top:320px; width:480px; height:480px;">
+    <svg viewBox="-240 -240 480 480" style="width:100%; height:100%; overflow:visible;">
+      <circle r="200" fill="none" stroke="var(--border)" stroke-width="18"/>
+      <circle r="158" fill="none" stroke="var(--border)" stroke-width="18"/>
+      <circle r="116" fill="none" stroke="var(--border)" stroke-width="18"/>
+
+      <circle r="200" fill="none" stroke="var(--accent)" stroke-width="18" stroke-linecap="round"
+              style="transform:rotate(-90deg); --circ:1256.637; --target:326.726; stroke-dasharray:1256.637; stroke-dashoffset:1256.637; animation:mg03-ring-draw 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:0.1s;"/>
+      <circle r="158" fill="none" stroke="var(--amber)" stroke-width="18" stroke-linecap="round"
+              style="transform:rotate(-90deg); --circ:992.742; --target:377.242; stroke-dasharray:992.742; stroke-dashoffset:992.742; animation:mg03-ring-draw 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:0.28s;"/>
+      <circle r="116" fill="none" stroke="var(--green)" stroke-width="18" stroke-linecap="round"
+              style="transform:rotate(-90deg); --circ:728.848; --target:430.020; stroke-dasharray:728.848; stroke-dashoffset:728.848; animation:mg03-ring-draw 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:0.46s;"/>
+
+      <text text-anchor="middle" y="-12" style="font:500 14px/1 var(--mono); fill:var(--muted); letter-spacing:.18em; text-transform:uppercase;">DQ Score</text>
+      <text text-anchor="middle" y="42" style="font:800 72px/1 var(--serif); fill:var(--ink); letter-spacing:-.04em; opacity:0; animation:mg03-pct-in 7s ease both infinite;">72</text>
+    </svg>
+  </div>
+
+  <div style="position:absolute; left:56px; top:820px; width:480px; display:grid; gap:8px;">
+    <div style="display:flex; align-items:center; gap:12px; opacity:0; animation:mg-rise 7s ease both infinite; animation-delay:1.6s;">
+      <div style="width:12px; height:12px; border-radius:50%; background:var(--accent);"></div>
+      <div style="font:400 16px/1 var(--mono); color:var(--ink-2); letter-spacing:.04em; flex:1;">Coverage</div>
+      <div style="font:700 18px/1 var(--serif); color:var(--ink); letter-spacing:-.02em;">74%</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; opacity:0; animation:mg-rise 7s ease both infinite; animation-delay:1.7s;">
+      <div style="width:12px; height:12px; border-radius:50%; background:var(--amber);"></div>
+      <div style="font:400 16px/1 var(--mono); color:var(--ink-2); letter-spacing:.04em; flex:1;">Completeness</div>
+      <div style="font:700 18px/1 var(--serif); color:var(--ink); letter-spacing:-.02em;">62%</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; opacity:0; animation:mg-rise 7s ease both infinite; animation-delay:1.8s;">
+      <div style="width:12px; height:12px; border-radius:50%; background:var(--green);"></div>
+      <div style="font:400 16px/1 var(--mono); color:var(--ink-2); letter-spacing:.04em; flex:1;">Automated</div>
+      <div style="font:700 18px/1 var(--serif); color:var(--ink); letter-spacing:-.02em;">41%</div>
+    </div>
+  </div>
+
+  <div class="k-card" style="position:absolute; right:56px; top:320px; width:504px; padding:24px 24px 18px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+      <div>
+        <div class="k-card-title">Meter coverage</div>
+        <div class="k-card-sub">14A Broadgate · live feed</div>
+      </div>
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.1em; color:var(--green); background:var(--green-l); padding:5px 10px; border-radius:100px;">&bull; 6 meters</div>
+    </div>
+
+    <!-- meter rows -->
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.2s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">ELEC</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Main electric</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--green); border-radius:100px; --pct:91%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.32s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--green); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.45s;">91%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--border-2); opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.28s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">ELEC</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Chillers · L2</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--amber); border-radius:100px; --pct:73%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.40s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--amber); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.53s;">73%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--border-2); opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.36s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">GAS</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Gas mains</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--amber); border-radius:100px; --pct:64%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.48s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--amber); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.61s;">64%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--border-2); opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.44s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">GAS</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Boiler array</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--red); border-radius:100px; --pct:45%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.56s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--red); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.69s;">45%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--border-2); opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.52s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">H&#8322;O</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Water main</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--green); border-radius:100px; --pct:82%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.64s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--green); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.77s;">82%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:54px 1fr 60px; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--border-2); opacity:0; animation:mg03-row-in 7s cubic-bezier(.22,1,.36,1) both infinite; animation-delay:1.60s;">
+      <div style="font:500 11px/1 var(--mono); letter-spacing:.12em; color:var(--muted); text-align:center; border:1px solid var(--border); border-radius:6px; padding:5px 0;">H&#8322;O</div>
+      <div>
+        <div style="font:500 14px/1.2 var(--sans); color:var(--ink); margin-bottom:6px;">Sub-meter B</div>
+        <div style="height:6px; background:var(--border-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; background:var(--red); border-radius:100px; --pct:36%; width:0%; animation:mg03-meter-fill 7s cubic-bezier(.55,.05,.2,1) both infinite; animation-delay:1.72s;"></div>
+        </div>
+      </div>
+      <div style="font:700 18px/1 var(--serif); color:var(--red); text-align:right; letter-spacing:-.02em; opacity:0; animation:mg03-pct-in 7s ease both infinite; animation-delay:1.85s;">36%</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
