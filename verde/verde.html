@@ -1,0 +1,2456 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Mbanefo · Verde</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Barlow:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p:#ede6d3;
+  --s:#ff7906;
+  --c:#2c2c2c;
+  --paper:#f4f1e8;
+  --paper-2:#ebe7d8;
+  --paper-3:#dfdac6;
+  --surface:#fdfbf4;
+  --ink:#15211c;
+  --ink-2:#243029;
+  --muted:#6a6f6a;
+  --muted-2:#9aa09a;
+  --line:#1f2a25;
+  --line-soft:#b3b3a4;
+  --line-faint:#d8d3c1;
+  --accent:#2a7a5a;
+  --accent-2:#3f9777;
+  --accent-soft:rgba(42,122,90,.12);
+  --gold:#a8782c;
+  --gold-soft:rgba(168,120,44,.14);
+  --good:#2a7a5a;
+  --good-soft:rgba(42,122,90,.14);
+  --warn:#c08a2e;
+  --warn-soft:rgba(192,138,46,.16);
+  --bad:#a8432e;
+  --bad-soft:rgba(168,67,46,.14);
+
+  --review-bg:#fff8e6; --review-ink:#a16207;
+  --approved-bg:#e8f5ee; --approved-ink:#166534;
+  --rejected-bg:#fef2f2; --rejected-ink:#b91c1c;
+
+  --av-blue:#3d5a8a; --av-rose:#c4677c; --av-amber:#c6892b; --av-purple:#7c5dc6;
+
+  --serif:'Bricolage Grotesque',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+  --hand:'Kalam',cursive;
+  --hand-display:'Caveat',cursive;
+
+  --maxw:1180px;
+  --shadow-sm:0 1px 2px 0 rgba(15,21,28,.04);
+  --shadow-md:0 4px 12px -2px rgba(15,21,28,.10);
+  --shadow-xl:0 24px 48px -12px rgba(15,21,28,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+
+/* top nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-faint)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.new-nav-links{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}
+.new-nav-links a{font:500 14px/1 var(--sans);color:var(--ink-2,#3a342d);text-decoration:none;letter-spacing:.01em;transition:color .15s}
+.new-nav-links a:hover{color:var(--accent)}
+
+.logo{display:flex;align-items:center;gap:10px;font:500 14px/1 var(--sans);color:var(--ink);text-decoration:none}
+.logo .lk{width:26px;height:26px;border-radius:6px;background:var(--accent);color:#fff;font:500 14px/26px var(--sans);text-align:center}
+
+/* floating section nav (right) */
+.sectnav{position:fixed;right:32px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:2px}
+.sectnav a{display:flex;align-items:center;gap:11px;justify-content:flex-end;text-decoration:none;padding:7px 0;font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--muted-2);transition:color .2s}
+.sectnav a .dot-n{width:8px;height:8px;border-radius:50%;background:var(--muted-2);transition:all .2s;flex:0 0 8px}
+.sectnav a .lbl{opacity:0;transform:translateX(6px);transition:all .2s;white-space:nowrap}
+.sectnav a:hover .lbl,.sectnav a.active .lbl{opacity:1;transform:translateX(0)}
+.sectnav a:hover,.sectnav a.active{color:var(--ink)}
+.sectnav a.active .dot-n{background:var(--accent);width:11px;height:11px}
+@media(max-width:1100px){.sectnav{right:14px;gap:6px}.sectnav a{padding:9px 2px}.sectnav a .dot-n{width:14px;height:14px;flex:0 0 14px}.sectnav a.active .dot-n{width:17px;height:17px;flex:0 0 17px}.sectnav .lbl{display:none}.sectnav a.active .lbl{display:block;opacity:1;transform:none;background:var(--ink,#1a1a1a);color:var(--paper,#fff);padding:4px 9px;border-radius:20px;font-size:11px;letter-spacing:.02em}}
+
+/* hero */
+.hero{padding:0 0 56px;position:relative;text-align:center}
+.hero .wrap{position:relative;z-index:1}
+.hero .eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.hero h1{font:600 128px/1 var(--serif);letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
+.hero .h-sub{font:400 19px/1.5 var(--sans);color:var(--muted);margin:0 auto 40px;max-width:620px}
+.hero .lede{font:400 19px/1.55 var(--sans);color:var(--ink-2);margin-bottom:38px;max-width:none}
+.hero .hero-visual{text-align:left}
+@media(max-width:860px){.hero h1{font-size:80px}}
+
+/* hero carousel */
+.hero-visual{margin-top:40px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-xl);border:1px solid var(--line-faint);background:var(--surface)}
+.hero-visual .hv-bar{height:44px;background:var(--surface);border-bottom:1px solid var(--line-faint);display:flex;align-items:center;gap:8px;padding:0 18px}
+.hero-visual .dot{width:11px;height:11px;border-radius:50%;background:var(--line-faint)}
+.hero-visual .crumb{margin-left:14px;font:400 12px/1 var(--mono);color:var(--muted)}
+
+.hero-carousel{position:relative;width:100%;aspect-ratio:1/1;margin:0 auto;background:var(--paper);overflow:hidden}
+.hcs-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.hcs-slide{flex:0 0 100%;width:100%;height:100%;position:relative;overflow:hidden;display:block}
+.hcs-slide iframe{position:absolute;top:0;left:0;width:1080px;height:1080px;border:0;background:transparent;transform-origin:top left;transform:translate(var(--hcs-tx,0px),var(--hcs-ty,0px)) scale(var(--hcs-scale,1))}
+.hcs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(255,255,255,.86);border:1px solid var(--line-faint);padding:6px 12px;border-radius:999px;backdrop-filter:blur(4px);z-index:6}
+.hcs-dot{width:8px;height:8px;border-radius:50%;background:var(--muted-2);border:0;padding:0;cursor:pointer;transition:background .15s,width .2s}
+.hcs-dot.active{background:var(--accent);width:22px;border-radius:4px}
+.hcs-caption{display:none}
+
+/* overview / brief */
+.overview{padding:64px 0;background:var(--paper)}
+.ov-grid{display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:start}
+.ov-item{margin-bottom:28px}
+.ov-item .l{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ov-item .v{font:400 15px/1.5 var(--sans);color:var(--ink)}
+.ov-item .v.team{white-space:pre-line}
+.ov-brief h2{font:600 15px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:20px}
+.ov-brief p{font:400 17px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.ov-brief .phase-note{font:400 14px/1.6 var(--sans);color:var(--muted);border-left:2px solid var(--accent);padding-left:18px;margin-top:8px}
+@media(max-width:860px){.ov-grid{grid-template-columns:1fr;gap:32px}}
+
+/* generic section */
+.sec-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.sec-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;color:var(--ink);margin-bottom:16px}
+.sec-sub{font:400 17px/1.6 var(--sans);color:var(--muted)}
+
+/* problem panel */
+.problem{padding:80px 0;background:var(--paper);position:relative}
+.pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.pb-card .pb-tag{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:1px solid var(--line-faint);border-radius:6px;padding:8px 12px;display:inline-block;margin-bottom:18px}
+.pb-card p{font:400 15px/1.65 var(--sans);color:var(--ink-2)}
+@media(max-width:860px){.pb-grid{grid-template-columns:1fr}}
+
+/* research */
+.research{padding:80px 0;background:var(--paper)}
+.three-q{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0 8px}
+.tq{background:var(--surface);border:1px solid var(--line-faint);border-radius:14px;padding:24px}
+.tq-n{font:600 12px/1 var(--mono);color:var(--accent);margin-bottom:14px}
+.tq p{font:400 15px/1.55 var(--sans);color:var(--ink-2)}
+.r-block{margin-top:56px;max-width:none}
+.r-h{font:600 22px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.r-p{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.r-fig{margin-top:24px;border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface)}
+.r-fig img{width:100%;display:block}
+.r-fig figcaption{font:400 12px/1.4 var(--mono);color:var(--muted);padding:12px 16px;border-top:1px solid var(--line-faint)}
+.pullquote{border-left:3px solid var(--accent);padding:14px 0 14px 22px;margin:32px 0;font:italic 400 22px/1.45 var(--serif);color:var(--ink)}
+.pullquote cite{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:12px;font-style:normal}
+.feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+@media(max-width:860px){.three-q{grid-template-columns:1fr}.feedback-grid{grid-template-columns:1fr}}
+
+/* discovery */
+.discovery{padding:80px 0;background:var(--paper)}
+.wireframes{padding:80px 0;background:var(--paper)}
+
+/* C2 - AI / consultant split: two side-by-side cards, obvious division */
+.aisplit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
+.aisplit .ai-col{border:1px solid var(--line-faint);border-radius:16px;background:var(--paper-2);padding:28px;position:relative;overflow:hidden}
+.aisplit .ai-col.pen{background:var(--surface);border-color:var(--accent)}
+.aisplit .ai-col.pen::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.aisplit .ai-eyebrow{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.aisplit .ai-col.pen .ai-eyebrow{color:var(--accent)}
+.aisplit .ai-col-h{font:600 22px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+.aisplit .ai-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.aisplit .ai-list li{font:400 15px/1.55 var(--sans);color:var(--ink-2);padding-left:26px;position:relative}
+.aisplit .ai-list li::before{position:absolute;left:0;top:1px;font:600 13px/1.4 var(--mono)}
+.aisplit .ai-col.ai .ai-list li::before{content:'+';color:var(--muted)}
+.aisplit .ai-col.pen .ai-list li::before{content:'→';color:var(--accent)}
+.aisplit .ai-list li b{color:var(--ink);font-weight:600}
+.aisplit .ai-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line-faint);font:400 13px/1.5 var(--mono);color:var(--muted)}
+.aisplit .ai-col.pen .ai-foot{color:var(--accent)}
+@media(max-width:860px){.aisplit{grid-template-columns:1fr}}
+
+/* wireframe tab nav */
+.pwf-tabs-host{margin-top:56px}
+.pwf-tabs-host .pwf{display:none}
+.pwf-tabs-host .pwf.active{display:block;margin-top:14px}
+.pwf-tabs{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;border-bottom:1.5px solid var(--line-faint);margin-bottom:0;scrollbar-width:none}
+.pwf-tabs::-webkit-scrollbar{display:none}
+.pwf-tab{font:500 14px/1 var(--sans);background:transparent;border:0;cursor:pointer;padding:14px 18px;color:var(--muted);display:flex;align-items:center;gap:10px;border-bottom:3px solid transparent;white-space:nowrap;margin-bottom:-1.5px;transition:color .15s,border-bottom-color .15s}
+.pwf-tab:hover{color:var(--ink)}
+.pwf-tab.active{color:var(--ink);border-bottom-color:var(--accent)}
+.pwf-tab-n{font:500 10px/1 var(--mono);letter-spacing:.06em;background:var(--paper-2);color:var(--muted-2);padding:3px 7px;border-radius:999px}
+.pwf-tab.active .pwf-tab-n{background:var(--accent-soft);color:var(--accent)}
+
+/* features */
+.features{padding:80px 0 0;background:var(--paper)}
+.feat-stream{margin-top:48px}
+.feat{padding:80px 0}
+.feat:first-child{border-top:0}
+.feat-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 290px;gap:40px;align-items:start}
+.frame-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.frame-heading{font:600 30px/1.08 var(--serif);letter-spacing:-.025em;margin-bottom:8px;color:var(--ink)}
+.frame-sub{font:400 15px/1.6 var(--sans);color:var(--muted);max-width:none;margin-bottom:26px}
+.feat .screen{background:var(--surface);border:1px solid var(--line-faint);border-radius:14px;box-shadow:var(--shadow-xl);overflow:hidden}
+.feat .screen-bar{height:42px;background:var(--surface);border-bottom:1px solid var(--line-faint);display:flex;align-items:center;gap:8px;padding:0 16px}
+.feat .screen-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--line-faint)}
+.feat .crumb{margin-left:14px;font:400 12px/1 var(--mono);color:var(--muted)}
+.callouts{position:sticky;top:48px;display:flex;flex-direction:column;gap:18px;padding-top:8px}
+.callout{display:flex;gap:13px;align-items:flex-start}
+.cnum{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font:500 12px/26px var(--mono);text-align:center}
+.ctext{font:400 13px/1.55 var(--sans);color:var(--ink-2)}
+.ctext b{font-weight:600;color:var(--ink)}
+.gutter-head{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+@media(max-width:1024px){.feat-inner{grid-template-columns:1fr}}
+
+/* supporting grid */
+.supporting{padding:80px 0;background:var(--paper)}
+.supp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.supp-card{border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface);text-decoration:none;display:block;transition:box-shadow .25s,transform .25s}
+.supp-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.supp-thumb{aspect-ratio:16/9;background:var(--paper-2);border-bottom:1px solid var(--line-faint);overflow:hidden;position:relative}
+.supp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.supp-thumb iframe{position:absolute;top:0;left:0;width:285.714%;height:285.714%;border:0;background:#fff;pointer-events:none;transform-origin:top left;transform:scale(.35)}
+.supp-thumb-frame{position:absolute;inset:0;overflow:hidden}
+.supp-body{padding:18px 20px}
+.supp-h{font:600 17px/1.3 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+@media(max-width:860px){.supp-grid{grid-template-columns:1fr}}
+
+/* impact */
+.impact{padding:96px 0;background:var(--paper);color:var(--ink)}
+.impact-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;margin-bottom:48px}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:40px}
+/* C1 — early-stats callout, no dividers, transparent bg */
+.early-stats{display:flex;gap:32px;margin:0;padding:32px 0;background:transparent}
+.early-stats .est{flex:1}
+.early-stats .ev{font:600 38px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);margin-bottom:8px}
+.early-stats .el{font:400 14px/1.5 var(--sans);color:var(--muted);max-width:200px}
+.early-stats-section{padding:0 0 24px;background:var(--paper)}
+@media(max-width:860px){.early-stats{flex-wrap:wrap;gap:24px}.early-stats .est{flex:0 0 calc(50% - 12px)}}
+.iv{font:600 56px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);margin-bottom:14px}
+.il{font:400 14px/1.5 var(--sans);color:var(--muted)}
+.impact-note{font:400 18px/1.6 var(--serif);color:var(--ink-2);border-left:2px solid var(--accent);padding-left:22px;font-style:italic}
+@media(max-width:860px){.impact-grid{grid-template-columns:1fr 1fr}}
+
+/* siblings */
+.siblings{padding:96px 0;background:var(--paper)}
+.sib-h{font:600 30px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.sib-sub{font:400 16px/1.6 var(--sans);color:var(--muted);margin-bottom:32px}
+.sib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.sib-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line-faint);border-radius:16px;padding:32px 32px 24px;background:var(--surface);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.sib-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.sib-meta{font:500 11px/1 var(--mono);letter-spacing:.08em;color:var(--muted);margin-bottom:14px;display:flex;gap:8px}
+.sib-meta .sib-co{color:var(--sib,var(--accent))}
+
+.sib-thumb{margin:-32px -32px 22px;aspect-ratio:1/1;overflow:hidden;background:var(--paper-2);border-bottom:1px solid var(--line-faint)}
+.sib-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sib-card h3{font:600 28px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:0}
+.sib-card p{font:400 14px/1.6 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.sib-go{font:500 13px/1 var(--sans);color:var(--sib,var(--accent))}
+@media(max-width:860px){.sib-grid{grid-template-columns:1fr}}
+
+/* (legacy .foot-* footer styles removed — replaced by homepage .footer below) */
+
+@media(max-width:860px){
+  body{font-size:15px}
+  .wrap{padding:0 20px}
+  .nav-inner{padding:14px 20px}
+  .sec-h,.impact-h{font-size:32px}
+  .frame-heading{font-size:26px}
+}
+
+/* ═══════════════════════════════════════════════════════
+   Process-wireframe internals (ported from verde-process-wireframes.html).
+   All rules scoped under .pwf so they don't clash with the rest of verde.html.
+   ═══════════════════════════════════════════════════════ */
+.pwf .section-head{margin-bottom:28px;display:block;padding-bottom:0;border-bottom:0;position:relative}
+.pwf .section-head::after{display:none}
+.pwf .s-tag,.pwf .s-stamp{display:none}
+.pwf .s-title{font:600 22px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.pwf .s-title em{font-style:normal;color:inherit;font-weight:inherit}
+.pwf .s-title br{display:none}
+.pwf .s-sub{font:400 16px/1.65 var(--sans);color:var(--ink-2);max-width:none}
+.pwf .s-sub em{font-style:normal;color:inherit;font-weight:inherit}
+.pwf .s-sub b{color:var(--ink);font-weight:600}
+/* C3 - wireframe prose fills the content column, no narrow cap */
+.pwf-p{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:24px;max-width:none}
+.wireframes .sec-sub{max-width:none}
+
+.pwf{padding:32px 0;font-family:var(--sans);color:var(--ink)}
+
+/* iteration grid */
+.pwf .iters{display:grid;gap:24px}
+.pwf .iters.cols-4{grid-template-columns:repeat(4,1fr)}
+.pwf .iters.cols-3{grid-template-columns:repeat(3,1fr)}
+.pwf .iters.cols-2{grid-template-columns:repeat(2,1fr)}
+.pwf .iters.cols-1{grid-template-columns:1fr}
+.pwf .iters + .iters{margin-top:24px}
+
+/* board */
+.pwf .board{position:relative;background:#fbf7ed;border:2px solid var(--line);border-radius:18px 10px 22px 12px / 14px 20px 10px 18px;padding:18px 18px 16px;box-shadow:4px 5px 0 -2px var(--line-soft), 0 18px 30px -22px rgba(0,0,0,.25)}
+.pwf .board.tilt-l{transform:rotate(-.4deg)}
+.pwf .board.tilt-r{transform:rotate(.4deg)}
+.pwf .board.dim{opacity:.7}
+.pwf .board.killed{background:#efece1}
+.pwf .board.killed::after{content:'killed';position:absolute;top:14px;right:14px;font-family:var(--hand-display);font-size:20px;color:var(--bad);border:2px solid var(--bad);border-radius:999px;padding:1px 12px;transform:rotate(8deg);background:rgba(255,255,255,.85);z-index:6}
+.pwf .board.win{background:#fbf7ed}
+.pwf .board.win::after{content:'shipped ✓';position:absolute;top:-10px;right:18px;font-family:var(--hand-display);font-size:18px;color:var(--good);border:2px solid var(--good);border-radius:999px;padding:1px 12px;transform:rotate(-2deg);background:var(--paper);z-index:6}
+
+.pwf .board-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px dashed var(--line-soft)}
+.pwf .b-version{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em;font-weight:600;text-transform:uppercase}
+.pwf .b-name{font-family:var(--hand);font-weight:400;font-size:17px;color:var(--ink-2)}
+.pwf .b-tag{font:500 9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+
+.pwf .canvas{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:8px 12px 6px 14px / 10px 8px 14px 6px;padding:12px;min-height:240px;overflow:hidden}
+.pwf .canvas.tall{min-height:360px}
+.pwf .canvas.short{min-height:180px}
+
+/* sketch primitives */
+.pwf .sk-row{display:flex;gap:6px;margin-bottom:8px;align-items:stretch}
+.pwf .sk-col{display:flex;flex-direction:column;gap:6px}
+.pwf .sk-box{border:1.5px solid var(--line);border-radius:6px 9px 5px 10px / 8px 5px 11px 7px;background:#fff;padding:8px;position:relative;font:400 9.5px/1.4 var(--mono);color:var(--ink-2);letter-spacing:.02em}
+.pwf .sk-box.dashed{border-style:dashed;background:#fbf7ed}
+.pwf .sk-box.fill{background:var(--paper-2)}
+.pwf .sk-box.dark{background:var(--ink);color:#fff}
+.pwf .sk-box.accent{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.pwf .sk-bar{height:6px;background:var(--line-soft);border-radius:999px;margin:4px 0}
+.pwf .sk-bar.short{width:38%}
+.pwf .sk-bar.mid{width:64%}
+.pwf .sk-bar.full{width:100%}
+.pwf .sk-bar.accent{background:var(--accent)}
+.pwf .sk-bar.good{background:var(--good)}
+.pwf .sk-bar.bad{background:var(--bad)}
+.pwf .sk-bar.warn{background:var(--warn)}
+.pwf .sk-label{font:500 9px/1 var(--mono);color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.pwf .sk-val{font:600 22px/1 var(--serif);color:var(--ink);letter-spacing:-.02em}
+.pwf .sk-val.sm{font-size:16px}
+.pwf .sk-val.accent{color:var(--accent)}
+.pwf .sk-cap{font:400 8.5px/1.4 var(--mono);color:var(--muted-2);margin-top:2px}
+.pwf .sk-line{height:4px;background:var(--line-soft);border-radius:999px}
+.pwf .sk-line.thin{height:2px}
+.pwf .sk-pill{display:inline-flex;align-items:center;gap:4px;font:500 8.5px/1 var(--mono);letter-spacing:.04em;padding:3px 8px;border-radius:999px;background:var(--paper-2);color:var(--ink-2)}
+.pwf .sk-pill.good{background:var(--good-soft);color:var(--good)}
+.pwf .sk-pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pwf .sk-pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pwf .sk-pill.draft{background:var(--paper-2);color:var(--muted)}
+.pwf .sk-pill::before{content:'●';font-size:7px}
+.pwf .sk-fw{font:500 8.5px/1 var(--mono);letter-spacing:.04em;padding:3px 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent);display:inline-block}
+.pwf .sk-avatar{width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font:600 7.5px/1 var(--mono);display:inline-flex;align-items:center;justify-content:center;border:1.5px solid #fff;margin-left:-6px}
+.pwf .sk-avatar:first-child{margin-left:0}
+.pwf .sk-avatar.b2{background:#3d5a8a}
+.pwf .sk-avatar.b3{background:var(--warn)}
+.pwf .sk-chart-mini{height:40px;display:flex;align-items:end;gap:2px;padding:0 2px}
+.pwf .sk-chart-mini span{flex:1;background:#2a7a5a;border-radius:2px 2px 0 0;opacity:.85}
+.pwf .sk-chart-mini span:nth-child(2n){background:#3f9777}
+.pwf .sk-chart-mini span:nth-child(3n){background:#7fb091}
+.pwf .sk-chart-mini span:nth-child(5n){background:#1d4a3a}
+
+/* callout sticky notes */
+.pwf .callout{position:absolute;max-width:200px;font:400 13px/1.3 var(--hand);color:var(--ink);background:#fff5c9;border:1.5px solid #c9b966;border-radius:10px 14px 9px 13px;padding:8px 11px;box-shadow:2px 2px 0 -1px rgba(0,0,0,.12);z-index:5}
+.pwf .callout.pink{background:#f8d3cf;border-color:#d99891}
+.pwf .callout.amber{background:#ffe7b3;border-color:#d6a753}
+.pwf .callout.verde{background:var(--accent-soft);border-color:var(--accent)}
+.pwf .callout.verde strong{color:var(--accent)}
+.pwf .callout.mint{background:#d6efd9;border-color:#82b59a}
+
+/* board footer notes */
+.pwf .b-notes{margin-top:12px;display:grid;gap:6px}
+.pwf .b-note{font:400 13px/1.4 var(--hand);color:var(--ink-2);padding:4px 0 4px 18px;position:relative}
+.pwf .b-note::before{content:'→';font:600 12px/1 var(--mono);color:var(--accent);position:absolute;left:0;top:5px}
+.pwf .b-note.bad::before{content:'✕';color:var(--bad)}
+.pwf .b-note.good::before{content:'✓';color:var(--good)}
+.pwf .b-note.q::before{content:'?';color:var(--accent)}
+.pwf .b-note b{color:var(--ink);font-weight:600}
+
+/* lane-notes — typography matches Kova (serif headings, sans body) */
+.pwf .lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px;padding-top:36px;border-top:1px dashed var(--line-soft)}
+.pwf .lane-notes h4{font:500 20px/1.25 var(--serif);letter-spacing:-.015em;color:var(--ink-2);margin-bottom:8px}
+.pwf .lane-notes h4 small{display:block;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.pwf .lane-notes p{font:400 15px/1.6 var(--sans);color:var(--ink-2);margin-bottom:8px}
+.pwf .lane-notes p b{color:var(--ink);font-weight:600}
+
+/* sticky notes (HMW) */
+.pwf .stickies{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pwf .sticky{font:400 14px/1.4 var(--hand);background:#fff5c9;padding:18px 18px 22px;border:1.5px solid #c9b966;box-shadow:4px 5px 0 -2px var(--line-soft), 0 12px 24px -16px rgba(0,0,0,.18);position:relative}
+.pwf .sticky.k1{transform:rotate(-1.2deg)}
+.pwf .sticky.k2{transform:rotate(.8deg);background:#d6efd9;border-color:#82b59a}
+.pwf .sticky.k3{transform:rotate(-.6deg);background:#ffe7b3;border-color:#d6a753}
+.pwf .sticky.k4{transform:rotate(1deg);background:var(--accent-soft);border-color:var(--accent)}
+.pwf .sticky h5{font-family:var(--hand);font-weight:400;font-size:17px;margin-bottom:6px;color:var(--ink-2);letter-spacing:0}
+.pwf .sticky .tag{font:500 9px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;display:block}
+
+/* trade table */
+.pwf .trade-table{width:100%;border-collapse:separate;border-spacing:0;font-family:var(--hand);font-size:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px 8px 18px 10px;overflow:hidden}
+.pwf .trade-table th{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--ink);padding:12px 14px;text-align:left;border-bottom:2px solid var(--line-soft);background:var(--paper-2)}
+.pwf .trade-table td{padding:14px;vertical-align:top;line-height:1.5;border-bottom:1px dashed var(--line-soft);color:var(--ink-2)}
+.pwf .trade-table tr:last-child td{border-bottom:0}
+.pwf .trade-table td:first-child{font-family:var(--hand);font-weight:400;font-size:16px;color:var(--ink-2);width:22%}
+.pwf .trade-table td b{color:var(--ink);font-weight:700}
+.pwf .trade-table .chip{display:inline-block;font:500 9.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:6px}
+.pwf .trade-table .chip.kept{background:var(--good-soft);color:var(--good)}
+.pwf .trade-table .chip.cut{background:var(--bad-soft);color:var(--bad)}
+.pwf .trade-table .chip.def{background:var(--accent-soft);color:var(--accent)}
+
+/* swim-lane */
+.pwf .swim{margin-top:28px;background:#fff;border:1.5px solid var(--line);border-radius:14px 8px 18px 10px;padding:20px;position:relative}
+.pwf .swim h4{font-family:var(--hand);font-size:18px;color:var(--ink-2);margin-bottom:12px;font-weight:400}
+.pwf .swim-grid{display:grid;grid-template-columns:140px repeat(5,1fr);gap:8px;align-items:stretch}
+.pwf .swim-lane-label{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:14px 8px;border-right:1.5px dashed var(--line-soft);display:flex;align-items:center}
+.pwf .swim-stage-h{font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 0;border-bottom:1.5px dashed var(--line-soft);text-align:center}
+.pwf .swim-step{background:var(--paper-2);border:1.2px solid var(--line-soft);border-radius:6px 9px 5px 10px;padding:8px 9px;font:400 12.5px/1.3 var(--hand);color:var(--ink-2);position:relative;min-height:56px}
+.pwf .swim-step.warn{background:#f8d3cf;border-color:#d99891}
+.pwf .swim-step.fix{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+
+@media(max-width:1100px){
+  .pwf .iters.cols-4,.pwf .iters.cols-3{grid-template-columns:repeat(2,1fr)}
+  .pwf .lane-notes{grid-template-columns:1fr}
+  .pwf .stickies{grid-template-columns:1fr 1fr}
+}
+
+/* ═══════════════════════════════════════════════════════
+   Feature mockup primitives (verde-flavoured)
+   ═══════════════════════════════════════════════════════ */
+.scr-wrap{position:relative}
+.marker{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font:500 11px/24px var(--mono);text-align:center;box-shadow:var(--shadow-md);z-index:5}
+.feat .screen-body{padding:20px;background:var(--surface)}
+@media(max-width:860px){.marker{display:none}}
+
+.feat .a-eyebrow{font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.feat .a-h{font:600 17px/1.2 var(--serif);letter-spacing:-.015em;color:var(--ink)}
+.feat .a-sub{font:400 12px/1.5 var(--sans);color:var(--muted)}
+.feat .a-divider{height:1px;background:var(--line-faint);margin:14px 0}
+
+.feat .a-dot{display:inline-block;width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.feat .a-pill{display:inline-flex;align-items:center;gap:6px;font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px solid var(--line-faint);background:var(--surface);color:var(--ink-2);white-space:nowrap}
+.feat .a-pill.good{background:var(--approved-bg);border-color:var(--approved-ink);color:var(--approved-ink)}
+.feat .a-pill.warn{background:var(--review-bg);border-color:var(--review-ink);color:var(--review-ink)}
+.feat .a-pill.bad{background:var(--rejected-bg);border-color:var(--rejected-ink);color:var(--rejected-ink)}
+.feat .a-pill.acc{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.feat .a-pill.muted{color:var(--muted);background:var(--paper)}
+
+.feat .a-tile{border:1px solid var(--line-faint);border-radius:8px;padding:10px 12px;background:var(--surface);min-width:0}
+.feat .a-tile .l{font:500 9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.feat .a-tile .v{font:600 18px/1.1 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.feat .a-tile .s{font:400 10px/1.2 var(--mono);color:var(--muted);margin-top:4px}
+
+.feat .a-panel{border:1px solid var(--line-faint);border-radius:10px;background:var(--surface);overflow:hidden}
+.feat .a-panel-head{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:1px solid var(--line-faint);background:var(--paper)}
+.feat .a-panel-head .t{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.feat .a-panel-head .m{font:400 10px/1 var(--mono);color:var(--muted)}
+
+/* Verde report card grid */
+.feat .rcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feat .rcard{border:1px solid var(--line-faint);border-radius:12px;background:var(--surface);padding:14px;position:relative;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm)}
+.feat .rcard.focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.feat .rcard .top{display:flex;justify-content:space-between;align-items:center}
+.feat .rcard .fw{font:500 9.5px/1 var(--mono);letter-spacing:.06em;padding:4px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.feat .rcard .heart{color:var(--bad);font-size:14px;line-height:1}
+.feat .rcard .heart.off{color:var(--muted-2)}
+.feat .rcard .nm{font:600 14px/1.25 var(--serif);color:var(--ink);letter-spacing:-.01em}
+.feat .rcard .meta{font:400 10.5px/1 var(--mono);color:var(--muted)}
+.feat .rcard .mini{height:36px;display:flex;align-items:end;gap:3px;padding:0 2px}
+.feat .rcard .mini span{flex:1;background:#2a7a5a;opacity:.9;border-radius:2px 2px 0 0}
+.feat .rcard .mini span:nth-child(2n){background:#3f9777}
+.feat .rcard .mini span:nth-child(3n){background:#7fb091}
+.feat .rcard .mini span:nth-child(5n){background:#1d4a3a}
+.feat .rcard .foot{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.feat .rcard .avs{display:flex}
+.feat .rcard .av{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface);display:flex;align-items:center;justify-content:center;font:600 8.5px/1 var(--mono);color:#fff;margin-left:-6px}
+.feat .rcard .av:first-child{margin-left:0}
+.feat .rcard .av.b1{background:var(--av-blue)}
+.feat .rcard .av.b2{background:var(--av-rose)}
+.feat .rcard .av.b3{background:var(--av-amber)}
+.feat .rcard .av.b4{background:var(--av-purple)}
+
+/* Lifecycle pipeline */
+.feat .pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:center;padding:12px 0}
+.feat .pipe .stage{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.feat .pipe .stage .pip{width:14px;height:14px;border-radius:50%;background:var(--line-faint);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line-faint)}
+.feat .pipe .stage.done .pip{background:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.feat .pipe .stage.cur .pip{background:var(--review-ink);box-shadow:0 0 0 1px var(--review-ink);width:16px;height:16px}
+.feat .pipe .stage .lbl{font:500 10px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.feat .pipe .stage.cur .lbl{color:var(--review-ink)}
+.feat .pipe .stage.done .lbl{color:var(--accent)}
+.feat .pipe .bar{height:2px;background:var(--line-faint);position:relative}
+.feat .pipe .bar.done{background:var(--accent)}
+
+/* Wizard steps */
+.feat .wiz-progress{display:flex;gap:6px;margin-bottom:14px}
+.feat .wiz-progress span{flex:1;height:4px;border-radius:2px;background:var(--line-faint)}
+.feat .wiz-progress span.done{background:var(--accent)}
+.feat .wiz-progress span.cur{background:var(--accent);opacity:.7}
+
+.feat .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.feat .fw-card{border:1px solid var(--line-faint);border-radius:10px;background:var(--surface);padding:14px 12px;text-align:center;position:relative}
+.feat .fw-card.picked{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent-soft)}
+.feat .fw-card .logo{width:28px;height:28px;border-radius:6px;margin:0 auto 8px;background:var(--paper-2)}
+.feat .fw-card.picked .logo{background:var(--accent)}
+.feat .fw-card .nm{font:600 12px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.feat .fw-card .ct{font:400 9px/1 var(--mono);color:var(--muted);margin-top:4px}
+
+.feat .ai-draft{background:var(--ink);border-radius:10px;padding:14px;color:#fff;margin-top:12px}
+.feat .ai-draft .eye{font:500 9px/1 var(--mono);letter-spacing:.14em;color:var(--accent-2);text-transform:uppercase;margin-bottom:8px}
+.feat .ai-draft .ln{height:5px;background:rgba(255,255,255,.18);border-radius:999px;margin:6px 0}
+.feat .ai-draft .ln.mid{width:64%}
+.feat .ai-draft .ln.short{width:44%}
+.feat .ai-draft .stat{font:500 11px/1.4 var(--mono);color:var(--accent-2);margin-top:8px}
+
+/* Share / integrations */
+.feat .sh-tabs{display:flex;gap:6px;margin-bottom:12px}
+.feat .sh-tabs span{flex:1;padding:8px 10px;border:1px solid var(--line-faint);border-radius:6px;font:500 11px/1 var(--mono);letter-spacing:.06em;text-align:center;color:var(--muted);text-transform:uppercase;background:var(--surface)}
+.feat .sh-tabs span.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.feat .ints{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.feat .int{border:1px solid var(--line-faint);border-radius:10px;padding:12px;background:var(--surface);display:flex;align-items:center;gap:10px}
+.feat .int.live{border-color:var(--accent);background:var(--accent-soft)}
+.feat .int .ic{width:30px;height:30px;border-radius:6px;background:var(--paper-2);flex:0 0 30px}
+.feat .int.live .ic{background:var(--accent)}
+.feat .int .nm{font:600 12px/1.2 var(--sans);color:var(--ink)}
+.feat .int .st{font:400 9.5px/1 var(--mono);color:var(--muted);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+.feat .int.live .st{color:var(--accent)}
+
+/* hero location/email meta — stacked, matches homepage/About */
+.hero-meta-top{text-align:center;padding-top:54px;margin-bottom:56px}
+.hero-meta__label{display:block;font:500 .65rem/1.8 'DM Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.hero-meta__value{display:block;font:500 .52rem/1.8 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;opacity:.55;color:var(--ink)}
+.hero-meta__value a{color:inherit;text-decoration:none}
+
+/* circular nav buttons — theme-driven pill, matches homepage */
+.nav-btn{position:fixed;top:18px;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--s);color:var(--p);border:none;cursor:pointer;font:900 .52rem/1 'Barlow',sans-serif;letter-spacing:.12em;text-transform:uppercase;display:grid;place-items:center;text-decoration:none;transition:transform .3s cubic-bezier(.22,.61,.36,1),background-color .65s ease,color .65s ease}
+.nav-btn:hover{transform:scale(1.1)}
+.nav-btn{right:18px}
+.nav-btn--2{right:74px}
+
+/* homepage CONTACT footer — homepage class names, theme-driven palette */
+.footer{position:relative;overflow:hidden}
+.footer__cap{height:48px;background:var(--paper)}
+.footer__body{background:var(--s);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:24px}
+.footer__contact{font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:5vw;white-space:nowrap;text-transform:uppercase;letter-spacing:-.02em;text-align:center;color:var(--p);margin:0;line-height:.82;user-select:none;pointer-events:none}
+.footer__links{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:32px}
+.footer__link{font-family:'DM Mono',monospace;font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c);text-decoration:none;transition:color .22s}
+.footer__link:hover{color:var(--p)}
+.footer__copy{font-family:'DM Mono',monospace;font-weight:500;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);opacity:.6;margin-top:8px}
+
+/* PICKER */
+.picker { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 56px; height: 56px; }
+.picker-toggle {
+  position: absolute; bottom: 0; right: 0; z-index: 3;
+  width: 56px; height: 56px; border-radius: 50%; filter: drop-shadow(0 5px 14px rgba(0,0,0,.32));
+  background: none; border: 0; padding: 0; cursor: pointer; color: var(--s); display: flex; align-items: center; justify-content: center;
+  transition: transform .35s cubic-bezier(.22,.61,.36,1), color .65s ease;
+}
+.picker-toggle:hover { transform: scale(1.08) rotate(10deg) }
+.swatch {
+  position: absolute; bottom: 15px; right: 15px;
+  width: 26px; height: 26px; border-radius: 50%;
+  cursor: pointer; border: 2px solid rgba(255,255,255,.7);
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  opacity: 0; z-index: 2; transform: scale(.2);
+  transition: transform .5s ease, opacity .35s ease;
+  transition-delay: calc(var(--si, 0) * .05s);
+}
+.picker.open .swatch {
+  opacity: 1;
+  transform: rotate(calc(180deg + (90deg / 3) * var(--si, 0))) translate(80px) rotate(calc(0deg - 180deg - (90deg / 3) * var(--si, 0)));
+}
+.swatch[data-theme="cream"]  { background: #ff7906 }
+.swatch[data-theme="blue"]   { background: #0779ff }
+.swatch[data-theme="green"]  { background: #37af5d }
+.swatch[data-theme="purple"] { background: #db30f5 }
+.swatch[data-theme="mono"]   { background: #7c7c82 }
+
+
+/* THEME OVERRIDES — accent preserved under cream+mono; neutralized under blue/green/purple */
+html[data-theme="blue"]{--paper:#0779ff;--bg:#0779ff;--paper-2:#0a6ad6;--bg-2:#0a6ad6;--paper-3:#0858b0;--bg-3:#0858b0;--surface:#0a6ad6;--ink:#eaf6ff;--ink-2:#c5e8ff;--muted:#8fc4f5;--muted-2:#6fa8e0;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="green"]{--paper:#37af5d;--bg:#37af5d;--paper-2:#2f9a51;--bg-2:#2f9a51;--paper-3:#298a48;--bg-3:#298a48;--surface:#2f9a51;--ink:#f3fff7;--ink-2:#d6f5e0;--muted:#a9dcb9;--muted-2:#8bc79e;--line-faint:rgba(255,255,255,.20);--line-soft:rgba(255,255,255,.32);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="purple"]{--paper:#3c0350;--bg:#3c0350;--paper-2:#330246;--bg-2:#330246;--paper-3:#2b023b;--bg-3:#2b023b;--surface:#330246;--ink:#fce9ff;--ink-2:#f0d4fb;--muted:#c79bd6;--muted-2:#a87cb9;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="mono"]{--paper:#ffffff;--bg:#ffffff;--paper-2:#eeeeee;--bg-2:#eeeeee;--paper-3:#e2e2e2;--bg-3:#e2e2e2;--surface:#ffffff;--ink:#1f1f22;--ink-2:#34343a;--muted:#6b6b72;--muted-2:#9a9aa2;--line-faint:#e2e2e2;--line-soft:#cfcfcf;--line:#b8b8b8}
+
+/* accent-as-background spots: on-accent labels switch to page colour under dark themes */
+html[data-theme="blue"] .logo .lk,html[data-theme="green"] .logo .lk,html[data-theme="purple"] .logo .lk,
+html[data-theme="blue"] .cnum,html[data-theme="green"] .cnum,html[data-theme="purple"] .cnum,
+html[data-theme="blue"] .board.win::before,html[data-theme="green"] .board.win::before,html[data-theme="purple"] .board.win::before,
+html[data-theme="blue"] .pwf .sk-avatar,html[data-theme="green"] .pwf .sk-avatar,html[data-theme="purple"] .pwf .sk-avatar{color:var(--paper)}
+
+/* wireframe legibility: repaint hardcoded-white .pwf surfaces under dark themes */
+html[data-theme="blue"] .pwf .canvas,html[data-theme="green"] .pwf .canvas,html[data-theme="purple"] .pwf .canvas,
+html[data-theme="blue"] .pwf .board,html[data-theme="green"] .pwf .board,html[data-theme="purple"] .pwf .board,
+html[data-theme="blue"] .pwf .swim,html[data-theme="green"] .pwf .swim,html[data-theme="purple"] .pwf .swim,
+html[data-theme="blue"] .pwf .trade-table,html[data-theme="green"] .pwf .trade-table,html[data-theme="purple"] .pwf .trade-table,
+html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[data-theme="purple"] .pwf .sk-box{background:var(--surface);color:var(--ink)}
+
+</style>
+<style id="resp-fix">
+@media(max-width:860px){
+  html,body{ overflow-x:hidden; }
+  .scr-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pwf{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .trade-table,.swim,.pwf-stack{ max-width:100%; }
+  .figure{ width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px; }
+  .callouts{ position:static!important; }
+  .screen{ overflow-x:auto; }
+  .figure>*{ min-width:0; }
+}
+@media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
+</style>
+</head>
+<body>
+
+<a class="nav-btn nav-btn--2" href="../index.html" aria-label="Home">HOME</a>
+<a class="nav-btn" href="../about.html" aria-label="About">ABOUT</a>
+
+<nav class="sectnav" aria-label="Section navigation">
+  <a href="#introduction" data-sec="introduction"><span class="lbl">Introduction</span><span class="dot-n"></span></a>
+  <a href="#problem" data-sec="problem"><span class="lbl">Problem</span><span class="dot-n"></span></a>
+  <a href="#research" data-sec="research"><span class="lbl">Research</span><span class="dot-n"></span></a>
+  <a href="#discovery" data-sec="discovery"><span class="lbl">Discovery</span><span class="dot-n"></span></a>
+  <a href="#wireframes" data-sec="wireframes"><span class="lbl">Wireframes</span><span class="dot-n"></span></a>
+  <a href="#features" data-sec="features"><span class="lbl">Final UI</span><span class="dot-n"></span></a>
+  <a href="#impact" data-sec="impact"><span class="lbl">Impact</span><span class="dot-n"></span></a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta-top">
+      <span class="hero-meta__label">London, UK</span>
+      <span class="hero-meta__value"><a href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a></span>
+    </div>
+    <h1>Verde</h1>
+    <p class="h-sub">AI-assisted ESG reporting for real-estate funds, from raw portfolio data to filed disclosure in one governed workspace.</p>
+
+    <div class="hero-visual">
+      <div class="hv-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb" id="hcs-crumb">verde / reports / library</span></div>
+      <div class="hero-carousel" id="hcs">
+        <div class="hcs-track" id="hcs-track">
+          <div class="hcs-slide" data-label="01" data-crumb="verde / reports / card"             data-caption="One card. Everything you need." data-dur="9000"><iframe src="motion/report-card.html?v=10"      title="One card. Everything you need." scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="02" data-crumb="verde / generator / framework"      data-caption="Crafting your AI insights report" data-dur="10600"><iframe src="motion/wizard.html?v=10"         title="Crafting your AI insights report" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="03" data-crumb="verde / approvals / lifecycle"      data-caption="Every report has a paper trail" data-dur="9600"><iframe src="motion/lifecycle.html?v=10"       title="Every report has a paper trail" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="04" data-crumb="verde / share / integrations"       data-caption="Integrations and connected apps" data-dur="13400"><iframe src="motion/integrations.html?v=10"   title="Integrations and connected apps" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="05" data-crumb="verde / portfolio / heatmap"        data-caption="Three hundred and twenty-seven properties, one heartbeat" data-dur="10600"><iframe src="motion/heatmap.html?v=10"        title="One wall-to-wall portfolio view" loading="lazy" scrolling="no"></iframe></div>
+        </div>
+        <div class="hcs-dots" id="hcs-dots"></div>
+      </div>
+      <p class="hcs-caption" id="hcs-caption"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW / BRIEF ══ -->
+<section class="overview" id="introduction">
+  <div class="wrap">
+    <div class="ov-grid">
+      <div class="ov-meta">
+        <div class="ov-item"><div class="l">Client</div><div class="v">Meridian Capital<br><span style="color:var(--muted);font-size:13px">Pseudonyms used for confidentiality</span></div></div>
+        <div class="ov-item"><div class="l">Timeline</div><div class="v">2024 – 2025<br><span style="color:var(--muted);font-size:13px">~10 months, four phases</span></div></div>
+        <div class="ov-item"><div class="l">Role</div><div class="v">Lead Product Designer<br><span style="color:var(--muted);font-size:13px">Workflow, governance, AI generation, UI</span></div></div>
+        <div class="ov-item"><div class="l">Team</div><div class="v team">Design lead (me)
+2 UX Researchers
+1 Product Manager
+4 Engineers
+2 Reporting consultants
+1 Senior consultant</div></div>
+      </div>
+      <div class="ov-brief">
+        <h2>The brief</h2>
+        <p>Meridian Capital's ESG reporting workflow was entirely manual, reports drafted in PowerPoint, signed off in email, shared as PDFs that immediately drifted out of sync with the live data. The team produced GRESB, EPRA, INREV and SFDR disclosures across dozens of funds, with the entire workflow living outside the platform in Excel, PowerPoint, email threads and Slack.</p>
+        <p>My job was to design a single governed workspace where every report has a state, a named reviewer, an audit trail and a defined path from raw portfolio data to filed disclosure. The visible UI was the easy part. The hard part was modelling the workflow underneath it.</p>
+        <div class="phase-note">Verde sat downstream of Arbor and Kova. The portfolio data had finally become trustworthy. Reporting was the last leg of the journey, and the place clients (and their lawyers) actually judged the work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EARLY STATS ══ -->
+<section class="early-stats-section">
+  <div class="wrap">
+    <div class="early-stats">
+      <div class="est"><div class="ev">32%</div><div class="el">Reduction in manual reconciliation time per report cycle</div></div>
+      <div class="est"><div class="ev">100%</div><div class="el">Of approved reports carrying a named reviewer and full audit trail</div></div>
+      <div class="est"><div class="ev">4+</div><div class="el">Compliance frameworks served from a single data entry point</div></div>
+      <div class="est"><div class="ev">10</div><div class="el">Months end-to-end, across four phased releases</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="sec-label">Problem</div>
+    <h2 class="sec-h">Reports were uploaded files, not living workflow objects</h2>
+    <p class="sec-sub">Six interconnected problems with one shared root: the platform hosted ESG data but had no opinion on the workflow that turned data into a filed report.</p>
+    <div class="pb-grid">
+      <div class="pb-card">
+        <div class="pb-tag">Where it hurt</div>
+        <p>Reports were drafted in PowerPoint from Excel exports, signed off in email, and shared as PDFs that immediately drifted out of sync with the live data. Cross-framework inconsistencies reached clients regularly.</p>
+      </div>
+      <div class="pb-card">
+        <div class="pb-tag">Who felt it</div>
+        <p>Reporting consultants ran 20+ active reports across multiple frameworks with no shared status, no named reviewer, and no way to trace a figure back to source when a client's lawyer asked.</p>
+      </div>
+      <div class="pb-card">
+        <div class="pb-tag">The end goal</div>
+        <p>A platform where reports are first-class objects with state, ownership and audit, with AI drafting the narrative from validated data and consultants owning the final word.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESEARCH ══ -->
+<section class="research" id="research">
+  <div class="wrap">
+    <div class="sec-label">Research</div>
+    <h2 class="sec-h">Twelve consultants, seven roles, one report that touched every one of them</h2>
+    <p class="sec-sub">Discovery interviews with reporting consultants, senior reviewers and Meridian's data team, plus shadow sessions on three live report cycles, end to end, from brief to disclosure.</p>
+
+    <div class="three-q">
+      <div class="tq"><div class="tq-n">Q1</div><p>What is a consultant actually trying to do when they open the platform on a Monday morning?</p></div>
+      <div class="tq"><div class="tq-n">Q2</div><p>Where in the report lifecycle does trust break down, and what makes a client (or a regulator) ask the next question?</p></div>
+      <div class="tq"><div class="tq-n">Q3</div><p>Which framework-specific behaviour belongs in the platform, and which is the consultant's professional judgement that we mustn't automate away?</p></div>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">The reporting consultant journey, mapped from request to delivery</h3>
+      <p class="r-p">Five stages, four handoffs, and a quiet spreadsheet at the centre of all of them. The visible workflow was a sequence of meetings. The real workflow was a chain of files going dark every time they crossed a tool boundary.</p>
+      <figure class="r-fig"><img src="assets/Reporting - Consultant journey.png" alt="Reporting consultant journey across five stages"><figcaption>Consultant journey · brief, collect, draft, review, deliver</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">The reporting analyst journey, where source data became report data</h3>
+      <p class="r-p">The hidden second journey: the analyst pulling numbers from Siera, Deepki and the legacy platform into a shared spreadsheet, with no audit trail on the way in and no provenance on the way out. Every cross-framework inconsistency started here.</p>
+      <figure class="r-fig"><img src="assets/Reporting - RA journey.png" alt="Reporting analyst journey"><figcaption>RA journey · the spreadsheet at the centre of every report</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">What we heard, on the workflow itself</h3>
+      <blockquote class="pullquote">"I have to ping three people on Slack to find out if this report shipped. And then I still have to open the PDF to check the version."<cite>Reporting Consultant, Meridian Capital</cite></blockquote>
+      <p class="r-p">The complaint wasn't about volume of work. It was about the platform never being the source of truth for the report's own status. Every consultant kept a private tracker. Every senior consultant kept a parallel one.</p>
+      <div class="feedback-grid">
+        <figure class="r-fig"><img src="assets/Reporting - Process map.png" alt="Process map of current reporting"><figcaption>Current state · the process the platform didn't model</figcaption></figure>
+        <figure class="r-fig"><img src="assets/User Research - persona.png" alt="Primary persona: reporting consultant"><figcaption>Primary persona · the reporting consultant</figcaption></figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DISCOVERY -->
+<section class="discovery" id="discovery">
+  <div class="wrap">
+    <div class="sec-label">Discovery</div>
+    <h2 class="sec-h">A report is an object, not a file, every screen had to honour that</h2>
+    <p class="sec-sub">Twelve interview themes affinity-mapped onto three "how might we" questions, two weeks of lifecycle modelling before any UI, and four iteration cycles per surface.</p>
+
+    <div class="r-block">
+      <h3 class="r-h">The redesigned reporting flow, drawn as a state machine before any wireframe</h3>
+      <p class="r-p">Draft becomes Under Review becomes Approved or Rejected, and every transition names a reviewer and writes an audit entry. The lifecycle state machine was the contract that every downstream screen had to honour.</p>
+      <figure class="r-fig"><img src="assets/Reporting - Desired Flowchart 1.png" alt="Desired reporting flowchart with lifecycle states"><figcaption>Desired flow, five states, five transitions, one named reviewer at every step</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">One repository, four frameworks, no re-entry</h3>
+      <p class="r-p">GRESB, EPRA, INREV and SFDR each ask for the same underlying numbers in different shapes. The instinct was to build a report type per framework, but that would have rebuilt the spreadsheet problem inside the platform, four copies of the truth quietly drifting apart. Instead I defined the metric set once and let each framework read from it, so a figure entered for one disclosure was the same figure every other disclosure cited.</p>
+      <figure class="r-fig"><img src="assets/Reporting - ESG metrics.png" alt="Shared ESG metric set feeding multiple disclosure frameworks"><figcaption>Shared metric layer · one validated number, read by every framework</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">AI drafts, the consultant decides</h3>
+      <p class="r-p">Research drew a hard line: the platform automates the framework mechanics, the consultant owns the professional judgement. Every AI-drafted section is editable and every edit is logged, so the audit trail covers the human decision, not just the machine output, which is exactly what a client's lawyer asks to see when a number is questioned.</p>
+      <div class="aisplit">
+        <div class="ai-col ai">
+          <div class="ai-eyebrow">The AI drafts</div>
+          <div class="ai-col-h">First-pass work, never the final word</div>
+          <ul class="ai-list">
+            <li>Writes a <b>first-pass narrative for each ESG metric</b>, pulling the validated numbers straight from the shared data layer.</li>
+            <li>Drafts the <b>boilerplate commentary</b> every framework expects, in the right shape for GRESB, EPRA, INREV or SFDR.</li>
+            <li><b>Flags gaps and missing inputs</b> before a report can move forward, so nothing ships half-sourced.</li>
+            <li>Proposes the structure of the disclosure so the consultant starts from a draft, not a blank page.</li>
+          </ul>
+          <div class="ai-foot">Output is always a draft, marked as AI-generated.</div>
+        </div>
+        <div class="ai-col pen">
+          <div class="ai-eyebrow">The consultant keeps the pen</div>
+          <div class="ai-col-h">Accountable for the filed report</div>
+          <ul class="ai-list">
+            <li>Makes the <b>materiality judgement</b>, deciding what matters and what gets said about it.</li>
+            <li>Holds <b>final sign-off</b>, the one transition that moves a report to Approved.</li>
+            <li>Owns <b>anything filed under their name</b>, every figure and sentence that reaches a client or regulator.</li>
+            <li>Leaves the <b>audit-trailed decision</b>, a named reviewer on every approval, traceable back to source.</li>
+          </ul>
+          <div class="ai-foot">The human decision is what the audit trail records.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WIREFRAMES ══ -->
+<section class="wireframes" id="wireframes">
+  <div class="wrap">
+    <div class="sec-label">Wireframes</div>
+    <h2 class="sec-h">Wireframing the disclosure workspace</h2>
+    <p class="sec-sub">The board-level flows that turned a fragile spreadsheet process into a governed, auditable workspace.</p>
+
+    <div class="pwf-tabs-host" id="pwf-host">
+      <div class="pwf-tabs" id="pwf-tabs" role="tablist">
+        <button class="pwf-tab active" data-target="0" role="tab"><span class="pwf-tab-n">01</span>Framing</button>
+        <button class="pwf-tab" data-target="1" role="tab"><span class="pwf-tab-n">02</span>Report library</button>
+        <button class="pwf-tab" data-target="2" role="tab"><span class="pwf-tab-n">03</span>Approval &amp; governance</button>
+        <button class="pwf-tab" data-target="3" role="tab"><span class="pwf-tab-n">04</span>Generate &amp; edit</button>
+        <button class="pwf-tab" data-target="4" role="tab"><span class="pwf-tab-n">05</span>Share &amp; integrate</button>
+        <button class="pwf-tab" data-target="5" role="tab"><span class="pwf-tab-n">06</span>Tradeoffs &amp; cuts</button>
+      </div>
+      <!-- s-framing -->
+      <div class="pwf active">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">Spreadsheets, email chains and hope</h2>
+      <p class="s-sub">Meridian's consultants were building GRESB, EPRA, INREV and SFDR reports in Excel, sending PDFs over email, and tracking sign-off in Slack. The platform "had" reporting, it just had no place to do reporting. Before pushing pixels we mapped the people, the frameworks, and the failure points.</p>
+    </div>
+    
+  </div>
+
+  <!-- Row 1: as-is + personas -->
+  <div class="iters cols-2" style="margin-bottom:20px;">
+
+    <!-- as-is sketch -->
+    <div class="board tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">v0 · as-is</div><div class="b-name">What the platform was doing</div></div>
+        <div class="b-tag">screen audit</div>
+      </div>
+      <div class="canvas tall" style="padding:14px;">
+        <!-- top chrome -->
+        <div class="sk-row" style="margin-bottom:8px;gap:4px;">
+          <div class="sk-box" style="width:120px;font-size:8.5px;">â–¾ Client12345</div>
+          <div class="sk-box" style="flex:1;font-size:8.5px;">Reporting</div>
+        </div>
+        <!-- pinned strip -->
+        <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;">
+          <div class="sk-label">PINNED REPORTS</div>
+          <div class="sk-row" style="gap:4px;margin-top:4px;">
+            <div class="sk-box" style="flex:1;padding:5px;font-size:7.5px;">LI ESG…<br>GRI · 15 Apr</div>
+            <div class="sk-box" style="flex:1;padding:5px;font-size:7.5px;">JS Villa…<br>GHG · 5 Feb</div>
+            <div class="sk-box" style="flex:1;padding:5px;font-size:7.5px;">KL_EV…<br>NZC · 23 Aug</div>
+            <div class="sk-box" style="flex:1;padding:5px;font-size:7.5px;">LI ESG…<br>BESP · 8 Nov</div>
+          </div>
+        </div>
+        <!-- table of doom -->
+        <div class="sk-box" style="padding:6px;">
+          <div class="sk-row" style="gap:4px;margin-bottom:4px;font-size:7.5px;color:var(--muted);">
+            <div style="flex:2;">File name</div>
+            <div style="flex:1;">Type</div>
+            <div style="flex:1;">Freq</div>
+            <div style="flex:1;">Uploaded</div>
+            <div style="flex:.6;">Year</div>
+            <div style="flex:1.2;">Created by</div>
+          </div>
+          <div class="sk-row" style="gap:4px;margin-bottom:3px;">
+            <div style="flex:2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:.6;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:4px;margin-bottom:3px;">
+            <div style="flex:2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:.6;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:4px;margin-bottom:3px;">
+            <div style="flex:2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:.6;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:4px;margin-bottom:3px;">
+            <div style="flex:2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:.6;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:4px;">
+            <div style="flex:2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:.6;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;height:8px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+        </div>
+
+        <div class="callout pink" style="top:60px; right:-6px; transform:rotate(2deg);">
+          Pinned strip = the closest thing to a status, but only "I cared about this once".
+        </div>
+        <div class="callout" style="bottom:84px; left:-12px; transform:rotate(-2deg);">
+          No <b>status</b>, no <b>owner</b>, no <b>reviewer</b>. The file is the only artifact.
+        </div>
+        <div class="callout amber" style="bottom:8px; right:-6px; transform:rotate(1.5deg);">
+          Six columns. None of them is "where in the cycle is this?"
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">Reports were <b>uploaded artifacts</b>, not living workflow objects.</div>
+        <div class="b-note bad">Sign-off happened in email, invisible to the platform that hosted the file.</div>
+        <div class="b-note q">User quote: <i>"I have to ping three people on Slack to find out if this report shipped."</i></div>
+      </div>
+    </div>
+
+    <!-- Personas -->
+    <div class="board tilt-r">
+      <div class="board-hdr">
+        <div><div class="b-version">v0 · users</div><div class="b-name">Seven people. One report.</div></div>
+        <div class="b-tag">personas</div>
+      </div>
+      <div class="canvas tall" style="padding:14px;">
+        <svg viewBox="0 0 460 360" style="width:100%;height:auto;">
+          <!-- Internal column -->
+          <text x="20" y="22" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".14em">INTERNAL · MERIDIAN</text>
+
+          <g><circle cx="60" cy="64" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="60" y="68" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">C1</text></g>
+          <text x="92" y="58" font-family="Kalam" font-size="13" font-weight="700">Consultant</text>
+          <text x="92" y="74" font-family="Kalam" font-size="12" fill="#2f3330">drafts, edits, owns deadline</text>
+
+          <g><circle cx="60" cy="120" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="60" y="124" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">RA</text></g>
+          <text x="92" y="114" font-family="Kalam" font-size="13" font-weight="700">Reporting team</text>
+          <text x="92" y="130" font-family="Kalam" font-size="12" fill="#2f3330">data manipulation, QA, formatting</text>
+
+          <g><circle cx="60" cy="176" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="60" y="180" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">D</text></g>
+          <text x="92" y="170" font-family="Kalam" font-size="13" font-weight="700">Data team</text>
+          <text x="92" y="186" font-family="Kalam" font-size="12" fill="#2f3330">pulls Siera/Deepki/Pense source</text>
+
+          <g><circle cx="60" cy="232" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="60" y="236" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">SC</text></g>
+          <text x="92" y="226" font-family="Kalam" font-size="13" font-weight="700">Senior consultant</text>
+          <text x="92" y="242" font-family="Kalam" font-size="12" fill="#2f3330">internal sign-off · the new role</text>
+
+          <!-- External -->
+          <text x="20" y="282" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".14em">EXTERNAL · MERIDIAN'S CLIENTS</text>
+
+          <g><circle cx="60" cy="316" r="20" fill="#fff" stroke="#161816" stroke-width="2"/><text x="60" y="320" text-anchor="middle" font-family="Kalam" font-size="10" font-weight="700">ESG</text></g>
+          <text x="92" y="312" font-family="Kalam" font-size="13" font-weight="700">Client ESG Director</text>
+          <text x="92" y="328" font-family="Kalam" font-size="12" fill="#2f3330">reviews, approves, escalates</text>
+
+          <!-- Right column: lawyers + FM -->
+          <g><circle cx="290" cy="64" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="290" y="68" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">FM</text></g>
+          <text x="322" y="58" font-family="Kalam" font-size="13" font-weight="700">Fund manager</text>
+          <text x="322" y="74" font-family="Kalam" font-size="12" fill="#2f3330">consumes report · cares about story</text>
+
+          <g><circle cx="290" cy="120" r="22" fill="#fff" stroke="#161816" stroke-width="2"/><text x="290" y="124" text-anchor="middle" font-family="Kalam" font-size="11" font-weight="700">PM</text></g>
+          <text x="322" y="114" font-family="Kalam" font-size="13" font-weight="700">Property manager</text>
+          <text x="322" y="130" font-family="Kalam" font-size="12" fill="#2f3330">supplies asset-level data</text>
+
+          <!-- big arrow -->
+          <path d="M 430 30 Q 460 200 430 350" fill="none" stroke="#2a7a5a" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="380" y="200" font-family="Caveat" font-size="22" fill="#2a7a5a" font-weight="700">one report,</text>
+          <text x="380" y="222" font-family="Caveat" font-size="22" fill="#2a7a5a" font-weight="700">seven hands</text>
+        </svg>
+      </div>
+      <div class="b-notes">
+        <div class="b-note">Every report passes through <b>5–7 people</b>. The old platform modelled it as <b>one</b>.</div>
+        <div class="b-note">The "senior consultant" role didn't exist in the system, but every report needed their sign-off.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HMW stickies -->
+  <h3 style="font-family:var(--hand-display); font-weight:700; font-size:32px; color:var(--ink); margin:24px 0 8px;">Three questions that framed everything that came after.</h3>
+  <p style="font-family:var(--hand); font-size:15px; color:var(--ink-2); margin-bottom:18px;">From twelve consultant interviews + a journey-map workshop with Meridian's reporting team. Every wireframe had to earn its place against one of these.</p>
+
+  <div class="stickies">
+    <div class="sticky k1">
+      <span class="tag">HMW · 01</span>
+      <h5>Give every consultant <u>one place</u> -</h5>
+      to see every report they own, what state it's in, and what's blocking it. <b>No more Slack archaeology.</b>
+    </div>
+    <div class="sticky k2">
+      <span class="tag">HMW · 02</span>
+      <h5>Make <u>governance</u> a first-class object -</h5>
+      reviewers, approvers and lifecycle states live <b>inside</b> the report, not in email threads next to it.
+    </div>
+    <div class="sticky k3">
+      <span class="tag">HMW · 03</span>
+      <h5>Cut the drafting time, not the rigor -</h5>
+      AI-assisted first drafts from validated data sources, so consultants spend time on <b>analysis</b>, not formatting.
+    </div>
+  </div>
+
+  <!-- Swim lane -->
+  <div class="swim">
+    <h4>The as-is reporting journey, five stages, five hand-offs, two weeks per cycle.</h4>
+    <div class="swim-grid">
+      <div></div>
+      <div class="swim-stage-h">Brief</div>
+      <div class="swim-stage-h">Collect data</div>
+      <div class="swim-stage-h">Draft</div>
+      <div class="swim-stage-h">Review</div>
+      <div class="swim-stage-h">Deliver</div>
+
+      <div class="swim-lane-label">Consultant</div>
+      <div class="swim-step">scope call with client</div>
+      <div class="swim-step warn">chases PMs for inputs via email</div>
+      <div class="swim-step warn">drafts in PowerPoint, copies from Excel</div>
+      <div class="swim-step">incorporates senior comments</div>
+      <div class="swim-step">emails final PDF</div>
+
+      <div class="swim-lane-label">Reporting / Data</div>
+      <div class="swim-step"></div>
+      <div class="swim-step warn">exports Siera / Deepki to Excel</div>
+      <div class="swim-step warn">manual QA in spreadsheet, no audit trail</div>
+      <div class="swim-step warn">re-runs numbers if QA finds issues</div>
+      <div class="swim-step"></div>
+
+      <div class="swim-lane-label">Senior · Client</div>
+      <div class="swim-step">defines disclosure framework</div>
+      <div class="swim-step"></div>
+      <div class="swim-step"></div>
+      <div class="swim-step warn">reviews via marked-up PDF, comments lost</div>
+      <div class="swim-step">signs off via email</div>
+    </div>
+  </div>
+
+  <div class="lane-notes">
+    <div>
+      <h4><small>Decision</small>The report is the object. Everything else attaches to it.</h4>
+      <p>The platform had treated reports as <b>uploaded files</b>. Every red box above was a workflow event that should have been part of the report itself, a comment, a state change, an approval, a data version.</p>
+      <p>That re-shaped the data model: a Report became a first-class object with status, reviewers, approvers, source bindings and a history. Everything we designed downstream attaches to it.</p>
+    </div>
+    <div>
+      <h4><small>Tradeoff</small>Two weeks of data-model work before any final pixels.</h4>
+      <p>Pushing back on "let's just style the existing screens" was unpopular but necessary. The original schema had no concept of state, adding it after styling would have meant redesigning every screen twice.</p>
+      <p>The compromise: lo-fi wireframes shipped fast, in parallel, so stakeholders could see the new model take shape while engineering was still aligning.</p>
+    </div>
+  </div>
+      </div>
+      <!-- s-library -->
+      <div class="pwf">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">From "find your file" to "what needs me today"</h2>
+      <p class="s-sub">Four passes. The first kept the table because it was familiar. The second tried to fix the table. The third threw the table out and over-pivoted into a feed. The fourth landed on a card-deck-over-table that worked for both the consultant scanning their queue and the manager hunting a specific file.</p>
+    </div>
+    
+  </div>
+
+  <div class="iters cols-2">
+
+    <!-- v1: tabified table -->
+    <div class="board killed tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">v1</div><div class="b-name">Tabified table</div></div>
+        <div class="b-tag">familiar</div>
+      </div>
+      <div class="canvas">
+        <div class="sk-row" style="gap:2px;margin-bottom:6px;">
+          <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;font-size:8px;">All</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">Mine</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">Recent</div>
+        </div>
+        <div class="sk-box" style="padding:6px;">
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;font-size:7px;color:var(--muted);">
+            <div style="flex:2;">File</div><div style="flex:1;">Type</div><div style="flex:1;">Uploaded</div>
+          </div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;"><div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div></div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;"><div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div></div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;"><div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div></div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;"><div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div></div>
+          <div class="sk-row" style="gap:3px;"><div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div><div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div></div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">User test: "looks like the old one." It was.</div>
+        <div class="b-note bad">Still no answer to "where in the cycle is this report?"</div>
+      </div>
+    </div>
+
+    <!-- v2: table + status pills -->
+    <div class="board dim">
+      <div class="board-hdr">
+        <div><div class="b-version">v2</div><div class="b-name">Table + status column</div></div>
+        <div class="b-tag">band-aid</div>
+      </div>
+      <div class="canvas">
+        <div class="sk-box" style="padding:6px;">
+          <div class="sk-row" style="gap:3px;margin-bottom:4px;font-size:7px;color:var(--muted);">
+            <div style="flex:2;">File</div><div style="flex:1.2;">Status</div><div style="flex:1;">Uploaded</div>
+          </div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;align-items:center;">
+            <div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;"><span class="sk-pill warn">Review</span></div>
+            <div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;align-items:center;">
+            <div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;"><span class="sk-pill good">Approved</span></div>
+            <div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;align-items:center;">
+            <div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;"><span class="sk-pill bad">Rejected</span></div>
+            <div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:3px;margin-bottom:3px;align-items:center;">
+            <div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;"><span class="sk-pill draft">Draft</span></div>
+            <div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+          <div class="sk-row" style="gap:3px;align-items:center;">
+            <div style="flex:2;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+            <div style="flex:1.2;"><span class="sk-pill warn">Review</span></div>
+            <div style="flex:1;height:7px;background:var(--paper-2);border-radius:2px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Status visible in row.</div>
+        <div class="b-note bad">Visual weight wrong: file name reads first, status second. Should flip.</div>
+        <div class="b-note bad">No preview of <b>what's in</b> the report, just a name.</div>
+      </div>
+    </div>
+
+    <!-- v3: feed -->
+    <div class="board dim tilt-r">
+      <div class="board-hdr">
+        <div><div class="b-version">v3</div><div class="b-name">Activity feed</div></div>
+        <div class="b-tag">over-pivot</div>
+      </div>
+      <div class="canvas">
+        <div class="sk-box dashed" style="padding:6px;margin-bottom:4px;font-size:9px;color:var(--muted);">timeline · most recent</div>
+        <div class="sk-box" style="padding:6px;margin-bottom:4px;">
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--accent);">2h ago · approved</div>
+          <div class="sk-bar full" style="margin-top:3px;"></div>
+        </div>
+        <div class="sk-box" style="padding:6px;margin-bottom:4px;">
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--warn);">5h ago · under review</div>
+          <div class="sk-bar full" style="margin-top:3px;"></div>
+        </div>
+        <div class="sk-box" style="padding:6px;margin-bottom:4px;">
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--strike);">1d · rejected</div>
+          <div class="sk-bar full" style="margin-top:3px;"></div>
+        </div>
+        <div class="sk-box" style="padding:6px;">
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--muted);">3d · uploaded</div>
+          <div class="sk-bar full" style="margin-top:3px;"></div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Status finally led the visual hierarchy.</div>
+        <div class="b-note bad">No way to find a <b>specific</b> report you remember by name.</div>
+        <div class="b-note bad">Senior consultants HATED it, they think in batches, not events.</div>
+      </div>
+    </div>
+
+    <!-- final: card deck + filter chips -->
+    <div class="board win">
+      <div class="board-hdr">
+        <div><div class="b-version">final</div><div class="b-name">Card deck + filter chips</div></div>
+        <div class="b-tag">shipped</div>
+      </div>
+      <div class="canvas">
+        <div style="font-family:var(--hand-display);font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;">Jamie, you've got <span style="color:var(--accent);">8</span> reports to review</div>
+        <!-- filter chips -->
+        <div class="sk-row" style="gap:3px;margin-bottom:6px;flex-wrap:wrap;">
+          <span class="sk-fw" style="background:var(--ink);color:#fff;">All · 28</span>
+          <span class="sk-fw">Favs · 5</span>
+          <span class="sk-fw">Review · 5</span>
+          <span class="sk-fw">Done · 5</span>
+        </div>
+        <!-- card row -->
+        <div class="sk-row" style="gap:4px;">
+          <div class="sk-box" style="flex:1;padding:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+              <span class="sk-fw">GRESB</span>
+              <span style="color:var(--strike);font-size:11px;">♥</span>
+            </div>
+            <div style="font-family:var(--hand);font-size:9px;font-weight:700;line-height:1.2;margin-bottom:3px;">GRESB Annual 2024</div>
+            <div class="sk-chart-mini" style="height:24px;"><span style="height:60%"></span><span style="height:70%"></span><span style="height:50%"></span><span style="height:80%"></span><span style="height:65%"></span><span style="height:75%"></span></div>
+            <div style="margin-top:4px;"><span class="sk-pill warn" style="font-size:7px;">Review</span></div>
+          </div>
+          <div class="sk-box" style="flex:1;padding:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+              <span class="sk-fw">EPRA</span>
+              <span style="color:var(--muted-2);font-size:11px;">♡</span>
+            </div>
+            <div style="font-family:var(--hand);font-size:9px;font-weight:700;line-height:1.2;margin-bottom:3px;">Asia Markets FY25</div>
+            <div class="sk-chart-mini" style="height:24px;"><span style="height:55%"></span><span style="height:80%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:85%"></span><span style="height:60%"></span></div>
+            <div style="margin-top:4px;"><span class="sk-pill good" style="font-size:7px;">Approved</span></div>
+          </div>
+        </div>
+        <div class="sk-box dashed" style="margin-top:4px;padding:4px;font-size:8px;color:var(--muted);text-align:center;">↔ paginated carousel · ‹ ● ○ ○ ○ ○ ›</div>
+
+        <div class="callout verde" style="bottom:4px;right:-8px;max-width:130px;transform:rotate(2deg);">
+          <strong>Charts</strong> in cards = recognize a report by <strong>shape</strong>, not name.
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Filter chips collapse the 4 tabs from v3 into one row with counts.</div>
+        <div class="b-note good">Card sparkline = previewable identity, names alone are forgettable.</div>
+        <div class="b-note good">Table still available below as a "show all", search + filter live there.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane-notes">
+    <div>
+      <h4><small>The pivot</small>Stop showing a file list. Start showing the queue.</h4>
+      <p>Between v2 and v3 we re-wrote the brief for the home screen: <b>what is the consultant actually trying to do when they open the platform on Monday?</b></p>
+      <p>The answer was always "find what needs me today", not "look up a file from 2022". The card deck makes the queue the headline; the table moves below as the reference store.</p>
+    </div>
+    <div>
+      <h4><small>Tradeoff</small>Cards are heavier to build than rows.</h4>
+      <p>Each framework needs a different chart shape (GRESB line, EPRA stacked bars, CSRD gauge). Engineering pushed to start with status-only cards. We held the line on charts-from-day-one because the test was specifically <b>recognition speed</b>.</p>
+      <p>Comp: framework cards share a single chart component with a "render as" prop, keeps the visual variety without forking the implementation.</p>
+    </div>
+  </div>
+      </div>
+      <!-- s-approval -->
+      <div class="pwf">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">Three states the platform had been calling none</h2>
+      <p class="s-sub">The inherited platform had no concept of approval. We introduced a lifecycle, Draft → Under Review → Approved | Rejected, with named reviewers and an audit trail. The fight was over how much of it to surface in normal views vs. tuck behind an "audit" tab.</p>
+    </div>
+    
+  </div>
+
+  <!-- Conceptual diagram -->
+  <div class="board" style="margin-bottom:36px;">
+    <div class="board-hdr">
+      <div><div class="b-version">concept</div><div class="b-name">Report lifecycle, drawn out for the client first</div></div>
+    </div>
+    <div class="canvas tall" style="padding:24px;">
+      <svg viewBox="0 0 1100 280" style="width:100%;height:auto;">
+        <!-- states -->
+        <g>
+          <rect x="40" y="100" width="180" height="80" rx="12" fill="#fbf7ed" stroke="#161816" stroke-width="2"/>
+          <text x="60" y="128" font-family="IBM Plex Mono" font-size="10" fill="#66695e" letter-spacing=".12em">STATE 01</text>
+          <text x="60" y="158" font-family="Caveat" font-size="28" font-weight="700">Draft</text>
+        </g>
+        <g>
+          <rect x="320" y="100" width="180" height="80" rx="12" fill="#fbf7ed" stroke="#c6892b" stroke-width="2"/>
+          <text x="340" y="128" font-family="IBM Plex Mono" font-size="10" fill="#c6892b" letter-spacing=".12em">STATE 02</text>
+          <text x="340" y="158" font-family="Caveat" font-size="28" font-weight="700">Under review</text>
+        </g>
+        <g>
+          <rect x="600" y="40" width="180" height="80" rx="12" fill="#fbf7ed" stroke="#2a7a5a" stroke-width="2"/>
+          <text x="620" y="68" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".12em">STATE 03a</text>
+          <text x="620" y="98" font-family="Caveat" font-size="28" font-weight="700">Approved</text>
+        </g>
+        <g>
+          <rect x="600" y="160" width="180" height="80" rx="12" fill="#fbf7ed" stroke="#c64545" stroke-width="2"/>
+          <text x="620" y="188" font-family="IBM Plex Mono" font-size="10" fill="#c64545" letter-spacing=".12em">STATE 03b</text>
+          <text x="620" y="218" font-family="Caveat" font-size="28" font-weight="700">Rejected</text>
+        </g>
+        <g>
+          <rect x="880" y="100" width="180" height="80" rx="12" fill="#fbf7ed" stroke="#161816" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="900" y="128" font-family="IBM Plex Mono" font-size="10" fill="#66695e" letter-spacing=".12em">TERMINAL</text>
+          <text x="900" y="158" font-family="Caveat" font-size="28" font-weight="700">Disclosed</text>
+        </g>
+
+        <!-- arrows -->
+        <path d="M 220 140 L 320 140" stroke="#2a7a5a" stroke-width="2" fill="none"/>
+        <polygon points="315,135 325,140 315,145" fill="#2a7a5a"/>
+        <text x="240" y="132" font-family="Kalam" font-size="11" fill="#2a7a5a">submit →</text>
+
+        <path d="M 500 130 L 600 90" stroke="#2a7a5a" stroke-width="2" fill="none"/>
+        <polygon points="595,86 605,88 599,96" fill="#2a7a5a"/>
+        <text x="510" y="100" font-family="Kalam" font-size="11" fill="#2a7a5a">approve →</text>
+
+        <path d="M 500 160 L 600 200" stroke="#c64545" stroke-width="2" fill="none"/>
+        <polygon points="595,196 605,202 599,208" fill="#c64545"/>
+        <text x="510" y="200" font-family="Kalam" font-size="11" fill="#c64545">reject →</text>
+
+        <path d="M 600 210 Q 460 240 410 180" stroke="#c64545" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+        <polygon points="412,183 410,175 418,178" fill="#c64545"/>
+        <text x="460" y="262" font-family="Kalam" font-size="11" fill="#c64545">back for fixes</text>
+
+        <path d="M 780 80 Q 870 80 880 130" stroke="#2a7a5a" stroke-width="2" fill="none"/>
+        <polygon points="875,128 884,134 882,124" fill="#2a7a5a"/>
+        <text x="800" y="68" font-family="Kalam" font-size="11" fill="#2a7a5a">publish →</text>
+
+        <text x="40" y="38" font-family="IBM Plex Mono" font-size="11" fill="#2a7a5a" letter-spacing=".14em">REPORT LIFECYCLE</text>
+        <text x="40" y="60" font-family="Caveat" font-size="22" font-weight="700">5 states · 5 transitions · always one named reviewer</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="iters cols-2">
+    <!-- v1: nothing -->
+    <div class="board killed tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">v1</div><div class="b-name">No state at all</div></div>
+        <div class="b-tag">inherited</div>
+      </div>
+      <div class="canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:30px 12px;">
+        <div class="sk-box" style="width:100%;padding:10px;">
+          <div class="sk-label">FILE</div>
+          <div class="sk-val sm">2024_ESG.pdf</div>
+          <div class="sk-cap" style="margin-top:4px;">uploaded by Sarah · 3d</div>
+        </div>
+        <div style="font-family:var(--hand);font-size:11px;color:var(--muted);text-align:center;font-style:italic;">"…is this final?"<br>nobody knows</div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">Sign-off lived in email. Audit trail = "trust me".</div>
+        <div class="b-note bad">No way to block a report from being shared accidentally.</div>
+      </div>
+    </div>
+
+    <!-- v2: state as tag in admin tab -->
+    <div class="board dim">
+      <div class="board-hdr">
+        <div><div class="b-version">v2</div><div class="b-name">Status in an "Audit" tab</div></div>
+        <div class="b-tag">hidden</div>
+      </div>
+      <div class="canvas" style="padding:12px;">
+        <div class="sk-row" style="gap:2px;margin-bottom:6px;">
+          <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;font-size:8px;">Report</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">Files</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">Audit</div>
+        </div>
+        <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+          <div class="sk-label">REPORT VIEW</div>
+          <div class="sk-bar full" style="margin-top:4px;"></div>
+          <div class="sk-bar mid"></div>
+          <div class="sk-bar mid"></div>
+        </div>
+        <div class="sk-box dashed" style="padding:6px;font-size:9px;color:var(--muted);">status hidden 1 tab over →</div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">Status was the most important thing. Putting it 1 tab away meant nobody saw it.</div>
+        <div class="b-note good">Audit log existed. Just invisible.</div>
+      </div>
+    </div>
+
+    <!-- v3: pill in header + reviewer avatars -->
+    <div class="board dim tilt-r">
+      <div class="board-hdr">
+        <div><div class="b-version">v3</div><div class="b-name">Pill + reviewer avatars</div></div>
+        <div class="b-tag">surfaced</div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <span class="sk-pill warn" style="font-size:8px;">Under Review</span>
+            <span class="sk-fw">GRESB</span>
+          </div>
+          <div class="sk-val sm">GRESB Annual 2024</div>
+          <div style="display:flex;align-items:center;gap:0;margin-top:6px;">
+            <div class="sk-avatar">DR</div>
+            <div class="sk-avatar b2">ER</div>
+            <div class="sk-avatar b3">SC</div>
+            <span style="font-family:var(--hand);font-size:10px;color:var(--muted);margin-left:8px;">3 reviewers</span>
+          </div>
+        </div>
+        <div class="sk-box dashed" style="padding:6px;font-size:9px;">→ but: clicking pill doesn't <b>do</b> anything</div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Status front-and-center. Tests resoundingly preferred it.</div>
+        <div class="b-note bad">Pill was decorative, couldn't approve from card.</div>
+        <div class="b-note q">Should approve happen inline or in a modal?</div>
+      </div>
+    </div>
+
+    <!-- final -->
+    <div class="board win">
+      <div class="board-hdr">
+        <div><div class="b-version">final</div><div class="b-name">Interactive + audit drawer</div></div>
+        <div class="b-tag">shipped</div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span class="sk-pill warn" style="font-size:8px;">Under Review</span>
+              <span class="sk-fw">GRESB</span>
+            </div>
+            <div style="font-family:var(--hand);font-size:9px;color:var(--accent);text-decoration:underline;">history ›</div>
+          </div>
+          <div class="sk-val sm">GRESB Annual 2024</div>
+          <div style="display:flex;align-items:center;gap:0;margin-top:6px;margin-bottom:6px;">
+            <div class="sk-avatar">DR</div>
+            <div class="sk-avatar b2">ER</div>
+            <div class="sk-avatar b3">SC</div>
+            <span style="font-family:var(--hand);font-size:10px;color:var(--muted);margin-left:8px;">3 reviewers</span>
+          </div>
+          <div class="sk-row" style="gap:4px;">
+            <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;font-size:8px;">Approve</div>
+            <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;color:var(--strike);border-color:var(--strike);">Reject</div>
+          </div>
+        </div>
+        <!-- timeline mini -->
+        <div class="sk-box" style="padding:6px;">
+          <div class="sk-cap" style="font-size:7px;">AUDIT TIMELINE</div>
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--muted);margin-top:3px;line-height:1.5;">
+            <div>● <span style="color:var(--accent);">DR submitted</span> · 2d</div>
+            <div>● <span style="color:var(--warn);">ER reviewing</span> · 1d</div>
+            <div>● <span style="color:var(--muted);">SC pending</span></div>
+          </div>
+        </div>
+        <div class="callout verde" style="bottom:6px;right:-8px;max-width:130px;transform:rotate(2deg);">
+          actions <strong>on the card</strong>. timeline <strong>under it</strong>.
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Approve / Reject live on the card, one click from the queue view.</div>
+        <div class="b-note good">"History" expands inline drawer with full audit log (who, when, why).</div>
+        <div class="b-note good">Pill colour = same vocabulary as filter chips on library home.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane-notes">
+    <div>
+      <h4><small>Why this mattered</small>State was the UX rewrite of a compliance posture.</h4>
+      <p>Meridian's clients, and their lawyers, were asking who signed off and when. The platform's answer was "check email". We made the answer a real timeline, attached to a real state machine, with named approvers.</p>
+      <p>The wireframe was the contract: every screen with a report on it had to show the state pill and the named reviewer. No exceptions.</p>
+    </div>
+    <div>
+      <h4><small>Tradeoff</small>Inline actions vs. a confirmation step.</h4>
+      <p>One-click approve from the queue is fast, and risky. We added a "are you sure" only on Reject (which kicks the report back to Draft) and on Approve when the report is missing required data.</p>
+      <p>The principle: friction proportional to consequence. Approving a clean report should be one click.</p>
+    </div>
+  </div>
+      </div>
+      <!-- s-generate -->
+      <div class="pwf">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">Three framework families. One generator. Real editing after</h2>
+      <p class="s-sub">GRESB, EPRA, INREV and SFDR ask for different parameters, different time ranges, different unit conventions. The original idea was one giant form. The shipped flow is a 4-step wizard with framework-aware steps, an AI-drafted output, and an editor that keeps the consultant in control of the final word.</p>
+    </div>
+    
+  </div>
+
+  <!-- decision tree -->
+  <div class="board" style="margin-bottom:36px;">
+    <div class="board-hdr">
+      <div><div class="b-version">logic</div><div class="b-name">Generation flow, mapped before any frame</div></div>
+      <div class="b-tag">business logic</div>
+    </div>
+    <div class="canvas tall" style="padding:24px;">
+      <svg viewBox="0 0 1100 280" style="width:100%;height:auto;">
+        <rect x="40" y="14" width="180" height="50" rx="25" fill="#161816"/>
+        <text x="130" y="44" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#fff">Pick framework</text>
+
+        <path d="M 220 40 L 280 40" stroke="#2a7a5a" stroke-width="2"/>
+        <rect x="280" y="14" width="180" height="50" rx="10" fill="#fbf7ed" stroke="#2a7a5a" stroke-width="2"/>
+        <text x="370" y="36" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700">Choose fund</text>
+        <text x="370" y="54" text-anchor="middle" font-family="Kalam" font-size="11" fill="#66695e">scope · single or portfolio</text>
+
+        <path d="M 460 40 L 520 40" stroke="#2a7a5a" stroke-width="2"/>
+        <rect x="520" y="14" width="200" height="50" rx="10" fill="#fbf7ed" stroke="#2a7a5a" stroke-width="2"/>
+        <text x="620" y="36" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700">Pick parameters</text>
+        <text x="620" y="54" text-anchor="middle" font-family="Kalam" font-size="11" fill="#66695e">framework-aware fields</text>
+
+        <path d="M 720 40 L 780 40" stroke="#2a7a5a" stroke-width="2"/>
+        <rect x="780" y="14" width="180" height="50" rx="10" fill="#fbf7ed" stroke="#2a7a5a" stroke-width="2"/>
+        <text x="870" y="36" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700">AI drafts</text>
+        <text x="870" y="54" text-anchor="middle" font-family="Kalam" font-size="11" fill="#66695e">consultant edits + commits</text>
+
+        <!-- framework branches -->
+        <text x="40" y="120" font-family="IBM Plex Mono" font-size="11" fill="#2a7a5a" letter-spacing=".12em">FRAMEWORK-AWARE STEP 3 SHAPES</text>
+
+        <g>
+          <rect x="40" y="140" width="220" height="120" rx="10" fill="#fff" stroke="#161816" stroke-width="1.5"/>
+          <text x="60" y="166" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".1em">GRESB</text>
+          <text x="60" y="190" font-family="Kalam" font-size="13" font-weight="700">Energy · Water · Waste</text>
+          <text x="60" y="208" font-family="Kalam" font-size="12" fill="#66695e">annual · per asset · per fund</text>
+          <text x="60" y="234" font-family="IBM Plex Mono" font-size="10" fill="#66695e">~22 params</text>
+        </g>
+        <g>
+          <rect x="280" y="140" width="220" height="120" rx="10" fill="#fff" stroke="#161816" stroke-width="1.5"/>
+          <text x="300" y="166" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".1em">EPRA</text>
+          <text x="300" y="190" font-family="Kalam" font-size="13" font-weight="700">sBPR + financial overlays</text>
+          <text x="300" y="208" font-family="Kalam" font-size="12" fill="#66695e">quarterly · NAV-linked</text>
+          <text x="300" y="234" font-family="IBM Plex Mono" font-size="10" fill="#66695e">~38 params</text>
+        </g>
+        <g>
+          <rect x="520" y="140" width="220" height="120" rx="10" fill="#fff" stroke="#161816" stroke-width="1.5"/>
+          <text x="540" y="166" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".1em">INREV</text>
+          <text x="540" y="190" font-family="Kalam" font-size="13" font-weight="700">Fund-level NAV + ESG</text>
+          <text x="540" y="208" font-family="Kalam" font-size="12" fill="#66695e">quarterly · fund only</text>
+          <text x="540" y="234" font-family="IBM Plex Mono" font-size="10" fill="#66695e">~14 params</text>
+        </g>
+        <g>
+          <rect x="760" y="140" width="280" height="120" rx="10" fill="#fff" stroke="#161816" stroke-width="1.5"/>
+          <text x="780" y="166" font-family="IBM Plex Mono" font-size="10" fill="#2a7a5a" letter-spacing=".1em">SFDR · CSRD · TCFD · GHG</text>
+          <text x="780" y="190" font-family="Kalam" font-size="13" font-weight="700">Disclosure-heavy frameworks</text>
+          <text x="780" y="208" font-family="Kalam" font-size="12" fill="#66695e">narrative + structured tables</text>
+          <text x="780" y="234" font-family="IBM Plex Mono" font-size="10" fill="#66695e">12–60 params · varies</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="iters cols-2">
+    <!-- v1 monolith -->
+    <div class="board killed tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">v1</div><div class="b-name">All-in-one form</div></div>
+        <div class="b-tag">honest mess</div>
+      </div>
+      <div class="canvas" style="padding:12px;">
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">framework â–¾</div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">fund â–¾</div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">parameters · 60 fields</div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">reporting period</div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">unit system <span style="color:var(--muted-2);">(only EPRA)</span></div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">NAV link <span style="color:var(--muted-2);">(only INREV, EPRA)</span></div>
+        <div class="sk-box dashed" style="margin-bottom:5px;padding:5px;font-size:9px;">narrative prompts <span style="color:var(--muted-2);">(only SFDR/CSRD)</span></div>
+        <div class="sk-box dashed" style="padding:5px;font-size:9px;color:var(--muted);">… 53 more fields</div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">A wall of 60+ fields, most disabled depending on framework.</div>
+        <div class="b-note bad">First user in test scrolled, sighed, and closed the tab.</div>
+      </div>
+    </div>
+
+    <!-- v2 wizard with all 4 frameworks behind radio -->
+    <div class="board dim">
+      <div class="board-hdr">
+        <div><div class="b-version">v2</div><div class="b-name">Wizard + radio chooser</div></div>
+        <div class="b-tag">progressive</div>
+      </div>
+      <div class="canvas" style="padding:12px;">
+        <div class="sk-row" style="margin-bottom:8px;gap:3px;">
+          <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;font-size:8px;">1</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">2</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">3</div>
+          <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">4</div>
+        </div>
+        <div style="font-family:var(--hand);font-size:11px;margin-bottom:6px;color:var(--ink);">Step 1, pick framework</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> GRESB</div>
+        <div class="sk-box accent" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">●</span> EPRA</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> INREV</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> SFDR</div>
+        <div class="sk-box" style="padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> + 4 more</div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Step-by-step finally fit on a screen.</div>
+        <div class="b-note bad">Eight tiny radios for an anchor decision = wrong weight.</div>
+        <div class="b-note q">No <b>preview</b> of what the picked framework will ask for.</div>
+      </div>
+    </div>
+
+    <!-- v3 final -->
+    <div class="board win tilt-r">
+      <div class="board-hdr">
+        <div><div class="b-version">final</div><div class="b-name">Framework cards + AI draft</div></div>
+        <div class="b-tag">shipped</div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <div style="font-family:var(--hand-display);font-size:16px;font-weight:700;margin-bottom:4px;">Crafting your AI insights report</div>
+        <div class="sk-row" style="gap:3px;margin-bottom:8px;">
+          <div class="sk-bar accent" style="flex:1;height:4px;"></div>
+          <div class="sk-bar accent" style="flex:1;height:4px;"></div>
+          <div class="sk-bar" style="flex:1;height:4px;"></div>
+          <div class="sk-bar" style="flex:1;height:4px;"></div>
+        </div>
+        <div class="sk-row" style="gap:4px;margin-bottom:6px;">
+          <div class="sk-box" style="flex:1;padding:8px 4px;text-align:center;">
+            <div style="width:22px;height:22px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
+            <div style="font-family:var(--mono);font-size:7px;color:var(--accent);">GRI</div>
+          </div>
+          <div class="sk-box accent" style="flex:1;padding:8px 4px;text-align:center;border-width:2px;">
+            <div style="width:22px;height:22px;background:var(--accent);border-radius:4px;margin:0 auto 4px;"></div>
+            <div style="font-family:var(--mono);font-size:7px;color:var(--accent);">GRESB</div>
+            <div style="font-family:var(--mono);font-size:6px;color:var(--accent);margin-top:2px;">PICKED</div>
+          </div>
+          <div class="sk-box" style="flex:1;padding:8px 4px;text-align:center;">
+            <div style="width:22px;height:22px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
+            <div style="font-family:var(--mono);font-size:7px;color:var(--accent);">EPRA</div>
+          </div>
+          <div class="sk-box" style="flex:1;padding:8px 4px;text-align:center;">
+            <div style="width:22px;height:22px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
+            <div style="font-family:var(--mono);font-size:7px;color:var(--accent);">CSRD</div>
+          </div>
+        </div>
+        <!-- AI draft preview -->
+        <div class="sk-box dark" style="padding:6px;">
+          <div style="font-family:var(--mono);font-size:7px;color:var(--accent-2);letter-spacing:.1em;">AI DRAFT · LIVE PREVIEW</div>
+          <div class="sk-bar full" style="margin-top:4px;background:#444;"></div>
+          <div class="sk-bar mid" style="background:#444;"></div>
+          <div class="sk-bar full" style="background:#444;"></div>
+          <div style="font-family:var(--mono);font-size:7px;color:var(--accent-2);margin-top:4px;">↓ 8.2% vs target</div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Cards give framework choice the visual weight it deserves.</div>
+        <div class="b-note good">AI-draft preview updates as parameters change, see the report before you commit.</div>
+        <div class="b-note good">Step 3 is rendered per-framework, only the relevant fields show.</div>
+      </div>
+    </div>
+
+    <!-- v4 editor -->
+    <div class="board win tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">+ editor</div><div class="b-name">Edit the AI draft</div></div>
+        <div class="b-tag">shipped</div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <!-- doc header -->
+        <div class="sk-row" style="gap:4px;margin-bottom:6px;align-items:center;">
+          <span class="sk-fw">EPRA</span>
+          <span class="sk-pill draft" style="font-size:7.5px;">Draft</span>
+          <div style="flex:1;"></div>
+          <div style="font-family:var(--mono);font-size:7.5px;color:var(--muted);">autosaved · just now</div>
+        </div>
+        <!-- editor body -->
+        <div class="sk-box" style="padding:10px;">
+          <div style="font-family:var(--hand);font-size:11px;font-weight:700;margin-bottom:4px;">2024 EPRA Sustainability Report</div>
+          <!-- AI-drafted line with dotted underline -->
+          <div style="font-family:var(--mono);font-size:8.5px;line-height:1.5;color:var(--ink-2);border-bottom:1px dotted var(--accent);padding-bottom:1px;margin-bottom:3px;">The portfolio achieved a 16.1% YoY reduction in emissions …</div>
+          <div style="font-family:var(--mono);font-size:8.5px;line-height:1.5;color:var(--ink-2);border-bottom:1px dotted var(--accent);padding-bottom:1px;margin-bottom:3px;">… consistently exceeding target trajectory. Industrial assets …</div>
+          <!-- user-edited line -->
+          <div style="font-family:var(--mono);font-size:8.5px;line-height:1.5;color:var(--ink);background:var(--accent-soft);padding:1px 3px;margin-bottom:3px;">Office sector now leads on Scope 2 reductions at 22%.</div>
+          <div style="font-family:var(--mono);font-size:8.5px;line-height:1.5;color:var(--ink-2);border-bottom:1px dotted var(--accent);padding-bottom:1px;">Detailed breakdowns are available by sector …</div>
+        </div>
+        <!-- toolbar -->
+        <div class="sk-row" style="gap:4px;margin-top:6px;">
+          <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">✎ Rewrite</div>
+          <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">+ Chart</div>
+          <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">↻ Regen §</div>
+          <div class="sk-box accent" style="flex:1;padding:5px;text-align:center;font-size:8px;color:var(--accent);">Submit →</div>
+        </div>
+        <div class="callout verde" style="bottom:4px;right:-8px;max-width:140px;transform:rotate(2deg);">
+          <strong>dotted</strong> = AI text. <strong>filled</strong> = a human took ownership.
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Visual provenance, you can always see which sentences are AI and which the consultant has owned.</div>
+        <div class="b-note good">Inline "Regenerate this section" keeps the consultant in flow.</div>
+        <div class="b-note good">"Submit" → flips state to <b>Under Review</b> and pings named reviewers.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane-notes">
+    <div>
+      <h4><small>Decision</small>The AI draft is not the finish line.</h4>
+      <p>We resisted "press button → ship report". The AI produces the draft; the consultant edits it; the senior approves it. That kept Verde the same governed system at the end of generation as it was at the start.</p>
+      <p>Visually: AI-drafted content is marked with a subtle dotted underline until a human edits or approves it.</p>
+    </div>
+    <div>
+      <h4><small>Tradeoff</small>One wizard for eight frameworks is more engineering.</h4>
+      <p>Eight discrete generators would be simpler. We took the wizard hit so the AI draft component, the audit log, and the parameter schema were all <b>shared</b> across frameworks.</p>
+      <p>Onboarding a new framework now means writing a parameter schema file. Not a whole new flow.</p>
+    </div>
+  </div>
+      </div>
+      <!-- s-share -->
+      <div class="pwf">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">Where do reports actually live after approval?</h2>
+      <p class="s-sub">Half the consumers of Verde reports work in Power BI. The other half want a PDF. The shipped sharing flow makes both first-class, and adds shared-link governance so the platform can revoke access without re-issuing the file.</p>
+    </div>
+    
+  </div>
+
+  <div class="iters cols-2">
+    <!-- v1 download only -->
+    <div class="board killed tilt-l">
+      <div class="board-hdr">
+        <div><div class="b-version">v1</div><div class="b-name">Download button</div></div>
+        <div class="b-tag">inherited</div>
+      </div>
+      <div class="canvas" style="padding:12px;">
+        <div class="sk-box" style="padding:10px;margin-bottom:6px;">
+          <div class="sk-val sm">EPRA Q4 FY25</div>
+          <div class="sk-cap" style="margin-top:4px;">approved · 2d</div>
+        </div>
+        <div class="sk-box accent" style="padding:8px;text-align:center;font-size:10px;color:var(--accent);">⤓ Download PDF</div>
+        <div class="callout pink" style="bottom:8px;right:-8px;max-width:130px;transform:rotate(2deg);">
+          and then? email it? upload it to a SharePoint?
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note bad">PDF download = report leaves the platform. No revoke, no version control.</div>
+        <div class="b-note bad">Power BI users were re-keying numbers by hand.</div>
+      </div>
+    </div>
+
+    <!-- v2 download + share link -->
+    <div class="board dim">
+      <div class="board-hdr">
+        <div><div class="b-version">v2</div><div class="b-name">+ Share link</div></div>
+      </div>
+      <div class="canvas" style="padding:12px;">
+        <div class="sk-box" style="padding:10px;margin-bottom:6px;">
+          <div class="sk-val sm">EPRA Q4 FY25</div>
+        </div>
+        <div class="sk-box dashed" style="padding:6px;font-size:8px;color:var(--muted);margin-bottom:4px;">verde.app/r/3kZ-9... · copy ▸</div>
+        <div class="sk-row" style="gap:4px;">
+          <div class="sk-box" style="flex:1;padding:6px;text-align:center;font-size:9px;">⤓ PDF</div>
+          <div class="sk-box accent" style="flex:1;padding:6px;text-align:center;font-size:9px;color:var(--accent);">Share</div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Link sharing meant no more "is this the right version?"</div>
+        <div class="b-note bad">Anyone with link could view, not OK for SFDR/CSRD reports.</div>
+        <div class="b-note bad">Still nothing for Power BI users.</div>
+      </div>
+    </div>
+
+    <!-- v3 named recipients -->
+    <div class="board dim tilt-r">
+      <div class="board-hdr">
+        <div><div class="b-version">v3</div><div class="b-name">Named recipients</div></div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <div class="sk-box" style="padding:8px;">
+          <div style="font-family:var(--hand);font-size:11px;font-weight:700;margin-bottom:4px;">Share with…</div>
+          <div class="sk-row" style="gap:3px;flex-wrap:wrap;margin-bottom:4px;">
+            <span class="sk-fw" style="background:#3d5a8a;color:#fff;">Jenny S ×</span>
+            <span class="sk-fw" style="background:#3d5a8a;color:#fff;">Mark T ×</span>
+          </div>
+          <div class="sk-box dashed" style="padding:5px;font-size:8px;color:var(--muted);">+ add recipient</div>
+        </div>
+        <div class="sk-row" style="gap:4px;margin-top:6px;">
+          <div class="sk-box" style="flex:1;padding:6px;text-align:center;font-size:9px;">View only</div>
+          <div class="sk-box accent" style="flex:1;padding:6px;text-align:center;font-size:9px;">View + comment</div>
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Permission model, view, comment, revoke.</div>
+        <div class="b-note bad">Power BI users still locked out of the data layer.</div>
+      </div>
+    </div>
+
+    <!-- final: share + integrations -->
+    <div class="board win">
+      <div class="board-hdr">
+        <div><div class="b-version">final</div><div class="b-name">Share + push to BI</div></div>
+        <div class="b-tag">shipped</div>
+      </div>
+      <div class="canvas" style="padding:10px;">
+        <div class="sk-row" style="gap:3px;margin-bottom:6px;">
+          <div class="sk-box accent" style="flex:1;padding:5px;text-align:center;font-size:8px;">People</div>
+          <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Apps</div>
+          <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Link</div>
+        </div>
+        <!-- apps grid -->
+        <div class="sk-row" style="gap:4px;margin-bottom:4px;">
+          <div class="sk-box accent" style="flex:1;padding:6px;text-align:center;font-size:8px;">
+            <div style="width:18px;height:18px;background:var(--accent);border-radius:3px;margin:0 auto 3px;"></div>
+            Power BI ●
+          </div>
+          <div class="sk-box" style="flex:1;padding:6px;text-align:center;font-size:8px;">
+            <div style="width:18px;height:18px;background:var(--paper-2);border-radius:3px;margin:0 auto 3px;"></div>
+            Looker
+          </div>
+        </div>
+        <div class="sk-row" style="gap:4px;margin-bottom:4px;">
+          <div class="sk-box" style="flex:1;padding:6px;text-align:center;font-size:8px;">
+            <div style="width:18px;height:18px;background:var(--paper-2);border-radius:3px;margin:0 auto 3px;"></div>
+            Tableau
+          </div>
+          <div class="sk-box accent" style="flex:1;padding:6px;text-align:center;font-size:8px;">
+            <div style="width:18px;height:18px;background:var(--accent);border-radius:3px;margin:0 auto 3px;"></div>
+            Alteryx ●
+          </div>
+        </div>
+        <div class="sk-box dashed" style="padding:5px;font-size:7.5px;color:var(--muted);">push approved reports only ✓</div>
+
+        <div class="callout verde" style="bottom:4px;right:-10px;max-width:130px;transform:rotate(2deg);">
+          "Apps" tab = <strong>data goes</strong>, not just a viewer.
+        </div>
+      </div>
+      <div class="b-notes">
+        <div class="b-note good">Three sharing modes, people, apps, link, under one button.</div>
+        <div class="b-note good">Only <b>approved</b> reports can be pushed externally. Lifecycle = gate.</div>
+        <div class="b-note good">Connections persist: re-publish overwrites the live BI dashboard.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lane-notes">
+    <div>
+      <h4><small>Principle in action</small>The report stays in Verde.</h4>
+      <p>Pre-Verde, a PDF download was the moment the report became un-governable. Post-Verde, the PDF is one of several modes, and the canonical version always lives inside the platform with its audit trail attached.</p>
+    </div>
+    <div>
+      <h4><small>Tradeoff</small>Six integrations is more surface than launch needed.</h4>
+      <p>We could have shipped Power BI only. We built the integrations grid (Power BI, Looker, Tableau, Alteryx, Qlik, Zoho) but ship Power BI + Alteryx as live in v1, the others ghosted in to communicate the roadmap without overpromising.</p>
+    </div>
+  </div>
+      </div>
+      <!-- s-trades -->
+      <div class="pwf">
+  <div class="section-head">
+    <div>
+      
+      <h2 class="s-title">The decisions that shaped the rest</h2>
+      <p class="s-sub">Where we held the line, where we bent, and what we cut from scope. Every row here represents a debate that's still defensible today.</p>
+    </div>
+    
+  </div>
+
+  <table class="trade-table">
+    <thead>
+      <tr>
+        <th>Decision</th>
+        <th>What we picked</th>
+        <th>What we gave up</th>
+        <th>Why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Home screen</td>
+        <td><span class="chip kept">kept</span> Card deck of in-flight reports + table below for the long tail.</td>
+        <td><span class="chip cut">cut</span> Pure table (familiar but didn't answer "what needs me today"); pure feed (broke "find that 2022 file").</td>
+        <td>Two jobs, two surfaces, the queue lives on cards, the archive lives in the table.</td>
+      </tr>
+      <tr>
+        <td>Lifecycle states</td>
+        <td><span class="chip kept">kept</span> Five states (Draft → Review → Approved | Rejected → Disclosed) with named reviewers per transition.</td>
+        <td><span class="chip cut">cut</span> The simple "uploaded / not uploaded" model that the legacy schema used.</td>
+        <td>Clients and auditors were asking who signed what. A real state machine is the only honest answer.</td>
+      </tr>
+      <tr>
+        <td>Status surfacing</td>
+        <td><span class="chip kept">kept</span> Status pill is the first thing on every card, in every list, on every report header.</td>
+        <td><span class="chip cut">cut</span> Hiding status behind an "Audit" tab to keep the main view clean.</td>
+        <td>If status changes how you act on the report, it can't be one tab away.</td>
+      </tr>
+      <tr>
+        <td>Generation flow</td>
+        <td><span class="chip kept">kept</span> Framework cards + 4-step wizard + AI draft preview.</td>
+        <td><span class="chip cut">cut</span> Monolithic form with conditional fields; one generator per framework.</td>
+        <td>One mental model, framework-aware steps. Shared AI draft + audit component across all eight frameworks.</td>
+      </tr>
+      <tr>
+        <td>AI-generated content</td>
+        <td><span class="chip kept">kept</span> AI drafts narrative + tables; consultant must edit/approve before sign-off.</td>
+        <td><span class="chip def">deferred</span> One-click "generate and publish" workflows.</td>
+        <td>SFDR / CSRD content reaches lawyers and regulators. Human-in-the-loop is non-negotiable for v1.</td>
+      </tr>
+      <tr>
+        <td>Sharing model</td>
+        <td><span class="chip kept">kept</span> Three modes, named people, integrations, signed link, gated by approval state.</td>
+        <td><span class="chip cut">cut</span> Anonymous shareable URL.</td>
+        <td>ESG reports name funds, assets and individuals. Anonymous links were a compliance liability.</td>
+      </tr>
+      <tr>
+        <td>Integrations</td>
+        <td><span class="chip kept">kept</span> Power BI + Alteryx live; UI surface for Looker, Tableau, Qlik, Zoho.</td>
+        <td><span class="chip def">deferred</span> Live OAuth for non-Microsoft integrations to v1.2.</td>
+        <td>80% of Meridian's BI work is in Power BI. Ship that solid, signal the rest.</td>
+      </tr>
+      <tr>
+        <td>Pinned / favourites</td>
+        <td><span class="chip kept">kept</span> Heart icon on each card, user-scoped favourites.</td>
+        <td><span class="chip cut">cut</span> Org-level pinning ("important reports"), confused with status pills.</td>
+        <td>Two pin systems was one too many. Status is the org signal; favourites are personal.</td>
+      </tr>
+      <tr>
+        <td>Audit timeline</td>
+        <td><span class="chip kept">kept</span> Visible by default in report header (collapsible).</td>
+        <td><span class="chip cut">cut</span> A standalone "Audit" page that nobody opened.</td>
+        <td>The audit trail is part of the report's story. Hiding it implied it was extra; surfacing it implies "this is who has approved this".</td>
+      </tr>
+      <tr>
+        <td>Phased delivery</td>
+        <td><span class="chip kept">kept</span> Four phases: library → governance → AI generation → integrations.</td>
+        <td><span class="chip cut">cut</span> Big-bang launch.</td>
+        <td>Each phase ran with Meridian consultants in test. The integrations design was reshaped by what we learned in phase 2.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-family:var(--hand-display); font-weight:700; font-size:32px; color:var(--ink); margin:48px 0 8px;">If we did it again.</h3>
+  <p style="font-family:var(--hand); font-size:15px; color:var(--ink-2); margin-bottom:18px;max-width:70ch;">Three things we'd front-load on the next engagement with the same shape of problem.</p>
+
+  <div class="stickies">
+    <div class="sticky k4">
+      <span class="tag">retro · 01</span>
+      <h5>Model the workflow before the UI.</h5>
+      The lifecycle state machine saved redesigns. We'd write that on day one next time, not week three.
+    </div>
+    <div class="sticky k3">
+      <span class="tag">retro · 02</span>
+      <h5>Show the governance, don't bury it.</h5>
+      "Audit" tabs are where compliance posture goes to die. We'd put the audit trail in the primary view from the first wireframe.
+    </div>
+    <div class="sticky k2">
+      <span class="tag">retro · 03</span>
+      <h5>AI is a first draft, not a release.</h5>
+      The hardest argument was holding the line on human-in-the-loop. We'd write that as a principle before scoping the AI flow next time.
+    </div>
+  </div>
+      </div>
+    </div><!-- /.pwf-tabs-host -->
+  </div>
+</section>
+
+<!-- FINAL UI -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-label">Final UI</div>
+    <h2 class="sec-h">Where the platform stopped being a passive file-store and started running the workflow</h2>
+    <p class="sec-sub">A walk through the four surfaces that did the heaviest lifting once Verde shipped, the report library, the lifecycle pipeline, the AI generation wizard, and the share-and-integrate flow.</p>
+  </div>
+
+  <div class="feat-stream">
+
+    <article class="feat"><div class="feat-inner">
+      <div>
+        <div class="frame-label">Report library</div>
+        <div class="frame-heading">A queue of what needs you today, not a list of files</div>
+        <div class="frame-sub">The home screen flipped from a file list into a card deck of in-flight reports. Status pills lead. Charts inside the card make a report recognisable by shape, not by name. The full table sits below for the long tail.</div>
+        <div class="scr-wrap">
+          <div class="marker" style="top:88px;left:34px;">1</div>
+          <div class="marker" style="top:172px;left:340px;">2</div>
+          <div class="marker" style="bottom:48px;right:34px;">3</div>
+          <div class="screen">
+            <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / reports / library</span></div>
+            <div class="screen-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:10px;flex-wrap:wrap">
+                <div>
+                  <div class="a-eyebrow" style="margin-bottom:6px">Hi Jamie</div>
+                  <div class="a-h" style="font-size:20px">You have 8 reports needing review this week.</div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                  <span class="a-pill acc">All &middot; 28</span>
+                  <span class="a-pill">Favourites &middot; 5</span>
+                  <span class="a-pill warn">Review &middot; 8</span>
+                  <span class="a-pill good">Approved &middot; 15</span>
+                </div>
+              </div>
+
+              <div class="rcards">
+                <div class="rcard focus">
+                  <div class="top"><span class="fw">GRESB</span><span class="heart">&#9829;</span></div>
+                  <div class="nm">GRESB Annual 2024</div>
+                  <div class="meta">Asia Markets &middot; updated 2h ago</div>
+                  <div class="mini">
+                    <span style="height:60%"></span><span style="height:70%"></span><span style="height:50%"></span><span style="height:80%"></span><span style="height:65%"></span><span style="height:75%"></span><span style="height:90%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill warn">Under review</span>
+                    <div class="avs"><span class="av b1">DR</span><span class="av b2">ER</span><span class="av b3">SC</span></div>
+                  </div>
+                </div>
+                <div class="rcard">
+                  <div class="top"><span class="fw">EPRA</span><span class="heart off">&#9825;</span></div>
+                  <div class="nm">Asia Markets sBPR FY25</div>
+                  <div class="meta">3 funds &middot; updated yesterday</div>
+                  <div class="mini">
+                    <span style="height:55%"></span><span style="height:80%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:85%"></span><span style="height:60%"></span><span style="height:72%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill good">Approved</span>
+                    <div class="avs"><span class="av b2">ER</span><span class="av b4">JP</span></div>
+                  </div>
+                </div>
+                <div class="rcard">
+                  <div class="top"><span class="fw">INREV</span><span class="heart">&#9829;</span></div>
+                  <div class="nm">Q4 NAV-linked disclosure</div>
+                  <div class="meta">Core Fund &middot; updated 3d</div>
+                  <div class="mini">
+                    <span style="height:40%"></span><span style="height:55%"></span><span style="height:62%"></span><span style="height:50%"></span><span style="height:78%"></span><span style="height:68%"></span><span style="height:82%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill muted">Draft</span>
+                    <div class="avs"><span class="av b1">DR</span><span class="av b3">SC</span></div>
+                  </div>
+                </div>
+                <div class="rcard">
+                  <div class="top"><span class="fw">SFDR</span><span class="heart off">&#9825;</span></div>
+                  <div class="nm">Article 8 Q3 disclosure</div>
+                  <div class="meta">Growth Fund &middot; updated 5d</div>
+                  <div class="mini">
+                    <span style="height:30%"></span><span style="height:48%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:62%"></span><span style="height:80%"></span><span style="height:74%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill warn">Under review</span>
+                    <div class="avs"><span class="av b4">JP</span><span class="av b2">ER</span></div>
+                  </div>
+                </div>
+                <div class="rcard">
+                  <div class="top"><span class="fw">GHG</span><span class="heart off">&#9825;</span></div>
+                  <div class="nm">Portfolio carbon footprint</div>
+                  <div class="meta">Whole estate &middot; updated 1w</div>
+                  <div class="mini">
+                    <span style="height:78%"></span><span style="height:62%"></span><span style="height:45%"></span><span style="height:55%"></span><span style="height:48%"></span><span style="height:40%"></span><span style="height:36%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill good">Approved</span>
+                    <div class="avs"><span class="av b1">DR</span></div>
+                  </div>
+                </div>
+                <div class="rcard">
+                  <div class="top"><span class="fw">CSRD</span><span class="heart">&#9829;</span></div>
+                  <div class="nm">Article 19a narrative</div>
+                  <div class="meta">EU funds &middot; updated 2d</div>
+                  <div class="mini">
+                    <span style="height:52%"></span><span style="height:60%"></span><span style="height:72%"></span><span style="height:65%"></span><span style="height:78%"></span><span style="height:84%"></span><span style="height:88%"></span>
+                  </div>
+                  <div class="foot">
+                    <span class="a-pill bad">Rejected</span>
+                    <div class="avs"><span class="av b3">SC</span><span class="av b1">DR</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="gutter-head">What you are looking at</div>
+        <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Status leads.</b> Every card opens with the pill, then the framework, then the name. Triage happens in the queue, not after opening.</div></div>
+        <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Charts make a report recognisable.</b> A sparkline inside the card is faster than a filename. Consultants spotted yesterday&#39;s GRESB out of the corner of their eye in usability tests.</div></div>
+        <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Filter chips collapse the tabs.</b> The old four-tab nav became a single row of counted chips. The full table moved below as a search-and-filter surface, not the headline.</div></div>
+      </div>
+    </div></article>
+
+    <article class="feat"><div class="feat-inner">
+      <div>
+        <div class="frame-label">Approval &amp; governance</div>
+        <div class="frame-heading">Every report carries its own audit trail</div>
+        <div class="frame-sub">The lifecycle state machine surfaces on the report itself. A status pill, a named reviewer, an approve and reject action, and a timeline of every transition with a timestamp and a signature.</div>
+        <div class="scr-wrap">
+          <div class="marker" style="top:96px;left:36px;">1</div>
+          <div class="marker" style="top:118px;right:72px;">2</div>
+          <div class="marker" style="bottom:90px;left:50%;">3</div>
+          <div class="screen">
+            <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / reports / Asia Markets FY25 / approvals</span></div>
+            <div class="screen-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px;flex-wrap:wrap">
+                <div>
+                  <div class="a-eyebrow" style="margin-bottom:6px">EPRA &middot; Asia Markets &middot; FY25</div>
+                  <div class="a-h" style="font-size:22px">Sustainability disclosure, FY25</div>
+                  <div class="a-sub" style="margin-top:6px">Submitted by Sarah Chen &middot; 2 days ago</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span class="a-pill warn">Under review</span>
+                  <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:6px;background:var(--accent);color:#fff;border:0">Approve</button>
+                  <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:6px;background:transparent;color:var(--bad);border:1px solid var(--bad)">Reject</button>
+                </div>
+              </div>
+
+              <div class="pipe">
+                <div class="stage done"><span class="pip"></span><span class="lbl">Draft</span></div>
+                <div class="bar done"></div>
+                <div class="stage cur"><span class="pip"></span><span class="lbl">Under review</span></div>
+                <div class="bar"></div>
+                <div class="stage"><span class="pip"></span><span class="lbl">Approved</span></div>
+              </div>
+
+              <div class="a-panel" style="margin-top:14px">
+                <div class="a-panel-head"><span class="t">Audit timeline</span><span class="m">12 events &middot; last 14 days</span></div>
+                <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px;font:400 12.5px/1.4 var(--sans);color:var(--ink-2)">
+                  <div style="display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding-bottom:10px;border-bottom:1px dashed var(--line-faint)">
+                    <span style="font:400 11px/1 var(--mono);color:var(--muted)">Just now</span>
+                    <span><b>Emma Rivera</b> opened the report for review</span>
+                    <span class="a-pill warn">Review</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding-bottom:10px;border-bottom:1px dashed var(--line-faint)">
+                    <span style="font:400 11px/1 var(--mono);color:var(--muted)">2 d ago</span>
+                    <span><b>Sarah Chen</b> submitted for review, assigned to Emma Rivera and Senior consultant</span>
+                    <span class="a-pill acc">Submit</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding-bottom:10px;border-bottom:1px dashed var(--line-faint)">
+                    <span style="font:400 11px/1 var(--mono);color:var(--muted)">3 d ago</span>
+                    <span><b>Sarah Chen</b> edited the Scope 2 narrative, three sentences</span>
+                    <span class="a-pill muted">Edit</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center">
+                    <span style="font:400 11px/1 var(--mono);color:var(--muted)">5 d ago</span>
+                    <span><b>System</b> drafted from EPRA template, 38 parameters bound to source</span>
+                    <span class="a-pill muted">Draft</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="gutter-head">What you are looking at</div>
+        <div class="callout"><div class="cnum">1</div><div class="ctext"><b>State is the header, not a tab.</b> Status pill, lifecycle pipeline and approve and reject all live on the primary view. If status changes how you act, it cannot be one click away.</div></div>
+        <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Friction is proportional to consequence.</b> Approve is one click on a clean report. Reject opens a required reason field. The platform argues for the safer default without blocking the experienced user.</div></div>
+        <div class="callout"><div class="cnum">3</div><div class="ctext"><b>The audit trail is the answer.</b> When a client&#39;s lawyer asks who signed what and when, the timeline below is the answer, not a call to the data team.</div></div>
+      </div>
+    </div></article>
+
+    <article class="feat"><div class="feat-inner">
+      <div>
+        <div class="frame-label">AI generation</div>
+        <div class="frame-heading">A first draft from validated data, never a final answer</div>
+        <div class="frame-sub">Pick a framework, scope a fund, configure framework-aware parameters, and the platform drafts a structured report from live portfolio data. The consultant edits the narrative. The senior approves it. The AI is a starting point, never a publish button.</div>
+        <div class="scr-wrap">
+          <div class="marker" style="top:78px;left:32px;">1</div>
+          <div class="marker" style="top:202px;left:340px;">2</div>
+          <div class="marker" style="bottom:54px;right:60px;">3</div>
+          <div class="screen">
+            <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / generator / step 2 of 4</span></div>
+            <div class="screen-body">
+              <div class="a-eyebrow" style="margin-bottom:6px">New report &middot; step 2 of 4</div>
+              <div class="a-h" style="font-size:22px">Crafting your AI insights report.</div>
+              <div class="a-sub" style="margin-top:6px;margin-bottom:14px">Choose a framework, configure its parameters, and watch the draft assemble in the preview.</div>
+
+              <div class="wiz-progress"><span class="done"></span><span class="cur"></span><span></span><span></span></div>
+
+              <div class="fw-grid">
+                <div class="fw-card"><div class="logo"></div><div class="nm">GRI</div><div class="ct">~26 params</div></div>
+                <div class="fw-card picked"><div class="logo"></div><div class="nm">GRESB</div><div class="ct">22 params &middot; picked</div></div>
+                <div class="fw-card"><div class="logo"></div><div class="nm">EPRA</div><div class="ct">~38 params</div></div>
+                <div class="fw-card"><div class="logo"></div><div class="nm">CSRD</div><div class="ct">~60 params</div></div>
+              </div>
+
+              <div class="ai-draft">
+                <div class="eye">AI draft &middot; live preview</div>
+                <div class="ln"></div>
+                <div class="ln mid"></div>
+                <div class="ln"></div>
+                <div class="ln short"></div>
+                <div class="stat">&#8595; 16.1% YoY emissions, on track vs. trajectory</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="gutter-head">What you are looking at</div>
+        <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Framework first, then parameters.</b> One generator covers eight frameworks. Step 3 renders only the fields the chosen framework needs, so a 60-field SFDR form never appears for a 14-field INREV report.</div></div>
+        <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Cards over radios.</b> Picking a framework is the anchor decision of the flow. It gets the visual weight, with a parameter count and a logo, not a tiny radio in a list.</div></div>
+        <div class="callout"><div class="cnum">3</div><div class="ctext"><b>The draft is a preview, not a publish.</b> Numbers update as parameters change. The downstream editor marks AI-drafted sentences with a dotted underline until a human edits or approves them.</div></div>
+      </div>
+    </div></article>
+
+<!-- REMOVED (restore to bring back):
+    <article class="feat"><div class="feat-inner">
+      <div>
+        <div class="frame-label">Share &amp; integrate</div>
+        <div class="frame-heading">The report stays in Verde, the data goes where it is needed</div>
+        <div class="frame-sub">Three sharing modes under one button: named recipients with permissions, push to BI tools like Power BI and Alteryx, or a signed link with revoke. All gated by approval state, only approved reports leave the workspace.</div>
+        <div class="scr-wrap">
+          <div class="marker" style="top:78px;left:32px;">1</div>
+          <div class="marker" style="top:184px;left:50%;">2</div>
+          <div class="marker" style="bottom:54px;right:34px;">3</div>
+          <div class="screen">
+            <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / reports / Asia Markets FY25 / share</span></div>
+            <div class="screen-body">
+              <div class="a-eyebrow" style="margin-bottom:6px">Share &middot; EPRA Asia Markets FY25</div>
+              <div class="a-h" style="font-size:20px">Send the report where it needs to go.</div>
+              <div class="a-sub" style="margin-top:6px;margin-bottom:14px">Three modes. All gated by approval state.</div>
+
+              <div class="sh-tabs">
+                <span>People</span>
+                <span class="active">Apps</span>
+                <span>Link</span>
+              </div>
+
+              <div class="ints">
+                <div class="int live"><div class="ic"></div><div><div class="nm">Power BI</div><div class="st">Live &middot; push approved</div></div></div>
+                <div class="int live"><div class="ic"></div><div><div class="nm">Alteryx</div><div class="st">Live &middot; push approved</div></div></div>
+                <div class="int"><div class="ic"></div><div><div class="nm">Looker</div><div class="st">Roadmap</div></div></div>
+                <div class="int"><div class="ic"></div><div><div class="nm">Tableau</div><div class="st">Roadmap</div></div></div>
+                <div class="int"><div class="ic"></div><div><div class="nm">Qlik</div><div class="st">Roadmap</div></div></div>
+                <div class="int"><div class="ic"></div><div><div class="nm">Zoho Analytics</div><div class="st">Roadmap</div></div></div>
+              </div>
+
+              <div class="a-panel" style="margin-top:14px">
+                <div class="a-panel-head"><span class="t">Gate</span><span class="m">Approved only</span></div>
+                <div style="padding:12px 16px;font:400 12.5px/1.5 var(--sans);color:var(--ink-2)">Only <b>Approved</b> reports can be pushed externally. Drafts and in-review reports are blocked at the integration layer, the report never leaves the platform without a sign-off written to its audit trail.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="gutter-head">What you are looking at</div>
+        <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Three modes, one button.</b> People, apps, link. Each surface is a tab, the share action is the same gesture for all three.</div></div>
+        <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Live integrations are honest about scope.</b> Power BI and Alteryx ship in v1, the others are surfaced as roadmap so consultants know what is coming without thinking it already works.</div></div>
+        <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Lifecycle is the gate.</b> Only approved reports can be pushed externally, so the audit trail and the published number are always the same number.</div></div>
+      </div>
+    </div></article>
+-->
+
+  </div>
+</section>
+
+
+<!-- SUPPORTING GRID -->
+<section class="supporting" id="supporting">
+  <div class="wrap">
+    <div class="sec-label">More of the system</div>
+    <div class="supp-grid">
+
+      <a class="supp-card" href="verde-feature-library.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-library.html" loading="lazy" scrolling="no" title="Report library home"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">Report library home</div></div>
+      </a>
+
+      <a class="supp-card" href="verde-feature-lifecycle.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-lifecycle.html" loading="lazy" scrolling="no" title="Lifecycle &amp; audit"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">Lifecycle &amp; audit</div></div>
+      </a>
+
+      <a class="supp-card" href="verde-feature-generate.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-generate.html" loading="lazy" scrolling="no" title="AI report generator"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">AI report generator</div></div>
+      </a>
+
+<!-- REMOVED (restore to bring back):
+      <a class="supp-card" href="verde-feature-editor.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-editor.html" loading="lazy" scrolling="no" title="Edit the AI draft"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">Edit the AI draft</div></div>
+      </a>
+
+      <a class="supp-card" href="verde-feature-share.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-share.html" loading="lazy" scrolling="no" title="Share &amp; integrations"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">Share &amp; integrations</div></div>
+      </a>
+-->
+
+      <a class="supp-card" href="verde-feature-heatmap.html">
+        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-heatmap.html" loading="lazy" scrolling="no" title="Portfolio heat-map"></iframe></div></div>
+        <div class="supp-body"><div class="supp-h">Portfolio heat-map</div></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="wrap">
+    <div class="sec-label">Impact</div>
+    <h2 class="impact-h">From fragmented and manual to structured and governed.</h2>
+    <div class="impact-grid">
+      <div class="ist"><div class="iv">32%</div><div class="il">Reduction in manual reconciliation time per report cycle</div></div>
+      <div class="ist"><div class="iv">100%</div><div class="il">Of approved reports carrying a named reviewer and full audit trail</div></div>
+      <div class="ist"><div class="iv">4+</div><div class="il">Compliance frameworks served from a single data entry point</div></div>
+      <div class="ist"><div class="iv">10</div><div class="il">Months end-to-end, across four phased releases</div></div>
+    </div>
+    <p class="impact-note">The most useful signal was qualitative: consultants stopped keeping private trackers. The platform&#39;s status pill became the version of the truth the whole team referred to, which is what made the legal-review conversations stop being a scramble.</p>
+  </div>
+</section>
+
+<!-- SIBLINGS -->
+<section class="siblings">
+  <div class="wrap">
+    <h2 class="sib-h">More case studies</h2>
+    <p class="sib-sub">Three other projects, the foundation layer Verde was built on top of, the analytics surface that turned the foundation into answers, and an AI-powered invoice pipeline for a multi-country utility portfolio.</p>
+    <div class="sib-grid">
+      <a class="sib-card" href="../arbor/arbor.html" style="--sib:#1f5b66">
+        <div class="sib-thumb"><img src="../assets/tiles/ar13.png" alt="" loading="lazy"></div>
+        <h3>Arbor</h3>
+      </a>
+      <a class="sib-card" href="../plio/plio.html" style="--sib:#7c3aed">
+        <div class="sib-thumb"><img src="../assets/tiles/pl8.png" alt="" loading="lazy"></div>
+        <h3>Plio</h3>
+      </a>
+      <a class="sib-card" href="../kova/index.html" style="--sib:#b85c38">
+        <div class="sib-thumb"><img src="../assets/tiles/kv10.png" alt="" loading="lazy"></div>
+        <h3>Kova</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__cap"></div>
+  <div class="footer__body" id="footerBody">
+    <p class="footer__contact">CONTACT</p>
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="../Thomas_Mbanefo_CV_new.pdf" target="_blank" rel="noopener">Resume</a>
+      <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// floating section nav highlight
+(function(){
+  var secs = ['introduction','problem','research','discovery','wireframes','features','impact'];
+  var links = {};
+  document.querySelectorAll('.sectnav a').forEach(function(a){ links[a.dataset.sec]=a; });
+  // 'supporting' has no nav link; it naturally maps to 'features' (Final UI) since features stays current through it.
+  var nodes = secs.map(function(id){ return { id: id, el: document.getElementById(id) }; }).filter(function(x){ return x.el; });
+  function setActive(id){ secs.forEach(function(k){ if(links[k]) links[k].classList.toggle('active', k===id); }); }
+  var ticking = false;
+  function update(){
+    ticking = false;
+    if(!nodes.length) return;
+    var line = 120; // activation line near the top of the viewport
+    var current = nodes[0].id;
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].el.getBoundingClientRect().top <= line) current = nodes[i].id; else break;
+    }
+    if((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2)) current = nodes[nodes.length-1].id;
+    setActive(current);
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  document.querySelectorAll('.sectnav a').forEach(function(a){ a.addEventListener('click', function(){ setActive(a.dataset.sec); }); });
+  update();
+})();
+
+// wireframe tab nav
+(function(){
+  var host = document.getElementById('pwf-host');
+  if(!host) return;
+  var tabs = host.querySelectorAll('.pwf-tab');
+  var panels = host.querySelectorAll(':scope > .pwf');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var idx = parseInt(tab.dataset.target, 10);
+      tabs.forEach(function(t, i){ t.classList.toggle('active', i === idx); });
+      panels.forEach(function(p, i){ p.classList.toggle('active', i === idx); });
+      tab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'nearest'});
+    });
+  });
+})();
+
+// hero motion-graphic carousel
+(function(){
+  var carousel = document.getElementById('hcs');
+  var track = document.getElementById('hcs-track');
+  if(!track || !carousel) return;
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.hcs-slide'));
+  var dotsWrap = document.getElementById('hcs-dots');
+  var crumbEl = document.getElementById('hcs-crumb');
+  var captionEl = document.getElementById('hcs-caption');
+  var i = 0, n = slides.length, timer = null;
+
+  function updateScale(){
+    var w = carousel.clientWidth, h = carousel.clientHeight;
+    var scale = Math.min(w / 1080, h / 1080);
+    var tx = (w - 1080 * scale) / 2;
+    var ty = (h - 1080 * scale) / 2;
+    carousel.style.setProperty('--hcs-scale', scale);
+    carousel.style.setProperty('--hcs-tx', tx + 'px');
+    carousel.style.setProperty('--hcs-ty', ty + 'px');
+  }
+  updateScale();
+  window.addEventListener('resize', updateScale);
+
+  slides.forEach(function(_, idx){
+    var b = document.createElement('button');
+    b.className = 'hcs-dot' + (idx === 0 ? ' active' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (idx+1));
+    b.addEventListener('click', function(){ go(idx); restart(); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = dotsWrap.querySelectorAll('.hcs-dot');
+
+  function pauseIframe(ifr){ try { ifr.contentDocument.body.classList.remove('mg-play'); } catch(e){} }
+  function playIframe(ifr){ try { var b=ifr.contentDocument.body; b.classList.remove('mg-play'); void b.offsetHeight; b.classList.add('mg-play'); } catch(e){} }
+
+  function go(target){
+    i = (target + n) % n;
+    track.style.transform = 'translateX(-' + (i*100) + '%)';
+    dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+    var s = slides[i];
+    if(crumbEl) crumbEl.textContent = s.dataset.crumb || '';
+    if(captionEl) captionEl.textContent = s.dataset.caption || '';
+    slides.forEach(function(slide, idx){
+      var ifr = slide.querySelector('iframe');
+      if(!ifr) return;
+      if(idx === i) playIframe(ifr); else pauseIframe(ifr);
+    });
+  }
+
+  slides.forEach(function(s, idx){
+    var ifr = s.querySelector('iframe');
+    if(!ifr) return;
+    ifr.addEventListener('load', function(){
+      if(idx === i){ playIframe(ifr); schedule(); } else { pauseIframe(ifr); }
+    });
+  });
+
+    function slideDuration(ifr){
+    try{
+      var doc = ifr.contentDocument;
+      var anims = doc.getAnimations ? doc.getAnimations() : [];
+      var max = 0;
+      anims.forEach(function(a){
+        var t = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
+        if(!t) return;
+        var dur = t.duration || 0, iter = t.iterations, delay = t.delay || 0;
+        var total = (iter === Infinity) ? (delay + dur) : (delay + dur * (iter || 1));
+        if(total > max) max = total;
+      });
+      return max;
+    } catch(e){ return 0; }
+  }
+  function schedule(){
+    if(timer){ clearTimeout(timer); clearInterval(timer); timer = null; }
+    var slide = slides[i];
+    var dd = parseInt(slide.getAttribute('data-dur'), 10);
+    if(dd > 0){ timer = setTimeout(function(){ go(i+1); schedule(); }, dd); return; }
+    var ifr = slide.querySelector('iframe');
+    setTimeout(function(){
+      var dur = slideDuration(ifr);
+      if(!dur || dur < 1200) dur = 7000;
+      dur = Math.min(dur, 30000);
+      timer = setTimeout(function(){ go(i+1); schedule(); }, dur + 500);
+    }, 180);
+  }
+  function restart(){ schedule(); }
+  schedule();
+  if(captionEl) captionEl.textContent = slides[0].dataset.caption || '';
+})();
+
+// ── contact footer: CONTACT word grows with scroll, capped to fit viewport ──
+(function(){
+  var footerBody=document.getElementById('footerBody'); if(!footerBody) return;
+  var el=footerBody.querySelector('.footer__contact'); if(!el) return;
+  var MIN=5, MAX=26, maxPx=9999;
+  function measure(){
+    var prev=el.style.fontSize; el.style.fontSize='200px';
+    var w=0; try{var rg=document.createRange(); rg.selectNodeContents(el); w=rg.getBoundingClientRect().width;}catch(e){}
+    el.style.fontSize=prev;
+    var ratio=(w/200)||4.2; var pad=window.innerWidth*0.04;
+    maxPx=(window.innerWidth-pad*2)/ratio;
+  }
+  function upd(){
+    var r=footerBody.getBoundingClientRect();
+    var p=Math.max(0,Math.min(1,1-r.top/window.innerHeight));
+    var e=p*p*(3-2*p);
+    var grow=(MIN+e*(MAX-MIN))/100*window.innerWidth;
+    el.style.fontSize=Math.min(grow,maxPx)+'px';
+  }
+  var t=false;
+  window.addEventListener('scroll',function(){if(!t){requestAnimationFrame(function(){upd();t=false;});t=true;}},{passive:true});
+  window.addEventListener('resize',function(){measure();upd();});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){measure();upd();});
+  measure(); upd();
+})();
+</script>
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
+function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
+</script>
+
+</body>
+</html>
