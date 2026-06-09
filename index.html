@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>
+  (function(){
+    try {
+      var raw = localStorage.getItem('tm_theme');
+      if (raw) {
+        var t = JSON.parse(raw);
+        var r = document.documentElement.style;
+        r.setProperty('--p', t.p);
+        r.setProperty('--s', t.s);
+        r.setProperty('--c', t.c);
+        if (t.name) document.documentElement.setAttribute('data-theme', t.name);
+      }
+    } catch(e) {}
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thomas Mbanefo · Product designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --p: #ede6d3;
+  --s: #ff7906;
+  --c: #2c2c2c;
+  --ease:     cubic-bezier(.16, 1, .3, 1);
+  --ease-out: cubic-bezier(.22, .61, .36, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  transition: background-color .65s var(--ease), color .65s var(--ease),
+              border-color .65s var(--ease);
+}
+
+html { scroll-behavior: smooth }
+body {
+  margin: 0;
+  background: var(--p);
+  color: var(--c);
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 900;
+  overflow-x: hidden;
+  opacity: 1;
+  transition: opacity .4s var(--ease),
+              background-color .65s var(--ease), color .65s var(--ease);
+}
+body.fade { opacity: 0; }
+a { text-decoration: none; color: inherit }
+img { display: block }
+
+.hero h1, .hero h2 {
+  font-family: 'Bricolage Grotesque', serif;
+  font-weight: 600;
+}
+.section-head__title {
+  font-family: 'Bricolage Grotesque', serif;
+  font-weight: 600;
+}
+.hero-meta__label,
+.hero-meta__value,
+.c-label,
+.footer__link,
+.footer__copy,
+.nav-btn {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+}
+.footer__contact {
+  font-family: 'Bricolage Grotesque', serif;
+  font-weight: 600;
+}
+.c-label__metric {
+  opacity: .65;
+  font-size: .82em;
+  font-weight: 700;
+  margin-left: .4em;
+}
+.picker-note {
+  display: none;
+  font-size: .48rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: .5;
+  white-space: nowrap;
+  align-self: center;
+}
+.picker.open .picker-note { display: block; }
+
+.narrative {
+  padding: 72px 24px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.narrative__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: start;
+}
+.narrative__label {
+  font-size: clamp(.6rem, 1vw, .72rem);
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: .5;
+  margin: 0 0 12px;
+}
+.narrative__body {
+  font-size: clamp(.85rem, 1.4vw, 1rem);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c);
+  margin: 0 0 28px;
+}
+.narrative__chain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.chain-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.chain-item__name {
+  font-size: clamp(.9rem, 1.6vw, 1.1rem);
+  font-weight: 900;
+  letter-spacing: .01em;
+  line-height: 1;
+}
+.chain-item--arbor .chain-item__name { color: #1f5b66; }
+.chain-item--kova  .chain-item__name { color: #b85c38; }
+.chain-item--verde .chain-item__name { color: #2a7a5a; }
+.chain-item__role {
+  font-size: .55rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: .45;
+}
+.chain-arrow {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--c);
+  opacity: .25;
+}
+.narrative__aside {
+  min-width: 200px;
+  max-width: 220px;
+  padding-left: 32px;
+  border-left: 1px solid currentColor;
+  opacity: .55;
+}
+@media (max-width: 680px) {
+  .narrative__inner { grid-template-columns: 1fr; }
+  .narrative__aside {
+    border-left: none;
+    border-top: 1px solid currentColor;
+    padding-left: 0;
+    padding-top: 24px;
+    max-width: none;
+  }
+  .narrative__chain {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .chain-arrow { display: none; }
+}
+
+/* NAV BUTTON */
+.nav-btn {
+  position: fixed;
+  top: 18px; right: 18px;
+  z-index: 200;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--s);
+  color: var(--p);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: .52rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  display: grid; place-items: center;
+  text-decoration: none;
+  transition: transform .3s var(--ease-out),
+              background-color .65s var(--ease),
+              color .65s var(--ease);
+}
+.nav-btn:hover { transform: scale(1.1) }
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-meta {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+}
+.hero-meta--top { top: 54px }
+.hero-meta--bot { bottom: 54px }
+.hero-meta__label {
+  display: block;
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--c);
+  line-height: 1.8;
+}
+.hero-meta__value {
+  display: block;
+  font-size: .52rem;
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: .55;
+  line-height: 1.8;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 11vw, 200px);
+  line-height: .88;
+  white-space: nowrap;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--c);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(64px);
+  transition: opacity .95s var(--ease), transform .95s var(--ease);
+}
+.hero.mounted h1 { opacity: 1; transform: none }
+
+.hero-images {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 32vw, 430px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-img {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: clamp(220px, 24vw, 344px);
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 44px rgba(0,0,0,.22), 0 4px 12px rgba(0,0,0,.12);
+  pointer-events: auto;
+  opacity: 0;
+  cursor: default;
+  transform:
+    translate(-50%, -50%)
+    translate(var(--tx, 0px), var(--ty, 0px))
+    translate(var(--mx, 0px), var(--my, 0px))
+    rotate(var(--rot, 0deg));
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  transition-delay: calc(var(--delay, 0) * .1s);
+}
+.hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+.hero.mounted .hero-img { opacity: 1 }
+.hero-img.interactive {
+  transition: transform .55s cubic-bezier(.17,.67,.5,1.2);
+  transition-delay: 0s;
+}
+
+.hero h2 {
+  font-size: clamp(2.2rem, 10vw, 200px);
+  line-height: .9;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--s);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(64px);
+  transition: opacity .95s var(--ease) .12s, transform .95s var(--ease) .12s;
+}
+.hero.mounted h2 { opacity: 1; transform: none }
+
+/* SECTION HEADER */
+.section-head {
+  text-align: center;
+  padding: 80px 24px 32px;
+}
+.section-head__title {
+  font-size: clamp(1.6rem, 3.6vw, 52px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--c);
+  line-height: 1;
+  margin: 0;
+}
+.section-head__sub {
+  margin: .7em auto 0;
+  max-width: 640px;
+  font-size: clamp(.66rem, .92vw, .82rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .01em;
+  color: var(--c);
+  opacity: 1;
+}
+
+/* CAROUSEL */
+.carousel-section { margin-bottom: 64px }
+.carousel-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+  padding-bottom: 56px;
+  /* Taller wrap so the deep arc dip doesn't get clipped at the edges. */
+  height: clamp(620px, 61vw, 910px);
+  user-select: none;
+}
+.carousel-wrap.dragging { cursor: grabbing }
+.carousel-track {
+  position: absolute;
+  top: 46px; left: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 180px;
+  will-change: transform;
+}
+.c-item {
+  flex: 0 0 clamp(300px, 31vw, 450px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transform: translateY(var(--cy, 0px)) rotate(var(--cr, 0deg));
+  will-change: transform;
+}
+.c-slide {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,.2), 0 4px 12px rgba(0,0,0,.1);
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+}
+.c-slide .c-tile {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.c-label {
+  display: inline-flex;
+  align-items: center;
+  background: var(--s);
+  color: var(--c);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .5em 1.3em;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background-color .65s var(--ease), color .65s var(--ease),
+              transform .25s var(--ease-out);
+}
+.c-label:hover { transform: translateY(-2px) }
+html[data-theme="mono"] .c-label { color: #fff; }
+
+/* GRID */
+.grid-section { padding-bottom: 100px }
+.grid-wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 120px;
+}
+.proj {
+  position: relative;
+  display: block;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
+  transition-delay: calc(var(--idx, 0) * .08s);
+}
+.proj.inview { opacity: 1; transform: none }
+.proj-inner {
+  aspect-ratio: 1;
+  border-radius: 13px;
+  overflow: hidden;
+  transform: rotate(var(--rot, 0deg));
+  box-shadow: 0 6px 22px rgba(0,0,0,.14);
+  transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
+  position: relative;
+  display: grid; place-items: center;
+}
+.proj:hover .proj-inner {
+  transform: rotate(calc(var(--rot, 0deg) * -.6)) scale(1.05);
+  box-shadow: 0 22px 56px rgba(0,0,0,.24);
+}
+.proj-mark {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 44px);
+  letter-spacing: -.03em;
+  color: rgba(255,255,255,.95);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.proj-meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 10px 12px;
+  background: var(--c);
+  color: var(--p);
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity .35s var(--ease-out), transform .35s var(--ease-out);
+}
+.proj:hover .proj-meta { opacity: 1; transform: translateY(0) }
+
+/* FOOTER */
+.footer { position: relative; overflow: hidden; }
+.footer * {
+  transition: background-color .65s var(--ease), color .65s var(--ease),
+              border-color .65s var(--ease), opacity .25s;
+}
+.footer__cap { height: 54px; background: var(--p); }
+.footer__body {
+  background: var(--s);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 24px;
+}
+.footer__contact {
+  /* Font-size grows with scroll. Max capped so the whole word CONTACT fits
+     the viewport width — Barlow 900 at -.02em letter-spacing fills ~100vw
+     around 25.5vw, so we cap at 25vw with a tiny safety margin. */
+  font-size: 5vw;
+  white-space: nowrap;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -.02em;
+  line-height: .82;
+  text-align: center;
+  color: var(--p);
+  margin: 0; padding: 0;
+  transition: color .65s var(--ease);
+  will-change: font-size;
+  user-select: none;
+  pointer-events: none;
+}
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 32px;
+  text-align: center;
+}
+.footer__link {
+  font-size: .68rem;
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--c);
+  transition: color .22s var(--ease), opacity .22s var(--ease);
+}
+.footer__link:hover { color: var(--p); opacity: 1; }
+.footer__copy {
+  font-size: .48rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: .4;
+  margin-top: 8px;
+}
+
+/* PICKER */
+.picker { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 56px; height: 56px; }
+.picker-toggle {
+  position: absolute; bottom: 0; right: 0; z-index: 3;
+  width: 56px; height: 56px; border-radius: 50%; filter: drop-shadow(0 5px 14px rgba(0,0,0,.32));
+  background: none; border: 0; padding: 0; cursor: pointer; color: var(--s); display: flex; align-items: center; justify-content: center;
+  transition: transform .35s var(--ease-out), color .65s var(--ease);
+}
+.picker-toggle:hover { transform: scale(1.08) rotate(10deg) }
+.swatch {
+  position: absolute; bottom: 15px; right: 15px;
+  width: 26px; height: 26px; border-radius: 50%;
+  cursor: pointer; border: 2px solid rgba(255,255,255,.7);
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  opacity: 0; z-index: 2;
+  transform: scale(.2);
+  transition: transform .5s var(--ease), opacity .35s var(--ease);
+  transition-delay: calc(var(--si, 0) * .05s);
+}
+.picker.open .swatch {
+  opacity: 1;
+  transform: rotate(calc(180deg + (90deg / 3) * var(--si, 0))) translate(80px) rotate(calc(0deg - 180deg - (90deg / 3) * var(--si, 0)));
+}
+.swatch[data-theme="cream"]  { background: #ff7906 }
+.swatch[data-theme="blue"]   { background: #0779ff }
+.swatch[data-theme="green"]  { background: #37af5d }
+.swatch[data-theme="purple"] { background: #db30f5 }
+.swatch[data-theme="mono"]   { background: #7c7c82 }
+</style>
+<style id="resp-fix">
+@media(max-width:900px){ #grid{ grid-template-columns:repeat(2,1fr)!important; gap:42px!important; } }
+@media(max-width:560px){ #grid{ gap:18px!important; } .grid-wrap{ padding:0 18px; } }
+</style>
+</head>
+<body class="fade">
+
+<a class="nav-btn" href="about.html" aria-label="About">ABOUT</a>
+
+<section class="hero" id="hero">
+  <div class="hero-meta hero-meta--top">
+    <span class="hero-meta__label">London, UK</span>
+    <span class="hero-meta__value">thomascmbanefo@gmail.com</span>
+  </div>
+
+  <h1>Thomas Mbanefo</h1>
+
+  <div class="hero-images" id="heroImages">
+    <a class="hero-img" aria-label="Open Arbor case study" style="--tx:-17vw;--ty:14px;--rot:-14deg;--delay:0;z-index:1">
+      <img src="assets/tiles/ar12.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">
+    </a>
+    <a class="hero-img" aria-label="Open Kova case study" style="--tx:-7vw;--ty:0px;--rot:-5deg;--delay:1;z-index:2">
+      <img src="assets/tiles/kv12.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">
+    </a>
+    <a class="hero-img" aria-label="Open Plio case study" style="--tx:3.5vw;--ty:-8px;--rot:3deg;--delay:2;z-index:3">
+      <img src="assets/tiles/pl12.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">
+    </a>
+    <a class="hero-img" aria-label="Open Verde case study" style="--tx:13.5vw;--ty:-4px;--rot:13deg;--delay:3;z-index:4">
+      <img src="assets/tiles/vd12.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">
+    </a>
+  </div>
+
+  <h2>Product<br>Designer</h2>
+
+  <div class="hero-meta hero-meta--bot">
+    <span class="hero-meta__label">Clients Include</span>
+    <span class="hero-meta__value">Evora Global, Finning, OnBuy, OEM Remanufacturing, Sch&uuml;co</span>
+  </div>
+</section>
+
+<section class="carousel-section">
+  <div class="section-head">
+    <p class="section-head__title">Featured Work</p>
+    <p class="section-head__sub">One platform across Arbor, Kova and Verde. Each shipped what the next relied on. Plio runs separately: AI-powered invoice extraction.</p>
+  </div>
+
+  <div class="carousel-wrap" id="carouselWrap">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="c-item">
+        <a class="c-slide" href="kova/index.html"><div class="c-tile"><img src="assets/tiles/kv10.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></a>
+        <a class="c-label" href="kova/index.html">Kova</a>
+      </div>
+      <div class="c-item">
+        <a class="c-slide" href="verde/verde.html"><div class="c-tile"><img src="assets/tiles/vd13.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></a>
+        <a class="c-label" href="verde/verde.html">Verde</a>
+      </div>
+      <div class="c-item">
+        <a class="c-slide" href="arbor/arbor.html"><div class="c-tile"><img src="assets/tiles/ar13.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></a>
+        <a class="c-label" href="arbor/arbor.html">Arbor</a>
+      </div>
+      <div class="c-item">
+        <a class="c-slide" href="plio/plio.html"><div class="c-tile"><img src="assets/tiles/pl8.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></a>
+        <a class="c-label" href="plio/plio.html">Plio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="section-head">
+    <p class="section-head__title">More Work</p>
+    <p class="section-head__sub" style="max-width:none;font-size:clamp(.72rem,1.1vw,15px);font-weight:400;letter-spacing:.04em">Shipped work without write-ups, and concepts worth showing</p>
+  </div>
+  <div class="grid-wrap">
+    <div class="grid" id="grid">
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fn1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ob4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/th1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fl1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/cl1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fd1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/st1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fn3.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ob5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/th2.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fl3.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/cl3.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fd2.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/st4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fn5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ob6.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/th5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fl5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/cl4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fd3.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/kv1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ob8.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ar2.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/th4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/vd1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fl4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/pl1.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/fd4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/kv4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/st5.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/ar9.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/vd7.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+      <div class="proj"><div class="proj-inner"><img src="assets/tiles/pl4.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;"></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__cap"></div>
+  <div class="footer__body" id="footerBody">
+    <p class="footer__contact">CONTACT</p>
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="Thomas_Mbanefo_CV_new.pdf" target="_blank" rel="noopener">Resume</a>
+      <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+/* PAGE FADE-IN / FADE-OUT TRANSITION */
+window.addEventListener('DOMContentLoaded', () => {
+  requestAnimationFrame(() => document.body.classList.remove('fade'));
+});
+function fadeNavigate(href, newTab) {
+  if (newTab) { window.open(href, '_blank', 'noopener'); return; }
+  document.body.classList.add('fade');
+  setTimeout(() => { window.location.href = href; }, 300);
+}
+document.querySelectorAll('.nav-btn, .c-slide, .c-label').forEach(el => {
+  el.addEventListener('click', e => {
+    const href = el.getAttribute('href');
+    if (!href || href.startsWith('#')) return;
+    e.preventDefault();
+    fadeNavigate(href, el.target === '_blank');
+  });
+});
+
+/* HERO ENTRANCE */
+const hero     = document.getElementById('hero');
+const heroImgs = [...document.querySelectorAll('.hero-img')];
+
+requestAnimationFrame(() => hero.classList.add('mounted'));
+
+const maxDelay = heroImgs.length * 100 + 950;
+setTimeout(() => {
+  heroImgs.forEach(el => el.classList.add('interactive'));
+}, maxDelay);
+
+/* HERO MAGNETIC */
+const MAGNET_DIST = 360;
+const MAGNET_STR  = 0.55;
+
+hero.addEventListener('mousemove', e => {
+  heroImgs.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const cx   = rect.left + rect.width  / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const dx   = e.clientX - cx;
+    const dy   = e.clientY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const str  = Math.max(0, (MAGNET_DIST - dist) / MAGNET_DIST) * MAGNET_STR;
+    el.style.setProperty('--mx', (dx * str).toFixed(1) + 'px');
+    el.style.setProperty('--my', (dy * str).toFixed(1) + 'px');
+  });
+});
+
+hero.addEventListener('mouseleave', () => {
+  heroImgs.forEach(el => {
+    el.style.setProperty('--mx', '0px');
+    el.style.setProperty('--my', '0px');
+  });
+});
+
+/* Hero tiles are display-only: hover/magnetic effect, no click navigation. */
+
+/* CAROUSEL */
+const wrap  = document.getElementById('carouselWrap');
+const track = document.getElementById('carouselTrack');
+const origItems  = [...track.querySelectorAll('.c-item')];
+const numItems   = origItems.length;
+origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+
+let loopWidth    = 0;
+let scrollPos    = 0;
+const SCROLL_SPD = 1.6;
+
+function measureLoop() {
+  const item = track.querySelector('.c-item');
+  if (!item) return;
+  const cs  = getComputedStyle(track);
+  const gap = parseFloat(cs.gap) || 20;
+  loopWidth = (item.offsetWidth + gap) * numItems;
+}
+window.addEventListener('load', measureLoop);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureLoop);
+setTimeout(measureLoop, 600);
+
+function applyCurve() {
+  const wrapRect   = wrap.getBoundingClientRect();
+  const wrapCentre = wrapRect.left + wrapRect.width / 2;
+  track.querySelectorAll('.c-item').forEach(item => {
+    const rect        = item.getBoundingClientRect();
+    const itemCentre  = rect.left + rect.width / 2;
+    const d = (itemCentre - wrapCentre) / (wrapRect.width * 0.55);
+    /* Deep semi-circle arc: ~260px dip at the edges, 22° tilt. */
+    const curveY = d * d * 260;
+    const curveR = d * 22;
+    item.style.setProperty('--cy', curveY.toFixed(1) + 'px');
+    item.style.setProperty('--cr', curveR.toFixed(1) + 'deg');
+  });
+}
+
+let isDragging  = false;
+let dragStartX  = 0;
+let dragStartPos = 0;
+let dragDelta   = 0;
+/* Gentle snap-to-project on release (light, not sticky). */
+let snapping = false, snapFrom = 0, snapTo = 0, snapStart = 0;
+let lastMoveX = 0, lastMoveT = 0, releaseVel = 0;
+const SNAP_DUR = 420;
+function startSnap(){
+  const wrapRect = wrap.getBoundingClientRect();
+  const wrapCentre = wrapRect.left + wrapRect.width / 2;
+  let nearestC = null, best = Infinity;
+  track.querySelectorAll('.c-item').forEach(item => {
+    const r = item.getBoundingClientRect();
+    const c = r.left + r.width / 2;
+    const d = Math.abs(c - wrapCentre);
+    if (d < best) { best = d; nearestC = c; }
+  });
+  if (nearestC == null || !loopWidth) return;
+  const itemStep = loopWidth / numItems;
+  let target = scrollPos - (nearestC - wrapCentre);          // centre nearest project
+  if (Math.abs(releaseVel) > 0.45) target += (releaseVel > 0 ? 1 : -1) * itemStep; // a flick carries one
+  snapFrom = scrollPos; snapTo = target; snapStart = performance.now(); snapping = true;
+}
+
+function clampPos(pos) {
+  pos = pos % loopWidth;
+  if (pos > 0) pos -= loopWidth;
+  return pos;
+}
+
+function carouselLoop() {
+  /* Drag moves the track; on release it eases to the nearest project.
+     Loop runs every frame to keep the arc transforms in sync with scrollPos. */
+  if (snapping) {
+    const t = Math.min(1, (performance.now() - snapStart) / SNAP_DUR);
+    const e = 1 - Math.pow(1 - t, 3);                        // easeOutCubic — light landing
+    scrollPos = snapFrom + (snapTo - snapFrom) * e;
+    if (t >= 1) { snapping = false; scrollPos = clampPos(snapTo); }
+  }
+  track.style.transform = `translateX(${clampPos(scrollPos).toFixed(2)}px)`;
+  applyCurve();
+  requestAnimationFrame(carouselLoop);
+}
+
+requestAnimationFrame(() => {
+  measureLoop();
+  window.addEventListener('resize', measureLoop);
+  carouselLoop();
+});
+
+wrap.addEventListener('pointerdown', e => {
+  isDragging   = true;
+  snapping     = false;
+  dragDelta    = 0;
+  dragStartX   = e.clientX;
+  dragStartPos = scrollPos;
+  lastMoveX    = e.clientX;
+  lastMoveT    = performance.now();
+  releaseVel   = 0;
+  wrap.classList.add('dragging');
+});
+
+document.addEventListener('pointermove', e => {
+  if (!isDragging) return;
+  dragDelta = e.clientX - dragStartX;
+  scrollPos = clampPos(dragStartPos + dragDelta);
+  const now = performance.now();
+  const dt = now - lastMoveT;
+  if (dt > 0) releaseVel = (e.clientX - lastMoveX) / dt;     // px/ms
+  lastMoveX = e.clientX; lastMoveT = now;
+});
+
+document.addEventListener('pointerup', e => {
+  if (!isDragging) return;
+  isDragging = false;
+  wrap.classList.remove('dragging');
+  startSnap();
+});
+
+wrap.addEventListener('click', e => {
+  if (Math.abs(dragDelta) > 5) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, true);
+
+/* GRID */
+document.querySelectorAll('.proj').forEach((el, i) => {
+  const sign = Math.random() < .5 ? -1 : 1;
+  el.querySelector('.proj-inner')
+    .style.setProperty('--rot', (sign * (0.5 + Math.random() * 1.5)).toFixed(2) + 'deg');
+  el.style.setProperty('--idx', i % 3);
+});
+
+const io = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('inview') }),
+  { threshold: 0, rootMargin: '0px 0px 280px 0px' }
+);
+document.querySelectorAll('.proj').forEach(p => io.observe(p));
+
+/* FOOTER CONTACT — font-size grows with scroll, capped so the whole word
+   CONTACT always fits the viewport width. */
+const footerBody = document.getElementById('footerBody');
+const contactEl = document.querySelector('.footer__contact');
+const MIN_VW = 5, MAX_VW = 26;
+let maxFontPx = 9999;
+function measureContact(){
+  if(!contactEl) return;
+  const prev=contactEl.style.fontSize;
+  contactEl.style.fontSize='200px';
+  let w=0;
+  try{const rg=document.createRange();rg.selectNodeContents(contactEl);w=rg.getBoundingClientRect().width;}catch(e){}
+  contactEl.style.fontSize=prev;
+  const ratio=(w/200)||4.2;
+  const pad=window.innerWidth*0.04;
+  maxFontPx=(window.innerWidth-pad*2)/ratio;
+}
+function updateContact(){
+  if(!footerBody || !contactEl) return;
+  const rect = footerBody.getBoundingClientRect();
+  const vh = window.innerHeight;
+  const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+  const eased = progress * progress * (3 - 2 * progress);
+  const growPx = (MIN_VW + eased * (MAX_VW - MIN_VW)) / 100 * window.innerWidth;
+  contactEl.style.fontSize = Math.min(growPx, maxFontPx) + 'px';
+}
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => { updateContact(); scrollTicking = false; });
+    scrollTicking = true;
+  }
+}, { passive: true });
+window.addEventListener('resize', () => { measureContact(); updateContact(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { measureContact(); updateContact(); });
+measureContact();
+updateContact();
+
+/* PICKER + persistence */
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () =>
+  picker.classList.toggle('open')
+);
+function tmThemeName(){ try { const t = JSON.parse(localStorage.getItem('tm_theme')); if (t && t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){
+  let vi = 0;
+  document.querySelectorAll('.swatch').forEach(s => {
+    if (s.dataset.theme === name) { s.style.display = 'none'; }
+    else { s.style.display = ''; s.style.setProperty('--si', vi++); }
+  });
+}
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    const r = document.documentElement.style;
+    const theme = { p: sw.dataset.p, s: sw.dataset.s, c: sw.dataset.c, name: sw.dataset.theme };
+    r.setProperty('--p', theme.p);
+    r.setProperty('--s', theme.s);
+    r.setProperty('--c', theme.c);
+    try { localStorage.setItem('tm_theme', JSON.stringify(theme)); } catch(e) {}
+    document.documentElement.setAttribute('data-theme', theme.name);
+    tmSyncSwatches(theme.name);
+  });
+});
+</script>
+</body>
+</html>
