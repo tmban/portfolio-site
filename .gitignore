@@ -1,0 +1,9 @@
+# Local tooling — not part of the live site
+.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Internal tile generator (not linked from any page).
+# Delete this line if you actually want it published.
+tiles.html
