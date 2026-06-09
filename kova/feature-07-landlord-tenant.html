@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script><meta charset="UTF-8">
+<title>Kova — Landlord / tenant</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_base.css">
+<style>
+.lt{padding:26px}
+.lt-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px}
+.toggle{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:3px}
+.toggle .t{font:500 11px/1 var(--mono);padding:7px 13px;border-radius:6px;color:var(--muted)}
+.toggle .t.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-sm)}
+.ltchart{height:230px;display:flex;align-items:flex-end;gap:14px;padding:24px 4px 0}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;height:100%;justify-content:flex-end}
+.stackbar{width:100%;max-width:46px;display:flex;flex-direction:column-reverse;border-radius:4px 4px 0 0;overflow:hidden}
+.sb{width:100%}
+.sb.l{background:var(--accent)}
+.sb.t{background:var(--green)}
+.sb.g{background:repeating-linear-gradient(45deg,rgba(198,69,69,.18),rgba(198,69,69,.18) 3px,transparent 3px,transparent 6px);border:1px dashed var(--red);border-bottom:none}
+.cname{font:400 10px/1.3 var(--mono);color:var(--muted);margin-top:10px;text-align:center}
+.cname.flag{color:var(--red);font-weight:500}
+.lt-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;border-top:1px solid var(--border-2);padding-top:18px}
+.gapnote{display:flex;align-items:center;gap:11px;background:var(--red-l);border:1px solid rgba(198,69,69,.2);border-radius:9px;padding:11px 14px;max-width:430px}
+.gapnote .gi{font:600 11px/1 var(--mono);color:var(--red);background:rgba(198,69,69,.14);border-radius:5px;padding:5px 8px;white-space:nowrap}
+.gapnote .gt{font:400 12px/1.4 var(--sans);color:var(--ink-2)}
+.gapnote .gt b{font-weight:600;color:var(--ink)}
+.back-link{position:fixed;top:24px;left:32px;font:500 13px/1 var(--sans);color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:10px 16px;box-shadow:0 1px 2px 0 rgba(21,17,13,.05);z-index:50;transition:background .15s,color .15s}.back-link:hover{color:var(--accent);background:var(--bg-2)}
+</style><style id="resp-fix">
+@media(max-width:860px){
+  html,body{ overflow-x:hidden; }
+  .scr-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pwf{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .trade-table,.swim,.pwf-stack{ max-width:100%; }
+  .figure{ width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px; }
+  .callouts{ position:static!important; }
+  .screen{ overflow-x:auto; }
+  .figure>*{ min-width:0; }
+}
+@media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
+</style>
+</head><body>
+<a class="back-link" href="index.html#supporting">← Back to case study</a>
+<div class="figure">
+  <div>
+    <div class="frame-label">Feature 07 — Procurement split</div>
+    <div class="frame-heading">Whose energy is it, and whose to fix</div>
+    <div class="frame-sub">Energy use split by who procures it, landlord or tenant, because responsibility for reduction follows the meter. Where the split can't be resolved, the gap is shown openly and routed into gap-fill rather than buried in an average.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:150px;left:120px;">1</div>
+      <div class="marker" style="top:96px;right:34px;">2</div>
+      <div class="marker" style="bottom:80px;left:400px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / energy / procurement split</span></div>
+        <div class="screen-body" style="padding:0">
+          <div class="lt">
+            <div class="lt-head">
+              <div><div class="panel-title">Annual energy use by asset</div><div class="panel-sub" style="margin-top:4px">kWh/m² · split by procurement responsibility</div></div>
+              <div class="toggle"><span class="t on">ALL</span><span class="t">LANDLORD</span><span class="t">TENANT</span></div>
+            </div>
+            <div class="ltchart">
+              <div class="col"><div class="stackbar" style="height:72%"><div class="sb l" style="height:55%"></div><div class="sb t" style="height:35%"></div><div class="sb g" style="height:10%"></div></div><div class="cname">Broadgate</div></div>
+              <div class="col"><div class="stackbar" style="height:78%"><div class="sb l" style="height:63%"></div><div class="sb t" style="height:29%"></div><div class="sb g" style="height:8%"></div></div><div class="cname">Holborn</div></div>
+              <div class="col"><div class="stackbar" style="height:74%"><div class="sb l" style="height:40%"></div><div class="sb t" style="height:49%"></div><div class="sb g" style="height:11%"></div></div><div class="cname">Canada Sq</div></div>
+              <div class="col"><div class="stackbar" style="height:70%"><div class="sb l" style="height:55%"></div><div class="sb t" style="height:41%"></div><div class="sb g" style="height:4%"></div></div><div class="cname">Mcr Cent.</div></div>
+              <div class="col"><div class="stackbar" style="height:76%"><div class="sb l" style="height:40%"></div><div class="sb t" style="height:48%"></div><div class="sb g" style="height:12%"></div></div><div class="cname">Spinning</div></div>
+              <div class="col"><div class="stackbar" style="height:73%"><div class="sb l" style="height:68%"></div><div class="sb t" style="height:23%"></div><div class="sb g" style="height:9%"></div></div><div class="cname">King Will</div></div>
+              <div class="col"><div class="stackbar" style="height:71%"><div class="sb l" style="height:28%"></div><div class="sb t" style="height:56%"></div><div class="sb g" style="height:16%"></div></div><div class="cname">Cannon</div></div>
+              <div class="col"><div class="stackbar" style="height:80%"><div class="sb l" style="height:32%"></div><div class="sb t" style="height:32%"></div><div class="sb g" style="height:36%"></div></div><div class="cname flag">Exchange ⚑</div></div>
+            </div>
+            <div class="legend" style="margin-top:14px">
+              <span class="leg"><i style="background:var(--accent);height:9px;width:9px;border-radius:2px"></i>Landlord</span>
+              <span class="leg"><i style="background:var(--green);height:9px;width:9px;border-radius:2px"></i>Tenant</span>
+              <span class="leg"><i style="background:rgba(198,69,69,.18);height:9px;width:9px;border-radius:2px;border:1px dashed var(--red)"></i>Unattributed gap</span>
+            </div>
+            <div class="lt-foot">
+              <div class="gapnote">
+                <div class="gi">36% gap</div>
+                <div class="gt"><b>Exchange House</b> can't be split cleanly, a third of its use is unattributed. Routed to gap-fill rather than averaged away.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Responsibility follows the meter.</b> Landlord and tenant energy are separated per asset, so reduction targets land on whoever can actually act.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Toggle the view.</b> Switch between landlord-only, tenant-only or combined, the same data framed for whichever conversation you're having.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Gaps stay visible.</b> Where the split is uncertain, like Exchange House at 36%, the gap is shown and sent to gap-fill, never silently absorbed.</div></div>
+  </div>
+</div>
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
+function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
+</script>
+
+</body></html>

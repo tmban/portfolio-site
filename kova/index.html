@@ -1,0 +1,2448 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Mbanefo · Kova</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Barlow:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<style>
+:root{
+  --p:#ede6d3;--s:#ff7906;--c:#2c2c2c;
+  --bg:#faf8f5;--bg-2:#f3efe9;--surface:#ffffff;
+  --ink:#15110d;--ink-2:#3a342d;--muted:#8a8278;--muted-2:#b4ab9f;
+  --border:#ebe6df;--border-2:#f0ebe4;
+  --accent:#b85c38;--accent-d:#9b4a2b;--accent-l:rgba(184,92,56,.08);
+  --green:#2a7a5a;--green-l:rgba(42,122,90,.10);
+  --red:#c64545;--red-l:rgba(198,69,69,.10);--amber:#c6892b;--amber-l:rgba(198,137,43,.12);
+  --serif:'Bricolage Grotesque',serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+  --shadow-sm:0 1px 2px 0 rgba(21,17,13,.05);
+  --shadow-md:0 4px 6px -1px rgba(21,17,13,.10),0 2px 4px -2px rgba(21,17,13,.06);
+  --shadow-xl:0 20px 25px -5px rgba(21,17,13,.12),0 8px 10px -6px rgba(21,17,13,.04);
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+
+/* ── nav ── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,248,245,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-2)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.new-nav-links{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none}
+.new-nav-links a{font:500 14px/1 var(--sans);color:var(--ink-2,#3a342d);text-decoration:none;letter-spacing:.01em;transition:color .15s}
+.new-nav-links a:hover{color:var(--accent)}
+
+.logo{display:flex;align-items:center;gap:9px;font:600 16px/1 var(--serif);letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.logo .lk{width:26px;height:26px;border-radius:6px;background:var(--accent);color:#fff;font:600 14px/26px var(--serif);text-align:center}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font:400 13px/1 var(--sans);color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+
+/* ── hero ── */
+.hero{padding:0 0 64px}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero{text-align:center}
+.hero h1{font:600 128px/1 var(--serif);letter-spacing:-.045em;color:var(--ink);max-width:none;margin-bottom:14px}
+.hero .h-sub{font:400 19px/1.5 var(--sans);color:var(--muted);margin:0 auto 40px;max-width:620px}
+.hero .lede{font:400 19px/1.55 var(--sans);color:var(--ink-2);max-width:none;margin-bottom:34px}
+.hero .hero-visual{text-align:left}
+.tags{display:flex;gap:10px;flex-wrap:wrap}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--ink-2);background:var(--bg-2);border:1px solid var(--border);border-radius:99px;padding:9px 15px}
+
+/* ── hero visual (macbook-ish frame with carousel) ── */
+.hero-visual{margin-top:56px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-xl);border:1px solid var(--border);background:var(--surface)}
+.hero-visual .hv-bar{height:44px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 18px}
+.hero-visual .dot{width:11px;height:11px;border-radius:50%;background:var(--border)}
+.hero-visual .crumb{margin-left:14px;font:400 12px/1 var(--mono);color:var(--muted)}
+.hero-carousel{position:relative;width:100%;aspect-ratio:1/1;margin:0 auto;background:var(--bg);overflow:hidden}
+.hcs-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.hcs-slide{flex:0 0 100%;width:100%;height:100%;position:relative;overflow:hidden;display:block}
+.hcs-slide iframe{position:absolute;top:0;left:0;width:1080px;height:1080px;border:0;background:transparent;transform-origin:top left;transform:translate(var(--hcs-tx,0px),var(--hcs-ty,0px)) scale(var(--hcs-scale,1))}
+.hcs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(255,255,255,.86);border:1px solid var(--border);padding:6px 12px;border-radius:999px;backdrop-filter:blur(4px);z-index:6}
+.hcs-dot{width:8px;height:8px;border-radius:50%;background:var(--muted-2);border:0;padding:0;cursor:pointer;transition:background .15s,width .2s}
+.hcs-dot.active{background:var(--accent);width:22px;border-radius:4px}
+.hcs-caption{display:none}
+
+/* ── overview panel ── */
+.overview{padding:64px 0;background:var(--bg)}
+.ov-grid{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start}
+.ov-meta{display:flex;flex-direction:column;gap:22px}
+.ov-item .l{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ov-item .v{font:400 15px/1.5 var(--sans);color:var(--ink)}
+.ov-item .v.team{white-space:pre-line}
+.ov-brief h2{font:600 15px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:20px}
+.ov-brief p{font:400 17px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.ov-brief p:last-child{margin-bottom:0}
+.ov-brief .phase-note{font:400 14px/1.6 var(--sans);color:var(--muted);border-left:2px solid var(--accent);padding-left:18px;margin-top:8px}
+
+@media(max-width:860px){
+  .hero h1{font-size:40px}
+  .hero .lede{font-size:17px}
+  .ov-grid{grid-template-columns:1fr;gap:36px}
+  .nav-links{display:none}
+}
+
+/* PICKER */
+.picker { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 56px; height: 56px; }
+.picker-toggle {
+  position: absolute; bottom: 0; right: 0; z-index: 3;
+  width: 56px; height: 56px; border-radius: 50%; filter: drop-shadow(0 5px 14px rgba(0,0,0,.32));
+  background: none; border: 0; padding: 0; cursor: pointer; color: var(--s); display: flex; align-items: center; justify-content: center;
+  transition: transform .35s cubic-bezier(.22,.61,.36,1), color .65s ease;
+}
+.picker-toggle:hover { transform: scale(1.08) rotate(10deg) }
+.swatch {
+  position: absolute; bottom: 15px; right: 15px;
+  width: 26px; height: 26px; border-radius: 50%;
+  cursor: pointer; border: 2px solid rgba(255,255,255,.7);
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  opacity: 0; z-index: 2; transform: scale(.2);
+  transition: transform .5s ease, opacity .35s ease;
+  transition-delay: calc(var(--si, 0) * .05s);
+}
+.picker.open .swatch {
+  opacity: 1;
+  transform: rotate(calc(180deg + (90deg / 3) * var(--si, 0))) translate(80px) rotate(calc(0deg - 180deg - (90deg / 3) * var(--si, 0)));
+}
+.swatch[data-theme="cream"]  { background: #ff7906 }
+.swatch[data-theme="blue"]   { background: #0779ff }
+.swatch[data-theme="green"]  { background: #37af5d }
+.swatch[data-theme="purple"] { background: #db30f5 }
+.swatch[data-theme="mono"]   { background: #7c7c82 }
+
+/* THEME OVERRIDES — accent preserved under cream+mono; neutralized under blue/green/purple */
+html[data-theme="blue"]{--bg:#0779ff;--bg-2:#0a6ad6;--surface:#0a6ad6;--ink:#eaf6ff;--ink-2:#c5e8ff;--muted:#8fc4f5;--muted-2:#6fa8e0;--border:rgba(255,255,255,.20);--border-2:rgba(255,255,255,.14);--accent:var(--ink);--accent-d:var(--ink);--accent-l:color-mix(in srgb,var(--ink) 12%,transparent);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="green"]{--bg:#37af5d;--bg-2:#2f9a51;--surface:#2f9a51;--ink:#f3fff7;--ink-2:#d6f5e0;--muted:#a9dcb9;--muted-2:#8bc79e;--border:rgba(255,255,255,.22);--border-2:rgba(255,255,255,.15);--accent:var(--ink);--accent-d:var(--ink);--accent-l:color-mix(in srgb,var(--ink) 12%,transparent);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="purple"]{--bg:#3c0350;--bg-2:#330246;--surface:#330246;--ink:#fce9ff;--ink-2:#f0d4fb;--muted:#c79bd6;--muted-2:#a87cb9;--border:rgba(255,255,255,.20);--border-2:rgba(255,255,255,.13);--accent:var(--ink);--accent-d:var(--ink);--accent-l:color-mix(in srgb,var(--ink) 12%,transparent);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+html[data-theme="mono"]{--bg:#ffffff;--bg-2:#eeeeee;--surface:#ffffff;--ink:#1f1f22;--ink-2:#34343a;--muted:#6b6b72;--muted-2:#9a9aa2;--border:#e2e2e2;--border-2:#eeeeee}
+
+/* accent-as-background spots: on-accent labels switch to page colour under dark themes */
+html[data-theme="blue"] .logo .lk,html[data-theme="green"] .logo .lk,html[data-theme="purple"] .logo .lk,
+html[data-theme="blue"] .cnum,html[data-theme="green"] .cnum,html[data-theme="purple"] .cnum,
+html[data-theme="blue"] .send,html[data-theme="green"] .send,html[data-theme="purple"] .send,
+html[data-theme="blue"] .path.sel .pcheck,html[data-theme="green"] .path.sel .pcheck,html[data-theme="purple"] .path.sel .pcheck{color:var(--bg)}
+
+/* wireframe legibility: repaint hardcoded-white .pwf surfaces under dark themes */
+html[data-theme="blue"] .pwf .canvas,html[data-theme="green"] .pwf .canvas,html[data-theme="purple"] .pwf .canvas,
+html[data-theme="blue"] .pwf .board,html[data-theme="green"] .pwf .board,html[data-theme="purple"] .pwf .board,
+html[data-theme="blue"] .pwf .swim,html[data-theme="green"] .pwf .swim,html[data-theme="purple"] .pwf .swim,
+html[data-theme="blue"] .pwf .trade-table,html[data-theme="green"] .pwf .trade-table,html[data-theme="purple"] .pwf .trade-table,
+html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[data-theme="purple"] .pwf .sk-box{background:var(--surface);color:var(--ink)}
+
+</style>
+<style id="resp-fix">
+@media(max-width:860px){
+  html,body{ overflow-x:hidden; }
+  .scr-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pwf{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .trade-table,.swim,.pwf-stack{ max-width:100%; }
+  .figure{ width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px; }
+  .callouts{ position:static!important; }
+  .screen{ overflow-x:auto; }
+  .figure>*{ min-width:0; }
+}
+@media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
+</style>
+</head>
+<body>
+
+<style>
+/* ── shared section chrome ── */
+.sec-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.sec-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;color:var(--ink);max-width:none;margin-bottom:16px}
+.sec-sub{font:400 17px/1.6 var(--sans);color:var(--muted);max-width:none}
+
+/* ── problem ── */
+.problem{padding:80px 0;background:var(--bg)}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.pb-tag{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--bg-2);border-radius:6px;padding:8px 12px;display:inline-block;margin-bottom:18px}
+.prob-block p{font:400 16px/1.6 var(--sans);color:var(--ink-2)}
+
+/* ── process ── */
+.process{padding:80px 0;background:var(--bg)}
+.proc-intro{max-width:680px;margin-bottom:48px}
+.proc-intro p{font:400 22px/1.55 var(--serif);letter-spacing:-.01em;color:var(--ink);font-weight:400}
+.proc-intro em{font-style:italic;color:var(--accent)}
+.proc-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px}
+.ps{display:flex;gap:20px;align-items:flex-start}
+.ps-num{font:500 13px/1 var(--mono);color:var(--accent);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 12px;flex:0 0 auto}
+.ps-h{font:600 17px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.ps-body p{font:400 14px/1.6 var(--sans);color:var(--muted)}
+
+/* ── features (featured stream) ── */
+.features{padding:80px 0 0;background:var(--bg)}
+.feat-stream{margin-top:56px;display:flex;flex-direction:column;gap:0}
+.feat{padding:64px 0}
+.feat:first-child{border-top:none}
+.feat-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 290px;gap:40px;align-items:start}
+.frame-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.frame-heading{font:600 28px/1.1 var(--serif);letter-spacing:-.025em;color:var(--ink);margin-bottom:10px}
+.frame-sub{font:400 15px/1.55 var(--sans);color:var(--muted);max-width:none;margin-bottom:26px}
+.scr-wrap{position:relative}
+.screen{background:var(--bg);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-xl);overflow:hidden}
+.screen-bar{height:42px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;padding:0 16px}
+.screen-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.screen-bar .crumb{margin-left:14px;font:400 12px/1 var(--mono);color:var(--muted)}
+.screen-body{padding:24px}
+.marker{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font:500 11px/24px var(--mono);text-align:center;box-shadow:var(--shadow-md);z-index:5}
+.callouts{position:sticky;top:90px;display:flex;flex-direction:column;gap:18px;padding-top:8px}
+.callout{display:flex;gap:13px;align-items:flex-start}
+.cnum{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font:500 12px/26px var(--mono);text-align:center}
+.ctext{font:400 13px/1.5 var(--sans);color:var(--ink-2)}
+.ctext b{font-weight:600;color:var(--ink)}
+.gutter-head{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:10px}
+.panel-title{font:600 14px/1 var(--serif);letter-spacing:-.01em}
+.panel-sub{font:400 11px/1 var(--mono);color:var(--muted)}
+.legend{display:flex;gap:18px;margin-top:14px}
+.leg{display:flex;align-items:center;gap:7px;font:400 11px/1 var(--sans);color:var(--muted)}
+.leg i{width:14px;height:2px;border-radius:2px;display:inline-block}
+
+/* ── supporting grid ── */
+.supporting{padding:80px 0;background:var(--bg)}
+.supp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px}
+.supp-card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);text-decoration:none;display:block;transition:box-shadow .25s,transform .25s}
+.supp-card:hover{box-shadow:var(--shadow-xl);transform:translateY(-2px)}
+.supp-thumb{aspect-ratio:16/9;background:var(--bg-2);border-bottom:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.supp-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.supp-body{padding:20px 22px}
+.supp-label{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.supp-h{font:600 18px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:7px}
+.supp-p{font:400 13px/1.55 var(--sans);color:var(--muted)}
+
+/* ── impact ── */
+.impact{padding:96px 0;background:var(--bg);color:var(--ink);margin-top:0}
+.impact-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;color:var(--ink);max-width:none;margin-bottom:48px}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:40px}
+/* C1 — early-stats callout, no dividers, transparent bg */
+.early-stats{display:flex;gap:32px;margin:0;padding:32px 0;background:transparent}
+.early-stats .est{flex:1}
+.early-stats .ev{font:600 38px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);margin-bottom:8px}
+.early-stats .el{font:400 14px/1.5 var(--sans);color:var(--muted);max-width:200px}
+.early-stats-section{padding:0 0 24px;background:var(--bg)}
+@media(max-width:860px){.early-stats{flex-wrap:wrap;gap:24px}.early-stats .est{flex:0 0 calc(50% - 12px)}}
+.iv{font:600 56px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);margin-bottom:14px}
+.iv span{font-size:30px}
+.il{font:400 14px/1.5 var(--sans);color:var(--muted)}
+.impact-note{font:400 18px/1.6 var(--serif);color:var(--ink-2);max-width:none;border-left:2px solid var(--accent);padding-left:22px}
+
+/* ── siblings ── */
+.siblings{padding:80px 0}
+.sib-h{font:600 30px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.sib-sub{font:400 16px/1.6 var(--sans);color:var(--muted);margin-bottom:32px}
+.sib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.sib-card{border:1px solid var(--border);border-radius:16px;padding:32px 32px 24px;text-decoration:none;background:var(--surface);transition:box-shadow .25s,transform .25s;border-top:3px solid var(--sib)}
+.sib-card:hover{box-shadow:var(--shadow-xl);transform:translateY(-2px)}
+.sib-meta{display:flex;align-items:center;gap:8px;margin-bottom:14px;font:400 11px/1 var(--mono)}
+.sib-co{color:var(--sib);font-weight:500}.sib-sep{color:var(--muted-2)}.sib-ty{color:var(--muted)}
+
+.sib-thumb{margin:-32px -32px 22px;aspect-ratio:1/1;overflow:hidden;background:var(--paper-2);border-bottom:1px solid var(--line-faint)}
+.sib-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sib-card h3{font:600 28px/1 var(--serif);letter-spacing:-.025em;color:var(--ink);margin-bottom:0}
+.sib-card p{font:400 15px/1.6 var(--sans);color:var(--muted);margin-bottom:20px}
+.sib-go{font:500 13px/1 var(--sans);color:var(--sib)}
+
+/* ── page footer ── */
+.pagefoot{padding:40px 0}
+.pf-inner{display:flex;align-items:center;justify-content:space-between}
+.pf-links{display:flex;gap:24px}
+.pf-links a{font:400 13px/1 var(--sans);color:var(--muted);text-decoration:none}
+.pf-links a:hover{color:var(--ink)}
+
+/* ── discovery ── */
+.discovery{padding:80px 0;background:var(--bg)}
+.wireframes{padding:80px 0;background:var(--bg)}
+.disc-intro{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;margin-bottom:56px}
+.disc-card{border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface)}
+.dc-tag{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.dc-h{font:600 21px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.disc-card p{font:400 15px/1.6 var(--sans);color:var(--muted)}
+.evo-head{font:600 18px/1 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-bottom:24px}
+.evo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:40px}
+.evo{border:1px solid var(--border);border-radius:12px;padding:20px 18px;background:var(--bg-2);position:relative;display:flex;flex-direction:column}
+.evo-stage{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.evo-stage.killed{color:var(--red)}
+.evo-stage.shipped{color:var(--green)}
+.evo-name{font:600 14px/1.2 var(--serif);color:var(--ink);margin-bottom:18px}
+.evo-big{font:600 40px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);text-align:center;margin:8px 0 18px;text-decoration:line-through;text-decoration-color:rgba(198,69,69,.5)}
+.evo-rings{display:flex;gap:10px;justify-content:center;margin:14px 0 18px}
+.evo-rings span{width:34px;height:34px;border-radius:50%;border:5px solid var(--c);border-right-color:transparent;transform:rotate(45deg)}
+.evo-bars{display:flex;flex-direction:column;gap:5px;margin:8px 0 16px}
+.evo-bars i{height:6px;border-radius:99px;background:var(--accent);display:block}
+.evo-table{display:flex;flex-direction:column;gap:6px;margin:8px 0 16px;font:400 11px/1.4 var(--mono);color:var(--ink-2)}
+.evo-table span{display:flex;justify-content:space-between;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.evo-table b{font-weight:600}
+.evo-table .bad{color:var(--red)}
+.evo p{font:400 12px/1.45 var(--sans);color:var(--muted);margin-top:auto}
+.disc-link{font:500 14px/1 var(--sans);color:var(--accent);text-decoration:none}
+.disc-link:hover{text-decoration:underline}
+
+/* ── floating section nav ── */
+.sectnav{position:fixed;right:32px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:2px}
+.sectnav a{display:flex;align-items:center;gap:11px;justify-content:flex-end;text-decoration:none;padding:7px 0;font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--muted-2);transition:color .2s}
+.sectnav a .dot-n{width:8px;height:8px;border-radius:50%;background:var(--muted-2);transition:all .2s;flex:0 0 8px}
+.sectnav a .lbl{opacity:0;transform:translateX(6px);transition:all .2s;white-space:nowrap}
+.sectnav a:hover .lbl,.sectnav a.active .lbl{opacity:1;transform:translateX(0)}
+.sectnav a:hover,.sectnav a.active{color:var(--ink)}
+.sectnav a.active .dot-n{background:var(--accent);width:11px;height:11px}
+@media(max-width:1100px){.sectnav{right:14px;gap:6px}.sectnav a{padding:9px 2px}.sectnav a .dot-n{width:14px;height:14px;flex:0 0 14px}.sectnav a.active .dot-n{width:17px;height:17px;flex:0 0 17px}.sectnav .lbl{display:none}.sectnav a.active .lbl{display:block;opacity:1;transform:none;background:var(--ink,#1a1a1a);color:var(--paper,#fff);padding:4px 9px;border-radius:20px;font-size:11px;letter-spacing:.02em}}
+
+/* ── research (expanded) ── */
+.research{padding:80px 0;background:var(--bg)}
+.three-q{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0 8px}
+.tq{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px}
+.tq-n{font:500 12px/1 var(--mono);color:var(--accent);margin-bottom:14px}
+.tq p{font:400 15px/1.55 var(--sans);color:var(--ink-2)}
+.r-block{margin-top:56px;max-width:none}
+.feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+@media(max-width:860px){.feedback-grid{grid-template-columns:1fr}}
+.r-h{font:600 22px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.r-p{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.r-p em{font-style:italic;color:var(--accent)}
+.r-fig{margin-top:24px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.r-fig img{width:100%;display:block}
+.r-fig figcaption{font:400 12px/1.4 var(--mono);color:var(--muted);padding:12px 16px;border-top:1px solid var(--border-2)}
+.r-fig .ph{color:var(--muted-2)}
+.pullquote{border-left:3px solid var(--accent);padding:8px 0 8px 24px;margin:28px 0;font:400 24px/1.5 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.pullquote cite{display:block;margin-top:14px;font:400 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.hmw{margin-top:56px;background:var(--ink);border-radius:16px;padding:36px 40px}
+.hmw-l{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hmw p{font:400 26px/1.4 var(--serif);letter-spacing:-.015em;color:#fff;max-width:720px}
+.hmw em{font-style:italic;color:var(--accent)}
+/* discovery additions */
+.principles{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.pr{border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--surface)}
+.pr-t{font:600 16px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-bottom:9px}
+.pr p{font:400 14px/1.55 var(--sans);color:var(--muted)}
+.wf-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:40px 0 32px}
+.wf{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+.wf img{width:100%;display:block}
+.wf figcaption{font:400 12px/1.4 var(--mono);color:var(--muted);padding:12px 16px;border-top:1px solid var(--border-2)}
+
+/* C2 — discovery visual components (mapping + sequence) */
+.dv-map{display:grid;grid-template-columns:1fr auto 1.05fr;gap:28px;align-items:center;margin-top:28px}
+.dv-col-h{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.dv-cats{display:flex;flex-direction:column;gap:9px}
+.dv-chip{display:flex;align-items:center;gap:11px;border:1px solid var(--border);border-radius:9px;padding:11px 13px;background:var(--surface);font:400 13px/1.35 var(--sans);color:var(--ink-2)}
+.dv-chip .dv-dot{flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.55}
+.dv-chip.folded{border-style:dashed;background:var(--bg-2);color:var(--muted)}
+.dv-chip.folded .dv-dot{background:var(--muted-2);opacity:1}
+.dv-fold-tag{margin-left:auto;font:500 9px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dv-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--accent);min-width:64px}
+.dv-arrow .dv-six-four{font:600 26px/1 var(--serif);letter-spacing:-.02em;color:var(--accent)}
+.dv-arrow .dv-rule{font:400 11px/1.4 var(--mono);color:var(--muted);text-align:center;max-width:84px;letter-spacing:0;text-transform:none}
+.dv-phases{display:flex;flex-direction:column;gap:10px;counter-reset:dvph}
+.dv-phase{position:relative;border:1px solid var(--border);border-radius:11px;padding:13px 15px 13px 50px;background:var(--surface)}
+.dv-phase::before{counter-increment:dvph;content:counter(dvph);position:absolute;left:13px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:7px;background:var(--accent-l);color:var(--accent);font:500 12px/24px var(--mono);text-align:center}
+.dv-phase.seq{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-l)}
+.dv-phase-n{font:600 14px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.dv-phase-d{font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:3px}
+.dv-note{font:400 13px/1.55 var(--sans);color:var(--muted);margin-top:20px;border-left:2px solid var(--accent);padding-left:16px}
+@media(max-width:860px){.dv-map{grid-template-columns:1fr;gap:18px}.dv-arrow{flex-direction:row;min-width:0}.dv-arrow .dv-rule{max-width:none;text-align:left}}
+
+/* sequenced layers diagram */
+.dv-seq{display:grid;grid-template-columns:1fr;gap:0;margin:28px auto 0;max-width:560px}
+.dv-layer{position:relative;border:1px solid var(--border);border-radius:12px;padding:18px 20px;background:var(--surface)}
+.dv-layer.top{z-index:2;border-color:var(--border)}
+.dv-layer.foundation{margin-top:-1px;border-color:var(--accent);background:linear-gradient(0deg,var(--accent-l),transparent),var(--surface)}
+.dv-layer-tag{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.dv-layer.foundation .dv-layer-tag{color:var(--accent)}
+.dv-layer-t{font:600 16px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
+.dv-layer-p{font:400 13px/1.55 var(--sans);color:var(--muted)}
+.dv-seq-link{display:flex;align-items:center;justify-content:center;height:30px;color:var(--accent);font:500 11px/1 var(--mono);letter-spacing:.06em}
+.dv-seq-link .dv-line{flex:1;height:0;border-top:1.5px dashed var(--accent);opacity:.45}
+.dv-seq-link span{padding:0 12px;white-space:nowrap}
+.dv-seq-steps{display:flex;gap:0;margin-top:24px;align-items:stretch}
+.dv-step{flex:1;position:relative;padding:0 14px;text-align:center}
+.dv-step:not(:last-child)::after{content:'→';position:absolute;right:-7px;top:6px;color:var(--accent);font:400 14px/1 var(--mono)}
+.dv-step-n{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.dv-step-dot{width:11px;height:11px;border-radius:50%;background:var(--border);margin:0 auto 8px}
+.dv-step.on .dv-step-dot{background:var(--accent)}
+.dv-step.on .dv-step-n{color:var(--accent)}
+.dv-step-l{font:400 12px/1.35 var(--sans);color:var(--ink-2)}
+@media(max-width:860px){.dv-seq-steps{flex-direction:column;gap:14px}.dv-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%)}}
+
+@media(max-width:860px){
+  .three-q,.principles,.wf-grid{grid-template-columns:1fr}
+  .hmw p{font-size:20px}
+  .pullquote{font-size:19px}
+  .prob-grid{grid-template-columns:1fr;gap:28px}
+  .proc-steps{grid-template-columns:1fr}
+  .feat-inner{grid-template-columns:1fr;gap:28px}
+  .callouts{position:static}
+  .supp-grid,.sib-grid,.impact-grid{grid-template-columns:1fr}
+  .sec-h,.impact-h{font-size:30px}
+  .marker{display:none}
+}
+
+/* ── per-screen feature styles ── */
+/* ── the figure: landscape, callouts gutter on right ── */
+.figure{width:1240px;display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:start}
+/* ── the product screen (landscape dashboard) ── */
+.screen{background:var(--bg);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-xl);overflow:hidden}
+.fund-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
+.fund-name{font:600 24px/1.1 var(--serif);letter-spacing:-.02em}
+.fund-meta{font:400 12px/1 var(--mono);color:var(--muted);margin-top:6px}
+.period{font:500 11px/1 var(--mono);color:var(--ink-2);background:var(--bg-2);border:1px solid var(--border);border-radius:99px;padding:7px 14px}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 14px 13px;position:relative}
+.kpi .lab{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:11px}
+.kpi .val{font:600 27px/1 var(--serif);letter-spacing:-.02em;color:var(--ink);display:flex;align-items:baseline;gap:3px}
+.kpi .val span{font:400 11px/1 var(--mono);color:var(--muted-2);letter-spacing:0}
+.kpi .delta{margin-top:9px;font:500 11px/1 var(--mono);display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:5px}
+.delta.good{color:var(--green);background:var(--green-l)}
+.delta.bad{color:var(--red);background:rgba(198,69,69,.10)}
+.delta.amber{color:var(--amber);background:var(--amber-l)}
+.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+/* trend chart */
+.chart{height:148px;position:relative}
+.chart svg{width:100%;height:100%;overflow:visible}
+/* dq rings mini */
+.rings{display:flex;flex-direction:column;gap:13px}
+.ringrow{display:flex;align-items:center;gap:13px}
+.ringrow .meta{flex:1}
+.ringrow .rl{font:500 12px/1.2 var(--sans);color:var(--ink-2)}
+.ringrow .rv{font:600 16px/1 var(--serif);color:var(--ink)}
+.bar{height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--accent)}
+/* ── callouts gutter ── */
+.callouts{position:sticky;top:48px;display:flex;flex-direction:column;gap:18px;padding-top:8px}
+/* marker badge sitting on the screen */
+.marker{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font:500 11px/24px var(--mono);text-align:center;box-shadow:var(--shadow-md);z-index:5}
+.drill{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:0}
+.level{padding:22px 20px;border-right:1px solid var(--border-2);position:relative}
+.level:last-child{border-right:none}
+.lvl-tag{font:500 10px/1 var(--mono);letter-spacing:.1em;color:var(--accent);background:var(--accent-l);border-radius:5px;padding:5px 8px;display:inline-block;margin-bottom:14px}
+.lvl-name{font:600 17px/1.15 var(--serif);letter-spacing:-.02em}
+.lvl-sub{font:400 11px/1 var(--mono);color:var(--muted);margin-top:5px;margin-bottom:18px}
+.kpipair{display:flex;gap:10px;margin-bottom:6px}
+.kp{flex:1;background:var(--bg-2);border-radius:8px;padding:11px 12px}
+.kp .l{font:500 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.kp .v{font:600 22px/1 var(--serif);letter-spacing:-.02em}
+.kp .d{font:500 10px/1 var(--mono);margin-top:7px}
+.d.good{color:var(--green)}
+.d.bad{color:var(--red)}
+.d.amber{color:var(--amber)}
+.arrow{position:absolute;right:-11px;top:50%;width:22px;height:22px;border-radius:50%;background:var(--surface);border:1px solid var(--border);z-index:6;display:flex;align-items:center;justify-content:center;font:500 12px var(--mono);color:var(--accent);transform:translateY(-50%)}
+.gapchart{margin-top:14px;height:90px;display:flex;align-items:flex-end;gap:3px}
+.gapchart .b{flex:1;background:var(--accent);border-radius:2px 2px 0 0;opacity:.85}
+.gapchart .b.miss{background:repeating-linear-gradient(45deg,var(--red-l),var(--red-l) 3px,transparent 3px,transparent 6px);border:1px dashed var(--red);opacity:1}
+.missnote{font:500 10px/1.3 var(--mono);color:var(--red);margin-top:12px}
+.dq{display:grid;grid-template-columns:340px 1fr;gap:24px;padding:28px}
+.ringbox{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-legend{display:flex;flex-direction:column;gap:14px;margin-top:8px;width:100%}
+.rl-row{display:flex;align-items:center;gap:10px;font:400 13px/1 var(--sans);color:var(--ink-2)}
+.rl-row i{width:11px;height:11px;border-radius:3px}
+.rl-row b{margin-left:auto;font:600 15px/1 var(--serif);color:var(--ink)}
+.assetlist{display:flex;flex-direction:column}
+.al-head{font:600 14px/1 var(--serif);margin-bottom:2px}
+.al-sub{font:400 11px/1 var(--mono);color:var(--muted);margin-bottom:16px}
+.arow{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border-2)}
+.arow:last-child{border-bottom:none}
+.aname{flex:1;font:500 13px/1.3 var(--sans);color:var(--ink)}
+.aname span{display:block;font:400 11px/1 var(--mono);color:var(--muted-2);margin-top:4px}
+.score{font:600 15px/1 var(--serif);width:42px;text-align:right}
+.minibar{width:90px;height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden}
+.minibar i{display:block;height:100%;border-radius:99px}
+.flag{font:500 10px/1 var(--mono);padding:4px 8px;border-radius:5px;background:var(--red-l);color:var(--red)}
+.nz{display:grid;grid-template-columns:1fr 240px;gap:0}
+.nz-main{padding:24px 24px 20px;border-right:1px solid var(--border-2)}
+.nz-head{margin-bottom:16px}
+.nzchart{height:260px;position:relative}
+.nzchart svg{width:100%;height:100%;overflow:visible}
+.cross{position:absolute;font:500 10px/1 var(--mono);color:var(--red);background:var(--red-l);padding:4px 7px;border-radius:5px}
+.nz-side{padding:24px 20px}
+.risk-big{font:600 52px/1 var(--serif);letter-spacing:-.03em;color:var(--red)}
+.risk-lab{font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:6px;margin-bottom:24px}
+.riskrow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-2);font:400 13px/1 var(--sans)}
+.riskrow:last-child{border:none}
+.riskrow .yr{font:500 12px/1 var(--mono);color:var(--muted)}
+.riskrow .ct{font:600 14px/1 var(--serif)}
+.targ{padding:26px}
+.step{font:400 11px/1 var(--mono);color:var(--muted);margin-bottom:16px}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.path{border:1px solid var(--border);border-radius:10px;padding:16px 15px;background:var(--surface);position:relative}
+.path.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-l)}
+.ptag{font:500 9px/1 var(--mono);letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+.path.sel .ptag{color:var(--accent)}
+.pname{font:600 16px/1.1 var(--serif);letter-spacing:-.02em;margin-bottom:5px}
+.pdesc{font:400 12px/1.4 var(--sans);color:var(--muted)}
+.pcheck{position:absolute;top:14px;right:14px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border)}
+.path.sel .pcheck{background:var(--accent);border-color:var(--accent)}
+.traj{border-top:1px solid var(--border-2);padding-top:20px}
+.traj .t-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.t-title{font:600 14px/1 var(--serif)}
+.t-val{font:400 11px/1 var(--mono);color:var(--muted)}
+.traj-chart{height:130px}
+.traj-chart svg{width:100%;height:100%;overflow:visible}
+.es{display:grid;grid-template-columns:1fr 320px;gap:0}
+.queue{padding:24px;border-right:1px solid var(--border-2)}
+.q-head{font:600 14px/1 var(--serif);margin-bottom:2px}
+.q-sub{font:400 11px/1 var(--mono);color:var(--muted);margin-bottom:18px}
+.issue{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--border-2)}
+.issue:last-child{border:none}
+.sev{width:8px;height:8px;border-radius:50%;margin-top:5px;flex:0 0 8px}
+.sev.critical{background:var(--red)}
+.sev.warn{background:var(--amber)}
+.sev.info{background:var(--muted-2)}
+.issue.sel{background:var(--accent-l);margin:0 -12px;padding:14px 12px;border-radius:8px;border-bottom:none}
+.i-name{font:500 13px/1.2 var(--sans);color:var(--ink)}
+.i-msg{font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:3px}
+.sev-tag{font:500 9px/1 var(--mono);letter-spacing:.06em;padding:4px 7px;border-radius:5px;margin-left:auto;white-space:nowrap}
+.sev-tag.critical{background:var(--red-l);color:var(--red)}
+.compose{padding:24px;background:var(--bg-2)}
+.c-head{font:600 13px/1 var(--serif);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.c-head .auto{font:500 9px/1 var(--mono);letter-spacing:.06em;background:var(--accent-l);color:var(--accent);padding:4px 7px;border-radius:5px}
+.field{margin-bottom:12px}
+.field .fl{font:500 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.field .fv{font:400 12px/1.3 var(--sans);color:var(--ink-2);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:9px 11px}
+.field .fv.pri{color:var(--red);font-weight:500}
+.body-box{font:400 12px/1.55 var(--sans);color:var(--ink-2);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px;margin-top:6px}
+.send{margin-top:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px;font:500 13px/1 var(--sans);text-align:center}
+
+/* ══════════ Wireframe tab nav ══════════ */
+.pwf-section-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:64px;margin-bottom:14px}
+.pwf-section-h{font:600 30px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-top:120px;margin-bottom:6px}
+.pwf-section-sub{font:400 16px/1.6 var(--sans);color:var(--muted);margin-bottom:28px}
+.pwf-tabs-host{margin-top:0}
+.pwf-tabs-host .pwf{display:none}
+.pwf-tabs-host .pwf.active{display:block;margin-top:48px}
+.pwf-tabs{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;border-bottom:1.5px solid var(--border);margin-bottom:0;scrollbar-width:none}
+.pwf-tabs::-webkit-scrollbar{display:none;height:0;width:0}
+.pwf-tab{font:500 14px/1 var(--sans);background:transparent;border:0;cursor:pointer;padding:14px 18px;color:var(--muted);display:flex;align-items:center;gap:10px;border-bottom:3px solid transparent;white-space:nowrap;margin-bottom:-1.5px;transition:color .15s,border-color .15s}
+.pwf-tab:hover{color:var(--ink)}
+.pwf-tab.active{color:var(--ink);border-bottom-color:var(--accent)}
+.pwf-tab-n{font:500 10px/1 var(--mono);letter-spacing:.06em;background:var(--bg-2);color:var(--muted-2);padding:3px 7px;border-radius:999px}
+.pwf-tab.active .pwf-tab-n{background:var(--accent-l);color:var(--accent)}
+
+/* ══════════ Integrated process wireframes (scoped under .pwf) ══════════ */
+.pwf{
+  --paper:#f4efe6; --paper-2:#ece6da;
+  --pwf-ink:#1d1b18; --pwf-ink-2:#3a3631;
+  --pwf-muted:#6e685e; --pwf-muted-2:#9c9587;
+  --line:#2d2925; --line-soft:#b8b0a2;
+  --note:#fff5c9; --note-2:#ffe7b3; --note-pink:#f8d3cf;
+  --strike:#c64545; --good:#2a7a5a;
+  --hand:'Kalam',cursive; --hand-display:'Caveat',cursive; --pmono:'IBM Plex Mono',monospace;
+  --accent-soft:rgba(184,92,56,.14);
+
+  margin-top:0;
+  padding:0;
+  background:transparent;
+  color:var(--pwf-ink);
+}
+/* page-styled title + supporting text inside the .pwf block (kept on existing typography) */
+.pwf-tag{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.pwf-h{font:600 22px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;max-width:none}
+.pwf-p{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px;max-width:none}
+.pwf-p em{font-style:italic;color:var(--accent);font-weight:600}
+.pwf-sub-h{font:600 22px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin:48px 0 10px;max-width:none}
+
+/* single-column stack of boards */
+.pwf-stack{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px;align-items:start}
+@media(max-width:860px){.pwf-stack{grid-template-columns:1fr}}
+
+/* sketchy board */
+.pwf .board{
+  position:relative; background:#fbf6ec;
+  border:1px solid var(--line-soft);
+  border-radius:18px 10px 22px 12px / 14px 20px 10px 18px;
+  padding:18px 18px 16px;
+  box-shadow:3px 4px 0 -2px rgba(184,176,162,.6), 0 14px 24px -20px rgba(0,0,0,.18);
+  font-family:var(--hand);
+  color:var(--pwf-ink);
+}
+.pwf .board.tilt-l{transform:rotate(-.4deg)}
+.pwf .board.tilt-r{transform:rotate(.4deg)}
+.pwf .board-hdr{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:12px;padding-bottom:0;border-bottom:0;
+}
+.pwf .b-version{font-family:var(--pmono);font-size:11px;color:var(--accent);letter-spacing:.12em;font-weight:600}
+.pwf .b-name{font-family:var(--hand);font-weight:400;font-size:17px;color:var(--pwf-ink-2)}
+.pwf .b-tag{font-family:var(--pmono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--pwf-muted-2)}
+
+.pwf .canvas{
+  position:relative;background:#fff;
+  border:1.5px solid var(--line);
+  border-radius:8px 12px 6px 14px / 10px 8px 14px 6px;
+  padding:12px;min-height:240px;overflow:hidden;
+}
+.pwf .canvas.tall{min-height:360px}
+
+/* sketch primitives */
+.pwf .sk-row{display:flex;gap:6px;margin-bottom:8px;align-items:stretch}
+.pwf .sk-box{
+  border:1.5px solid var(--line);
+  border-radius:6px 9px 5px 10px / 8px 5px 11px 7px;
+  background:#fff;padding:8px;position:relative;
+  font-family:var(--pmono);font-size:9.5px;color:var(--pwf-ink-2);letter-spacing:.02em;
+}
+.pwf .sk-box.dashed{border-style:dashed;background:#fbf7ed}
+.pwf .sk-label{font-family:var(--pmono);font-size:9px;color:var(--pwf-muted);letter-spacing:.05em;text-transform:uppercase}
+.pwf .sk-line{height:4px;background:var(--line-soft);border-radius:999px}
+.pwf .sk-line.thin{height:2px}
+
+/* sticky-note callout overlaid on a canvas (scoped, won't collide with index's .callout) */
+.pwf .callout{
+  position:absolute;max-width:200px;
+  font-family:var(--hand);font-size:13px;line-height:1.3;color:var(--pwf-ink);
+  background:var(--note);
+  border:1.5px solid #c9b966;
+  border-radius:10px 14px 9px 13px;
+  padding:8px 11px;
+  box-shadow:2px 2px 0 -1px rgba(0,0,0,.12);
+  z-index:5;
+  display:block;gap:0;align-items:initial;
+}
+.pwf .callout.pink{background:var(--note-pink);border-color:#d99891}
+.pwf .callout.amber{background:var(--note-2);border-color:#d6a753}
+.pwf .callout b{font-weight:700;color:var(--pwf-ink)}
+
+/* board footer notes */
+.pwf .b-notes{margin-top:12px;display:grid;gap:6px}
+.pwf .b-note{
+  font-family:var(--hand);font-size:13px;line-height:1.35;color:var(--pwf-ink-2);
+  padding:4px 0 4px 18px;position:relative;
+}
+.pwf .b-note::before{content:'→';font-family:var(--pmono);font-weight:600;color:var(--accent);position:absolute;left:0;top:3px}
+.pwf .b-note.bad::before{content:'✕';color:var(--strike)}
+.pwf .b-note.good::before{content:'✓';color:var(--good)}
+.pwf .b-note.q::before{content:'?';color:var(--accent)}
+.pwf .b-note i{font-style:italic}
+
+/* sticky notes (HMW) */
+.pwf .stickies{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.pwf .sticky{
+  font-family:var(--hand);font-size:14px;line-height:1.4;
+  background:var(--note);padding:18px 18px 22px;
+  border:1.5px solid #c9b966;
+  box-shadow:4px 5px 0 -2px var(--line-soft), 0 12px 24px -16px rgba(0,0,0,.18);
+  position:relative;color:var(--pwf-ink-2);
+}
+.pwf .sticky.k1{transform:rotate(-1.2deg);background:var(--note);border-color:#c9b966}
+.pwf .sticky.k2{transform:rotate(.9deg);background:var(--note-pink);border-color:#d99891}
+.pwf .sticky.k3{transform:rotate(-.6deg);background:var(--note-2);border-color:#d6a753}
+.pwf .sticky.k4{transform:rotate(1.1deg);background:var(--accent-soft);border-color:var(--accent)}
+.pwf .sticky h5{font-family:var(--hand);font-weight:400;font-size:17px;margin-bottom:6px;color:var(--pwf-ink-2);letter-spacing:0}
+.pwf .sticky .tag{font-family:var(--pmono);font-size:9px;color:var(--pwf-muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;display:block}
+.pwf .sticky b{color:var(--pwf-ink);font-weight:700}
+.pwf .sticky u{text-decoration-color:var(--accent);text-underline-offset:3px}
+
+/* swim lane */
+.pwf .swim{
+  margin-top:28px;background:#fff;
+  border:1px solid var(--line-soft);
+  border-radius:14px 8px 18px 10px;
+  padding:20px;position:relative;
+}
+.pwf .swim h4{font-family:var(--hand);font-size:18px;color:var(--pwf-ink-2);margin-bottom:12px;font-weight:400}
+.pwf .swim-grid{display:grid;grid-template-columns:130px repeat(5,1fr);gap:8px;align-items:stretch}
+.pwf .swim-lane-label{font-family:var(--pmono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:14px 8px;border-right:1.5px dashed var(--line-soft);display:flex;align-items:center}
+.pwf .swim-stage-h{font-family:var(--pmono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pwf-muted);padding:6px 0;border-bottom:1.5px dashed var(--line-soft);text-align:center}
+.pwf .swim-step{background:var(--paper-2);border:1.2px solid var(--line-soft);border-radius:6px 9px 5px 10px;padding:8px 9px;font-family:var(--hand);font-size:12.5px;color:var(--pwf-ink-2);line-height:1.3;position:relative;min-height:56px}
+.pwf .swim-step.warn{background:var(--note-pink);border-color:#d99891}
+.pwf .swim-step b{font-weight:700;color:var(--pwf-ink)}
+
+/* decision/tradeoff pull-quotes — integrated as page text, not sketchy */
+.pwf-lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:72px;padding-top:0;border-top:0}
+.pwf-lane-notes h4{font:500 20px/1.25 var(--serif);letter-spacing:-.015em;color:var(--ink-2);margin-bottom:8px}
+.pwf-lane-notes h4 small{font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.pwf-lane-notes p{font:400 15px/1.6 var(--sans);color:var(--ink-2);margin-bottom:8px}
+.pwf-lane-notes p b{color:var(--ink);font-weight:600}
+
+/* board variants for downstream wireframe sections
+  , every non-shipped iteration is dimmed; the shipped one stays vivid and a touch larger */
+.pwf .board.dim,
+.pwf .board.killed{opacity:.72}
+.pwf .board.killed{background:#f3ece1}
+.pwf .board.killed::after{
+  content:'killed';position:absolute;top:14px;right:14px;
+  font-family:var(--hand-display);font-size:20px;color:var(--strike);
+  border:2px solid var(--strike);border-radius:999px;padding:1px 12px;
+  transform:rotate(8deg);background:rgba(255,255,255,.85);z-index:6;
+}
+.pwf .board.win{
+  background:#f1e8d2;
+  border-color:var(--line);
+  transform:scale(1.025);
+  z-index:2;
+  box-shadow:5px 6px 0 -2px rgba(184,176,162,.7), 0 22px 32px -22px rgba(0,0,0,.22);
+}
+.pwf .board.win.tilt-l{transform:scale(1.025) rotate(-.4deg)}
+.pwf .board.win.tilt-r{transform:scale(1.025) rotate(.4deg)}
+.pwf .board.win::after{
+  content:'shipped \2713';position:absolute;top:-10px;right:18px;
+  font-family:var(--hand-display);font-size:16px;color:var(--good);
+  border:2px solid var(--good);border-radius:999px;padding:1px 12px;
+  transform:rotate(-2deg);background:var(--paper);z-index:6;
+}
+.pwf .sk-val{font-family:var(--serif);font-weight:800;font-size:22px;line-height:1;color:var(--pwf-ink);letter-spacing:-.02em}
+.pwf .sk-val.sm{font-size:15px}
+.pwf .sk-val.accent{color:var(--accent)}
+.pwf .sk-cap{font-family:var(--pmono);font-size:8.5px;color:var(--pwf-muted-2);margin-top:2px;letter-spacing:.05em}
+.pwf .sk-spark{height:32px;display:flex;align-items:end;gap:2px}
+.pwf .sk-spark span{flex:1;background:var(--line-soft);border-radius:2px 2px 0 0}
+.pwf .sk-spark span.hi{background:var(--strike)}
+.pwf .sk-spark.g span{background:#b6c9bf}
+.pwf .sk-spark.g span.hi{background:var(--good)}
+.pwf .sk-circle{width:54px;height:54px;border-radius:50%;border:5px solid var(--line-soft)}
+.pwf .sk-circle.split-3{background:conic-gradient(var(--accent) 0 35%,var(--good) 35% 60%,#ddd6c8 60% 100%);border:none}
+.pwf .sk-box.accent{background:var(--accent-soft);border-color:var(--accent)}
+.pwf .sk-box.dark{background:#1d1b18;color:#fff}
+.pwf .sk-box.fill{background:var(--paper-2)}
+.pwf .sk-bar{height:6px;background:var(--line-soft);border-radius:999px;margin:4px 0}
+.pwf .sk-bar.short{width:38%}
+.pwf .sk-bar.mid{width:64%}
+.pwf .sk-bar.full{width:100%}
+.pwf .sk-bar.accent{background:var(--accent)}
+.pwf .sk-bar.good{background:var(--good)}
+.pwf .sk-bar.bad{background:var(--strike)}
+.pwf .callout.kova{background:var(--accent-soft);border-color:var(--accent)}
+.pwf .callout.kova strong{color:var(--accent)}
+
+/* sketchy tradeoffs table */
+.pwf .trade-table{width:100%;border-collapse:separate;border-spacing:0;font-family:var(--hand);font-size:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px 8px 18px 10px;overflow:hidden}
+.pwf .trade-table th{font-family:var(--pmono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--pwf-ink);font-weight:600;padding:12px 14px;text-align:left;border-bottom:2px solid var(--line-soft);background:var(--paper-2)}
+.pwf .trade-table td{padding:14px;vertical-align:top;line-height:1.5;border-bottom:1px dashed var(--line-soft);color:var(--pwf-ink-2)}
+.pwf .trade-table td:first-child{font-family:var(--hand);font-weight:400;font-size:16px;color:var(--pwf-ink-2);width:22%}
+.pwf .trade-table td b{color:var(--pwf-ink);font-weight:700}
+.pwf .trade-table .chip{display:inline-block;font-family:var(--pmono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-right:6px}
+.pwf .trade-table .chip.kept{background:rgba(42,122,90,.15);color:var(--good)}
+.pwf .trade-table .chip.cut{background:rgba(198,69,69,.12);color:var(--strike)}
+.pwf .trade-table .chip.def{background:var(--accent-soft);color:var(--accent)}
+
+/* lessons stickies row */
+.pwf .lessons{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.pwf .lesson{font-family:var(--hand);font-size:14px;line-height:1.45;background:var(--note-2);padding:18px;border:1.5px solid #d6a753;box-shadow:4px 5px 0 -2px var(--line-soft);position:relative;color:var(--pwf-ink-2)}
+.pwf .lesson:nth-child(even){background:var(--accent-soft);border-color:var(--accent);transform:rotate(.6deg)}
+.pwf .lesson:nth-child(odd){transform:rotate(-.6deg)}
+.pwf .lesson b{font-weight:700;color:var(--pwf-ink)}
+
+@media (max-width:880px){
+  .pwf .stickies{grid-template-columns:1fr}
+  .pwf-lane-notes{grid-template-columns:1fr;gap:20px}
+  .pwf .swim-grid{font-size:11px}
+  .pwf .lessons{grid-template-columns:1fr}
+}
+
+/* hero location/email meta — stacked, matches homepage/About */
+.hero-meta-top{text-align:center;padding-top:54px;margin-bottom:56px}
+.hero-meta__label{display:block;font:500 .65rem/1.8 'DM Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.hero-meta__value{display:block;font:500 .52rem/1.8 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;opacity:.55;color:var(--ink)}
+.hero-meta__value a{color:inherit;text-decoration:none}
+
+/* circular nav buttons — theme-driven pill, matches homepage */
+.nav-btn{position:fixed;top:18px;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--s);color:var(--p);border:none;cursor:pointer;font:900 .52rem/1 'Barlow',sans-serif;letter-spacing:.12em;text-transform:uppercase;display:grid;place-items:center;text-decoration:none;transition:transform .3s cubic-bezier(.22,.61,.36,1),background-color .65s ease,color .65s ease}
+.nav-btn:hover{transform:scale(1.1)}
+.nav-btn{right:18px}
+.nav-btn--2{right:74px}
+
+/* homepage CONTACT footer — homepage class names, theme-driven palette */
+.footer{position:relative;overflow:hidden}
+.footer__cap{height:48px;background:var(--bg)}
+.footer__body{background:var(--s);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:24px}
+.footer__contact{font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:5vw;white-space:nowrap;text-transform:uppercase;letter-spacing:-.02em;text-align:center;color:var(--p);margin:0;line-height:.82;user-select:none;pointer-events:none}
+.footer__links{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:32px}
+.footer__link{font-family:'DM Mono',monospace;font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c);text-decoration:none;transition:color .22s}
+.footer__link:hover{color:var(--p)}
+.footer__copy{font-family:'DM Mono',monospace;font-weight:500;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);opacity:.6;margin-top:8px}
+</style>
+
+<a class="nav-btn nav-btn--2" href="../index.html" aria-label="Home">HOME</a>
+<a class="nav-btn" href="../about.html" aria-label="About">ABOUT</a>
+
+<nav class="sectnav" aria-label="Section navigation">
+  <a href="#introduction" data-sec="introduction"><span class="lbl">Introduction</span><span class="dot-n"></span></a>
+  <a href="#problem" data-sec="problem"><span class="lbl">Problem</span><span class="dot-n"></span></a>
+  <a href="#research" data-sec="research"><span class="lbl">Research</span><span class="dot-n"></span></a>
+  <a href="#discovery" data-sec="discovery"><span class="lbl">Discovery</span><span class="dot-n"></span></a>
+  <a href="#wireframes" data-sec="wireframes"><span class="lbl">Wireframes</span><span class="dot-n"></span></a>
+  <a href="#features" data-sec="features"><span class="lbl">Final UI</span><span class="dot-n"></span></a>
+  <a href="#impact" data-sec="impact"><span class="lbl">Impact</span><span class="dot-n"></span></a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta-top">
+      <span class="hero-meta__label">London, UK</span>
+      <span class="hero-meta__value"><a href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a></span>
+    </div>
+    <h1>Kova</h1>
+    <p class="h-sub">ESG intelligence platform turning raw portfolio data into the answers fund managers were actually asking.</p>
+    <div class="hero-visual">
+      <div class="hv-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb" id="hcs-crumb">kova / Metropolitan Holdings / overview</span></div>
+      <div class="hero-carousel" id="hcs">
+        <div class="hcs-track" id="hcs-track">
+          <div class="hcs-slide" data-label="01 · Data quality" data-crumb="kova / data quality / Metropolitan Holdings" data-caption="DQ score split into coverage, completeness and automation, with a live breakdown per asset." data-dur="9400"><iframe src="motion/dq-rings.html?v=10" title="Data quality rings and meters" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="02 · Variance indicators" data-crumb="kova / data quality / variance" data-caption="" data-dur="8000"><iframe src="motion/variance.html?v=10" title="Variance indicators" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="03 · Portfolio map" data-crumb="kova / portfolio / map" data-caption="Every asset across the UK, Ireland and Europe on a real basemap, colour-coded by carbon intensity." data-dur="10500"><iframe src="motion/asset-map.html?v=10" title="Portfolio asset map" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="04 · Gap-filling" data-crumb="kova / data quality / gap-filling" data-caption="Missing readings get scanned, flagged, then filled with an estimate plus a confidence figure." data-dur="9500"><iframe src="motion/gap-filling.html?v=10" title="Gap-filling logic" loading="lazy" scrolling="no"></iframe></div>
+          <div class="hcs-slide" data-label="05 · Toast notifications" data-crumb="kova / dashboard / notifications" data-caption="Realtime alerts always keeping you in the loop." data-dur="9600"><iframe src="motion/toast.html?v=10" title="Toast notification stack" loading="lazy" scrolling="no"></iframe></div>
+        </div>
+        <div class="hcs-dots" id="hcs-dots"></div>
+      </div>
+      <p class="hcs-caption" id="hcs-caption"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW ══ -->
+<section class="overview" id="introduction">
+  <div class="wrap">
+    <div class="ov-grid">
+      <div class="ov-meta">
+        <div class="ov-item"><div class="l">Client</div><div class="v">Thornfield Energy<br><span style="color:var(--muted);font-size:13px">Pseudonyms used for confidentiality</span></div></div>
+        <div class="ov-item"><div class="l">Timeline</div><div class="v">2023 – 2024<br><span style="color:var(--muted);font-size:13px">~7 months</span></div></div>
+        <div class="ov-item"><div class="l">Role</div><div class="v">Lead Product Designer<br><span style="color:var(--muted);font-size:13px">End-to-end, research to delivery</span></div></div>
+        <div class="ov-item"><div class="l">Team</div><div class="v team">Design lead (me)
+1 UX Researcher
+1 Product Manager
+3–4 Engineers</div></div>
+      </div>
+      <div class="ov-brief">
+        <h2>The brief</h2>
+        <p>Thornfield's ESG platform held energy and carbon data across 32 assets, but the analytics layer surfaced numbers without meaning. Fund managers could see figures, yet couldn't answer the questions that mattered: are we on track, which asset is the problem, can I even trust this number?</p>
+        <p>My job was to redesign the analytics layer end to end, and to design and ship a 0→1 intelligence module on top of it, so the platform moved from a passive data repository to something that actively told users what was going on.</p>
+        <div class="phase-note">Kova was the second phase of a larger product effort. The first phase fixed a broken underlying data model; only once that foundation was sound could a trustworthy analytics layer be built on top. You can't build intelligence on data you don't trust.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EARLY STATS ══ -->
+<section class="early-stats-section">
+  <div class="wrap">
+    <div class="early-stats">
+      <div class="est"><div class="ev">8 of 12</div><div class="el">Fund managers who stopped exporting to Power BI within a quarter of launch</div></div>
+      <div class="est"><div class="ev">0→1</div><div class="el">Data quality module, a net new capability the platform had never had</div></div>
+      <div class="est"><div class="ev">4</div><div class="el">Analytics modules shipped across phased delivery</div></div>
+      <div class="est"><div class="ev">50%+</div><div class="el">Fewer review rounds after four design principles were agreed before any wireframe began</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="sec-label">Problem</div>
+    <div class="prob-grid">
+      <div class="prob-block">
+        <div class="pb-tag">What we were solving</div>
+        <p>The platform stored ESG data well but interpreted it poorly. Users were exporting raw figures into Power BI and spreadsheets just to make sense of them, the product wasn't doing the thinking it promised to.</p>
+      </div>
+      <div class="prob-block">
+        <div class="pb-tag">Who we were solving for</div>
+        <p>Fund managers and asset owners who needed diagnostic clarity, plus the ESG analysts maintaining the data behind them. Seven distinct role types surfaced in research, each reading the same data for different decisions.</p>
+      </div>
+      <div class="prob-block">
+        <div class="pb-tag">The end goal</div>
+        <p>Turn raw ESG data into signals people could act on. Make data quality something users could see and trust, and surface the one asset or anomaly that actually needed attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="research" id="research">
+  <div class="wrap">
+    <div class="sec-label">Research</div>
+    <h2 class="sec-h">Users knew the questions, the platform couldn't answer them</h2>
+    <p class="sec-sub">Structured interviews and annotated review sessions with fund managers, ESG managers and sustainability consultants, every session tagged and themed in Dovetail, but listened back to in full because the hedges that shape a real insight rarely survive a summary.</p>
+
+    <div class="three-q">
+      <div class="tq"><div class="tq-n">Q1</div><p>When something looks off, why do people have to leave the platform to figure out why?</p></div>
+      <div class="tq"><div class="tq-n">Q2</div><p>Why does data quality only show up after the report's already wrong?</p></div>
+      <div class="tq"><div class="tq-n">Q3</div><p>What's the shortest path from a number on screen to the meter behind it?</p></div>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">Mapping the experience</h3>
+      <p class="r-p">I mapped the full experience across user types, the fund manager reading portfolio performance, the consultant diagnosing a meter issue, the data admin working out why the numbers looked wrong. Organised across four phases, spotting problems, analysing, drilling down, and what comes next, the map surfaced exactly where the platform fell short at each stage.</p>
+      <figure class="r-fig"><img src="assets/Experience map.png" alt="Experience map across the investigation journey, four phases"><figcaption>Experience map · four phases of the investigation journey</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <p class="r-p">The swim-lane traced what actually happened when a fund manager spotted a problem, three roles across five phases, and how a simple data query turned into a multi-person escalation chain.</p>
+      <figure class="r-fig"><img src="assets/User journey - swimlanes.png" alt="Swim-lane journey showing the escalation chain and bottlenecks"><figcaption>Swim-lane journey · where a simple query became an escalation</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">What we heard on data visualisation</h3>
+      <p class="r-p">Users could navigate the platform but consistently struggled to interpret what they saw. Charts showed values without context, no benchmark comparison, no trend direction, no clear signal about what to do next. The same issue surfaced again and again.</p>
+      <blockquote class="pullquote">"There is too much going on… no way to know what to look at first."<cite>Asset Manager, Thornfield Energy</cite></blockquote>
+      <p class="r-p">At fund level, users wanted breakdowns by floor area, sector and landlord/tenant split without clicking through multiple pages. At asset level, they wanted consistency, the same metrics at the same depth. A configurable view, surfacing the most relevant data first, came up repeatedly.</p>
+
+      <div class="feedback-grid">
+        <figure class="r-fig"><img src="assets/Feedback 1.png" alt="User testing session capture"><figcaption>User testing · annotated review session</figcaption></figure>
+        <figure class="r-fig"><img src="assets/Feedback 2.png" alt="User testing session capture"><figcaption>User testing · annotated review session</figcaption></figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ DISCOVERY / DEFINE ══ -->
+<section class="discovery" id="discovery">
+  <div class="wrap">
+    <div class="sec-label">Discovery</div>
+    <h2 class="sec-h">A redesigned analytics layer, and a new intelligence module beneath it</h2>
+    <p class="sec-sub">Eight interview sessions affinity-mapped into six problem categories. Dovetail's AI clustered the initial themes; I interrogated, collapsed and re-labelled them until the groupings reflected what I'd actually heard, then reframed each root cause as a How-Might-We to set the brief with product and engineering.</p>
+
+    <div class="r-block">
+      <h3 class="r-h">Phased roadmap, ship incrementally, validate between phases</h3>
+      <p class="r-p">The work split into four phases, each tackling a different data domain, performance, dashboards, data quality, and site-wide improvements. That let us ship incrementally and validate with users between phases rather than redesigning everything at once.</p>
+      <figure class="r-fig"><img src="assets/roadmap.png" alt="Roadmap diagram showing the four phases of work"><figcaption>Phased roadmap across data visualisation and data quality</figcaption></figure>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">Six problem categories, four phases, one defensible cut</h3>
+      <p class="r-p">The affinity map gave me six root-cause categories. Six parallel workstreams would have been six things half-finished, so I collapsed them into four phases by sequencing on dependency, not on how loud each complaint was. Two categories that couldn't earn a phase of their own folded into the work they were closest to, rather than living on as a backlog nobody owned.</p>
+
+      <div class="dv-map">
+        <div>
+          <div class="dv-col-h">6 problem categories</div>
+          <div class="dv-cats">
+            <div class="dv-chip"><span class="dv-dot"></span>Hard to read performance</div>
+            <div class="dv-chip"><span class="dv-dot"></span>Dashboard answers no question</div>
+            <div class="dv-chip"><span class="dv-dot"></span>Data quality is invisible</div>
+            <div class="dv-chip"><span class="dv-dot"></span>Drill-down loses context</div>
+            <div class="dv-chip folded"><span class="dv-dot"></span>Inconsistent metrics<span class="dv-fold-tag">folded in</span></div>
+            <div class="dv-chip folded"><span class="dv-dot"></span>Slow, scattered navigation<span class="dv-fold-tag">folded in</span></div>
+          </div>
+        </div>
+        <div class="dv-arrow">
+          <div class="dv-six-four">6 → 4</div>
+          <div class="dv-rule">collapsed on dependency, not complaint volume</div>
+        </div>
+        <div>
+          <div class="dv-col-h">4 sequenced phases</div>
+          <div class="dv-phases">
+            <div class="dv-phase"><div class="dv-phase-n">Performance</div><div class="dv-phase-d">What users touched every day, fixed first.</div></div>
+            <div class="dv-phase"><div class="dv-phase-n">Dashboards</div><div class="dv-phase-d">Make every tile answer a question.</div></div>
+            <div class="dv-phase seq"><div class="dv-phase-n">Data quality</div><div class="dv-phase-d">Trust had to be visible before anyone acts on a signal.</div></div>
+            <div class="dv-phase"><div class="dv-phase-n">Site-wide</div><div class="dv-phase-d">Only paid off once the rest was in place.</div></div>
+          </div>
+        </div>
+      </div>
+      <p class="dv-note">The defensible cut: the two folded-in categories collapsed because they depended on the four phases above, not because they were quieter. Dependency ordered the roadmap, complaint volume did not.</p>
+    </div>
+
+    <div class="r-block">
+      <h3 class="r-h">The intelligence module, sequenced last on purpose</h3>
+      <p class="r-p">Beneath the analytics layer sat a 0→1 intelligence module: the part that did the thinking the product had been promising, scanning the portfolio for the one asset or anomaly that needed attention and saying so. I sequenced it after data quality on purpose. Intelligence pointed at a number nobody trusts is worse than none, it just makes the wrong figure louder.</p>
+
+      <div class="dv-seq">
+        <div class="dv-layer top">
+          <div class="dv-layer-tag">Layer on top</div>
+          <div class="dv-layer-t">Intelligence module · 0→1</div>
+          <div class="dv-layer-p">Surfaces the one asset or anomaly that needs attention, instead of leaving the user to read it out of a chart.</div>
+        </div>
+        <div class="dv-seq-link"><span class="dv-line"></span><span>only trustworthy if it sits on</span><span class="dv-line"></span></div>
+        <div class="dv-layer foundation">
+          <div class="dv-layer-tag">Foundation beneath</div>
+          <div class="dv-layer-t">Data quality module</div>
+          <div class="dv-layer-p">Coverage and completeness made visible, so a surfaced signal points at a number a user can actually trust.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ WIREFRAMES ══ -->
+<section class="wireframes" id="wireframes">
+  <div class="wrap">
+    <div class="sec-label">Wireframes</div>
+    <h2 class="sec-h">Wireframing the analytics surface</h2>
+    <p class="sec-sub">How the dashboard, drill-downs and target-setting flows took shape before the final UI.</p>
+
+    <div class="pwf-tabs-host" id="pwf-host">
+      <div class="pwf-tabs" id="pwf-tabs" role="tablist">
+        <button class="pwf-tab active" data-target="0" role="tab" aria-selected="true"><span class="pwf-tab-n">01</span>Problem statement</button>
+        <button class="pwf-tab" data-target="1" role="tab" aria-selected="false"><span class="pwf-tab-n">02</span>Dashboard</button>
+        <button class="pwf-tab" data-target="2" role="tab" aria-selected="false"><span class="pwf-tab-n">03</span>Data quality</button>
+        <button class="pwf-tab" data-target="3" role="tab" aria-selected="false"><span class="pwf-tab-n">04</span>Target setting</button>
+        <button class="pwf-tab" data-target="4" role="tab" aria-selected="false"><span class="pwf-tab-n">05</span>Drill-down &amp; IA</button>
+        <button class="pwf-tab" data-target="5" role="tab" aria-selected="false"><span class="pwf-tab-n">06</span>Tradeoffs &amp; cuts</button>
+      </div>
+
+    <!-- ── 01 · Problem statement — integrated wireframe section ── -->
+    <div class="pwf active">
+      <h3 class="pwf-h">The mess we walked into</h3>
+      <p class="pwf-p">The platform <em>had</em> the data. It just couldn't answer any of the questions a fund manager actually asks on a Tuesday morning. So before pushing pixels we mapped users, pain, and a single How-Might-We we could test every screen against.</p>
+
+      <div class="pwf-stack">
+
+        <!-- Board 1: What we inherited -->
+        <div class="board tilt-l">
+          <div class="board-hdr">
+            <div><div class="b-version">v0 · as-is</div><div class="b-name">What we inherited</div></div>
+            
+          </div>
+          <div class="canvas tall" style="padding:14px;">
+            <div class="sk-row" style="margin-bottom:10px;">
+              <div class="sk-box" style="width:80px;">logo</div>
+              <div class="sk-box" style="flex:1;">tabs · tabs · tabs · tabs · tabs · tabs</div>
+              <div class="sk-box" style="width:60px;">user</div>
+            </div>
+            <div class="sk-box" style="margin-bottom:8px; padding:10px;">
+              <div class="sk-label">carbon &middot; gas &middot; electricity &middot; water (all on one)</div>
+              <div style="position:relative;height:90px;margin-top:4px;">
+                <svg viewBox="0 0 300 80" preserveAspectRatio="none" style="width:100%;height:100%;">
+                  <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,40 30,35 60,55 90,30 120,42 150,60 180,32 210,48 240,38 270,55 300,30"/>
+                  <polyline fill="none" stroke="#2a7a5a" stroke-width="2" points="0,60 30,45 60,40 90,55 120,30 150,42 180,55 210,40 240,52 270,38 300,46"/>
+                  <polyline fill="none" stroke="#9c9587" stroke-width="2" points="0,20 30,50 60,28 90,45 120,55 150,32 180,48 210,28 240,42 270,52 300,35"/>
+                  <polyline fill="none" stroke="#c6892b" stroke-width="2" points="0,72 30,30 60,62 90,40 120,68 150,28 180,58 210,55 240,30 270,62 300,40"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box dashed" style="flex:1;height:38px;">table · 12 cols · no sort</div>
+            </div>
+
+            <div class="callout pink" style="top:96px; right:-4px; transform:rotate(2deg);">
+              4 utilities on one chart → nobody can read it
+            </div>
+            <div class="callout" style="bottom:96px; left:-10px; transform:rotate(-2deg);">
+              KPI tiles but no <b>variance</b>, no <b>target</b>, no <b>data quality</b>
+            </div>
+            <div class="callout amber" style="bottom:6px; right:-6px; transform:rotate(1.5deg);">
+              "table of doom", no way to drill in
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">Charts displayed values without context, no benchmark, no trend direction.</div>
+            <div class="b-note bad">Data quality lived 4 clicks away, invisible to the people who needed it.</div>
+            <div class="b-note q">User quote: <i>"there is too much going on… no way to know what to look at first."</i></div>
+          </div>
+        </div>
+
+        <!-- Board 2: Three people. Three loops. -->
+        <div class="board tilt-r">
+          <div class="board-hdr">
+            <div><div class="b-version">v0 · users</div><div class="b-name">Three people. Three loops.</div></div>
+            
+          </div>
+          <div class="canvas tall" style="padding:14px;">
+            <svg viewBox="0 0 460 360" style="width:100%;height:auto;">
+              <g>
+                <circle cx="90" cy="80" r="44" fill="#fff" stroke="#1d1b18" stroke-width="2"/>
+                <text x="90" y="74" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">Fund</text>
+                <text x="90" y="90" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">manager</text>
+              </g>
+              <text x="160" y="64" font-family="Kalam" font-size="13" fill="#3a3631">"is my portfolio</text>
+              <text x="160" y="80" font-family="Kalam" font-size="13" fill="#3a3631">on track?"</text>
+              <text x="160" y="100" font-family="IBM Plex Mono" font-size="10" fill="#b85c38" letter-spacing=".06em">NEEDS: descriptive analytics</text>
+
+              <g>
+                <circle cx="90" cy="190" r="44" fill="#fff" stroke="#1d1b18" stroke-width="2"/>
+                <text x="90" y="184" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">ESG</text>
+                <text x="90" y="200" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">consultant</text>
+              </g>
+              <text x="160" y="172" font-family="Kalam" font-size="13" fill="#3a3631">"can I trust</text>
+              <text x="160" y="188" font-family="Kalam" font-size="13" fill="#3a3631">this number?"</text>
+              <text x="160" y="208" font-family="IBM Plex Mono" font-size="10" fill="#b85c38" letter-spacing=".06em">NEEDS: diagnostic tools</text>
+
+              <g>
+                <circle cx="90" cy="300" r="44" fill="#fff" stroke="#1d1b18" stroke-width="2"/>
+                <text x="90" y="294" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">Asset /</text>
+                <text x="90" y="310" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1d1b18">data admin</text>
+              </g>
+              <text x="160" y="282" font-family="Kalam" font-size="13" fill="#3a3631">"why is this</text>
+              <text x="160" y="298" font-family="Kalam" font-size="13" fill="#3a3631">meter broken?"</text>
+              <text x="160" y="318" font-family="IBM Plex Mono" font-size="10" fill="#b85c38" letter-spacing=".06em">NEEDS: data quality + fix path</text>
+
+              <path d="M 360 80 Q 410 190 360 300" fill="none" stroke="#b85c38" stroke-width="2" stroke-dasharray="6 4"/>
+              <text x="380" y="190" font-family="Caveat" font-size="22" fill="#b85c38" font-weight="700">same data,</text>
+              <text x="380" y="212" font-family="Caveat" font-size="22" fill="#b85c38" font-weight="700">three jobs</text>
+            </svg>
+          </div>
+          <div class="b-notes">
+            <div class="b-note">Different jobs-to-be-done, but they all hit the <b>same</b> portfolio data. Pushed us toward "same metrics at every level".</div>
+            <div class="b-note">Big realization: the consultant escalation was a <b>tooling gap</b>, not a service gap. We could give it back to the manager.</div>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="pwf-sub-h">Three questions that framed everything that came after.</h4>
+      <p class="pwf-p">From eight interviews and a Dovetail-tagged synthesis. We taped these to the wall and every wireframe had to earn its place against them.</p>
+
+      <div class="stickies">
+        <div class="sticky k1">
+          <span class="tag">HMW · 01</span>
+          <h5>Highlight key issues with <u>minimal clicks</u> -</h5>
+          and let fund managers drill into problem areas <b>with full context at every level</b>.
+        </div>
+        <div class="sticky k2">
+          <span class="tag">HMW · 02</span>
+          <h5>Make data quality a <u>first-class metric</u> -</h5>
+          surfaced next to performance, <b>before</b> the report is signed off, not in an admin screen nobody opens.
+        </div>
+        <div class="sticky k3">
+          <span class="tag">HMW · 03</span>
+          <h5>Move the investigation loop <u>back to the user</u> -</h5>
+          so a fund manager can diagnose a meter spike <b>without</b> emailing a consultant.
+        </div>
+      </div>
+
+      <div class="swim">
+        <h4>The as-is investigation journey, five phases, three roles, one bottleneck.</h4>
+        <div class="swim-grid">
+          <div></div>
+          <div class="swim-stage-h">Spot</div>
+          <div class="swim-stage-h">Investigate</div>
+          <div class="swim-stage-h">Verify</div>
+          <div class="swim-stage-h">Resolve</div>
+          <div class="swim-stage-h">Report</div>
+
+          <div class="swim-lane-label">Fund mgr</div>
+          <div class="swim-step">notices spike in monthly report</div>
+          <div class="swim-step warn">can't see <b>which meter</b> caused it</div>
+          <div class="swim-step warn">emails consultant, <b>blocked</b></div>
+          <div class="swim-step">waits 2-4 days</div>
+          <div class="swim-step">re-runs report manually</div>
+
+          <div class="swim-lane-label">Consultant</div>
+          <div class="swim-step"></div>
+          <div class="swim-step">opens platform, drills 4 levels</div>
+          <div class="swim-step warn">manually checks meter reads in <b>Excel</b></div>
+          <div class="swim-step warn">estimates missing values by hand</div>
+          <div class="swim-step">writes back</div>
+
+          <div class="swim-lane-label">Platform</div>
+          <div class="swim-step">- silent on bad data -</div>
+          <div class="swim-step warn">no drill-down preserves context</div>
+          <div class="swim-step warn">no DQ score, no gap markers</div>
+          <div class="swim-step warn">no resolution UI</div>
+          <div class="swim-step">just stores the number</div>
+        </div>
+      </div>
+
+      <div class="pwf-lane-notes">
+        <div>
+          <h4><small>Decision</small>The platform should do the consultant's job.</h4>
+          <p>Every red box above was an opportunity for tooling to remove a handoff. We re-scoped the brief from "redesign the dashboard" to "give the fund manager the investigation loop end-to-end".</p>
+          <p>That broke the work cleanly into two streams: <b>data viz</b> (Spot + Investigate) and a new <b>data quality module</b> (Verify + Resolve).</p>
+        </div>
+        <div>
+          <h4><small>Tradeoff</small>Slower phase 1 to save phase 3.</h4>
+          <p>We could have shipped a prettier dashboard in 4 weeks. Instead we spent the first 3 weeks on <b>business logic</b>, L/T scope rules, target-setting decision tree, coverage-vs-completeness definitions.</p>
+          <p>Painful to defend, but it meant the dashboard didn't get redesigned twice when the rules changed.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 02 · Dashboard — integrated wireframe section ── -->
+    <div class="pwf">
+      <h3 class="pwf-h">From "wall of data" to "answer a question"</h3>
+      <p class="pwf-p">Four passes. The first overcorrected by deleting too much. The second overcorrected by adding it all back. The fourth one earned its place by making every tile answer "should I be worried, and where do I click?"</p>
+
+      <div class="pwf-stack">
+
+        <!-- v1 -->
+        <div class="board killed tilt-l">
+          <div class="board-hdr">
+            <div><div class="b-version">v1</div><div class="b-name">Just the totals</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="margin-bottom:10px;">
+              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
+                <div class="sk-label">carbon</div><div class="sk-val">47.2</div><div class="sk-cap">kgCO₂e / m²</div>
+              </div>
+              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
+                <div class="sk-label">elec</div><div class="sk-val">131</div><div class="sk-cap">kWh / m²</div>
+              </div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
+                <div class="sk-label">gas</div><div class="sk-val">18.4</div><div class="sk-cap">kWh / m²</div>
+              </div>
+              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
+                <div class="sk-label">water</div><div class="sk-val">0.84</div><div class="sk-cap">m³ / m²</div>
+              </div>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">User in test: "good… but compared to what?"</div>
+            <div class="b-note bad">No variance, no target, no DQ, useless for decisions.</div>
+          </div>
+        </div>
+
+        <!-- v2 -->
+        <div class="board dim">
+          <div class="board-hdr">
+            <div><div class="b-version">v2</div><div class="b-name">KPIs + variance</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="margin-bottom:8px;">
+              <div class="sk-box" style="flex:1;padding:10px;">
+                <div class="sk-label">carbon</div>
+                <div class="sk-val sm">47.2 <span style="color:var(--strike);font-size:12px;">↑11%</span></div>
+                <div class="sk-spark"><span style="height:30%"></span><span style="height:50%"></span><span style="height:40%"></span><span class="hi" style="height:70%"></span></div>
+              </div>
+              <div class="sk-box" style="flex:1;padding:10px;">
+                <div class="sk-label">elec</div>
+                <div class="sk-val sm">131 <span style="color:var(--good);font-size:12px;">↓14%</span></div>
+                <div class="sk-spark g"><span style="height:60%"></span><span style="height:50%"></span><span style="height:40%"></span><span class="hi" style="height:30%"></span></div>
+              </div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box" style="flex:1;padding:10px;">
+                <div class="sk-label">gas</div>
+                <div class="sk-val sm">18.4 <span style="color:var(--good);font-size:12px;">↓9%</span></div>
+                <div class="sk-spark g"><span style="height:55%"></span><span style="height:48%"></span><span style="height:40%"></span><span class="hi" style="height:32%"></span></div>
+              </div>
+              <div class="sk-box" style="flex:1;padding:10px;">
+                <div class="sk-label">water</div>
+                <div class="sk-val sm">0.84 <span style="color:var(--strike);font-size:12px;">↑9%</span></div>
+                <div class="sk-spark"><span style="height:30%"></span><span style="height:45%"></span><span style="height:38%"></span><span class="hi" style="height:60%"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Variance arrows passed the hallway test.</div>
+            <div class="b-note bad">Still no <b>trend over years</b>, managers want 4yr context.</div>
+            <div class="b-note q">Where does data quality go?</div>
+          </div>
+        </div>
+
+        <!-- v3 -->
+        <div class="board dim tilt-r">
+          <div class="board-hdr">
+            <div><div class="b-version">v3</div><div class="b-name">+ trend &amp; ranking</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="gap:3px;margin-bottom:6px;">
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">47</div></div>
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">131</div></div>
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">GAS</div><div class="sk-val sm">18</div></div>
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">H₂O</div><div class="sk-val sm">.84</div></div>
+            </div>
+            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+              <div class="sk-cap">CARBON · 5yr trend</div>
+              <svg viewBox="0 0 200 56" preserveAspectRatio="none" style="width:100%;height:50px;">
+                <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,12 50,20 100,28 150,38 200,44"/>
+                <polyline fill="none" stroke="#9c9587" stroke-width="1.5" stroke-dasharray="3 3" points="0,14 50,22 100,30 150,40 200,42"/>
+                <circle cx="200" cy="44" r="3" fill="#b85c38"/>
+              </svg>
+            </div>
+            <div class="sk-box" style="padding:8px;">
+              <div class="sk-cap">ASSET RANKING</div>
+              <div style="display:flex;gap:2px;align-items:flex-end;height:36px;margin-top:6px;">
+                <div style="flex:1;height:40%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:52%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:60%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:72%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:84%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:96%;background:#d99891;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:70%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:88%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Ranked bars surface "which asset is dragging us down" instantly.</div>
+            <div class="b-note good">Target dashed line gives every value a yardstick.</div>
+            <div class="b-note bad">DQ still buried, testers ignored it.</div>
+          </div>
+        </div>
+
+        <!-- v4 final -->
+        <div class="board win">
+          <div class="board-hdr">
+            <div><div class="b-version">v4 · final</div><div class="b-name">DQ joins the KPI row</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="gap:3px;margin-bottom:6px;">
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">47</div><div style="font-size:8px;color:var(--strike);">↑11%</div></div>
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">131</div><div style="font-size:8px;color:var(--good);">↓14%</div></div>
+              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">GAS</div><div class="sk-val sm">18</div><div style="font-size:8px;color:var(--good);">↓9%</div></div>
+              <div class="sk-box accent" style="flex:1;padding:5px 6px;"><div class="sk-cap" style="color:var(--accent);">DQ</div><div class="sk-val sm accent">72%</div><div style="font-size:8px;color:var(--accent);">portfolio</div></div>
+            </div>
+            <div class="sk-row" style="gap:6px;margin-bottom:6px;">
+              <div class="sk-box" style="flex:1.6;padding:8px;">
+                <div class="sk-cap">CARBON · 5yr · vs target</div>
+                <svg viewBox="0 0 180 48" preserveAspectRatio="none" style="width:100%;height:42px;">
+                  <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,8 45,16 90,24 135,32 180,38"/>
+                  <polyline fill="none" stroke="#9c9587" stroke-width="1.5" stroke-dasharray="3 3" points="0,10 45,18 90,26 135,34 180,36"/>
+                </svg>
+              </div>
+              <div class="sk-box" style="flex:1;padding:8px;display:flex;align-items:center;justify-content:center;">
+                <div class="sk-circle split-3"></div>
+              </div>
+            </div>
+            <div class="sk-box" style="padding:8px;">
+              <div class="sk-cap">ASSET RANKING · traffic-light</div>
+              <div style="display:flex;gap:2px;align-items:flex-end;height:32px;margin-top:6px;">
+                <div style="flex:1;height:40%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:52%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:60%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:72%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:84%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:96%;background:#d99891;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:70%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
+                <div style="flex:1;height:88%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
+              </div>
+            </div>
+            <div class="callout kova" style="bottom:108px; right:-8px; transform:rotate(2deg);max-width:150px;">
+              <strong>DQ tile</strong> is the change, score sits with the rest.
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">DQ promoted to 6th KPI, principle: "quality is first-class".</div>
+            <div class="b-note good">Trend + donut + ranking = three answers in one screen.</div>
+            <div class="b-note good">Click any asset bar → drill-down inherits the same KPI row.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwf-lane-notes">
+        <div>
+          <h4><small>The pivot</small>Stop showing data. Start answering questions.</h4>
+          <p>Between v2 and v3 we re-wrote the brief for every tile: <b>what question does this answer, and what action follows?</b></p>
+          <p>A KPI without a target was demoted. A chart without a benchmark was redrawn. A meter without a coverage % was flagged. The number of elements <i>went up</i>, but every one earned a job.</p>
+        </div>
+        <div>
+          <h4><small>Tradeoff</small>Six KPIs is one more than the design system wanted.</h4>
+          <p>The shadcn-ish KPI row pattern caps at 5. We pushed to 6 to fit the DQ score next to performance, which violated a token grid but held the principle.</p>
+          <p>Comp: we tightened the inner padding and dropped the trailing "kg" / "kWh" off mobile to keep it readable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 03 · Data quality — integrated wireframe section ── -->
+    <div class="pwf">
+      <h3 class="pwf-h">Two ideas the platform had been calling one</h3>
+      <p class="pwf-p">The original "DQ score" was a single number that hid the actual problem. Splitting it into <em>coverage</em> (do we have meters?) and <em>completeness</em> (are they reporting?) was the design call that everything downstream depended on.</p>
+
+      <div class="pwf-stack">
+
+        <!-- conceptual diagram -->
+        <div class="board">
+          <div class="board-hdr">
+            <div><div class="b-version">concept</div><div class="b-name">Coverage ≠ Completeness, drawn out for the client</div></div>
+            
+          </div>
+          <div class="canvas tall" style="padding:24px;">
+            <svg viewBox="0 0 1100 400" style="width:100%;height:auto;">
+              <g>
+                <rect x="40" y="40" width="420" height="320" rx="14" fill="#fbf7ed" stroke="#1d1b18" stroke-width="2"/>
+                <text x="60" y="82" font-family="IBM Plex Mono" font-size="18" fill="#b85c38" letter-spacing=".14em">COVERAGE</text>
+                <text x="60" y="138" font-family="Caveat" font-size="42" font-weight="700" fill="#1d1b18">Do we have meters where</text>
+                <text x="60" y="178" font-family="Caveat" font-size="42" font-weight="700" fill="#1d1b18">we should have meters?</text>
+                <text x="60" y="226" font-family="Kalam" font-size="20" fill="#3a3631">Answered against <tspan font-weight="700">expected floor area</tspan>.</text>
+                <text x="60" y="256" font-family="Kalam" font-size="20" fill="#3a3631">Fails when an asset is brought in</text>
+                <text x="60" y="282" font-family="Kalam" font-size="20" fill="#3a3631">without sub-metering procurement.</text>
+                <text x="60" y="328" font-family="IBM Plex Mono" font-size="15" fill="#b85c38" letter-spacing=".08em">SURFACE → ring on DQ widget</text>
+              </g>
+              <g>
+                <rect x="640" y="40" width="420" height="320" rx="14" fill="#fbf7ed" stroke="#1d1b18" stroke-width="2"/>
+                <text x="660" y="82" font-family="IBM Plex Mono" font-size="18" fill="#b85c38" letter-spacing=".14em">COMPLETENESS</text>
+                <text x="660" y="138" font-family="Caveat" font-size="42" font-weight="700" fill="#1d1b18">Of the meters we have,</text>
+                <text x="660" y="178" font-family="Caveat" font-size="42" font-weight="700" fill="#1d1b18">are they actually reporting?</text>
+                <text x="660" y="226" font-family="Kalam" font-size="20" fill="#3a3631">Answered against <tspan font-weight="700">expected reads</tspan>.</text>
+                <text x="660" y="256" font-family="Kalam" font-size="20" fill="#3a3631">Fails silently, a meter can go</text>
+                <text x="660" y="282" font-family="Kalam" font-size="20" fill="#3a3631">offline and the totals still add up.</text>
+                <text x="660" y="328" font-family="IBM Plex Mono" font-size="15" fill="#b85c38" letter-spacing=".08em">SURFACE → status bars + gap markers</text>
+              </g>
+              <g>
+                <path d="M 460 200 L 640 200" stroke="#b85c38" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+                <polygon points="635,195 645,200 635,205" fill="#b85c38"/>
+                <polygon points="465,195 455,200 465,205" fill="#b85c38"/>
+                <text x="550" y="188" text-anchor="middle" font-family="Caveat" font-size="28" fill="#b85c38" font-weight="700">independent</text>
+                <text x="550" y="232" text-anchor="middle" font-family="Kalam" font-size="17" fill="#6e685e">100% coverage with 0% completeness is a real (bad) state.</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- v1 -->
+        <div class="board killed tilt-l">
+          <div class="board-hdr">
+            <div><div class="b-version">v1</div><div class="b-name">One "DQ %"</div></div>
+            
+          </div>
+          <div class="canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:30px 12px;">
+            <div class="sk-label">data quality</div>
+            <div class="sk-val accent" style="font-size:64px;">72%</div>
+            <div class="sk-cap" style="text-align:center;">portfolio average</div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">Users: "72% of what?", coverage? reads? meters?</div>
+            <div class="b-note bad">Hides the actual failure mode.</div>
+          </div>
+        </div>
+
+        <!-- v2 -->
+        <div class="board dim">
+          <div class="board-hdr">
+            <div><div class="b-version">v2</div><div class="b-name">Split rings</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:14px;">
+            <div class="sk-row" style="gap:10px;justify-content:center;margin-top:16px;">
+              <div style="text-align:center;">
+                <div class="sk-circle" style="border-color:var(--accent);border-top-color:var(--paper-2);margin:0 auto;"></div>
+                <div class="sk-label" style="margin-top:8px;">coverage</div>
+                <div class="sk-val sm">74%</div>
+              </div>
+              <div style="text-align:center;">
+                <div class="sk-circle" style="border-color:#c6892b;border-top-color:var(--paper-2);border-right-color:var(--paper-2);margin:0 auto;"></div>
+                <div class="sk-label" style="margin-top:8px;">complete</div>
+                <div class="sk-val sm">62%</div>
+              </div>
+            </div>
+            <div class="sk-box dashed" style="margin-top:14px;font-size:9px;">no breakdown by utility yet</div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Concept finally legible.</div>
+            <div class="b-note bad">Two rings with no <b>per-utility</b> read, useless for triage.</div>
+            <div class="b-note q">Where's "automated vs estimated"?</div>
+          </div>
+        </div>
+
+        <!-- v3 -->
+        <div class="board dim tilt-r">
+          <div class="board-hdr">
+            <div><div class="b-version">v3</div><div class="b-name">+ per-utility + status</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:10px;">
+            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+              <div class="sk-cap">COVERAGE × COMPLETENESS · per utility</div>
+              <div style="margin-top:6px;">
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+                  <div style="width:34px;font-size:8px;color:var(--pwf-muted);">ELEC</div>
+                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:82%;height:100%;background:var(--accent);"></div></div>
+                  <div style="width:20px;font-size:8px;text-align:right;">82</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+                  <div style="width:34px;font-size:8px;color:var(--pwf-muted);">GAS</div>
+                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--accent);"></div></div>
+                  <div style="width:20px;font-size:8px;text-align:right;">64</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
+                  <div style="width:34px;font-size:8px;color:var(--pwf-muted);">H₂O</div>
+                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:73%;height:100%;background:var(--accent);"></div></div>
+                  <div style="width:20px;font-size:8px;text-align:right;">73</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div style="width:34px;font-size:8px;color:var(--pwf-muted);">WST</div>
+                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:45%;height:100%;background:var(--strike);"></div></div>
+                  <div style="width:20px;font-size:8px;text-align:right;color:var(--strike);">45</div>
+                </div>
+              </div>
+            </div>
+            <div class="sk-box" style="padding:8px;display:flex;gap:8px;align-items:center;">
+              <div class="sk-circle" style="width:48px;height:48px;border-width:5px;border-color:var(--good);border-right-color:#c6892b;border-bottom-color:var(--strike);"></div>
+              <div style="flex:1;font-size:9px;line-height:1.4;color:var(--pwf-ink-2);">
+                <div><span style="color:var(--good);">●</span> actual 63%</div>
+                <div><span style="color:#c6892b;">●</span> estimated 18%</div>
+                <div><span style="color:var(--strike);">●</span> missing 19%</div>
+              </div>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Waste is now obviously the fire, instead of "72% average".</div>
+            <div class="b-note q">Still no per-asset drill, need table.</div>
+          </div>
+        </div>
+
+        <!-- final -->
+        <div class="board win">
+          <div class="board-hdr">
+            <div><div class="b-version">final</div><div class="b-name">+ asset table + statuses</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:8px;">
+            <div class="sk-row" style="gap:4px;margin-bottom:5px;">
+              <div class="sk-box" style="flex:1.4;padding:6px;">
+                <div class="sk-cap" style="font-size:7.5px;">CVG × CMP / utility</div>
+                <svg viewBox="0 0 100 30" style="width:100%;height:30px;margin-top:2px;">
+                  <rect x="0" y="2" width="82" height="4" fill="#b85c38" rx="2"/>
+                  <rect x="0" y="9" width="64" height="4" fill="#b85c38" rx="2"/>
+                  <rect x="0" y="16" width="73" height="4" fill="#b85c38" rx="2"/>
+                  <rect x="0" y="23" width="45" height="4" fill="#c64545" rx="2"/>
+                </svg>
+              </div>
+              <div class="sk-box" style="flex:1;padding:6px;display:flex;align-items:center;justify-content:center;">
+                <div class="sk-circle" style="width:44px;height:44px;border-width:4px;border-color:var(--good);border-right-color:#c6892b;border-bottom-color:var(--strike);"></div>
+              </div>
+            </div>
+            <div class="sk-box" style="padding:6px;">
+              <div class="sk-cap" style="font-size:7.5px;">ASSETS · sortable</div>
+              <div style="margin-top:3px;">
+                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px dashed var(--line-soft);padding:2px 0;"><span>Broadgate</span><span style="color:var(--good);">94 ●</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px dashed var(--line-soft);padding:2px 0;"><span>Holborn</span><span style="color:var(--good);">87 ●</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px dashed var(--line-soft);padding:2px 0;"><span>K. William</span><span style="color:#c6892b;">67 ●</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:9px;padding:2px 0;"><span>Exchange EC2</span><span style="color:var(--strike);">38 ●</span></div>
+              </div>
+            </div>
+            <div class="callout kova" style="bottom:6px;right:-10px;max-width:130px;transform:rotate(2deg);">
+              status pill = <strong>next action</strong>, not just a colour
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Status chip resolves to "Good / Review / Action needed", not just %.</div>
+            <div class="b-note good">Click row → asset DQ deep-dive (same KPI row preserved).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwf-lane-notes">
+        <div>
+          <h4><small>Why this mattered</small>The split was a UX rewrite of a data model.</h4>
+          <p>Engineering had to expose two scores from the warehouse instead of one. We pushed back on "ship the split as a tooltip", because the failure modes are <b>genuinely different problems</b> with different fixes.</p>
+        </div>
+        <div>
+          <h4><small>Tradeoff</small>Two rings is more visual weight on the dashboard.</h4>
+          <p>We considered hiding "completeness" behind a hover. Killed it: data quality is the principle, hiding the harder half undermines it.</p>
+          <p>Comp: we let the DQ widget be wider than the other KPI tiles when it's expanded.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 04 · Target setting — integrated wireframe section ── -->
+    <div class="pwf">
+      <h3 class="pwf-h">Three target paths, none of which fit one form</h3>
+      <p class="pwf-p">Carbon targets can be set custom, imported from CRREM/NZC science-based pathways, or derived from an action plan. The same form can't ask for all three sets of inputs. We mapped the decision tree first, then designed around it.</p>
+
+      <div class="pwf-stack">
+
+        <!-- decision tree -->
+        <div class="board">
+          <div class="board-hdr">
+            <div><div class="b-version">logic</div><div class="b-name">Target-setting decision tree, mapped before any frame</div></div>
+            
+          </div>
+          <div class="canvas tall" style="padding:24px;">
+            <svg viewBox="0 0 1100 400" style="width:100%;height:auto;">
+              <rect x="420" y="18" width="260" height="58" rx="29" fill="#1d1b18"/>
+              <text x="550" y="55" text-anchor="middle" font-family="Kalam" font-size="20" font-weight="700" fill="#fff">Choose pathway</text>
+
+              <path d="M 550 80 L 180 140" stroke="#b85c38" stroke-width="2" fill="none"/>
+              <path d="M 550 80 L 550 140" stroke="#b85c38" stroke-width="2" fill="none"/>
+              <path d="M 550 80 L 920 140" stroke="#b85c38" stroke-width="2" fill="none"/>
+
+              <rect x="50" y="140" width="280" height="90" rx="12" fill="#fbf7ed" stroke="#1d1b18" stroke-width="1.5"/>
+              <text x="70" y="170" font-family="IBM Plex Mono" font-size="14" fill="#b85c38" letter-spacing=".1em">A · CUSTOM</text>
+              <text x="70" y="198" font-family="Kalam" font-size="20" font-weight="700">Set your own % reduction</text>
+              <text x="70" y="220" font-family="Kalam" font-size="16" fill="#6e685e">linear or stepped</text>
+
+              <rect x="410" y="140" width="280" height="90" rx="12" fill="#fbf7ed" stroke="#b85c38" stroke-width="2"/>
+              <text x="430" y="170" font-family="IBM Plex Mono" font-size="14" fill="#b85c38" letter-spacing=".1em">B · NZC IMPORT</text>
+              <text x="430" y="198" font-family="Kalam" font-size="20" font-weight="700">Science-based pathway</text>
+              <text x="430" y="220" font-family="Kalam" font-size="16" fill="#6e685e">CRREM 1.5°C trajectory</text>
+
+              <rect x="770" y="140" width="280" height="90" rx="12" fill="#fbf7ed" stroke="#1d1b18" stroke-width="1.5"/>
+              <text x="790" y="170" font-family="IBM Plex Mono" font-size="14" fill="#b85c38" letter-spacing=".1em">C · ACTION-BASED</text>
+              <text x="790" y="198" font-family="Kalam" font-size="20" font-weight="700">From your action plan</text>
+              <text x="790" y="220" font-family="Kalam" font-size="16" fill="#6e685e">derived from agreed actions</text>
+
+              <text x="70" y="270" font-family="Kalam" font-size="16" fill="#3a3631">inputs:</text>
+              <text x="70" y="294" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">% / yr · curve</text>
+              <text x="70" y="316" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">baseline yr · end yr</text>
+
+              <text x="430" y="270" font-family="Kalam" font-size="16" fill="#3a3631">inputs:</text>
+              <text x="430" y="294" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">asset class · region</text>
+              <text x="430" y="316" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">scope 1+2 only</text>
+
+              <text x="790" y="270" font-family="Kalam" font-size="16" fill="#3a3631">inputs:</text>
+              <text x="790" y="294" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">action library · status</text>
+              <text x="790" y="316" font-family="IBM Plex Mono" font-size="15" fill="#6e685e">avg savings/action</text>
+
+              <text x="550" y="378" text-anchor="middle" font-family="Caveat" font-size="28" fill="#b85c38" font-weight="700">→ three different shapes of form. one wizard.</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- v1 -->
+        <div class="board killed tilt-l">
+          <div class="board-hdr">
+            <div><div class="b-version">v1</div><div class="b-name">All-in-one form</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:12px;">
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">pathway type ▾</div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">% reduction</div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">curve type ▾</div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">CRREM asset class ▾ <span style="color:var(--pwf-muted-2);">(only B)</span></div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">region ▾ <span style="color:var(--pwf-muted-2);">(only B)</span></div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">action library <span style="color:var(--pwf-muted-2);">(only C)</span></div>
+            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">baseline year</div>
+            <div class="sk-box dashed" style="padding:6px;font-size:9px;">end year</div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">Half the fields are dead depending on path.</div>
+            <div class="b-note bad">Users abandoned before saving.</div>
+          </div>
+        </div>
+
+        <!-- v2 -->
+        <div class="board dim">
+          <div class="board-hdr">
+            <div><div class="b-version">v2</div><div class="b-name">Stepper + radios</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:12px;">
+            <div class="sk-row" style="margin-bottom:8px;font-size:8px;gap:4px;">
+              <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;">1</div>
+              <div class="sk-box" style="flex:1;padding:4px;text-align:center;">2</div>
+              <div class="sk-box" style="flex:1;padding:4px;text-align:center;">3</div>
+            </div>
+            <div style="font-family:var(--hand);font-size:12px;margin-bottom:6px;color:var(--pwf-ink);">Step 1, choose pathway</div>
+            <div class="sk-box" style="margin-bottom:4px;padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> Custom</div>
+            <div class="sk-box accent" style="margin-bottom:4px;padding:6px;font-size:9px;"><span style="color:var(--accent);">●</span> NZC science-based</div>
+            <div class="sk-box" style="padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> From action plan</div>
+            <div class="sk-box dashed" style="margin-top:10px;padding:6px;font-size:9px;color:var(--pwf-muted);">→ step 2 fields appear based on choice</div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Path locked in before asking for details.</div>
+            <div class="b-note bad">Radios feel small for a high-stakes decision.</div>
+          </div>
+        </div>
+
+        <!-- final -->
+        <div class="board win tilt-r">
+          <div class="board-hdr">
+            <div><div class="b-version">final</div><div class="b-name">Pathway cards + preview</div></div>
+            
+          </div>
+          <div class="canvas" style="padding:10px;">
+            <div style="font-family:var(--hand-display);font-size:18px;font-weight:700;margin-bottom:6px;">Three ways to set a carbon target.</div>
+            <div class="sk-row" style="gap:4px;margin-bottom:8px;">
+              <div class="sk-box" style="flex:1;padding:8px 6px;text-align:center;">
+                <div style="width:18px;height:18px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
+                <div style="font-family:var(--pmono);font-size:7px;letter-spacing:.1em;color:var(--accent);">A · CUSTOM</div>
+                <div style="font-family:var(--hand);font-size:10px;font-weight:700;margin-top:2px;">Set your own</div>
+              </div>
+              <div class="sk-box accent" style="flex:1;padding:8px 6px;text-align:center;border-width:2px;">
+                <div style="width:18px;height:18px;background:var(--accent);border-radius:4px;margin:0 auto 4px;"></div>
+                <div style="font-family:var(--pmono);font-size:7px;letter-spacing:.1em;color:var(--accent);">B · NZC</div>
+                <div style="font-family:var(--hand);font-size:10px;font-weight:700;margin-top:2px;">Science-based</div>
+                <div style="font-family:var(--pmono);font-size:7px;color:var(--accent);margin-top:2px;">USE THIS →</div>
+              </div>
+              <div class="sk-box" style="flex:1;padding:8px 6px;text-align:center;">
+                <div style="width:18px;height:18px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
+                <div style="font-family:var(--pmono);font-size:7px;letter-spacing:.1em;color:var(--accent);">C · ACTION</div>
+                <div style="font-family:var(--hand);font-size:10px;font-weight:700;margin-top:2px;">Action plan</div>
+              </div>
+            </div>
+            <div class="sk-box" style="padding:8px;">
+              <div class="sk-cap" style="font-size:7.5px;">PATHWAY PROJECTION · 2020 → 2030</div>
+              <svg viewBox="0 0 200 56" preserveAspectRatio="none" style="width:100%;height:50px;margin-top:4px;">
+                <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,12 30,18 60,24 90,30"/>
+                <polyline fill="none" stroke="#7fb59b" stroke-width="2" stroke-dasharray="3 3" points="90,30 130,38 170,44 200,48"/>
+                <circle cx="90" cy="30" r="3" fill="#b85c38"/>
+              </svg>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Cards = legible compared to radios; CRREM badge sits inside chosen card.</div>
+            <div class="b-note good">Live pathway preview updates as choice changes, confidence before save.</div>
+            <div class="b-note good">"Use this" CTA inside the card = single-click commit.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwf-lane-notes">
+        <div>
+          <h4><small>Decision</small>Cards over radios for high-stakes choices.</h4>
+          <p>The pattern library said radio. We broke pattern because the pathway choice anchors years of reporting, it deserved more pixels than a 16px circle.</p>
+        </div>
+        <div>
+          <h4><small>Tradeoff</small>One wizard for three flows is more engineering.</h4>
+          <p>Three discrete pages would have been simpler to build. We took the wizard hit to keep the user inside one mental model and to share the preview component across all three paths.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 05 · Drill-down & IA — integrated wireframe section ── -->
+    <div class="pwf">
+      <h3 class="pwf-h">Portfolio to meter, without losing the thread</h3>
+      <p class="pwf-p">Three wrong answers before we landed on breadcrumb-driven drill with the <em>same</em> KPI row at every level. Each wrong answer taught us something we used in the next one.</p>
+
+      <div class="pwf-stack">
+
+        <!-- v1 modal -->
+        <div class="board killed tilt-l">
+          <div class="board-hdr">
+            <div><div class="b-version">v1</div><div class="b-name">Modal drawer</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-box" style="padding:8px;margin-bottom:6px;opacity:.5;">portfolio view (dimmed)</div>
+            <div class="sk-box fill" style="padding:8px;border-width:2px;border-color:var(--line);">
+              <div class="sk-label">asset</div>
+              <div class="sk-val sm">Broadgate</div>
+              <div class="sk-bar mid"></div>
+              <div class="sk-bar short"></div>
+              <div class="sk-bar full accent"></div>
+            </div>
+            <div class="callout pink" style="top:42%;right:-8px;max-width:140px;transform:rotate(3deg);">
+              closes the drawer → you lose your place
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">Drawer hides portfolio context; can't compare assets.</div>
+            <div class="b-note bad">Browser back goes <i>way</i> back.</div>
+          </div>
+        </div>
+
+        <!-- v2 -->
+        <div class="board killed dim">
+          <div class="board-hdr">
+            <div><div class="b-version">v2</div><div class="b-name">Separate page</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="margin-bottom:6px;font-size:9px;color:var(--pwf-muted);">/assets/broadgate</div>
+            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
+              <div class="sk-val sm">Broadgate</div>
+              <div class="sk-cap">asset detail</div>
+            </div>
+            <div class="sk-row">
+              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
+              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
+              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">DQ</div><div class="sk-val sm">94</div></div>
+            </div>
+            <div class="sk-box dashed" style="margin-top:6px;padding:6px;font-size:9px;color:var(--pwf-muted);">but: <b>different</b> tiles than the fund view</div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note bad">KPI tiles differed between levels, users re-oriented every page.</div>
+            <div class="b-note good">URL state worked for sharing.</div>
+          </div>
+        </div>
+
+        <!-- v3 tabs -->
+        <div class="board dim tilt-r">
+          <div class="board-hdr">
+            <div><div class="b-version">v3</div><div class="b-name">Tabbed asset view</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div class="sk-row" style="margin-bottom:6px;gap:2px;">
+              <div class="sk-box accent" style="flex:1;padding:5px;text-align:center;font-size:8px;">Overview</div>
+              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Meters</div>
+              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">DQ</div>
+              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Targets</div>
+            </div>
+            <div class="sk-row" style="margin-bottom:6px;gap:3px;">
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">DQ</div><div class="sk-val sm">94</div></div>
+            </div>
+            <div class="sk-box" style="padding:6px;">
+              <svg viewBox="0 0 200 36" preserveAspectRatio="none" style="width:100%;height:32px;">
+                <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,10 30,16 60,22 90,18 120,26 150,20 180,24 200,18"/>
+              </svg>
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Same KPI strip at every level, orientation locked.</div>
+            <div class="b-note bad">Tabs hide context: you can't see Meters and DQ side by side.</div>
+          </div>
+        </div>
+
+        <!-- final -->
+        <div class="board win">
+          <div class="board-hdr">
+            <div><div class="b-version">final</div><div class="b-name">Breadcrumb + single page</div></div>
+            
+          </div>
+          <div class="canvas">
+            <div style="font-family:var(--pmono);font-size:8.5px;color:var(--pwf-muted);margin-bottom:6px;">
+              Metropolitan ▸ Broadgate ▸ <b style="color:var(--accent);">Meter 04</b>
+            </div>
+            <div class="sk-row" style="margin-bottom:6px;gap:3px;">
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
+              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">GAS</div><div class="sk-val sm">14</div></div>
+              <div class="sk-box accent" style="flex:1;padding:5px;"><div class="sk-cap" style="color:var(--accent);">DQ</div><div class="sk-val sm accent">94</div></div>
+            </div>
+            <div class="sk-row" style="gap:4px;">
+              <div class="sk-box" style="flex:1;padding:6px;">
+                <div class="sk-cap">MONTHLY</div>
+                <svg viewBox="0 0 100 30" preserveAspectRatio="none" style="width:100%;height:24px;margin-top:2px;">
+                  <polyline fill="none" stroke="#b85c38" stroke-width="2" points="0,18 12,14 24,10 36,8 48,6 60,8 72,10 84,14 96,16"/>
+                </svg>
+              </div>
+              <div class="sk-box" style="flex:1;padding:6px;">
+                <div class="sk-cap">METERS</div>
+                <div class="sk-bar full" style="margin-top:4px;"></div>
+                <div class="sk-bar mid"></div>
+                <div class="sk-bar short bad"></div>
+              </div>
+            </div>
+            <div class="callout kova" style="bottom:6px;right:-8px;max-width:140px;transform:rotate(2deg);">
+              <strong>same row</strong>, every depth, fund · asset · meter
+            </div>
+          </div>
+          <div class="b-notes">
+            <div class="b-note good">Breadcrumb is the only nav, back/forward both work.</div>
+            <div class="b-note good">KPI row + DQ tile <b>identical</b> at every level (scope-aware values).</div>
+            <div class="b-note good">No tabs, vertical scroll keeps meters + DQ comparable.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pwf-lane-notes">
+        <div>
+          <h4><small>Principle in action</small>"Same metrics at every level."</h4>
+          <p>This was one of the four design principles. v1–v3 all violated it in subtle ways. Final makes it physical: the same component renders the KPI row at fund, asset and meter scope, just bound to different data.</p>
+        </div>
+        <div>
+          <h4><small>Tradeoff</small>One long page, not tabs.</h4>
+          <p>Tabs are tidier. But the user's job is to <b>compare</b> meter behaviour against DQ status, hiding one behind a tab broke the diagnostic workflow.</p>
+          <p>Vertical scroll won. Sticky breadcrumb + KPI row keep the top context in view.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 06 · Tradeoffs & cuts — integrated wireframe section ── -->
+    <div class="pwf">
+      <h3 class="pwf-h">The decisions that shaped the rest</h3>
+      <p class="pwf-p">Where we held the line, where we bent, and what we cut from scope. Every row here represents a debate that's still defensible today.</p>
+
+      <table class="trade-table" style="margin-top:24px;">
+        <thead>
+          <tr>
+            <th>Decision</th>
+            <th>What we picked</th>
+            <th>What we gave up</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DQ on the dashboard</td>
+            <td><span class="chip kept">kept</span> A 6th KPI tile for the DQ score, alongside utility KPIs.</td>
+            <td><span class="chip cut">cut</span> Hiding DQ behind an admin tab to keep the grid at 5×.</td>
+            <td>Principle: "quality is first-class". If a number can't be trusted, performance numbers next to it can't be either.</td>
+          </tr>
+          <tr>
+            <td>Coverage vs completeness</td>
+            <td><span class="chip kept">kept</span> Two scores surfaced separately, with status pill.</td>
+            <td><span class="chip cut">cut</span> A single composite "DQ %" that the inherited UI used.</td>
+            <td>Different failure modes → different fixes. A composite hid the actual problem.</td>
+          </tr>
+          <tr>
+            <td>Drill-down model</td>
+            <td><span class="chip kept">kept</span> Breadcrumb-driven, same KPI row at every depth, single scrolling page.</td>
+            <td><span class="chip cut">cut</span> Tabbed view (hid context), modal drawer (broke history), separate route per level (re-orientation tax).</td>
+            <td>Users diagnose by comparing, across utilities and across depth. Hiding either axis breaks the loop.</td>
+          </tr>
+          <tr>
+            <td>Target setting flow</td>
+            <td><span class="chip kept">kept</span> Three pathway cards + stepper + live pathway preview.</td>
+            <td><span class="chip cut">cut</span> All-in-one form with conditional fields; three separate pages.</td>
+            <td>One mental model, but inputs scoped per path. Preview = confidence before commit.</td>
+          </tr>
+          <tr>
+            <td>Investigation loop</td>
+            <td><span class="chip kept">kept</span> Self-service: anomaly → drill → gap-fill marker → escalate.</td>
+            <td><span class="chip def">deferred</span> Auto-resolution / one-click fixes.</td>
+            <td>Auto-fixing data is an audit risk in regulated ESG reporting. v1 surfaces; humans still commit.</td>
+          </tr>
+          <tr>
+            <td>L/T scope display</td>
+            <td><span class="chip kept">kept</span> Inline split on every utility chart (no extra drill required).</td>
+            <td><span class="chip cut">cut</span> A standalone "Scope" tab that buried the split.</td>
+            <td>L/T split <b>is</b> the question for procurement responsibility, it's not a secondary view.</td>
+          </tr>
+          <tr>
+            <td>Gap-filling visual</td>
+            <td><span class="chip kept">kept</span> Hatched/dashed line segments on charts, with hover detail.</td>
+            <td><span class="chip cut">cut</span> Footnote symbol that testers consistently missed.</td>
+            <td>Testers needed to <b>see</b> the gap, not be told about it in micro-copy.</td>
+          </tr>
+          <tr>
+            <td>Theme support</td>
+            <td><span class="chip def">deferred</span> Full dark mode as v1.2.</td>
+            <td><span class="chip cut">cut</span> Shipping light + dark in launch sprint.</td>
+            <td>Chart accessibility QA on dark surfaces was a whole research stream, held it for a follow-on.</td>
+          </tr>
+          <tr>
+            <td>Phased delivery</td>
+            <td><span class="chip kept">kept</span> Four phases: performance → dashboard → DQ → site-wide.</td>
+            <td><span class="chip cut">cut</span> Big-bang rewrite.</td>
+            <td>Let us test with consultants between phases. Adjustments to DQ flow came from phase-2 feedback.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 class="pwf-sub-h">If we did it again.</h4>
+      <p class="pwf-p">Three things we'd front-load on the next engagement, with the same shape of problem.</p>
+
+      <div class="stickies">
+        <div class="sticky k4">
+          <span class="tag">retro · 01</span>
+          <h5>Map the business logic <u>first</u>.</h5>
+          The L/T scope tree and target decision flow saved redesigns. We'd do that on day one next time, not week three.
+        </div>
+        <div class="sticky k3">
+          <span class="tag">retro · 02</span>
+          <h5>Define the metric in the wireframe.</h5>
+          "Data quality" meant six things to six people until we wrote the systems diagram. We'd put one in <b>every</b> wireframe for high-stakes metrics.
+        </div>
+        <div class="sticky k2">
+          <span class="tag">retro · 03</span>
+          <h5>Ship the principle, not the screen.</h5>
+          v1 dashboard looked great in isolation and violated three of our four principles. We'd test wireframes against principles before tests against users.
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /.pwf-tabs-host -->
+  </div>
+</section>
+
+<!-- ══ FEATURES — FEATURED ══ -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-label">Final UI</div>
+    <h2 class="sec-h">Where the data started shaping decisions</h2>
+    <p class="sec-sub">The screens that did the heaviest lifting once the platform shipped, fund managers no longer exported to Power BI to figure out what their portfolio was telling them, data quality moved from an afterthought to a first-class metric, and the investigation loop closed inside the product. The headline screens come first; supporting depth follows.</p>
+  </div>
+
+  <div class="feat-stream" id="feat-featured">
+<article class="feat"><div class="feat-inner"><div>
+    <div class="frame-label">Drill-down</div>
+    <div class="frame-heading">Spot it, trace it, fix it, in three clicks</div>
+    <div class="frame-sub">From a healthy fund to the single asset dragging it down to the exact missing meter readings behind the anomaly. The hierarchy lets a manager move from "something's off" to "here's the cause" without leaving the screen.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:74px;left:120px;">1</div>
+      <div class="marker" style="top:74px;left:50%;transform:translateX(-50%);">2</div>
+      <div class="marker" style="top:74px;right:130px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / Metropolitan Holdings / Exchange House / main electric</span></div>
+        <div class="screen-body" style="padding:0">
+          <div class="drill">
+            <div class="level">
+              <span class="lvl-tag">L1 · FUND</span>
+              <div class="lvl-name">Metropolitan Holdings</div>
+              <div class="lvl-sub">Fund · 32 assets</div>
+              <div class="kpipair">
+                <div class="kp"><div class="l">Carbon</div><div class="v">47.2</div><div class="d good">↓ 13%</div></div>
+                <div class="kp"><div class="l">DQ</div><div class="v">72</div><div class="d amber">+6</div></div>
+              </div>
+              <div class="arrow">→</div>
+            </div>
+            <div class="level">
+              <span class="lvl-tag">L2 · ASSET</span>
+              <div class="lvl-name">Exchange House</div>
+              <div class="lvl-sub">London EC2 · 18,400 m²</div>
+              <div class="kpipair">
+                <div class="kp"><div class="l">Carbon</div><div class="v">62.1</div><div class="d bad">↑ 47%</div></div>
+                <div class="kp"><div class="l">Coverage</div><div class="v">38%</div><div class="d bad">low</div></div>
+              </div>
+              <div class="arrow">→</div>
+            </div>
+            <div class="level">
+              <span class="lvl-tag">L3 · METER</span>
+              <div class="lvl-name">Main electric</div>
+              <div class="lvl-sub">kWh · last 30 days</div>
+              <div class="gapchart">
+                <div class="b" style="height:60%"></div><div class="b" style="height:72%"></div><div class="b" style="height:55%"></div>
+                <div class="b miss" style="height:80%"></div><div class="b miss" style="height:80%"></div>
+                <div class="b" style="height:68%"></div><div class="b" style="height:74%"></div>
+                <div class="b miss" style="height:80%"></div><div class="b" style="height:62%"></div><div class="b" style="height:70%"></div>
+              </div>
+              <div class="missnote">14 gaps · flagged as gap-fill candidates</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Healthy at the top.</b> The fund reads well, carbon down 13%, DQ trending up. Nothing here says there's a problem.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>One asset breaks the pattern.</b> Exchange House shows carbon up 47% on just 38% coverage, the anomaly hiding inside the fund average.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Down to the cause.</b> The meter view exposes 14 missing readings, the real reason the number looked wrong, ready to gap-fill.</div></div>
+  </div></div></article>
+<article class="feat"><div class="feat-inner"><div>
+    <div class="frame-label">Data quality</div>
+    <div class="frame-heading">A number you can't trust isn't an answer</div>
+    <div class="frame-sub">Coverage, completeness and automation, scored at portfolio level and broken down per asset. Data quality is treated as a headline metric, not a footnote, because every downstream chart inherits its reliability.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:200px;left:175px;">1</div>
+      <div class="marker" style="bottom:96px;left:120px;">2</div>
+      <div class="marker" style="top:300px;right:120px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / data quality / Metropolitan Holdings</span></div>
+        <div class="screen-body">
+          <div class="panel dq">
+            <div class="ringbox">
+              <svg viewBox="-130 -130 260 260" width="240" height="240">
+                <!-- track rings -->
+                <circle r="110" fill="none" stroke="#f0ebe4" stroke-width="16"/>
+                <circle r="84" fill="none" stroke="#f0ebe4" stroke-width="16"/>
+                <circle r="58" fill="none" stroke="#f0ebe4" stroke-width="16"/>
+                <!-- value rings: dasharray = pct * circumference -->
+                <circle r="110" fill="none" stroke="#b85c38" stroke-width="16" stroke-linecap="round" stroke-dasharray="511 691" transform="rotate(-90)"/>
+                <circle r="84" fill="none" stroke="#c6892b" stroke-width="16" stroke-linecap="round" stroke-dasharray="327 528" transform="rotate(-90)"/>
+                <circle r="58" fill="none" stroke="#2a7a5a" stroke-width="16" stroke-linecap="round" stroke-dasharray="149 364" transform="rotate(-90)"/>
+                <text x="0" y="-4" text-anchor="middle" style="font:600 40px var(--serif);fill:var(--ink)">72</text>
+                <text x="0" y="20" text-anchor="middle" style="font:400 11px var(--mono);fill:var(--muted)">DQ SCORE</text>
+              </svg>
+              <div class="ring-legend">
+                <div class="rl-row"><i style="background:#b85c38"></i>Coverage <b>74%</b></div>
+                <div class="rl-row"><i style="background:#c6892b"></i>Completeness <b>62%</b></div>
+                <div class="rl-row"><i style="background:#2a7a5a"></i>Automated <b>41%</b></div>
+              </div>
+            </div>
+            <div class="assetlist">
+              <div class="al-head">By asset</div>
+              <div class="al-sub">lowest quality first</div>
+              <div class="arow"><div class="aname">Exchange House<span>London EC2 · 18,400 m²</span></div><div class="minibar"><i style="width:38%;background:var(--red)"></i></div><div class="score">38</div><div class="flag">Flag</div></div>
+              <div class="arow"><div class="aname">Broadgate Tower<span>London EC2 · 22,100 m²</span></div><div class="minibar"><i style="width:55%;background:var(--amber)"></i></div><div class="score">55</div></div>
+              <div class="arow"><div class="aname">Trafford Point<span>Manchester · 9,800 m²</span></div><div class="minibar"><i style="width:71%;background:var(--amber)"></i></div><div class="score">71</div></div>
+              <div class="arow"><div class="aname">14A Broadgate<span>London EC2 · 12,600 m²</span></div><div class="minibar"><i style="width:88%;background:var(--green)"></i></div><div class="score">88</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Three dimensions, one score.</b> Coverage, completeness and automation are scored separately then rolled into a single portfolio DQ figure of 72.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Automation is the weak link.</b> Only 41% of readings arrive automatically, the clearest lever for improving trust at scale.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Worst asset surfaces first.</b> Exchange House at 38 is flagged for action, so attention goes where the data is least reliable.</div></div>
+  </div></div></article>
+<article class="feat"><div class="feat-inner"><div>
+    <div class="frame-label">Gap-filling</div>
+    <div class="frame-heading">Missing data, filled honestly</div>
+    <div class="frame-sub">When a meter goes dark, the gap doesn't get hidden. The platform proposes an estimate, names the method that produced it, attaches a confidence score, and writes the decision into an audit trail. Numbers stay reportable; trust stays auditable.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:200px;left:170px;">1</div>
+      <div class="marker" style="bottom:110px;left:60px;">2</div>
+      <div class="marker" style="bottom:110px;right:60px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / data quality / gap-filling · Exchange House · main electric</span></div>
+        <div class="screen-body">
+          <div class="panel" style="padding:22px 24px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+              <div>
+                <div class="panel-title">Monthly readings · main electric</div>
+                <div class="panel-sub">kWh · 12 months · 4 of 12 estimated</div>
+              </div>
+              <div style="font:500 11px/1 var(--mono);color:var(--accent);letter-spacing:.08em">METHOD · LAST-YEAR + HDD ADJUST</div>
+            </div>
+            <div style="position:relative;height:158px;margin-top:14px">
+              <svg viewBox="0 0 560 150" preserveAspectRatio="none" width="100%" height="100%">
+                <defs>
+                  <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="6" stroke="#b85c38" stroke-width="2" opacity=".55"/>
+                  </pattern>
+                </defs>
+                <line x1="0" y1="20" x2="560" y2="20" stroke="#f0ebe4"/>
+                <line x1="0" y1="70" x2="560" y2="70" stroke="#f0ebe4"/>
+                <line x1="0" y1="120" x2="560" y2="120" stroke="#ebe6df"/>
+                <!-- bars: solid = actual, hatched = gap-filled -->
+                <rect x="6"   y="60"  width="38" height="60" rx="3" fill="#b85c38"/>
+                <rect x="52"  y="48"  width="38" height="72" rx="3" fill="#b85c38"/>
+                <rect x="98"  y="56"  width="38" height="64" rx="3" fill="#b85c38"/>
+                <rect x="144" y="40"  width="38" height="80" rx="3" fill="url(#hatch)" stroke="#b85c38" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <rect x="190" y="38"  width="38" height="82" rx="3" fill="url(#hatch)" stroke="#b85c38" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <rect x="236" y="52"  width="38" height="68" rx="3" fill="#b85c38"/>
+                <rect x="282" y="44"  width="38" height="76" rx="3" fill="#b85c38"/>
+                <rect x="328" y="58"  width="38" height="62" rx="3" fill="url(#hatch)" stroke="#b85c38" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <rect x="374" y="50"  width="38" height="70" rx="3" fill="#b85c38"/>
+                <rect x="420" y="46"  width="38" height="74" rx="3" fill="#b85c38"/>
+                <rect x="466" y="64"  width="38" height="56" rx="3" fill="url(#hatch)" stroke="#b85c38" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <rect x="512" y="42"  width="38" height="78" rx="3" fill="#b85c38"/>
+                <text x="25"  y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jan</text>
+                <text x="71"  y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Feb</text>
+                <text x="117" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Mar</text>
+                <text x="163" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Apr</text>
+                <text x="209" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">May</text>
+                <text x="255" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jun</text>
+                <text x="301" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jul</text>
+                <text x="347" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Aug</text>
+                <text x="393" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Sep</text>
+                <text x="439" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Oct</text>
+                <text x="485" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Nov</text>
+                <text x="531" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Dec</text>
+              </svg>
+            </div>
+            <div class="legend">
+              <span class="leg"><i style="background:#b85c38"></i>Actual reading</span>
+              <span class="leg"><i style="background:#b85c38;background-image:repeating-linear-gradient(45deg,#b85c38,#b85c38 2px,#fff 2px,#fff 4px);"></i>Estimated · gap-filled</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px">
+            <div class="panel" style="padding:18px 20px">
+              <div class="panel-title">Confidence on this gap-fill</div>
+              <div class="panel-sub">Apr–May · 61 days estimated</div>
+              <div style="display:flex;align-items:center;gap:14px;margin-top:14px">
+                <div style="font:600 38px/1 var(--serif);color:var(--ink);letter-spacing:-.02em">84<span style="font:500 14px/1 var(--mono);color:var(--muted);margin-left:4px">/100</span></div>
+                <div style="flex:1">
+                  <div style="height:7px;background:var(--bg-2);border-radius:999px;overflow:hidden"><div style="width:84%;height:100%;background:linear-gradient(90deg,var(--amber),var(--green))"></div></div>
+                  <div style="font:400 11px/1.4 var(--mono);color:var(--muted);margin-top:8px">High · derived from prior-year same-month with HDD weather adjustment</div>
+                </div>
+              </div>
+            </div>
+            <div class="panel" style="padding:18px 20px">
+              <div class="panel-title">Audit trail</div>
+              <div class="panel-sub">last 3 events on this meter</div>
+              <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Apr–May estimated · last-year + HDD</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">auto · 14 May · awaiting sign-off</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Aug gap accepted by S. Chen</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">signed · 03 Sep · conf 91</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--muted-2);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Nov gap flagged for review</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">auto · 02 Dec · conf 67 · escalate?</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>The gap doesn't hide.</b> Estimated months show as hatched bars on the same chart as actual readings, so the user always knows which days are inferred rather than measured.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>A named method, a confidence score.</b> Every estimate carries the rule that produced it (last-year + HDD adjustment) and a confidence figure, so the number is auditable, not magic.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Sign-off lives next to the data.</b> The audit trail logs who accepted each gap-fill and when, with low-confidence events flagged to escalate, so the number on the report can survive a question from finance.</div></div>
+  </div></div></article>
+</div>
+</section>
+
+<!-- ══ SUPPORTING GRID ══ -->
+<section class="supporting" id="supporting">
+  <div class="wrap">
+    <div class="sec-label">More of the system</div>
+    <div class="supp-grid" id="feat-supporting">
+<a class="supp-card" href="feature-01-dashboard.html">
+      <div class="supp-thumb"><img src="feature-01-dashboard.png" alt="Dashboard"></div>
+      <div class="supp-body"><div class="supp-h">Dashboard</div></div>
+    </a>
+<a class="supp-card" href="feature-07-targets.html">
+      <div class="supp-thumb"><img src="feature-07-targets.png" alt="Target setting"></div>
+      <div class="supp-body"><div class="supp-h">Target setting</div></div>
+    </a>
+<a class="supp-card" href="feature-09-escalation.html">
+      <div class="supp-thumb"><img src="feature-09-escalation.png" alt="Escalation"></div>
+      <div class="supp-body"><div class="supp-h">Escalation</div></div>
+    </a>
+<!-- REMOVED (restore to bring back):
+<a class="supp-card" href="feature-02-trend.html">
+      <div class="supp-thumb"><img src="feature-02-trend.png" alt="Carbon trajectory"></div>
+      <div class="supp-body"><div class="supp-h">Carbon trajectory</div></div>
+    </a>
+<a class="supp-card" href="feature-09-nzc.html">
+      <div class="supp-thumb"><img src="feature-09-nzc.png" alt="Stranding risk"></div>
+      <div class="supp-body"><div class="supp-h">Stranding risk</div></div>
+    </a>
+<a class="supp-card" href="feature-07-landlord-tenant.html">
+      <div class="supp-thumb"><img src="feature-07-landlord-tenant.png" alt="Procurement split"></div>
+      <div class="supp-body"><div class="supp-h">Landlord / tenant split</div></div>
+    </a>
+-->
+<a class="supp-card" href="feature-17-map.html">
+      <div class="supp-thumb"><div style="font:500 12px var(--mono);color:var(--muted);padding:40px">Live map · opens interactive</div></div>
+      <div class="supp-body"><div class="supp-h">Portfolio map</div></div>
+    </a>
+<!-- REMOVED (restore to bring back):
+<a class="supp-card" href="feature-10-export.html">
+      <div class="supp-thumb"><img src="feature-10-export.png" alt="Export"></div>
+      <div class="supp-body"><div class="supp-h">Export to report</div></div>
+    </a>
+-->
+</div>
+  </div>
+</section>
+
+<!-- ══ IMPACT ══ -->
+<section class="impact" id="impact">
+  <div class="wrap">
+    <div class="sec-label">Impact</div>
+    <h2 class="impact-h">From a passive data repository to something that answered questions.</h2>
+    <div class="impact-grid">
+      <div class="ist"><div class="iv">8 of 12</div><div class="il">Fund managers who stopped exporting to Power BI within a quarter of launch</div></div>
+      <div class="ist"><div class="iv">0→1</div><div class="il">Data quality module, a net new capability the platform had never had</div></div>
+      <div class="ist"><div class="iv">4</div><div class="il">Analytics modules shipped across phased delivery</div></div>
+      <div class="ist"><div class="iv">50%+</div><div class="il">Fewer review rounds after four design principles were agreed before any wireframe began</div></div>
+    </div>
+    <p class="impact-note">The clearest signal was behavioural: fund managers stopped exporting raw data into Power BI. The platform was finally doing the thinking it had always promised to do. Data quality became a metric users actively watched, the first time the platform's own reliability was visible at all.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER / SIBLINGS ══ -->
+<section class="siblings">
+  <div class="wrap">
+    <h2 class="sib-h">More case studies</h2>
+    <p class="sib-sub">Three other projects, the data platform Kova was built on top of, an AI-powered invoice pipeline for a multi-country utility portfolio, and the reporting workflow that depends on the foundation.</p>
+    <div class="sib-grid">
+      <a class="sib-card" href="../arbor/arbor.html" style="--sib:#1f5b66">
+        <div class="sib-thumb"><img src="../assets/tiles/ar13.png" alt="" loading="lazy"></div>
+        <h3>Arbor</h3>
+      </a>
+      <a class="sib-card" href="../plio/plio.html" style="--sib:#7c3aed">
+        <div class="sib-thumb"><img src="../assets/tiles/pl8.png" alt="" loading="lazy"></div>
+        <h3>Plio</h3>
+      </a>
+      <a class="sib-card" href="../verde/verde.html" style="--sib:#2a7a5a">
+        <div class="sib-thumb"><img src="../assets/tiles/vd13.png" alt="" loading="lazy"></div>
+        <h3>Verde</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__cap"></div>
+  <div class="footer__body" id="footerBody">
+    <p class="footer__contact">CONTACT</p>
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="../Thomas_Mbanefo_CV_new.pdf" target="_blank" rel="noopener">Resume</a>
+      <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var secs = ['introduction','problem','research','discovery','wireframes','features','impact'];
+  var links = {};
+  document.querySelectorAll('.sectnav a').forEach(function(a){ links[a.dataset.sec]=a; });
+  // 'supporting' has no nav link; it naturally maps to 'features' (Final UI) since features stays current through it.
+  var nodes = secs.map(function(id){ return { id: id, el: document.getElementById(id) }; }).filter(function(x){ return x.el; });
+  function setActive(id){ secs.forEach(function(k){ if(links[k]) links[k].classList.toggle('active', k===id); }); }
+  var ticking = false;
+  function update(){
+    ticking = false;
+    if(!nodes.length) return;
+    var line = 120; // activation line near the top of the viewport
+    var current = nodes[0].id;
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].el.getBoundingClientRect().top <= line) current = nodes[i].id; else break;
+    }
+    if((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2)) current = nodes[nodes.length-1].id;
+    setActive(current);
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  document.querySelectorAll('.sectnav a').forEach(function(a){ a.addEventListener('click', function(){ setActive(a.dataset.sec); }); });
+  update();
+})();
+
+// ── wireframe tab nav ──
+(function(){
+  var host = document.getElementById('pwf-host');
+  if(!host) return;
+  var tabs = host.querySelectorAll('.pwf-tab');
+  var panels = host.querySelectorAll(':scope > .pwf');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var idx = parseInt(tab.dataset.target, 10);
+      tabs.forEach(function(t, i){
+        t.classList.toggle('active', i === idx);
+        t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+      panels.forEach(function(p, i){ p.classList.toggle('active', i === idx); });
+      // scroll the tab strip horizontally so the active tab is visible on narrow screens
+      tab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'nearest'});
+    });
+  });
+})();
+
+// ── hero motion-graphic carousel ──
+(function(){
+  var carousel = document.getElementById('hcs');
+  var track = document.getElementById('hcs-track');
+  if(!track || !carousel) return;
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.hcs-slide'));
+
+  // Scale iframes so the 1080×1080 source fits the slide box without scrollbars
+  function updateScale(){
+    var w = carousel.clientWidth, h = carousel.clientHeight;
+    if (!h) h = w;
+    var scale = Math.min(w / 1080, h / 1080) || (w / 1080);
+    if (!isFinite(scale) || scale <= 0) scale = 1;
+    var tx = (w - 1080 * scale) / 2;
+    var ty = (h - 1080 * scale) / 2;
+    carousel.style.setProperty('--hcs-scale', scale);
+    carousel.style.setProperty('--hcs-tx', tx + 'px');
+    carousel.style.setProperty('--hcs-ty', ty + 'px');
+  }
+  updateScale();
+  requestAnimationFrame(updateScale);
+  window.addEventListener('load', updateScale);
+  window.addEventListener('resize', updateScale);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(updateScale).observe(carousel);
+  var dotsWrap = document.getElementById('hcs-dots');
+  var crumbEl = document.getElementById('hcs-crumb');
+  var captionEl = document.getElementById('hcs-caption');
+  var i = 0, n = slides.length, timer = null;
+
+  // build dots
+  slides.forEach(function(_, idx){
+    var b = document.createElement('button');
+    b.className = 'hcs-dot' + (idx === 0 ? ' active' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (idx+1));
+    b.addEventListener('click', function(){ go(idx); restart(); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = dotsWrap.querySelectorAll('.hcs-dot');
+
+  function pauseIframe(iframe){
+    try { iframe.contentDocument.body.classList.remove('mg-play'); } catch(e){}
+  }
+  function playIframe(iframe){
+    try {
+      var body = iframe.contentDocument.body;
+      // toggle off+on so the keyframes restart from frame 0
+      body.classList.remove('mg-play');
+      void body.offsetHeight;
+      body.classList.add('mg-play');
+    } catch(e){}
+  }
+  function go(target){
+    i = (target + n) % n;
+    track.style.transform = 'translateX(-' + (i*100) + '%)';
+    dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+    var s = slides[i];
+    if(crumbEl) crumbEl.textContent = s.dataset.crumb || '';
+    if(captionEl) captionEl.textContent = s.dataset.caption || '';
+    slides.forEach(function(slide, idx){
+      var ifr = slide.querySelector('iframe');
+      if(!ifr) return;
+      if(idx === i) playIframe(ifr); else pauseIframe(ifr);
+    });
+  }
+  // Per-slide tweaks that run once the iframe DOM is available (gap-filling legend recolour)
+  function patchGapFillingFrame(ifr){
+    try {
+      var doc = ifr.contentDocument;
+      if(!doc) return;
+      // 1) Make the "Actual" data points solid black (the design uses --accent for both
+      //    actual + gap-fill markers; we want them visually distinct from gap-fill amber).
+      doc.querySelectorAll('circle[r="6"]').forEach(function(c){ c.setAttribute('fill','#15110d'); });
+      // 2) Repaint the "Actual" legend pill so its swatch matches.
+      var pills = doc.querySelectorAll('span');
+      pills.forEach(function(p){
+        if(p.textContent && p.textContent.trim() === 'Actual'){
+          var pill = p.closest('span[style*="background"]') || p.parentElement;
+          if(pill && pill.style){
+            pill.style.background = '#15110d';
+            pill.style.borderColor = '#15110d';
+          }
+        }
+      });
+    } catch(e){}
+  }
+
+  // When an iframe finishes loading, play it only if it's the currently-active slide
+  slides.forEach(function(s, idx){
+    var ifr = s.querySelector('iframe');
+    if(!ifr) return;
+    ifr.addEventListener('load', function(){
+      // gap-filling slide (index 3) gets a legend/colour patch
+      if(idx === 3) patchGapFillingFrame(ifr);
+      if(idx === i){ playIframe(ifr); schedule(); } else { pauseIframe(ifr); }
+    });
+  });
+    function slideDuration(ifr){
+    try{
+      var doc = ifr.contentDocument;
+      var anims = doc.getAnimations ? doc.getAnimations() : [];
+      var max = 0;
+      anims.forEach(function(a){
+        var t = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
+        if(!t) return;
+        var dur = t.duration || 0, iter = t.iterations, delay = t.delay || 0;
+        var total = (iter === Infinity) ? (delay + dur) : (delay + dur * (iter || 1));
+        if(total > max) max = total;
+      });
+      return max;
+    } catch(e){ return 0; }
+  }
+  function schedule(){
+    if(timer){ clearTimeout(timer); clearInterval(timer); timer = null; }
+    var slide = slides[i];
+    var dd = parseInt(slide.getAttribute('data-dur'), 10);
+    if(dd > 0){ timer = setTimeout(function(){ go(i+1); schedule(); }, dd); return; }
+    var ifr = slide.querySelector('iframe');
+    setTimeout(function(){
+      var dur = slideDuration(ifr);
+      if(!dur || dur < 1200) dur = 7000;
+      dur = Math.min(dur, 30000);
+      timer = setTimeout(function(){ go(i+1); schedule(); }, dur + 500);
+    }, 180);
+  }
+  function restart(){ schedule(); }
+  schedule();
+})();
+
+// ── contact footer: CONTACT word grows with scroll, capped to fit viewport ──
+(function(){
+  var footerBody=document.getElementById('footerBody'); if(!footerBody) return;
+  var el=footerBody.querySelector('.footer__contact'); if(!el) return;
+  var MIN=5, MAX=26, maxPx=9999;
+  function measure(){
+    var prev=el.style.fontSize; el.style.fontSize='200px';
+    var w=0; try{var rg=document.createRange(); rg.selectNodeContents(el); w=rg.getBoundingClientRect().width;}catch(e){}
+    el.style.fontSize=prev;
+    var ratio=(w/200)||4.2; var pad=window.innerWidth*0.04;
+    maxPx=(window.innerWidth-pad*2)/ratio;
+  }
+  function upd(){
+    var r=footerBody.getBoundingClientRect();
+    var p=Math.max(0,Math.min(1,1-r.top/window.innerHeight));
+    var e=p*p*(3-2*p);
+    var grow=(MIN+e*(MAX-MIN))/100*window.innerWidth;
+    el.style.fontSize=Math.min(grow,maxPx)+'px';
+  }
+  var t=false;
+  window.addEventListener('scroll',function(){if(!t){requestAnimationFrame(function(){upd();t=false;});t=true;}},{passive:true});
+  window.addEventListener('resize',function(){measure();upd();});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){measure();upd();});
+  measure(); upd();
+})();
+</script>
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
+function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
+</script>
+
+</body>
+</html>
