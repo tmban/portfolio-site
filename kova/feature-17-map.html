@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script><meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Kova — Feature 17 · Asset map</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="_base.css">
+<style>
+.mapwrap{display:grid;grid-template-columns:1fr 250px;gap:0}
+#map{height:460px;border-right:1px solid var(--border-2);background:#f3efe9}
+.leaflet-container{font-family:var(--sans);background:#f3efe9}
+.k-pin{border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(21,17,13,.25)}
+.k-pop .lp-name{font:600 13px/1.2 var(--serif);color:var(--ink)}
+.k-pop .lp-city{font:400 10px/1 var(--mono);color:var(--muted);margin:3px 0 8px}
+.k-pop .lp-row{display:flex;gap:14px}
+.k-pop .lp-row .l{font:400 10px/1 var(--mono);color:var(--muted)}
+.k-pop .lp-row .v{font:600 14px/1 var(--serif);color:var(--ink);margin-top:3px}
+.sidep{padding:20px 18px}
+.sp-head{font:600 14px/1 var(--serif);margin-bottom:2px}
+.sp-sub{font:400 11px/1 var(--mono);color:var(--muted);margin-bottom:18px}
+.legrow{display:flex;align-items:center;gap:9px;font:400 12px/1 var(--sans);color:var(--ink-2);margin-bottom:12px}
+.legrow i{width:11px;height:11px;border-radius:50%}
+.spstat{margin-top:22px;padding-top:18px;border-top:1px solid var(--border-2)}
+.spstat .l{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.spstat .v{font:600 28px/1 var(--serif);letter-spacing:-.02em}
+.spstat .v span{font:400 12px/1 var(--mono);color:var(--muted-2)}
+.back-link{position:fixed;top:24px;left:32px;font:500 13px/1 var(--sans);color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:10px 16px;box-shadow:0 1px 2px 0 rgba(21,17,13,.05);z-index:50;transition:background .15s,color .15s}.back-link:hover{color:var(--accent);background:var(--bg-2)}
+</style><style id="resp-fix">
+@media(max-width:860px){
+  html,body{ overflow-x:hidden; }
+  .scr-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pwf{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .trade-table,.swim,.pwf-stack{ max-width:100%; }
+  .figure{ width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px; }
+  .callouts{ position:static!important; }
+  .screen{ overflow-x:auto; }
+  .figure>*{ min-width:0; }
+}
+@media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
+</style>
+</head><body>
+<a class="back-link" href="index.html#supporting">← Back to case study</a>
+<div class="figure">
+  <div>
+    <div class="frame-label">Feature 09 — Portfolio map</div>
+    <div class="frame-heading">The whole portfolio, at a glance and by intensity</div>
+    <div class="frame-sub">Every asset across the UK and Ireland on a real basemap, colour-coded by carbon intensity so outliers are visible geographically. The worst performer pulses; clusters in London stay legible alongside regional assets.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:300px;left:430px;">1</div>
+      <div class="marker" style="top:150px;left:340px;">2</div>
+      <div class="marker" style="top:300px;right:60px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / portfolio / map</span></div>
+        <div class="screen-body" style="padding:0">
+          <div class="mapwrap">
+            <div id="map"></div>
+            <div class="sidep">
+              <div class="sp-head">Carbon intensity</div>
+              <div class="sp-sub">kgCO&#8322;e / m&#178; · by asset</div>
+              <div class="legrow"><i style="background:#c64545"></i>High · &gt; 55</div>
+              <div class="legrow"><i style="background:#c6892b"></i>Medium · 40–55</div>
+              <div class="legrow"><i style="background:#2a7a5a"></i>Low · &lt; 40</div>
+              <div class="spstat"><div class="l">Total tracked</div><div class="v">15 <span>assets shown</span></div></div>
+              <div class="spstat" style="border:none;padding-top:14px"><div class="l">Worst performer</div><div class="v" style="font-size:18px">Exchange House <span style="display:block;margin-top:4px">62.1 kgCO&#8322;e/m&#178;</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Outliers are geographic.</b> The worst asset pulses on the map, so a problem reads as a place, not a row in a table.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Clusters stay legible.</b> Five London assets group without overlapping into noise, while regional and Irish assets keep their context.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Intensity is the colour.</b> One traffic-light scale spans the whole portfolio, so comparison across regions needs no mental conversion.</div></div>
+  </div>
+</div>
+<script>
+const assets=[
+ {lat:51.5210,lon:-0.0875,name:'Exchange House',city:'London',dq:38,carbon:62.1,tone:'bad',featured:true},
+ {lat:51.5189,lon:-0.0782,name:'14A Broadgate',city:'London',dq:94,carbon:38.2,tone:'good'},
+ {lat:51.5176,lon:-0.1208,name:'40 Holborn',city:'London',dq:87,carbon:41.5,tone:'good'},
+ {lat:51.5117,lon:-0.0961,name:'Cannon Place',city:'London',dq:61,carbon:55.4,tone:'amber'},
+ {lat:51.5095,lon:-0.0876,name:'King William',city:'London',dq:67,carbon:52.1,tone:'amber'},
+ {lat:53.4790,lon:-2.2434,name:'Mcr Central',city:'Manchester',dq:91,carbon:39.7,tone:'good'},
+ {lat:53.4810,lon:-2.2516,name:'Spinningfields',city:'Manchester',dq:72,carbon:48.3,tone:'amber'},
+ {lat:53.4035,lon:-2.9866,name:'Liverpool One',city:'Liverpool',dq:78,carbon:44.0,tone:'amber'},
+ {lat:55.9533,lon:-3.1883,name:'St James',city:'Edinburgh',dq:84,carbon:41.0,tone:'good'},
+ {lat:55.8642,lon:-4.2518,name:'Atria',city:'Glasgow',dq:67,carbon:51.0,tone:'amber'},
+ {lat:53.3498,lon:-6.2603,name:'IFSC',city:'Dublin',dq:90,carbon:39.0,tone:'good'},
+ {lat:54.9783,lon:-1.6178,name:'Quayside',city:'Newcastle',dq:75,carbon:46.0,tone:'amber'},
+ {lat:51.4545,lon:-2.5879,name:'Bristol Harbour',city:'Bristol',dq:81,carbon:43.2,tone:'good'},
+ {lat:52.4862,lon:-1.8904,name:'Snow Hill',city:'Birmingham',dq:73,carbon:47.6,tone:'amber'},
+ {lat:53.7997,lon:-1.5492,name:'Wellington Pl',city:'Leeds',dq:86,carbon:42.4,tone:'good'}
+];
+const col={bad:'#c64545',amber:'#c6892b',good:'#2a7a5a'};
+const map=L.map('map',{zoomControl:false,attributionControl:false}).setView([54.2,-3.0],5);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+assets.forEach(a=>{
+  const size=a.featured?22:15;
+  const m=L.marker([a.lat,a.lon],{icon:L.divIcon({className:'',html:`<div class="k-pin" style="width:${size}px;height:${size}px;background:${col[a.tone]}"></div>`,iconSize:[size,size],iconAnchor:[size/2,size/2]})}).addTo(map);
+  m.bindPopup(`<div class="k-pop"><div class="lp-name">${a.name}</div><div class="lp-city">${a.city}</div><div class="lp-row"><div><div class="l">Carbon</div><div class="v">${a.carbon}</div></div><div><div class="l">DQ</div><div class="v">${a.dq}</div></div></div></div>`,{className:'k-pop-wrap'});
+  if(a.featured){
+    const ring=L.circleMarker([a.lat,a.lon],{radius:18,color:'#b85c38',weight:2,fill:false,opacity:.6}).addTo(map);
+  }
+});
+</script>
+
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
+function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
+</script>
+
+</body></html>

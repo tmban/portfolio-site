@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script><meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Kova — Net Zero risk</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="_base.css">
+<style>
+.nz{display:grid;grid-template-columns:1fr 240px;gap:0}
+.nz-main{padding:24px 24px 20px;border-right:1px solid var(--border-2)}
+.nz-head{margin-bottom:16px}
+.nzchart{height:260px;position:relative}
+.nzchart svg{width:100%;height:100%;overflow:visible}
+.cross{position:absolute;font:500 10px/1 var(--mono);color:var(--red);background:var(--red-l);padding:4px 7px;border-radius:5px}
+.nz-side{padding:24px 20px}
+.risk-big{font:600 52px/1 var(--serif);letter-spacing:-.03em;color:var(--red)}
+.risk-lab{font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:6px;margin-bottom:24px}
+.riskrow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-2);font:400 13px/1 var(--sans)}
+.riskrow:last-child{border:none}
+.riskrow .yr{font:500 12px/1 var(--mono);color:var(--muted)}
+.riskrow .ct{font:600 14px/1 var(--serif)}
+.back-link{position:fixed;top:24px;left:32px;font:500 13px/1 var(--sans);color:var(--ink-2);text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:10px 16px;box-shadow:0 1px 2px 0 rgba(21,17,13,.05);z-index:50;transition:background .15s,color .15s}.back-link:hover{color:var(--accent);background:var(--bg-2)}
+</style><style id="resp-fix">
+@media(max-width:860px){
+  html,body{ overflow-x:hidden; }
+  .scr-wrap{ max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pwf{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .trade-table,.swim,.pwf-stack{ max-width:100%; }
+  .figure{ width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px; }
+  .callouts{ position:static!important; }
+  .screen{ overflow-x:auto; }
+  .figure>*{ min-width:0; }
+}
+@media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
+</style>
+</head><body>
+<a class="back-link" href="index.html#supporting">← Back to case study</a>
+<div class="figure">
+  <div>
+    <div class="frame-label">Feature 07 — Stranding risk</div>
+    <div class="frame-heading">When the portfolio strands, and what it costs to avoid it</div>
+    <div class="frame-sub">Each asset's intensity is projected against the CRREM 1.5°C decarbonisation pathway. The year a building crosses the line is the year it strands, becoming hard to let, refinance or sell without intervention.</div>
+    <div class="scr-wrap">
+      <div class="marker" style="top:230px;left:430px;">1</div>
+      <div class="marker" style="top:300px;left:280px;">2</div>
+      <div class="marker" style="top:130px;right:60px;">3</div>
+      <div class="screen">
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / net zero / stranding risk</span></div>
+        <div class="screen-body" style="padding:0">
+          <div class="nz">
+            <div class="nz-main">
+              <div class="nz-head"><div class="panel-title">Stranding projection · CRREM</div><div class="panel-sub" style="margin-top:4px">kgCO&#8322;e / m&#178; · portfolio average vs 1.5°C pathway</div></div>
+              <div class="nzchart">
+                <svg viewBox="0 0 640 260" preserveAspectRatio="none">
+                  <line x1="0" y1="50" x2="640" y2="50" stroke="#f0ebe4"/>
+                  <line x1="0" y1="130" x2="640" y2="130" stroke="#f0ebe4"/>
+                  <line x1="0" y1="230" x2="640" y2="230" stroke="#ebe6df"/>
+                  <!-- CRREM target descending steeply (the tightening limit) -->
+                  <path d="M0,70 C200,120 420,180 640,215" stroke="#2a7a5a" stroke-width="2.5" stroke-dasharray="6 7" fill="none"/>
+                  <!-- BAU stays high, barely improving (strands when target drops below it) -->
+                  <path d="M0,95 C200,100 420,105 640,112" stroke="#c64545" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <!-- shade the stranded zone (where BAU sits above target) -->
+                  <path d="M300,108 C420,105 640,112 640,112 L640,215 C420,180 300,120 300,108 Z" fill="rgba(198,69,69,.06)"/>
+                  <!-- crossing point where target dips below BAU -->
+                  <circle cx="300" cy="112" r="6" fill="#c64545" stroke="#fff" stroke-width="2"/>
+                  <line x1="300" y1="112" x2="300" y2="230" stroke="#c64545" stroke-width="1" stroke-dasharray="3 4"/>
+                </svg>
+                <div class="cross" style="top:62px;left:300px;transform:translateX(-50%)">Strands 2032</div>
+              </div>
+              <div class="legend">
+                <span class="leg"><i style="background:#c64545"></i>Business-as-usual</span>
+                <span class="leg"><i style="background:#2a7a5a"></i>CRREM 1.5°C limit</span>
+              </div>
+            </div>
+            <div class="nz-side">
+              <div class="risk-big">46%</div>
+              <div class="risk-lab">of assets strand before 2035 on current trajectory</div>
+              <div class="riskrow"><span class="yr">By 2030</span><span class="ct">15%</span></div>
+              <div class="riskrow"><span class="yr">By 2035</span><span class="ct">46%</span></div>
+              <div class="riskrow"><span class="yr">By 2040</span><span class="ct">71%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callouts">
+    <div class="gutter-head">What you're looking at</div>
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>The line that matters.</b> The CRREM pathway tightens every year; an asset strands the moment its emissions sit above it.</div></div>
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>A date, not a vibe.</b> The crossing point names the stranding year, turning abstract risk into a planning deadline.</div></div>
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Portfolio exposure, summarised.</b> 46% strand before 2035 on current trajectory, the headline number for an investment committee.</div></div>
+  </div>
+</div>
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
+  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
+  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
+  <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
+  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
+function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
+function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+tmSyncSwatches(tmThemeName());
+document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
+</script>
+
+</body></html>
