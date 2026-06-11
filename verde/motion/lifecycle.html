@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="viewport" content="width=device-width, initial-scale=1"><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Verde · Lifecycle</title>
+
+<style>
+:root {
+  --bg:#ffffff; --bg-soft:#f7f7f5; --surface:#ffffff; --ink:#0f0f0e; --ink-2:#1a1a18;
+  --muted:#6b6b64; --muted-2:#aaaaaa; --border:#ebebeb; --border-2:#f0f0ee;
+  --forest:#2a7a5a; --forest-d:#166534; --forest-l:rgba(42,122,90,0.08);
+  --leaf:#4fd99e; --lime:#a3e635;
+  --review-bg:#fff8e6; --review-ink:#a16207;
+  --approved-bg:#e8f5ee; --approved-ink:#166534;
+  --rejected-bg:#fef2f2; --rejected-ink:#b91c1c;
+  --serif:'Bricolage Grotesque',serif; --sans:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+  --radius-md:10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:1080px; height:1080px; background: var(--bg); font-family: var(--sans); color: var(--ink); overflow: hidden; margin: 0; }
+.mg { position: relative; width: 100%; height: 100%; background: var(--bg); font-family: var(--sans); color: var(--ink); overflow: hidden; }
+.mg-grid { position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(15,15,14,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,15,14,.028) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 90%);
+}
+.mg-eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--forest); }
+.mg-title { font-family: var(--serif); font-weight: 800; letter-spacing: -.04em; color: var(--ink); line-height: 1.02; }
+.mg-label { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.mg-watermark { position: absolute; left: 56px; bottom: 56px; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.mg-watermark .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--forest); }
+.mg-watermark strong { color: var(--ink); font-weight: 500; }
+.mg-corner-tag { position: absolute; right: 56px; top: 56px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.mg-corner-tag .dt { display: inline-block; width: 6px; height: 6px; background: var(--ink); border-radius: 50%; }
+
+@keyframes vg-fade-in { 0%, 100% { opacity: 0; } 10%, 92% { opacity: 1; } }
+@keyframes vg02-stage1 {
+  0%, 100% { opacity: 0; transform: translateY(8px); }
+  4%       { opacity: 1; transform: translateY(0); }
+  30%      { opacity: 1; transform: translateY(0); }
+  34%      { opacity: 0; transform: translateY(-8px); }
+}
+@keyframes vg02-stage2 {
+  0%, 100% { opacity: 0; transform: translateY(8px); }
+  34%      { opacity: 0; transform: translateY(8px); }
+  38%      { opacity: 1; transform: translateY(0); }
+  62%      { opacity: 1; transform: translateY(0); }
+  66%      { opacity: 0; transform: translateY(-8px); }
+}
+@keyframes vg02-stage3 {
+  0%, 100% { opacity: 0; transform: translateY(8px); }
+  66%      { opacity: 0; transform: translateY(8px); }
+  70%      { opacity: 1; transform: translateY(0); }
+  92%      { opacity: 1; transform: translateY(0); }
+}
+@keyframes vg02-track {
+  0%, 30%  { width: 0%; }
+  34%      { width: 33%; }
+  62%      { width: 33%; }
+  66%      { width: 66%; }
+  92%      { width: 66%; }
+  100%     { width: 100%; }
+}
+@keyframes vg02-dot-active {
+  0%, 4%   { background: #d5d6d8; transform: scale(1); }
+  6%, 30%  { background: var(--review-ink); transform: scale(1.25); }
+  34%, 38% { background: var(--review-ink); transform: scale(1); }
+}
+@keyframes vg02-dot-2 {
+  0%, 34%  { background: #d5d6d8; transform: scale(1); }
+  38%, 62% { background: var(--forest); transform: scale(1.25); }
+  66%, 70% { background: var(--forest); transform: scale(1); }
+}
+@keyframes vg02-dot-3 {
+  0%, 66%  { background: #d5d6d8; transform: scale(1); }
+  70%, 92% { background: var(--leaf); transform: scale(1.25); }
+}
+
+body:not(.mg-play) *, body:not(.mg-play) *::before, body:not(.mg-play) *::after { animation-name: none !important; }
+body.mg-play { animation: mg-page-in 700ms cubic-bezier(.2,.6,.2,1) both; }
+@keyframes mg-page-in { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
+</style>
+</head>
+<body class="mg-play">
+<div class="mg" style="background:var(--bg)">
+  <div class="mg-grid"></div>
+
+  <div style="position:absolute; top:72px; left:80px; right:80px; animation:vg-fade-in 9s ease both infinite;">
+    <div class="mg-title" style="font-size:60px; margin-top:14px;">
+      Every report has<br>a paper trail.
+    </div>
+  </div>
+
+  <div style="position:absolute; left:120px; right:120px; top:480px; height:100px;">
+    <div style="position:absolute; left:28px; right:28px; top:40px; height:4px; background:#ececec; border-radius:100px;"></div>
+    <div style="position:absolute; left:28px; top:40px; height:4px; background:linear-gradient(90deg, var(--forest) 0%, var(--leaf) 100%); border-radius:100px; animation:vg02-track 9s cubic-bezier(.65,0,.35,1) both infinite;"></div>
+
+    <div style="position:absolute; top:28px; left:28px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div style="width:28px; height:28px; border-radius:50%; background:#d5d6d8; border:4px solid var(--surface); box-shadow:0 0 0 2px #d5d6d8; animation:vg02-dot-active 9s ease both infinite;"></div>
+      <div style="text-align:center; min-width:200px;">
+        <div style="font:700 16px/1.2 var(--sans); color:var(--ink); letter-spacing:-.01em; margin-top:18px;">Submitted</div>
+        <div style="font:400 12px/1.4 var(--sans); color:var(--muted); margin-top:6px;">Report uploaded by consultant</div>
+      </div>
+    </div>
+
+    <div style="position:absolute; top:28px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div style="width:28px; height:28px; border-radius:50%; background:#d5d6d8; border:4px solid var(--surface); box-shadow:0 0 0 2px #d5d6d8; animation:vg02-dot-2 9s ease both infinite;"></div>
+      <div style="text-align:center; min-width:200px;">
+        <div style="font:700 16px/1.2 var(--sans); color:var(--ink); letter-spacing:-.01em; margin-top:18px;">Under Review</div>
+        <div style="font:400 12px/1.4 var(--sans); color:var(--muted); margin-top:6px;">Senior consultant + analytics QA</div>
+      </div>
+    </div>
+
+    <div style="position:absolute; top:28px; left:calc(100% - 28px); transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div style="width:28px; height:28px; border-radius:50%; background:#d5d6d8; border:4px solid var(--surface); box-shadow:0 0 0 2px #d5d6d8; animation:vg02-dot-3 9s ease both infinite;"></div>
+      <div style="text-align:center; min-width:200px;">
+        <div style="font:700 16px/1.2 var(--sans); color:var(--ink); letter-spacing:-.01em; margin-top:18px;">Approved</div>
+        <div style="font:400 12px/1.4 var(--sans); color:var(--muted); margin-top:6px;">Disclosed to stakeholders</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute; left:200px; right:200px; bottom:110px; height:220px; background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px 32px; box-shadow:0 16px 36px -12px rgba(15,15,14,.10);">
+    <div class="mg-label" style="font-size:11px;">Current state</div>
+
+    <div style="position:absolute; left:32px; right:32px; top:64px; animation:vg02-stage1 9s ease both infinite; opacity:0;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span style="display:inline-flex; align-items:center; gap:8px; background:#e8f0fa; color:#3d5a8a; font:500 16px/1 var(--sans); padding:10px 18px; border-radius:100px;">
+          <span style="width:16px; height:16px; border-radius:50%; background:#3d5a8a; color:#e8f0fa; display:grid; place-items:center; font:700 10px/1 var(--sans);">&#9680;</span>
+          Submitted
+        </span>
+        <div style="font:400 14px/1.5 var(--sans); color:var(--muted);">GRESB Annual 2024 — Core European Portfolio</div>
+      </div>
+      <div style="margin-top:22px; display:flex; gap:36px;">
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Reviewer</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">Pending assignment</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Updated</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">Just now</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Confidence</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:32px; right:32px; top:64px; animation:vg02-stage2 9s ease both infinite; opacity:0;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span style="display:inline-flex; align-items:center; gap:8px; background:var(--review-bg); color:var(--review-ink); font:500 16px/1 var(--sans); padding:10px 18px; border-radius:100px;">
+          <span style="width:16px; height:16px; border-radius:50%; background:var(--review-ink); color:var(--review-bg); display:grid; place-items:center; font:700 10px/1 var(--sans);">&#9680;</span>
+          Under Review
+        </span>
+        <div style="font:400 14px/1.5 var(--sans); color:var(--muted);">GRESB Annual 2024 — Core European Portfolio</div>
+      </div>
+      <div style="margin-top:22px; display:flex; gap:36px;">
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Reviewer</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">Michael Thompson</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Updated</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">2 days ago</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Confidence</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">72% draft</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:32px; right:32px; top:64px; animation:vg02-stage3 9s ease both infinite; opacity:0;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span style="display:inline-flex; align-items:center; gap:8px; background:var(--approved-bg); color:var(--approved-ink); font:500 16px/1 var(--sans); padding:10px 18px; border-radius:100px;">
+          <span style="width:16px; height:16px; border-radius:50%; background:var(--approved-ink); color:var(--approved-bg); display:grid; place-items:center; font:700 10px/1 var(--sans);">&#10003;</span>
+          Approved
+        </span>
+        <div style="font:400 14px/1.5 var(--sans); color:var(--muted);">GRESB Annual 2024 — Core European Portfolio</div>
+      </div>
+      <div style="margin-top:22px; display:flex; gap:36px;">
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Reviewer</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">Sarah Chen + 2</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Updated</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">Mar 8, 2025</div>
+        </div>
+        <div>
+          <div style="font:500 10px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Confidence</div>
+          <div style="font:500 16px/1.3 var(--sans); color:var(--ink); margin-top:8px;">96% audited</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
