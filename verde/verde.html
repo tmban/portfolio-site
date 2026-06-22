@@ -1,33 +1,47 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
-<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script>
+<head><!--FIRA_OVERRIDE_START--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style id="fira-override">*,*::before,*::after{font-family:'Inter','Fira Sans',sans-serif!important}h1,h2,h3,h4,h5,h6,.section-head__title,.frame-heading,.c-label__name,.footer__contact,.about-tagline,.about-hero__statement,.cta-heading,.project-name,.exp-company,.skill-card__title,.news-card__label,.kv-thesis-q,.hmw p{font-family:'Fira Sans',sans-serif!important}</style><!--FIRA_OVERRIDE_END-->
+<script>(function(){ try { var t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name!=='blue'&&t.name!=='mono'){ if(t.name&&t.name!=='cream') document.documentElement.setAttribute('data-theme',t.name); var r=document.documentElement.style; r.setProperty('--p',t.p); r.setProperty('--s',(t.s==='#ff7906'||t.s==='#6b6e74')?'#c2410c':t.s); r.setProperty('--c',t.c);} } catch(e){} })();</script>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Mbanefo · Verde</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Verde: Governed ESG reporting workspace · Thomas Mbanefo</title>
+<!--SEO_START-->
+<meta name="description" content="A live, governed, traceable ESG reporting workspace, from raw portfolio data to filed disclosure, with a paper trail on every number.">
+<link rel="canonical" href="https://thomasmbanefo.com/verde/verde.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thomas Mbanefo">
+<meta property="og:title" content="Verde: Governed ESG reporting workspace · Thomas Mbanefo">
+<meta property="og:description" content="A live, governed, traceable ESG reporting workspace, from raw portfolio data to filed disclosure, with a paper trail on every number.">
+<meta property="og:url" content="https://thomasmbanefo.com/verde/verde.html">
+<meta property="og:image" content="https://thomasmbanefo.com/assets/og/verde.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Verde: Governed ESG reporting workspace · Thomas Mbanefo">
+<meta name="twitter:description" content="A live, governed, traceable ESG reporting workspace, from raw portfolio data to filed disclosure, with a paper trail on every number.">
+<meta name="twitter:image" content="https://thomasmbanefo.com/assets/og/verde.png">
+<!--SEO_END-->
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --p:#ede6d3;
-  --s:#ff7906;
+  --p:#ffffff;
+  --s:#c2410c;
   --c:#2c2c2c;
-  --paper:#f4f1e8;
-  --paper-2:#ebe7d8;
-  --paper-3:#dfdac6;
-  --surface:#fdfbf4;
-  --ink:#15211c;
-  --ink-2:#243029;
-  --muted:#6a6f6a;
-  --muted-2:#9aa09a;
-  --line:#1f2a25;
-  --line-soft:#b3b3a4;
-  --line-faint:#d8d3c1;
+  --paper:#ffffff;
+  --paper-2:#f6f3ee;
+  --paper-3:#efeadf;
+  --surface:#ffffff;
+  --ink:#1a1611;
+  --ink-2:#423b32;
+  --muted:#6f6a60;
+  --muted-2:#9b9488;
+  --line:#c4bdaf;
+  --line-soft:#d9d3c7;
+  --line-faint:#ece7dd;
   --accent:#2a7a5a;
   --accent-2:#3f9777;
   --accent-soft:rgba(42,122,90,.12);
@@ -41,18 +55,18 @@
   --bad-soft:rgba(168,67,46,.14);
 
   --review-bg:#fff8e6; --review-ink:#a16207;
-  --approved-bg:#e8f5ee; --approved-ink:#166534;
+  --approved-bg:#e8f5ee;--hm-good:#2e8d63;--hm-warn:#e0913a;--hm-bad:#d64a3f; --approved-ink:#166534;
   --rejected-bg:#fef2f2; --rejected-ink:#b91c1c;
 
   --av-blue:#3d5a8a; --av-rose:#c4677c; --av-amber:#c6892b; --av-purple:#7c5dc6;
 
-  --serif:'Bricolage Grotesque',serif;
-  --sans:'DM Sans',sans-serif;
-  --mono:'DM Mono',monospace;
+  --serif:'Fira Sans',sans-serif;
+  --sans:'Inter',sans-serif;
+  --mono:'Fira Sans',sans-serif;
   --hand:'Kalam',cursive;
   --hand-display:'Caveat',cursive;
 
-  --maxw:1180px;
+  --maxw:1200px;
   --shadow-sm:0 1px 2px 0 rgba(15,21,28,.04);
   --shadow-md:0 4px 12px -2px rgba(15,21,28,.10);
   --shadow-xl:0 24px 48px -12px rgba(15,21,28,.16);
@@ -78,13 +92,13 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 .sectnav a{display:flex;align-items:center;gap:11px;justify-content:flex-end;text-decoration:none;padding:7px 0;font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--muted-2);transition:color .2s}
 .sectnav a .dot-n{width:8px;height:8px;border-radius:50%;background:var(--muted-2);transition:all .2s;flex:0 0 8px}
 .sectnav a .lbl{opacity:0;transform:translateX(6px);transition:all .2s;white-space:nowrap}
-.sectnav a:hover .lbl,.sectnav a.active .lbl{opacity:1;transform:translateX(0)}
+.sectnav a:hover .lbl{opacity:1;transform:translateX(0)}
 .sectnav a:hover,.sectnav a.active{color:var(--ink)}
 .sectnav a.active .dot-n{background:var(--accent);width:11px;height:11px}
-@media(max-width:1100px){.sectnav{right:14px;gap:6px}.sectnav a{padding:9px 2px}.sectnav a .dot-n{width:14px;height:14px;flex:0 0 14px}.sectnav a.active .dot-n{width:17px;height:17px;flex:0 0 17px}.sectnav .lbl{display:none}.sectnav a.active .lbl{display:block;opacity:1;transform:none;background:var(--ink,#1a1a1a);color:var(--paper,#fff);padding:4px 9px;border-radius:20px;font-size:11px;letter-spacing:.02em}}
+@media(max-width:767px){.sectnav{right:14px;gap:6px}.sectnav a{padding:9px 2px}.sectnav a .dot-n{width:14px;height:14px;flex:0 0 14px}.sectnav a.active .dot-n{width:17px;height:17px;flex:0 0 17px}.sectnav .lbl{display:none}}
 
 /* hero */
-.hero{padding:0 0 56px;position:relative;text-align:center}
+.hero{padding:0 0 64px;position:relative;text-align:center}
 .hero .wrap{position:relative;z-index:1}
 .hero .eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
 .hero h1{font:600 128px/1 var(--serif);letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
@@ -121,24 +135,24 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 @media(max-width:860px){.ov-grid{grid-template-columns:1fr;gap:32px}}
 
 /* generic section */
-.sec-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.sec-label{font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
 .sec-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;color:var(--ink);margin-bottom:16px}
 .sec-sub{font:400 17px/1.6 var(--sans);color:var(--muted)}
 
 /* problem panel */
-.problem{padding:80px 0;background:var(--paper);position:relative}
+.problem{padding:40px 0;background:var(--paper);position:relative}
 .pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
 .pb-card .pb-tag{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:1px solid var(--line-faint);border-radius:6px;padding:8px 12px;display:inline-block;margin-bottom:18px}
 .pb-card p{font:400 15px/1.65 var(--sans);color:var(--ink-2)}
 @media(max-width:860px){.pb-grid{grid-template-columns:1fr}}
 
 /* research */
-.research{padding:80px 0;background:var(--paper)}
+.research{padding:40px 0;background:var(--paper)}
 .three-q{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0 8px}
 .tq{background:var(--surface);border:1px solid var(--line-faint);border-radius:14px;padding:24px}
 .tq-n{font:600 12px/1 var(--mono);color:var(--accent);margin-bottom:14px}
 .tq p{font:400 15px/1.55 var(--sans);color:var(--ink-2)}
-.r-block{margin-top:56px;max-width:none}
+.r-block{margin-top:36px;max-width:none}
 .r-h{font:600 22px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
 .r-p{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:18px}
 .r-fig{margin-top:24px;border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface)}
@@ -150,8 +164,8 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 @media(max-width:860px){.three-q{grid-template-columns:1fr}.feedback-grid{grid-template-columns:1fr}}
 
 /* discovery */
-.discovery{padding:80px 0;background:var(--paper)}
-.wireframes{padding:80px 0;background:var(--paper)}
+.discovery{padding:40px 0;background:var(--paper)}
+.wireframes{padding:40px 0;background:var(--paper)}
 
 /* C2 - AI / consultant split: two side-by-side cards, obvious division */
 .aisplit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
@@ -185,9 +199,9 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 .pwf-tab{flex:1 1 0;min-width:0;justify-content:center;text-align:center;gap:0}
 
 /* features */
-.features{padding:80px 0 0;background:var(--paper)}
+.features{padding:40px 0 0;background:var(--paper)}
 .feat-stream{margin-top:48px}
-.feat{padding:80px 0}
+.feat{padding:40px 0}
 .feat:first-child{border-top:0}
 .feat-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 290px;gap:40px;align-items:start}
 .frame-label{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
@@ -206,7 +220,7 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 @media(max-width:1024px){.feat-inner{grid-template-columns:1fr}}
 
 /* supporting grid */
-.supporting{padding:80px 0;background:var(--paper)}
+.supporting{padding:40px 0;background:var(--paper)}
 .supp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
 .supp-card{border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface);text-decoration:none;display:block;transition:box-shadow .25s,transform .25s}
 .supp-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
@@ -219,10 +233,10 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 @media(max-width:860px){.supp-grid{grid-template-columns:1fr}}
 
 /* impact */
-.impact{padding:96px 0;background:var(--paper);color:var(--ink)}
+.impact{padding:40px 0;background:var(--paper);color:var(--ink)}
 .impact-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;margin-bottom:48px}
 .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:40px}
-/* C1 — early-stats callout, no dividers, transparent bg */
+/* C1, early-stats callout, no dividers, transparent bg */
 .early-stats{display:flex;gap:32px;margin:0;padding:32px 0;background:transparent}
 .early-stats .est{flex:1}
 .early-stats .ev{font:600 38px/1 var(--serif);letter-spacing:-.03em;color:var(--accent);margin-bottom:8px}
@@ -237,7 +251,7 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 /* siblings */
 .siblings{padding:96px 0;background:var(--paper)}
 .sib-h{font:600 30px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
-.sib-sub{font:400 16px/1.6 var(--sans);color:var(--muted);margin-bottom:32px}
+.sib-sub{font:400 16px/1.6 var(--sans);color:var(--ink-2);margin-bottom:32px}
 .sib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
 .sib-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line-faint);border-radius:16px;padding:32px 32px 24px;background:var(--surface);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .sib-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
@@ -251,7 +265,7 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 .sib-go{font:500 13px/1 var(--sans);color:var(--sib,var(--accent))}
 @media(max-width:860px){.sib-grid{grid-template-columns:1fr}}
 
-/* (legacy .foot-* footer styles removed — replaced by homepage .footer below) */
+/* (legacy .foot-* footer styles removed, replaced by homepage .footer below) */
 
 @media(max-width:860px){
   body{font-size:15px}
@@ -364,7 +378,7 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 .pwf .b-note.q::before{content:'?';color:var(--accent)}
 .pwf .b-note b{color:var(--ink);font-weight:600}
 
-/* lane-notes — typography matches Kova (serif headings, sans body) */
+/* lane-notes, typography matches Kova (serif headings, sans body) */
 .pwf .lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px;padding-top:36px;border-top:1px dashed var(--line-soft)}
 .pwf .lane-notes h4{font:600 20px/1.25 var(--serif);letter-spacing:-.015em;color:var(--ink);margin-bottom:8px}
 .pwf .lane-notes h4 small{display:block;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
@@ -510,34 +524,34 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 .feat .int .st{font:400 9.5px/1 var(--mono);color:var(--muted);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
 .feat .int.live .st{color:var(--accent)}
 
-/* hero location/email meta — stacked, matches homepage/About */
+/* hero location/email meta, stacked, matches homepage/About */
 .hero-meta-top{text-align:center;padding-top:54px;margin-bottom:56px}
-.hero-meta__label{display:block;font:500 .65rem/1.8 'DM Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
-.hero-meta__value{display:block;font:500 .52rem/1.8 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;opacity:.55;color:var(--ink)}
+.hero-meta__label{display:block;font:500 .65rem/1.8 'Fira Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.hero-meta__value{display:block;font:500 .52rem/1.8 'Fira Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.55;color:var(--ink)}
 .hero-meta__value a{color:inherit;text-decoration:none}
 
-/* circular nav buttons — theme-driven pill, matches homepage */
+/* circular nav buttons, theme-driven pill, matches homepage */
 .nav-btn{position:fixed;top:18px;z-index:200;width:46px;height:46px;border-radius:50%;background:var(--s);color:var(--p);border:none;cursor:pointer;font:900 .52rem/1 'Barlow',sans-serif;letter-spacing:.12em;text-transform:uppercase;display:grid;place-items:center;text-decoration:none;transition:transform .3s cubic-bezier(.22,.61,.36,1),background-color .65s ease,color .65s ease}
 .nav-btn:hover{transform:scale(1.1)}
 .nav-btn{right:18px}
 .nav-btn--2{right:74px}
 
-/* homepage CONTACT footer — homepage class names, theme-driven palette */
+/* homepage CONTACT footer, homepage class names, theme-driven palette */
 .footer{position:relative;overflow:hidden}
 .footer__cap{height:48px;background:var(--paper)}
-.footer__body{background:var(--s);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:24px}
-.footer__contact{font-family:'Bricolage Grotesque',serif;font-weight:600;font-size:5vw;white-space:nowrap;text-transform:uppercase;letter-spacing:-.02em;text-align:center;color:var(--p);margin:0;line-height:.82;user-select:none;pointer-events:none}
+.footer__body{background:#d2d2d2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:24px}
+.footer__contact{font-family:'Fira Sans',sans-serif;font-weight:600;font-size:5vw;white-space:nowrap;text-transform:uppercase;letter-spacing:-.02em;text-align:center;color:var(--c);margin:0;line-height:.82;user-select:none;pointer-events:none}
 .footer__links{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:32px}
-.footer__link{font-family:'DM Mono',monospace;font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c);text-decoration:none;transition:color .22s}
-.footer__link:hover{color:var(--p)}
-.footer__copy{font-family:'DM Mono',monospace;font-weight:500;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);opacity:.6;margin-top:8px}
+.footer__link{font-family:'Fira Sans',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c);text-decoration:none;transition:color .22s}
+.footer__link:hover{color:var(--s)}
+.footer__copy{font-family:'Fira Sans',sans-serif;font-weight:500;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);opacity:.6;margin-top:8px}
 
 /* PICKER */
 .picker { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 56px; height: 56px; }
 .picker-toggle {
   position: absolute; bottom: 0; right: 0; z-index: 3;
   width: 56px; height: 56px; border-radius: 50%; filter: drop-shadow(0 5px 14px rgba(0,0,0,.32));
-  background: none; border: 0; padding: 0; cursor: pointer; color: var(--s); display: flex; align-items: center; justify-content: center;
+  background: #ffffff; border: 1px solid rgba(0,0,0,.08); padding: 0; cursor: pointer; color: var(--s); display: flex; align-items: center; justify-content: center;
   transition: transform .35s cubic-bezier(.22,.61,.36,1), color .65s ease;
 }
 .picker-toggle:hover { transform: scale(1.08) rotate(10deg) }
@@ -552,16 +566,16 @@ body{background:var(--paper);font-family:var(--sans);color:var(--ink);-webkit-fo
 }
 .picker.open .swatch {
   opacity: 1;
-  transform: rotate(calc(180deg + (90deg / 3) * var(--si, 0))) translate(80px) rotate(calc(0deg - 180deg - (90deg / 3) * var(--si, 0)));
+  transform: translateX(calc((var(--si, 0) + 1) * -40px));
 }
-.swatch[data-theme="cream"]  { background: #ff7906 }
+.swatch[data-theme="cream"]  { background: #c2410c }
 .swatch[data-theme="blue"]   { background: #0779ff }
 .swatch[data-theme="green"]  { background: #37af5d }
 .swatch[data-theme="purple"] { background: #db30f5 }
 .swatch[data-theme="mono"]   { background: #7c7c82 }
 
 
-/* THEME OVERRIDES — accent preserved under cream+mono; neutralized under blue/green/purple */
+/* THEME OVERRIDES, accent preserved under cream+mono; neutralized under blue/green/purple */
 html[data-theme="blue"]{--paper:#0779ff;--bg:#0779ff;--paper-2:#0a6ad6;--bg-2:#0a6ad6;--paper-3:#0858b0;--bg-3:#0858b0;--surface:#0a6ad6;--ink:#eaf6ff;--ink-2:#c5e8ff;--muted:#8fc4f5;--muted-2:#6fa8e0;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
 html[data-theme="green"]{--paper:#37af5d;--bg:#37af5d;--paper-2:#2f9a51;--bg-2:#2f9a51;--paper-3:#298a48;--bg-3:#298a48;--surface:#2f9a51;--ink:#f3fff7;--ink-2:#d6f5e0;--muted:#a9dcb9;--muted-2:#8bc79e;--line-faint:rgba(255,255,255,.20);--line-soft:rgba(255,255,255,.32);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
 html[data-theme="purple"]{--paper:#3c0350;--bg:#3c0350;--paper-2:#330246;--bg-2:#330246;--paper-3:#2b023b;--bg-3:#2b023b;--surface:#330246;--ink:#fce9ff;--ink-2:#f0d4fb;--muted:#c79bd6;--muted-2:#a87cb9;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
@@ -594,31 +608,130 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 }
 @media(max-width:560px){ .scr-wrap .marker{ display:none; } }@media(max-width:760px){.feat .scr-wrap .screen,.feat .scr-wrap .marker{display:none!important}.feat .scr-wrap{overflow:visible}.feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}@media(max-width:600px){#hcs{aspect-ratio:auto}#hcs .hcs-track,#hcs .hcs-dots{display:none!important}#hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}}
 </style>
+<link id="topnav-css" rel="stylesheet" href="../assets/site-nav.css?v=2">
+<style id="ui-overrides">
+/* normalise Final-UI feat layout so every screen shares the same edges + width */
+#features .feat .feat-inner{max-width:var(--maxw)!important;margin-left:auto!important;margin-right:auto!important;padding-left:32px!important;padding-right:32px!important;box-sizing:border-box!important}
+#features .feat .feat-inner > div:first-child{margin:0!important;padding:0!important}
+#features .feat .scr-wrap,#features .feat .screen-area{margin-left:0!important;margin-right:0!important;width:100%!important;max-width:900px!important;box-sizing:border-box!important}
+#features .feat .callouts{margin-left:0!important;margin-right:0!important}
+
+
+/* Final-UI: screen left, annotations right on large laptops+ (stacked below) */
+@media(min-width:1400px){
+  #features .feat .feat-inner{display:grid!important;grid-template-columns:minmax(0,1fr) 300px!important;column-gap:clamp(40px,3.4vw,64px)!important;align-items:start!important;max-width:var(--maxw)!important}
+  #features .feat .feat-inner > div:first-child{min-width:0!important}
+  #features .feat .callouts{margin:0!important;display:flex!important;flex-direction:column!important;gap:18px!important}
+}
+
+#features .feat .frame-label{display:none!important}
+#features .wrap{max-width:var(--maxw)!important}#features .feat-stream,#features .shots{margin-left:0!important;margin-right:0!important}
+
+#features .sec-label,#features .sec-h,#features .sec-sub{max-width:none!important;margin-left:0!important;margin-right:0!important}
+@media(max-width:767px){
+  #features .wrap{padding-left:20px!important;padding-right:20px!important}
+  #features .feat .feat-inner{padding-left:20px!important;padding-right:20px!important}
+}
+.footer{margin-left:calc(-1 * clamp(20px,5vw,48px))!important;margin-right:calc(-1 * clamp(20px,5vw,48px))!important}
+</style>
+<style id="ui-anchor">#introduction,#problem,#research,#discovery,#wireframes,#features,#impact{scroll-margin-top:12px}</style>
+<style id="sib-featured">
+.siblings .sib-h{font:600 38px/1.1 var(--serif)!important;letter-spacing:-.03em!important}
+@media(max-width:600px){.siblings .sib-h{font-size:30px!important}}
+.siblings .sib-grid{grid-template-columns:repeat(2,1fr)!important;gap:24px!important}
+@media(max-width:860px){.siblings .sib-grid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:560px){.siblings .sib-grid{grid-template-columns:1fr!important}}
+.sib-card h3{margin:0 0 8px!important}
+.sib-metric{display:block;font:600 12px/1.35 var(--mono);letter-spacing:.03em;color:var(--s,#ff7906);margin:0 0 12px;text-transform:none}
+.sib-card .sib-desc{display:block;font:400 14px/1.6 var(--sans);color:var(--muted);margin:0}
+</style>
+<style id="otherwork-match">
+/* Other Work, matched to homepage Featured Work */
+.siblings{padding:96px 0 120px;background:var(--paper)}
+.siblings .section-head{text-align:center;padding:0 24px 44px;max-width:1320px;margin:0 auto}
+.siblings .section-head__title{font:900 clamp(1.6rem,3.6vw,52px)/1 var(--sans);text-transform:uppercase;letter-spacing:.02em;color:var(--ink);margin:0}
+.siblings .section-head__sub{margin:.7em auto 0;max-width:460px;font:500 1rem/1.45 var(--sans);letter-spacing:.01em;color:var(--ink);opacity:.65}
+.siblings .grid-wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.siblings .grid{display:grid;grid-template-columns:repeat(2,minmax(0,480px));gap:56px 76px;justify-content:center;margin:0 auto}
+.siblings a.proj{position:relative;display:block;text-decoration:none;color:inherit;cursor:pointer}
+.siblings .proj-inner{aspect-ratio:1;border-radius:13px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.14);transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s cubic-bezier(.22,.61,.36,1);display:grid;place-items:center}
+.siblings .proj-inner img{width:100%;height:100%;object-fit:cover;display:block}
+.siblings a.proj:hover .proj-inner{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.18)}
+.siblings .proj-label{margin-top:18px;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name metric" "desc desc";align-items:baseline;column-gap:14px;row-gap:6px;padding:0 2px;text-align:left}
+.siblings .proj-label__client{grid-area:name;font:600 clamp(1.05rem,1.8vw,1.35rem)/1.05 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.siblings .proj-label__metric{grid-area:metric;justify-self:end;align-self:baseline;font:600 11px/1 var(--sans);letter-spacing:.04em;color:#c2410c;white-space:nowrap;margin:0}
+.siblings .proj-label__desc{grid-area:desc;font:400 13px/1.45 var(--sans);color:var(--ink);opacity:.6}
+@media(min-width:1280px){.siblings .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.siblings .grid{grid-template-columns:repeat(2,1fr);gap:28px 22px}}@media(max-width:425px){.siblings .grid{grid-template-columns:1fr;gap:32px}}
+@media(max-width:560px){.siblings .proj-label{grid-template-columns:1fr;grid-template-areas:"name" "metric" "desc";row-gap:4px}.siblings .proj-label__metric{justify-self:start;white-space:normal}.siblings .proj-label__desc{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
+</style>
+<style id="a11y-fixes">
+.hcs-playpause{position:absolute;bottom:16px;right:14px;z-index:7;width:30px;height:30px;border-radius:50%;border:1px solid var(--border,#e0e0e0);background:rgba(255,255,255,.86);color:#333;font:700 10px/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.hcs-playpause:hover{color:#000}@media(max-width:600px){.hcs-playpause{display:none}}
+
+:focus-visible{outline:2px solid var(--accent,#ff7906)!important;outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+@media print{
+  .topnav,.picker,.sectnav,.nav-btn,.hcs-dots,.back-link{display:none!important}
+  .hero{min-height:auto!important}
+}
+</style>
+<style id="a11y-skip">.skip-link{position:absolute;left:-9999px;top:0;z-index:1000;background:#2c2c2c;color:#fff;padding:10px 18px;border-radius:0 0 8px 0;font:600 14px/1 'Inter',sans-serif;text-decoration:none}.skip-link:focus{left:0}#main:focus{outline:none}</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="topnav" id="topnav">
+  <a class="topnav__brand" href="../index.html"><svg class="topnav__logo" viewBox="0 0 32 32" width="30" height="30" role="img" aria-label="Home" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tmFL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#767e8e"/><stop offset="1" stop-color="#565d6c"/></linearGradient><linearGradient id="tmFS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#434a58"/><stop offset="1" stop-color="#2c313c"/></linearGradient><linearGradient id="tmBL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7aeba"/><stop offset="1" stop-color="#898f9d"/></linearGradient><linearGradient id="tmBS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#757c8b"/><stop offset="1" stop-color="#565c6a"/></linearGradient><radialGradient id="tmSh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#1b1e26" stop-opacity="0.34"/><stop offset="1" stop-color="#1b1e26" stop-opacity="0"/></radialGradient></defs><ellipse cx="16" cy="28.4" rx="13" ry="2.4" fill="url(#tmSh)"/><polygon points="9.5,11.5 9.5,26 14.5,26" fill="url(#tmBS)"/><polygon points="9.5,11.5 1.5,26 9.5,26" fill="url(#tmBL)"/><polygon points="18.5,5 18.5,26 29,26" fill="url(#tmFS)"/><polygon points="18.5,5 8,26 18.5,26" fill="url(#tmFL)"/><polygon points="18.5,5 18.5,26 16.8,26" fill="#828a9b"/><polygon points="18.5,5 15.6,11 18.5,11" fill="#cdd2da"/><polygon points="18.5,5 18.5,11 21,11" fill="#a7aeba"/></svg></a>
+  <div class="topnav__links">
+    <a class="topnav__link" href="../about.html">About</a>
+    <div class="topnav__work">
+      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Work<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="topnav__dropdown">
+        <a class="topnav__dd-item" href="../kova/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/tiles/kv10-solid.webp" alt=""><span><span class="topnav__dd-name">Kova</span><span class="topnav__dd-sub">Analytics intelligence</span></span></a>
+        <a class="topnav__dd-item" href="../arbor/arbor.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/tiles/ar13-solid.webp" alt=""><span><span class="topnav__dd-name">Arbor</span><span class="topnav__dd-sub">Data platform</span></span></a>
+        <a class="topnav__dd-item" href="../plio/plio.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/tiles/pl8-solid.webp" alt=""><span><span class="topnav__dd-name">Plio</span><span class="topnav__dd-sub">AI invoice pipeline</span></span></a>
+        <a class="topnav__dd-item" href="../finning/finning.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/finning-card.png" alt=""><span><span class="topnav__dd-name">Finning</span><span class="topnav__dd-sub">Dealer portal</span></span></a>
+        <a class="topnav__dd-item" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/onbuy.png" alt=""><span><span class="topnav__dd-name">OnBuy</span><span class="topnav__dd-sub">Marketplace UX</span></span></a>
+        <a class="topnav__dd-item" href="../design-system/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/tiles/ds-documentation.webp" alt=""><span><span class="topnav__dd-name">Design system</span><span class="topnav__dd-sub">SIERA &middot; components &amp; tokens</span></span></a>
+      </div>
+    </div>
+    <a class="topnav__link" href="mailto:thomascmbanefo@gmail.com">Contact</a>
+    <a class="topnav__cta" href="https://calendly.com/thomascmbanefo/30min" target="_blank" rel="noopener">Book a meeting</a>
+  </div>
+  <button class="topnav__burger" id="topnavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="topnav__mobile" id="topnavMobile">
+  <a class="topnav__mlink" href="../index.html">Home</a>
+  <a class="topnav__mlink" href="../about.html">About</a>
+  <a class="topnav__mlink" href="mailto:thomascmbanefo@gmail.com">Contact</a>
+  <a class="topnav__mlink" href="https://calendly.com/thomascmbanefo/30min" target="_blank" rel="noopener">Book a meeting</a>
+  <div class="topnav__mgrid">
+  <a class="topnav__mproj" href="../kova/index.html"><img loading="lazy" decoding="async" src="../assets/tiles/kv10-solid.webp" alt=""><span class="topnav__mtext"><span class="topnav__mname">Kova</span><span class="topnav__msub">Analytics intelligence</span></span></a>
+  <a class="topnav__mproj" href="../arbor/arbor.html"><img loading="lazy" decoding="async" src="../assets/tiles/ar13-solid.webp" alt=""><span class="topnav__mtext"><span class="topnav__mname">Arbor</span><span class="topnav__msub">Data platform</span></span></a>
+  <a class="topnav__mproj" href="../plio/plio.html"><img loading="lazy" decoding="async" src="../assets/tiles/pl8-solid.webp" alt=""><span class="topnav__mtext"><span class="topnav__mname">Plio</span><span class="topnav__msub">AI invoice pipeline</span></span></a>
+  <a class="topnav__mproj" href="../finning/finning.html"><img loading="lazy" decoding="async" src="../assets/logos/finning-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Finning</span><span class="topnav__msub">Dealer portal</span></span></a>
+  <a class="topnav__mproj" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" src="../assets/logos/onbuy.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">OnBuy</span><span class="topnav__msub">Marketplace UX</span></span></a>
+  <a class="topnav__mproj" href="../design-system/index.html"><img loading="lazy" decoding="async" src="../assets/tiles/ds-documentation.webp" alt=""><span class="topnav__mtext"><span class="topnav__mname">Design system</span><span class="topnav__msub">SIERA &middot; components &amp; tokens</span></span></a>
+  </div>
+</div>
 
 <a class="nav-btn nav-btn--2" href="../index.html" aria-label="Home">HOME</a>
 <a class="nav-btn" href="../about.html" aria-label="About">ABOUT</a>
 
 <nav class="sectnav" aria-label="Section navigation">
   <a href="#introduction" data-sec="introduction"><span class="lbl">Introduction</span><span class="dot-n"></span></a>
-  <a href="#problem" data-sec="problem"><span class="lbl">Problem</span><span class="dot-n"></span></a>
   <a href="#research" data-sec="research"><span class="lbl">Research</span><span class="dot-n"></span></a>
   <a href="#discovery" data-sec="discovery"><span class="lbl">Discovery</span><span class="dot-n"></span></a>
-  <a href="#wireframes" data-sec="wireframes"><span class="lbl">Wireframes</span><span class="dot-n"></span></a>
-  <a href="#features" data-sec="features"><span class="lbl">Final UI</span><span class="dot-n"></span></a>
+  <a href="#features" data-sec="features"><span class="lbl">Product</span><span class="dot-n"></span></a>
   <a href="#impact" data-sec="impact"><span class="lbl">Impact</span><span class="dot-n"></span></a>
 </nav>
 
 <!-- ══ HERO ══ -->
+<main id="main" tabindex="-1">
 <section class="hero">
   <div class="wrap">
-    <div class="hero-meta-top">
-      <span class="hero-meta__label">London, UK</span>
-      <span class="hero-meta__value"><a href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a></span>
-    </div>
-    <h1>Verde</h1>
-    <p class="h-sub">AI-assisted ESG reporting for real-estate funds, from raw portfolio data to filed disclosure in one governed workspace.</p>
+    <div class="hero-text"><h1>Verde</h1><p class="h-sub">AI-assisted ESG reporting for real-estate funds, from raw portfolio data to filed disclosure in one governed workspace.</p></div>
 
     <div class="hero-visual">
       <div class="hv-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb" id="hcs-crumb">verde / reports / library</span></div>
@@ -642,9 +755,10 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
   <div class="wrap">
     <div class="ov-grid">
       <div class="ov-meta">
+        <div class="ov-item"><div class="l">Read time</div><div class="v">~7 min read</div></div>
         <div class="ov-item"><div class="l">Client</div><div class="v">Meridian Capital<br><span style="color:var(--muted);font-size:13px">Pseudonyms used for confidentiality</span></div></div>
         <div class="ov-item"><div class="l">Timeline</div><div class="v">2024 – 2025<br><span style="color:var(--muted);font-size:13px">~10 months, four phases</span></div></div>
-        <div class="ov-item"><div class="l">Role</div><div class="v">Lead Product Designer<br><span style="color:var(--muted);font-size:13px">Workflow, governance, AI generation, UI</span></div></div>
+        <div class="ov-item"><div class="l">Role</div><div class="v">Lead User Experience Designer<br><span style="color:var(--muted);font-size:13px">Workflow, governance, AI generation, UI</span></div></div>
         <div class="ov-item"><div class="l">Team</div><div class="v team">Design lead (me)
 2 UX Researchers
 1 Product Manager
@@ -694,6 +808,28 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
         <p>A platform where reports are first-class objects with state, ownership and audit, with AI drafting the narrative from validated data and consultants owning the final word.</p>
       </div>
     </div>
+  <div class="before-single">
+  <figure>
+    <img src="assets/before/verde-before-documents.webp"
+         alt="Platform showing reports as uploaded files with only a filename and date - no state, no owner, no audit trail"
+         class="before-img" loading="lazy">
+    <figcaption class="img-caption">A report was a file - no state, no owner, no trail</figcaption>
+  </figure>
+</div>
+<div class="before-pair">
+  <figure>
+    <img src="assets/before/verde-before-report-builder.webp"
+         alt="Old report builder interface requiring manual data entry across multiple disconnected steps"
+         class="before-img" loading="lazy">
+    <figcaption class="img-caption">The old report builder - manual, disconnected</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/before/verde-before-esg-spreadsheet.webp"
+         alt="ESG data spreadsheet with figures entered by hand and no link back to the source"
+         class="before-img" loading="lazy">
+    <figcaption class="img-caption">Data pasted by hand - no provenance</figcaption>
+  </figure>
+</div>
   </div>
 </section>
 
@@ -704,6 +840,21 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
     <h2 class="sec-h">Twelve consultants, seven roles, one report that touched every one of them</h2>
     <p class="sec-sub">Discovery interviews with reporting consultants, senior reviewers and Meridian's data team, plus shadow sessions on three live report cycles, end to end, from brief to disclosure.</p>
 
+    <div class="research-grid">
+  <figure>
+    <img src="assets/before/verde-before-esg-spreadsheet.webp"
+         alt="ESG data spreadsheet used outside the platform with no audit trail"
+         class="before-img" loading="lazy">
+    <figcaption class="img-caption">Data outside the platform</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/before/verde-before-email-approvals.webp"
+         alt="Report approvals handled over email with no record in the platform"
+         class="before-img" loading="lazy">
+    <figcaption class="img-caption">Sign-off in a forwarded thread</figcaption>
+  </figure>
+</div>
+
     <div class="three-q">
       <div class="tq"><div class="tq-n">Q1</div><p>What is a consultant actually trying to do when they open the platform on a Monday morning?</p></div>
       <div class="tq"><div class="tq-n">Q2</div><p>Where in the report lifecycle does trust break down, and what makes a client (or a regulator) ask the next question?</p></div>
@@ -713,13 +864,13 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
     <div class="r-block">
       <h3 class="r-h">The reporting consultant journey, mapped from request to delivery</h3>
       <p class="r-p">Five stages, four handoffs, and a quiet spreadsheet at the centre of all of them. The visible workflow was a sequence of meetings. The real workflow was a chain of files going dark every time they crossed a tool boundary.</p>
-      <figure class="r-fig"><img src="assets/Reporting - Consultant journey.png" alt="Reporting consultant journey across five stages"><figcaption>Consultant journey · brief, collect, draft, review, deliver</figcaption></figure>
+      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Reporting - Consultant journey.webp" alt="Reporting consultant journey across five stages"><figcaption>Consultant journey · brief, collect, draft, review, deliver</figcaption></figure>
     </div>
 
     <div class="r-block">
       <h3 class="r-h">The reporting analyst journey, where source data became report data</h3>
       <p class="r-p">The hidden second journey: the analyst pulling numbers from Siera, Deepki and the legacy platform into a shared spreadsheet, with no audit trail on the way in and no provenance on the way out. Every cross-framework inconsistency started here.</p>
-      <figure class="r-fig"><img src="assets/Reporting - RA journey.png" alt="Reporting analyst journey"><figcaption>RA journey · the spreadsheet at the centre of every report</figcaption></figure>
+      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Reporting - RA journey.webp" alt="Reporting analyst journey"><figcaption>RA journey · the spreadsheet at the centre of every report</figcaption></figure>
     </div>
 
     <div class="r-block">
@@ -727,8 +878,8 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
       <blockquote class="pullquote">"I have to ping three people on Slack to find out if this report shipped. And then I still have to open the PDF to check the version."<cite>Reporting Consultant, Meridian Capital</cite></blockquote>
       <p class="r-p">The complaint wasn't about volume of work. It was about the platform never being the source of truth for the report's own status. Every consultant kept a private tracker. Every senior consultant kept a parallel one.</p>
       <div class="feedback-grid">
-        <figure class="r-fig"><img src="assets/Reporting - Process map.png" alt="Process map of current reporting"><figcaption>Current state · the process the platform didn't model</figcaption></figure>
-        <figure class="r-fig"><img src="assets/User Research - persona.png" alt="Primary persona: reporting consultant"><figcaption>Primary persona · the reporting consultant</figcaption></figure>
+        <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Reporting - Process map.webp" alt="Process map of current reporting"><figcaption>Current state · the process the platform didn't model</figcaption></figure>
+        <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/User Research - persona.webp" alt="Primary persona: reporting consultant"><figcaption>Primary persona · the reporting consultant</figcaption></figure>
       </div>
     </div>
 
@@ -746,13 +897,13 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
     <div class="r-block">
       <h3 class="r-h">The redesigned reporting flow, drawn as a state machine before any wireframe</h3>
       <p class="r-p">Draft becomes Under Review becomes Approved or Rejected, and every transition names a reviewer and writes an audit entry. The lifecycle state machine was the contract that every downstream screen had to honour.</p>
-      <figure class="r-fig"><img src="assets/Reporting - Desired Flowchart 1.png" alt="Desired reporting flowchart with lifecycle states"><figcaption>Desired flow, five states, five transitions, one named reviewer at every step</figcaption></figure>
+      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Reporting - Desired Flowchart 1.webp" alt="Desired reporting flowchart with lifecycle states"><figcaption>Desired flow, five states, five transitions, one named reviewer at every step</figcaption></figure>
     </div>
 
     <div class="r-block">
       <h3 class="r-h">One repository, four frameworks, no re-entry</h3>
       <p class="r-p">GRESB, EPRA, INREV and SFDR each ask for the same underlying numbers in different shapes. The instinct was to build a report type per framework, but that would have rebuilt the spreadsheet problem inside the platform, four copies of the truth quietly drifting apart. Instead I defined the metric set once and let each framework read from it, so a figure entered for one disclosure was the same figure every other disclosure cited.</p>
-      <figure class="r-fig"><img src="assets/Reporting - ESG metrics.png" alt="Shared ESG metric set feeding multiple disclosure frameworks"><figcaption>Shared metric layer · one validated number, read by every framework</figcaption></figure>
+      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Reporting - ESG metrics.webp" alt="Shared ESG metric set feeding multiple disclosure frameworks"><figcaption>Shared metric layer · one validated number, read by every framework</figcaption></figure>
     </div>
 
     <div class="r-block">
@@ -980,42 +1131,8 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
     </div>
     <div class="sticky k3">
       <span class="tag">HMW · 03</span>
-      <h5>Cut the drafting time, not the rigor -</h5>
+      <h5>Cut the drafting time, not the rigour -</h5>
       AI-assisted first drafts from validated data sources, so consultants spend time on <b>analysis</b>, not formatting.
-    </div>
-  </div>
-
-  <!-- Swim lane -->
-  <div class="swim">
-    <h4>The as-is reporting journey, five stages, five hand-offs, two weeks per cycle.</h4>
-    <div class="swim-grid">
-      <div></div>
-      <div class="swim-stage-h">Brief</div>
-      <div class="swim-stage-h">Collect data</div>
-      <div class="swim-stage-h">Draft</div>
-      <div class="swim-stage-h">Review</div>
-      <div class="swim-stage-h">Deliver</div>
-
-      <div class="swim-lane-label">Consultant</div>
-      <div class="swim-step">scope call with client</div>
-      <div class="swim-step warn">chases PMs for inputs via email</div>
-      <div class="swim-step warn">drafts in PowerPoint, copies from Excel</div>
-      <div class="swim-step">incorporates senior comments</div>
-      <div class="swim-step">emails final PDF</div>
-
-      <div class="swim-lane-label">Reporting / Data</div>
-      <div class="swim-step"></div>
-      <div class="swim-step warn">exports Siera / Deepki to Excel</div>
-      <div class="swim-step warn">manual QA in spreadsheet, no audit trail</div>
-      <div class="swim-step warn">re-runs numbers if QA finds issues</div>
-      <div class="swim-step"></div>
-
-      <div class="swim-lane-label">Senior · Client</div>
-      <div class="swim-step">defines disclosure framework</div>
-      <div class="swim-step"></div>
-      <div class="swim-step"></div>
-      <div class="swim-step warn">reviews via marked-up PDF, comments lost</div>
-      <div class="swim-step">signs off via email</div>
     </div>
   </div>
 
@@ -1532,11 +1649,11 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
           <div class="sk-box" style="flex:1;padding:4px;text-align:center;font-size:8px;">4</div>
         </div>
         <div style="font-family:var(--hand);font-size:11px;margin-bottom:6px;color:var(--ink);">Step 1, pick framework</div>
-        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> GRESB</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> GRESB</div>
         <div class="sk-box accent" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">●</span> EPRA</div>
-        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> INREV</div>
-        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> SFDR</div>
-        <div class="sk-box" style="padding:6px;font-size:9px;"><span style="color:var(--accent);">â-‹</span> + 4 more</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> INREV</div>
+        <div class="sk-box" style="margin-bottom:3px;padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> SFDR</div>
+        <div class="sk-box" style="padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> + 4 more</div>
       </div>
       <div class="b-notes">
         <div class="b-note good">Step-by-step finally fit on a screen.</div>
@@ -1874,21 +1991,18 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
   </table>
 
   <h3 style="font-family:var(--serif); font-weight:600; font-size:24px; letter-spacing:-.02em; color:var(--ink); margin:48px 0 8px;">If we did it again.</h3>
-  <p style="font-family:var(--hand); font-size:15px; color:var(--ink-2); margin-bottom:18px;max-width:70ch;">Three things we'd front-load on the next engagement with the same shape of problem.</p>
+  <p style="font-family:var(--hand); font-size:15px; color:var(--ink-2); margin-bottom:18px;max-width:none;">Three things we'd front-load on the next engagement with the same shape of problem.</p>
 
   <div class="stickies">
     <div class="sticky k4">
-      <span class="tag">retro · 01</span>
       <h5>Model the workflow before the UI.</h5>
       The lifecycle state machine saved redesigns. We'd write that on day one next time, not week three.
     </div>
     <div class="sticky k3">
-      <span class="tag">retro · 02</span>
       <h5>Show the governance, don't bury it.</h5>
       "Audit" tabs are where compliance posture goes to die. We'd put the audit trail in the primary view from the first wireframe.
     </div>
     <div class="sticky k2">
-      <span class="tag">retro · 03</span>
       <h5>AI is a first draft, not a release.</h5>
       The hardest argument was holding the line on human-in-the-loop. We'd write that as a principle before scoping the AI flow next time.
     </div>
@@ -1901,9 +2015,9 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 <!-- FINAL UI -->
 <section class="features" id="features">
   <div class="wrap">
-    <div class="sec-label">Final UI</div>
+    <div class="sec-label">Product</div>
     <h2 class="sec-h">Where the platform stopped being a passive file-store and started running the workflow</h2>
-    <p class="sec-sub">A walk through the four surfaces that did the heaviest lifting once Verde shipped, the report library, the lifecycle pipeline, the AI generation wizard, and the share-and-integrate flow.</p>
+    <p class="sec-sub">A walk through the surfaces that did the heaviest lifting once Verde shipped, drafting and editing a report, governing it, sharing it, and seeing the whole portfolio at a glance.</p>
   </div>
 
   <div class="feat-stream">
@@ -2134,7 +2248,7 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
       </div>
     </div></article>
 
-<!-- REMOVED (restore to bring back):
+
     <article class="feat"><div class="feat-inner">
       <div>
         <div class="frame-label">Share &amp; integrate</div>
@@ -2181,53 +2295,174 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
         <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Lifecycle is the gate.</b> Only approved reports can be pushed externally, so the audit trail and the published number are always the same number.</div></div>
       </div>
     </div></article>
--->
-
-  </div>
-</section>
 
 
-<!-- SUPPORTING GRID -->
-<section class="supporting" id="supporting">
-  <div class="wrap">
-    <div class="sec-label">More of the system</div>
-    <div class="supp-grid">
+  
+<article class="feat"><div class="feat-inner">
 
-      <a class="supp-card" href="verde-feature-library.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-library.html" loading="lazy" scrolling="no" title="Report library home"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">Report library home</div></div>
-      </a>
+  <div>
 
-      <a class="supp-card" href="verde-feature-lifecycle.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-lifecycle.html" loading="lazy" scrolling="no" title="Lifecycle &amp; audit"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">Lifecycle &amp; audit</div></div>
-      </a>
+    <div class="frame-label">Editor with provenance</div>
 
-      <a class="supp-card" href="verde-feature-generate.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-generate.html" loading="lazy" scrolling="no" title="AI report generator"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">AI report generator</div></div>
-      </a>
+    <div class="frame-heading">Dotted underline is AI, filled background is a human who took ownership</div>
 
-<!-- REMOVED (restore to bring back):
-      <a class="supp-card" href="verde-feature-editor.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-editor.html" loading="lazy" scrolling="no" title="Edit the AI draft"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">Edit the AI draft</div></div>
-      </a>
+    <div class="frame-sub">Every AI-drafted sentence carries a visible mark until a consultant edits or approves it. The provenance is the contract, the reader can always tell which sentences a human has put their name to.</div>
 
-      <a class="supp-card" href="verde-feature-share.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-share.html" loading="lazy" scrolling="no" title="Share &amp; integrations"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">Share &amp; integrations</div></div>
-      </a>
--->
+    <div class="scr-wrap">
 
-      <a class="supp-card" href="verde-feature-heatmap.html">
-        <div class="supp-thumb"><div class="supp-thumb-frame"><iframe src="verde-feature-heatmap.html" loading="lazy" scrolling="no" title="Portfolio heat-map"></iframe></div></div>
-        <div class="supp-body"><div class="supp-h">Portfolio heat-map</div></div>
-      </a>
+      
+
+      <div class="marker" style="top:80px;left:32px;">1</div>
+
+      <div class="marker" style="top:218px;left:40px;">2</div>
+
+      <div class="marker" style="bottom:70px;right:40px;">3</div>
+
+      <div class="screen">
+
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / reports / Asia Markets FY25 / edit</span></div>
+
+        <div class="screen-body">
+
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+
+            <span class="a-pill acc">EPRA</span>
+
+            <span class="a-pill muted">Draft</span>
+
+            <span style="font:400 12px/1 var(--mono);color:var(--muted);margin-left:auto">Autosaved &middot; just now</span>
+
+          </div>
+
+
+
+          <div style="border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:24px">
+
+            <div style="font:600 22px/1.2 var(--serif);color:var(--ink);margin-bottom:14px">2024 EPRA Sustainability Report</div>
+
+            <div style="font:400 14px/1.65 var(--sans);color:var(--ink-2);border-bottom:1.5px dotted var(--accent);padding-bottom:2px;margin-bottom:10px">The portfolio achieved a 16.1% year-on-year reduction in Scope 1 and 2 emissions, consistently exceeding the 2025 trajectory.</div>
+
+            <div style="font:400 14px/1.65 var(--sans);color:var(--ink-2);border-bottom:1.5px dotted var(--accent);padding-bottom:2px;margin-bottom:10px">Industrial assets outperformed target by 4.8 percentage points across the year, driven by sub-meter coverage gains in the Asia Markets fund.</div>
+
+            <div style="font:400 14px/1.65 var(--sans);color:var(--ink);background:var(--accent-l);padding:6px 10px;border-radius:6px;margin-bottom:10px"><b>Office sector now leads on Scope 2 reductions at 22%</b>, a meaningful inversion from the FY24 baseline.</div>
+
+            <div style="font:400 14px/1.65 var(--sans);color:var(--ink-2);border-bottom:1.5px dotted var(--accent);padding-bottom:2px">Detailed breakdowns are available by sector and by fund in the appendix.</div>
+
+          </div>
+
+
+
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+
+            <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink)">&#9998; Rewrite</button>
+
+            <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink)">+ Chart</button>
+
+            <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink)">&#8635; Regen this section</button>
+
+            <button style="font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border-radius:6px;background:var(--accent);color:#fff;border:0;margin-left:auto">Submit for review &rarr;</button>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
+
   </div>
+
+  <div class="callouts">
+
+    <div class="gutter-head">What you are looking at</div>
+
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Provenance is visual.</b> AI-drafted sentences are dotted. Human-edited sentences are filled. There is no hidden state, the reader can always tell.</div></div>
+
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Inline rewrite keeps flow.</b> Regenerating a single section is one click, the consultant does not leave the editor and the audit log captures the swap.</div></div>
+
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Submit is a state transition.</b> Hitting submit flips the report to Under Review and notifies the named reviewers. The action that ships the report is the same action that locks the audit trail.</div></div>
+
+  </div>
+
+</div></article>
+<article class="feat"><div class="feat-inner">
+
+  <div>
+
+    <div class="frame-label">Portfolio overview</div>
+
+    <div class="frame-heading">Every property, every status, on one wall-to-wall view</div>
+
+    <div class="frame-sub">When the consultant team manages 327 properties across multiple frameworks, the only sane overview is a heat-map. One tile per property, coloured by status, with the queue surfacing the exceptions.</div>
+
+    <div class="scr-wrap">
+
+      
+
+      <div class="marker" style="top:82px;left:32px;">1</div>
+
+      <div class="marker" style="top:188px;left:50%;">2</div>
+
+      <div class="marker" style="bottom:60px;right:40px;">3</div>
+
+      <div class="screen">
+
+        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">verde / portfolio / heatmap</span></div>
+
+        <div class="screen-body">
+
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px;flex-wrap:wrap">
+
+            <div>
+
+              <div class="a-eyebrow" style="margin-bottom:6px">Portfolio &middot; Q4 FY25</div>
+
+              <div style="font:600 26px/1.15 var(--serif);color:var(--ink)">327 assets, one heartbeat.</div>
+
+              <div style="font:400 14px/1.55 var(--sans);color:var(--muted);margin-top:8px">Each tile is one property, coloured by the most recent disclosure status. Hover for the report, click to open.</div>
+
+            </div>
+
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+
+              <span class="a-pill good">Approved &middot; 261</span>
+
+              <span class="a-pill warn">Review &middot; 38</span>
+
+              <span class="a-pill bad">Rejected &middot; 12</span>
+
+              <span class="a-pill muted">Pending &middot; 16</span>
+
+            </div>
+
+          </div><div style="display:grid;grid-template-columns:repeat(18,1fr);gap:4px;background:var(--paper);padding:14px;border-radius:10px;border:1px solid var(--border)"><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-bad)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-warn)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--hm-good)"></div><div style="aspect-ratio:1;border-radius:3px;background:var(--paper-2);border:1px solid var(--border)"></div></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="callouts">
+
+    <div class="gutter-head">What you are looking at</div>
+
+    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Status is the colour.</b> Every property reads as one tile, the colour is the disclosure status. Red and amber jump out without needing labels.</div></div>
+
+    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>The legend is the queue.</b> Counts next to the legend chips link directly to a filtered list, the heat-map is also the entry point.</div></div>
+
+    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>One screen for the senior consultant.</b> Senior consultants triage from this view, they do not need a card deck to spot which fund needs attention.</div></div>
+
+  </div>
+
+</div></article>
+</div>
 </section>
+
+
+
 
 <!-- IMPACT -->
 <section class="impact" id="impact">
@@ -2246,34 +2481,31 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 
 <!-- SIBLINGS -->
 <section class="siblings">
-  <div class="wrap">
-    <h2 class="sib-h">More case studies</h2>
-    <p class="sib-sub">Three other projects, the foundation layer Verde was built on top of, the analytics surface that turned the foundation into answers, and an AI-powered invoice pipeline for a multi-country utility portfolio.</p>
-    <div class="sib-grid">
-      <a class="sib-card" href="../arbor/arbor.html" style="--sib:#1f5b66">
-        <div class="sib-thumb"><img src="../assets/tiles/ar13.webp" alt="" loading="lazy"></div>
-        <h3>Arbor</h3>
-      </a>
-      <a class="sib-card" href="../plio/plio.html" style="--sib:#7c3aed">
-        <div class="sib-thumb"><img src="../assets/tiles/pl8.webp" alt="" loading="lazy"></div>
-        <h3>Plio</h3>
-      </a>
-      <a class="sib-card" href="../kova/index.html" style="--sib:#b85c38">
-        <div class="sib-thumb"><img src="../assets/tiles/kv10.webp" alt="" loading="lazy"></div>
-        <h3>Kova</h3>
-      </a>
+  <div class="section-head">
+    <h2 class="section-head__title">Other Work</h2>
+    <p class="section-head__sub">The rest of the work, from greenfield builds to systemic redesigns.</p>
+  </div>
+  <div class="grid-wrap">
+    <div class="grid">
+      <a class="proj f-card" href="../design-system/index.html"><div class="proj-inner"><img src="../assets/tiles/ds-documentation.webp" alt="SIERA Design System" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Design system</span><span class="proj-label__metric">30+ shared components</span><span class="proj-label__desc">The design system behind the SIERA platform: tokens, components, patterns and the design-to-dev workflow.</span></div></a>
+      <a class="proj f-card" href="../kova/index.html"><div class="proj-inner"><img src="../assets/tiles/kv10-solid.webp" alt="Kova" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Kova</span><span class="proj-label__metric">67% of managers off Power BI</span><span class="proj-label__desc">Analytics and data-quality intelligence for internal and external stakeholders. Turning raw portfolio data into the answers fund managers were actually asking.</span></div></a>
+      <a class="proj f-card" href="../arbor/arbor.html"><div class="proj-inner"><img src="../assets/tiles/ar13-solid.webp" alt="Arbor" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Arbor</span><span class="proj-label__metric">66.7% faster onboarding</span><span class="proj-label__desc">Rebuilding the entity foundation the whole asset platform stands on. From the data model up through onboarding and the interface.</span></div></a>
+      <a class="proj f-card" href="../plio/plio.html"><div class="proj-inner"><img src="../assets/tiles/pl8-solid.webp" alt="Plio" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Plio</span><span class="proj-label__metric">86% parsing accuracy</span><span class="proj-label__desc">AI-assisted invoice ingestion with guardrails, not a black box. Confidence-graded and human-in-the-loop across a multi-country portfolio.</span></div></a>
+      <a class="proj f-card" href="../finning/finning.html"><div class="proj-inner"><img src="../assets/logos/finning-card.png" alt="Finning UK" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Finning UK</span><span class="proj-label__metric">Self-serve quoting and finance</span><span class="proj-label__desc">Enterprise dealer portal and finance calculator for a major Caterpillar equipment dealer. Turning multi-step sales conversations into a self-serve quote and repayment flow.</span></div></a>
+      <a class="proj f-card" href="../onbuy/onbuy.html"><div class="proj-inner" style="background:#3366cc"><img src="../assets/logos/onbuy.png" alt="OnBuy" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">OnBuy</span><span class="proj-label__metric">8M+ marketplace buyers</span><span class="proj-label__desc">Checkout and product discovery for one of the UK's largest online marketplaces. Streamlining the path from basket to confirmed order across millions of listings.</span></div></a>
     </div>
   </div>
 </section>
 
-<footer class="footer">
+</main>
+<footer class="footer" id="contact" style="scroll-margin-top:72px">
   <div class="footer__cap"></div>
   <div class="footer__body" id="footerBody">
     <p class="footer__contact">CONTACT</p>
     <div class="footer__links">
       <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
       <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer__link" href="../Thomas_Mbanefo_CV_new.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="footer__link" href="../Thomas_Mbanefo_CV.pdf" target="_blank" rel="noopener">Resume</a>
       <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
     </div>
   </div>
@@ -2282,10 +2514,10 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 <script>
 // floating section nav highlight
 (function(){
-  var secs = ['introduction','problem','research','discovery','wireframes','features','impact'];
+  var secs = ['introduction','research','discovery','features','impact'];
   var links = {};
   document.querySelectorAll('.sectnav a').forEach(function(a){ links[a.dataset.sec]=a; });
-  // 'supporting' has no nav link; it naturally maps to 'features' (Final UI) since features stays current through it.
+  // 'supporting' has no nav link; it naturally maps to 'features' (Product) since features stays current through it.
   var nodes = secs.map(function(id){ return { id: id, el: document.getElementById(id) }; }).filter(function(x){ return x.el; });
   function setActive(id){ secs.forEach(function(k){ if(links[k]) links[k].classList.toggle('active', k===id); }); }
   var ticking = false;
@@ -2329,6 +2561,13 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
   var track = document.getElementById('hcs-track');
   if(!track || !carousel) return;
   var slides = Array.prototype.slice.call(track.querySelectorAll('.hcs-slide'));
+  var paused=false, playBtn=document.createElement('button');
+  playBtn.type='button'; playBtn.className='hcs-playpause';
+  playBtn.setAttribute('aria-pressed','false'); playBtn.setAttribute('aria-label','Pause slideshow');
+  playBtn.textContent='❚❚';
+  function setPaused(p){ paused=p; playBtn.setAttribute('aria-pressed',p?'true':'false'); playBtn.setAttribute('aria-label',p?'Play slideshow':'Pause slideshow'); playBtn.textContent=p?'▶':'❚❚'; if(p){ if(timer){clearTimeout(timer);clearInterval(timer);timer=null;} } else { schedule(); } }
+  playBtn.addEventListener('click', function(){ setPaused(!paused); });
+  carousel.appendChild(playBtn);
   var dotsWrap = document.getElementById('hcs-dots');
   var crumbEl = document.getElementById('hcs-crumb');
   var captionEl = document.getElementById('hcs-caption');
@@ -2336,7 +2575,7 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 
   function updateScale(){
     var w = carousel.clientWidth, h = carousel.clientHeight;
-    var scale = Math.min(w / 1080, h / 1080);
+    var scale = (w / 1080);
     var tx = (w - 1080 * scale) / 2;
     var ty = (h - 1080 * scale) / 2;
     carousel.style.setProperty('--hcs-scale', scale);
@@ -2344,7 +2583,11 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
     carousel.style.setProperty('--hcs-ty', ty + 'px');
   }
   updateScale();
+  requestAnimationFrame(updateScale);
+  setTimeout(updateScale,120); setTimeout(updateScale,400); setTimeout(updateScale,900);
+  window.addEventListener('load', updateScale);
   window.addEventListener('resize', updateScale);
+  if(typeof ResizeObserver!=='undefined') new ResizeObserver(updateScale).observe(carousel);
 
   slides.forEach(function(_, idx){
     var b = document.createElement('button');
@@ -2397,6 +2640,7 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
   }
   function schedule(){
     if(timer){ clearTimeout(timer); clearInterval(timer); timer = null; }
+    if(paused){ return; }
     var slide = slides[i];
     var dd = parseInt(slide.getAttribute('data-dur'), 10);
     if(dd > 0){ timer = setTimeout(function(){ go(i+1); schedule(); }, dd); return; }
@@ -2441,11 +2685,9 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 </script>
 <div class="picker" id="picker">
   <button class="picker-toggle" id="pickerToggle" aria-label="Change theme"><svg class="picker-ico" viewBox="0 0 512 512" aria-hidden="true" style="width:100%;height:100%;display:block;overflow:visible"><path fill="currentColor" fill-rule="evenodd" d="M13 258a172 172 0 1 0 344 0 172 172 0 1 0-344 0ZM110 180a30 30 0 1 0 60 0 30 30 0 1 0-60 0Zm105-15a30 30 0 1 0 60 0 30 30 0 1 0-60 0ZM100 300a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z"/><path fill="currentColor" d="M470 46C452 40 432 54 416 78c-10 14-24 23-40 27-23 5-37 23-37 45 0 25 20 45 45 45 29 0 54-25 68-62 13-33 35-82 18-87Z"/><path fill="currentColor" d="M356 206c12 14 30 24 50 25-6 69-34 174-74 221-12 14-27 8-25-16 5-76 23-166 49-230Z"/></svg></button>
-  <div class="swatch" data-theme="cream"  data-p="#ede6d3" data-s="#ff7906" data-c="#2c2c2c"></div>
-  <div class="swatch" data-theme="blue"   data-p="#0779ff" data-s="#002180" data-c="#b7f9ff"></div>
+  <div class="swatch" data-theme="cream"  data-p="#ffffff" data-s="#c2410c" data-c="#2c2c2c"></div>
   <div class="swatch" data-theme="green"  data-p="#37af5d" data-s="#005319" data-c="#c6ff00"></div>
   <div class="swatch" data-theme="purple" data-p="#3c0350" data-s="#db30f5" data-c="#fce9ff"></div>
-  <div class="swatch" data-theme="mono"   data-p="#ffffff" data-s="#7c7c82" data-c="#1f1f22"></div>
 </div>
 
 <script>
@@ -2453,10 +2695,135 @@ const picker = document.getElementById('picker');
 document.getElementById('pickerToggle').addEventListener('click', () => picker.classList.toggle('open'));
 function tmThemeName(){ try { const t=JSON.parse(localStorage.getItem('tm_theme')); if(t&&t.name) return t.name; } catch(e){} return 'cream'; }
 function tmSyncSwatches(name){ let vi=0; document.querySelectorAll('.swatch').forEach(s=>{ if(s.dataset.theme===name){s.style.display='none';} else {s.style.display='';s.style.setProperty('--si',vi++);} }); }
-function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',t.s); root.style.setProperty('--c',t.c); }
+function tmApply(t){ const root=document.documentElement; if(t.name&&t.name!=='cream') root.setAttribute('data-theme',t.name); else root.removeAttribute('data-theme'); root.style.setProperty('--p',t.p); root.style.setProperty('--s',(t.s==='#ff7906'||t.s==='#6b6e74')?'#c2410c':t.s); root.style.setProperty('--c',t.c); }
 tmSyncSwatches(tmThemeName());
 document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', ()=>{ const theme={p:sw.dataset.p,s:sw.dataset.s,c:sw.dataset.c,name:sw.dataset.theme}; tmApply(theme); try{localStorage.setItem('tm_theme',JSON.stringify(theme));}catch(e){} tmSyncSwatches(theme.name); }); });
 </script>
 
+<style id="resp2">
+/* ===== responsive overhaul (resp2) ===== */
+  @media(max-width:680px){
+    #wireframes .board:has(.canvas){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    #wireframes .canvas{max-width:none}
+  }
+  @media(max-width:600px){
+    #hcs{aspect-ratio:1/1!important}
+    #hcs .hcs-track{display:flex!important}
+    #hcs .hcs-dots{display:flex!important}
+    #hcs::after{content:none!important;display:none!important}
+  }
+  @media(max-width:1100px){
+    .feat .scr-wrap .screen{display:block!important;width:900px}
+    .feat .scr-wrap .marker{display:block!important}
+    .feat .scr-wrap::after{content:none!important;display:none!important}
+    .feat .scr-wrap{overflow:visible!important;min-width:0;max-width:100%}
+    .feat .scr-wrap .fit-inner{position:relative;width:900px;transform-origin:top left}
+  }
+  @media(max-width:1100px){.figure{width:100%!important;grid-template-columns:1fr!important;gap:22px}
+  .feat-inner{grid-template-columns:minmax(0,1fr)!important}}
+  .wrap{padding-left:clamp(22px,5vw,64px);padding-right:clamp(22px,5vw,64px)}
+@media(max-width:680px){
+  /* wireframe tabs: natural width + horizontal scroll instead of crushed overlap */
+  #wireframes .pwf-tabs{gap:2px}
+  #wireframes .pwf-tab{flex:0 0 auto;padding:11px 14px;font-size:13px}
+  /* boards stack to a single column */
+  #wireframes .cols-2,#wireframes .cols-3,#wireframes .cols-4,#wireframes .iters,#wireframes .lane-notes,#wireframes .lane-notes.lead{grid-template-columns:1fr!important}
+  /* journey/swim matrix + trade table scroll inside their own card, not the page */
+  #wireframes .swim{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #wireframes .swim-grid{min-width:540px}
+  #wireframes .trade-table{display:block;overflow-x:auto;white-space:normal}
+}
+  /* tap-to-enlarge lightbox for feature mockups (mobile) */
+  .ui-lightbox{position:fixed;inset:0;z-index:9999;background:rgba(20,16,12,.94);display:none;overflow:auto;-webkit-overflow-scrolling:touch}
+  .ui-lightbox.open{display:block}
+  .ui-lb-stage{min-width:100%;min-height:100%;width:max-content;box-sizing:border-box;padding:60px 18px 40px;display:flex;align-items:flex-start;justify-content:flex-start}
+  .ui-lb-close{position:fixed;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:#fff;color:#1a140d;border:0;font:400 22px/42px var(--sans,sans-serif);text-align:center;cursor:pointer;z-index:2;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+  .ui-lb-hint{position:fixed;bottom:16px;left:0;right:0;text-align:center;color:rgba(255,255,255,.72);font:500 12px/1 var(--sans,sans-serif);z-index:2;pointer-events:none}
+  @media(max-width:1100px){ .feat .scr-wrap{cursor:zoom-in} }
+  /* ===== phase2: 900 container, 2x2 re-grid, stacked Product ===== */
+  .picker{display:none!important}
+  .prob-grid,.pb-grid,.impact-grid,.sib-grid{grid-template-columns:1fr 1fr!important;gap:28px!important}
+  .iters.cols-4,.iters.cols-3,.paths{grid-template-columns:1fr 1fr!important}
+  .board:has(.canvas){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .figure{width:100%!important;max-width:100%!important;grid-template-columns:1fr!important;gap:26px!important}
+  .feat-inner{grid-template-columns:minmax(0,1fr)!important}
+  .feat .scr-wrap{overflow:visible!important;min-width:0;max-width:100%}
+  .feat .scr-wrap .screen{display:block!important;width:900px;max-width:none}
+  .feat .scr-wrap .marker{display:block!important}
+  .feat .scr-wrap .fit-inner{position:relative;width:900px;transform-origin:top left}
+  .hero h1{font-size:clamp(2.6rem,7vw,84px)!important;line-height:1.03!important;margin-bottom:14px!important}
+  .hero .hero-visual,.hero-visual{max-width:min(560px,80vw)!important;margin:30px auto 0!important;margin-left:auto!important;margin-right:auto!important;display:block!important}
+  .wrap{padding-left:clamp(28px,6vw,72px)!important;padding-right:clamp(28px,6vw,72px)!important}
+  @media(max-width:768px){
+    .prob-grid,.pb-grid,.impact-grid,.sib-grid{grid-template-columns:1fr!important}
+    .iters.cols-4,.iters.cols-3,.paths{grid-template-columns:1fr!important}
+    .hero-visual{max-width:100%!important}
+  }
+  /* phase2: wireframe tabs - keep padding, scroll instead of squeeze */
+  .pwf-tabs{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pwf-tabs::-webkit-scrollbar{display:none}
+  .pwf-tab{flex:0 0 auto!important;white-space:nowrap!important}
+  /* phase2: side-by-side hero on laptop+ */
+  .hero{padding-top:clamp(56px,9vh,120px)!important}
+  @media(min-width:1200px){
+    .hero{min-height:auto!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:96px 0 120px!important}
+    .hero .wrap{max-width:1260px!important;display:flex!important;align-items:center!important;gap:96px!important;text-align:left!important}
+    .hero-text{flex:1 1 auto!important;min-width:0!important;text-align:left!important}
+    .hero .wrap > .hero-visual,.hero-visual{flex:0 0 560px!important;width:560px!important;max-width:560px!important;margin:0!important;align-self:center!important}
+    .hero h1{font-size:clamp(3.2rem,6vw,108px)!important;margin-bottom:18px!important;line-height:1.02!important}
+    .h-sub{max-width:54ch!important}
+  }
+  /* extend mobile content a little (less than desktop) */
+  @media(max-width:480px){ .wrap{padding-left:20px!important;padding-right:20px!important} }
+</style>
+<script id="resp2js">
+(function(){
+  function fitScreens(){
+    var on = true;
+    document.querySelectorAll('.feat .scr-wrap').forEach(function(w){
+      if(!w.querySelector('.screen')) return;
+      var inner = w.querySelector(':scope > .fit-inner');
+      if(!inner){
+        inner=document.createElement('div'); inner.className='fit-inner';
+        while(w.firstChild){ inner.appendChild(w.firstChild); }
+        w.appendChild(inner);
+      }
+      if(!w._lbWired){ w._lbWired=1; w.setAttribute('role','button');
+        w.addEventListener('click',function(){ if(window.innerWidth<=1100){ var fi=w.querySelector('.fit-inner'); if(fi) openLB(fi); } });
+      }
+      if(!on){ inner.style.transform=''; w.style.height=''; return; }
+      inner.style.transform='none'; w.style.height='';
+      var avail = w.clientWidth;
+      var s = avail>0 ? Math.min(1, avail/900) : 1;
+      inner.style.transform='scale('+s+')';
+      w.style.height=(inner.offsetHeight*s)+'px';
+    });
+  }
+  window.addEventListener('resize', fitScreens, {passive:true});
+  window.addEventListener('load', fitScreens);
+  if(document.readyState!=='loading') fitScreens();
+  else document.addEventListener('DOMContentLoaded', fitScreens);
+  setTimeout(fitScreens,400); setTimeout(fitScreens,1500);
+})();
+</script><style id="baimg">
+.before-pair,.after-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0 0}
+.before-single{margin:32px 0 0}
+.before-single + .before-pair,.before-pair + .before-single{margin-top:16px}
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0 0}
+.after-pair + .after-pair{margin-top:16px}
+.before-img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line-faint,#e0e0e0);opacity:.92}
+.after-img{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 38px rgba(20,16,12,.16))}
+.research-grid .before-img{border-radius:8px}
+.after-pair{grid-template-columns:minmax(0,1fr);gap:10px;max-width:920px;margin:48px auto 0}
+.after-pair .img-caption{text-align:center}
+.img-caption{margin-top:12px;font-family:'Fira Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--muted);line-height:1.4}
+@media (max-width:720px){.before-pair,.after-pair,.research-grid{grid-template-columns:1fr}}
+</style>
+<style id="feat900">
+.figure{width:100%!important;max-width:900px!important;grid-template-columns:1fr!important;gap:26px!important;margin:0 auto!important}
+.callouts{position:static!important;top:auto!important;padding-top:4px!important}
+@media(max-width:560px){ body{padding:72px 16px 0!important} }
+</style>
+<script id="topnav-js" src="../assets/site-nav.js" defer></script>
 </body>
 </html>
