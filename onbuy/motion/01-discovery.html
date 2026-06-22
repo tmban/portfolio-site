@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>OnBuy · Discovery</title>
+<style>
+:root{--blue:#2f6bff;--navy:#0a1640;--bg:#fff;--bg-soft:#f3f6fc;--ink:#0c1330;--ink-2:#1c2550;--muted:#646c92;--muted-2:#a3a9c6;--border:#e4e7f1;--good:#1f9d57;--lime:#b9f24e;--sans:'Inter',sans-serif;--head:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:var(--sans)}
+html,body{width:1080px;height:1080px;background:#eef1f7;color:var(--ink);overflow:hidden}
+.mg{position:relative;width:100%;height:100%;background:var(--bg-soft);overflow:hidden}
+.mg-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(12,19,48,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(12,19,48,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 90%)}
+.mg-eyebrow{font:600 12px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}
+.mg-title{font:800 52px/1.03 var(--head);letter-spacing:-.03em;color:var(--ink)}
+.mg-watermark{position:absolute;left:56px;bottom:52px;display:flex;align-items:center;gap:12px;font:400 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mg-watermark .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.mg-watermark strong{color:var(--ink);font-weight:600}
+.mg-corner-tag{position:absolute;right:56px;top:56px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.mg-corner-tag .dt{width:6px;height:6px;background:var(--blue);border-radius:50%}
+
+@keyframes d-type{0%,4%{width:0}16%,100%{width:268px}}
+@keyframes d-caret{0%,46%{opacity:1}48%,100%{opacity:0}}
+@keyframes d-pop{0%,22%{opacity:0;transform:translateY(22px) scale(.96)}32%,100%{opacity:1;transform:none}}
+@keyframes d-pop2{0%,30%{opacity:0;transform:translateY(22px) scale(.96)}40%,100%{opacity:1;transform:none}}
+@keyframes d-pop3{0%,38%{opacity:0;transform:translateY(22px) scale(.96)}48%,100%{opacity:1;transform:none}}
+@keyframes d-pop4{0%,46%{opacity:0;transform:translateY(22px) scale(.96)}56%,100%{opacity:1;transform:none}}
+@keyframes d-count{0%,58%{opacity:0;transform:translateY(8px)}66%,100%{opacity:1;transform:none}}
+body:not(.mg-play) *,body:not(.mg-play) *::before,body:not(.mg-play) *::after{animation-name:none !important}
+body.mg-play{animation:mg-page-in 700ms cubic-bezier(.2,.6,.2,1) both}
+@keyframes mg-page-in{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
+
+.card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 14px 34px -18px rgba(12,19,48,.22)}
+.thumb{height:138px;background:#fff;position:relative}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:16px}
+.deal{position:absolute;top:12px;left:12px;background:var(--lime);color:var(--navy);font:700 11px/1 var(--sans);padding:5px 9px;border-radius:6px}
+.pname{font:600 14px/1.3 var(--ink);margin:0 0 8px}
+.price{font:800 18px/1 var(--head);color:var(--ink)}
+.rate{font:500 12px/1 var(--muted);margin-top:7px}
+</style>
+<style id="a11y-reduced-motion">@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}</style>
+</head>
+<body class="mg-play">
+<div class="mg">
+  <div class="mg-grid"></div>
+
+  <div style="position:absolute;top:64px;left:72px;right:72px">
+    <div class="mg-title">A way into<br>millions of listings.</div>
+  </div>
+
+  <!-- storefront -->
+  <div style="position:absolute;left:72px;right:72px;top:320px;background:#fff;border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 70px -30px rgba(12,19,48,.28);overflow:hidden">
+    <!-- top bar -->
+    <div style="height:84px;background:var(--navy);display:flex;align-items:center;gap:20px;padding:0 28px">
+      <div style="font:800 24px/1 var(--head);color:#fff">OnBuy<span style="color:var(--lime)">.</span></div>
+      <div style="flex:1;height:46px;background:#fff;border-radius:10px;display:flex;align-items:center;padding:0 18px;gap:10px;position:relative">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#646c92" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <div style="display:flex;align-items:center"><span style="font:500 18px/1 var(--sans);color:var(--ink);white-space:nowrap;overflow:hidden;display:inline-block;animation:d-type 10s steps(22) both infinite">wireless headphones</span><span style="width:2px;height:22px;background:var(--blue);margin-left:1px;animation:d-caret 1s steps(1) infinite"></span></div>
+        <span style="position:absolute;right:8px;font:600 12px/1 var(--sans);color:var(--muted-2)">35M products</span>
+      </div>
+    </div>
+    <!-- chips -->
+    <div style="display:flex;gap:10px;padding:18px 28px 4px">
+      <span style="font:600 13px/1 var(--sans);color:#fff;background:var(--blue);padding:9px 15px;border-radius:99px">Tech</span>
+      <span style="font:600 13px/1 var(--sans);color:var(--muted);background:#eef1f9;padding:9px 15px;border-radius:99px">Home</span>
+      <span style="font:600 13px/1 var(--sans);color:var(--muted);background:#eef1f9;padding:9px 15px;border-radius:99px">Garden</span>
+      <span style="font:600 13px/1 var(--sans);color:var(--muted);background:#eef1f9;padding:9px 15px;border-radius:99px">Beauty</span>
+      <span style="font:600 13px/1 var(--sans);color:var(--muted);background:#eef1f9;padding:9px 15px;border-radius:99px">Sports</span>
+    </div>
+    <!-- deal grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:18px 28px 30px">
+      <div class="card" style="animation:d-pop 10s ease both infinite"><div class="thumb"><span class="deal">Deal</span><img src="../assets/photos/p_headphones.jpg" alt=""></div><div style="padding:14px 15px"><div class="pname">Sony WH-1000XM5</div><div class="price">£249</div><div class="rate">★ 4.8 · 2.1k</div></div></div>
+      <div class="card" style="animation:d-pop2 10s ease both infinite"><div class="thumb"><span class="deal">Deal</span><img src="../assets/photos/p_tv.jpg" alt=""></div><div style="padding:14px 15px"><div class="pname">Samsung 55" 4K TV</div><div class="price">£549</div><div class="rate">★ 4.6 · 980</div></div></div>
+      <div class="card" style="animation:d-pop3 10s ease both infinite"><div class="thumb"><span class="deal">Deal</span><img src="../assets/photos/p_trainers.jpg" alt=""></div><div style="padding:14px 15px"><div class="pname">Nike Air Max 270</div><div class="price">£129</div><div class="rate">★ 4.9 · 640</div></div></div>
+      <div class="card" style="animation:d-pop4 10s ease both infinite"><div class="thumb"><span class="deal">Deal</span><img src="../assets/photos/p_watch.jpg" alt=""></div><div style="padding:14px 15px"><div class="pname">Apple Watch S9</div><div class="price">£399</div><div class="rate">★ 4.7 · 1.3k</div></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
