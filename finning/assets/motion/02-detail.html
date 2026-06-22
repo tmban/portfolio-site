@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Finning · Machine detail</title>
+<style>
+:root{--yellow:#FFC72C;--ink:#1a1a17;--ink-2:#33322c;--muted:#7a766c;--muted-2:#b0aa9c;--border:#e8e4db;--bg:#fff;--bg-soft:#f5f3ee;--accent:#9a7400;--good:#2a7a3a;--sans:'Inter',sans-serif;--head:'Fira Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:var(--sans)}
+html,body{width:1080px;height:1080px;background:#efeae3;color:var(--ink);overflow:hidden}
+.mg{position:relative;width:100%;height:100%;background:var(--bg-soft);overflow:hidden}
+.mg-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,26,23,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,23,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 90%)}
+.mg-eyebrow{font:600 12px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.mg-title{font:800 52px/1.03 var(--head);letter-spacing:-.03em;color:var(--ink)}
+.mg-watermark{position:absolute;left:56px;bottom:52px;display:flex;align-items:center;gap:12px;font:400 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mg-watermark .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.mg-watermark strong{color:var(--ink);font-weight:600}
+.mg-corner-tag{position:absolute;right:56px;top:56px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.mg-corner-tag .dt{width:6px;height:6px;background:var(--yellow);border-radius:50%}
+
+@keyframes d-s1{0%,18%{opacity:0;transform:translateX(-10px)}26%,100%{opacity:1;transform:none}}
+@keyframes d-s2{0%,26%{opacity:0;transform:translateX(-10px)}34%,100%{opacity:1;transform:none}}
+@keyframes d-s3{0%,34%{opacity:0;transform:translateX(-10px)}42%,100%{opacity:1;transform:none}}
+@keyframes d-s4{0%,42%{opacity:0;transform:translateX(-10px)}50%,100%{opacity:1;transform:none}}
+@keyframes d-cta{0%,58%{box-shadow:0 0 0 0 rgba(255,199,44,0)}66%{box-shadow:0 0 0 9px rgba(255,199,44,.4)}74%,100%{box-shadow:0 0 0 0 rgba(255,199,44,0)}}
+@keyframes d-arrow{0%,60%{opacity:0;transform:translateX(-8px)}70%,100%{opacity:1;transform:none}}
+body:not(.mg-play) *,body:not(.mg-play) *::before,body:not(.mg-play) *::after{animation-name:none !important}
+body.mg-play{animation:mg-page-in 700ms cubic-bezier(.2,.6,.2,1) both}
+@keyframes mg-page-in{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
+
+.spec{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.spec .k{font:500 15px/1 var(--muted)}
+.spec .v{font:700 16px/1 var(--ink)}
+</style>
+<style id="a11y-reduced-motion">@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}</style>
+</head>
+<body class="mg-play">
+<div class="mg">
+  <div class="mg-grid"></div>
+
+  <div style="position:absolute;top:64px;left:72px;right:72px">
+    <div class="mg-title">The specs that<br>decide, then price.</div>
+  </div>
+
+  <div style="position:absolute;left:72px;right:72px;top:330px;display:flex;gap:32px;align-items:flex-start">
+    <!-- image + reserve -->
+    <div style="flex:0 0 380px">
+      <div style="height:300px;background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 18px 40px -18px rgba(26,26,23,.22);display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <img src="../assets/photos/excavator.png" alt="" style="width:330px;height:240px;object-fit:contain">
+      </div>
+      <div style="margin-top:18px;background:var(--ink);border-radius:14px;padding:20px 22px;color:#fff">
+        <div style="font:500 12px/1 #cfccc4;color:#bdb9af">Demolition Excavator</div>
+        <div style="font:800 26px/1 var(--head);margin:8px 0 14px">Cat&reg; 352 UHD</div>
+        <div style="display:flex;gap:10px"><span style="background:var(--yellow);color:var(--ink);font:700 13px/1 var(--sans);padding:12px 18px;border-radius:8px">Reserve</span><span style="border:1px solid #4a4942;font:700 13px/1 var(--sans);padding:12px 18px;border-radius:8px;animation:d-cta 10s ease both infinite">See finance &rarr;</span></div>
+      </div>
+    </div>
+    <!-- specs -->
+    <div style="flex:1;background:#fff;border:1px solid var(--border);border-radius:18px;padding:10px 26px;box-shadow:0 1px 3px rgba(26,26,23,.08)">
+      <div style="font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);padding:18px 0 4px">Key specifications</div>
+      <div class="spec" style="animation:d-s1 10s ease both infinite"><span class="k">Operating weight</span><span class="v">59.5 t</span></div>
+      <div class="spec" style="animation:d-s2 10s ease both infinite"><span class="k">Engine power</span><span class="v">217 kW</span></div>
+      <div class="spec" style="animation:d-s3 10s ease both infinite"><span class="k">Engine model</span><span class="v">Cat C13</span></div>
+      <div class="spec" style="animation:d-s4 10s ease both infinite;border-bottom:none"><span class="k">Max reach height</span><span class="v">35 m</span></div>
+      <div style="margin-top:14px;padding:16px 18px;background:#fbf6e7;border:1px solid #f0e2b0;border-radius:12px;display:flex;align-items:center;gap:12px;animation:d-arrow 10s ease both infinite">
+        <div><div style="font:500 12px/1 var(--muted)">Indicative finance</div><div style="font:800 24px/1 var(--head);color:var(--ink);margin-top:6px">£1,720<span style="font-size:14px;color:var(--muted);font-weight:600"> / month</span></div></div>
+        <span style="margin-left:auto;font:700 13px/1 var(--sans);color:var(--accent)">Configure &rarr;</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
