@@ -2,3 +2,7 @@
 Thumbs.db
 .DS_Store
 _cursor-options.html
+
+.agents/
+.claude/skills/
+skills-lock.json
