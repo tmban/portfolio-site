@@ -1,7 +1,7 @@
 .claude/settings.local.json
 Thumbs.db
 .DS_Store
-_cursor-options.html
+_cursor-*.html
 
 .agents/
 .claude/skills/

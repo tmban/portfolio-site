@@ -714,19 +714,16 @@ a.proj { text-decoration: none; color: inherit; cursor: pointer }
 #heroCanvas{position:absolute;inset:0;z-index:0;pointer-events:none}
 </style>
 <style id="enh-cursor">
-/* ENHANCEMENT: custom cursor */
+/* ENHANCEMENT: custom cursor — drawn hand with two trailing hands */
 @media(pointer:fine){body{cursor:none}}
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform}
-.cursor-dot{width:6px;height:6px;border-radius:50%;background:var(--s);transition:width .25s var(--ease-out),height .25s var(--ease-out),opacity .2s,background-color .65s var(--ease)}
-.cursor-ring{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--c);opacity:.35;display:grid;place-items:center;transition:width .3s var(--ease-out),height .3s var(--ease-out),background-color .3s var(--ease-out),opacity .2s,border-color .65s var(--ease)}
-.cursor-ring span{font:700 9px/1 'Fira Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--s);opacity:0;transition:opacity .2s}
-html.cur-card .cursor-ring{width:52px;height:52px;background:color-mix(in srgb,var(--s) 12%,transparent);border-color:var(--s);opacity:1}
-html.cur-card .cursor-ring span{opacity:1}
-html.cur-card .cursor-dot{opacity:0}
-html.cur-cta .cursor-dot{width:10px;height:10px}
-html.cur-text:not(.cur-card) .cursor-ring{width:18px;height:18px}
-html.cur-hidden .cursor-dot,html.cur-hidden .cursor-ring{opacity:0}
-@media(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+.cursor-hand{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .2s}
+html.cur-on .cursor-hand--main{opacity:1}
+html.cur-on .cursor-hand--m{opacity:.85}
+html.cur-on .cursor-hand--s{opacity:.7}
+.cursor-hand svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));transition:transform .25s var(--ease-out)}
+html.cur-lift .cursor-hand--main svg{transform:scale(1.15)}
+html.cur-hidden .cursor-hand{opacity:0!important}
+@media(pointer:coarse){.cursor-hand{display:none}}
 </style>
 <style id="enh-badges">
 /* ENHANCEMENT: metric badges on work cards */
@@ -1222,40 +1219,51 @@ if (hero && canvas) {
 }
 </script>
 <script type="module">
-/* ENHANCEMENT: custom cursor */
+/* ENHANCEMENT: custom cursor — drawn hand with two trailing hands */
 if (matchMedia('(pointer: fine)').matches) {
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  ring.innerHTML = '<span>VIEW</span>';
-  document.body.append(dot, ring);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HAND = 'M13 4.5a2 2 0 0 1 4 0V15h1.2V7.5a2 2 0 0 1 4 0V15h1.2V10a2 2 0 0 1 4 0v8.2c0 6-3.6 9.8-9.4 9.8-4.4 0-6.8-2-8.6-5.3l-3-5.4c-.55-1-.2-2.2.8-2.75.95-.55 2.15-.25 2.75.65l2.05 3V4.5z';
+  const make = (size, cls) => {
+    const d = document.createElement('div');
+    d.className = 'cursor-hand ' + cls;
+    d.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 32 32"><path d="${HAND}" fill="#c2410c" stroke="#fff" stroke-width="1.6"/></svg>`;
+    document.body.append(d);
+    return d;
+  };
+  const main = make(26, 'cursor-hand--main');
+  const mid = reduced ? null : make(17, 'cursor-hand--m');
+  const small = reduced ? null : make(12, 'cursor-hand--s');
   const root = document.documentElement;
-  let mx = -100, my = -100, rx = -100, ry = -100, seen = false;
+  let mx = -100, my = -100, seen = false;
+  const p1 = [-100, -100], p2 = [-100, -100];
   addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    if (!seen) { seen = true; rx = mx; ry = my; }
-    dot.style.transform = `translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`;
+    if (!seen) {
+      seen = true;
+      p1[0] = mx; p1[1] = my; p2[0] = mx; p2[1] = my;
+      root.classList.add('cur-on');
+    }
+    main.style.transform = `translate3d(${mx - 4}px,${my - 3}px,0)`;
   }, { passive: true });
-  const loop = () => {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.transform = `translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
+  if (!reduced) {
+    const loop = () => {
+      p1[0] += (mx - p1[0]) * 0.14; p1[1] += (my - p1[1]) * 0.14;
+      p2[0] += (p1[0] - p2[0]) * 0.14; p2[1] += (p1[1] - p2[1]) * 0.14;
+      mid.style.transform = `translate3d(${p1[0] - 2}px,${p1[1] + 8}px,0)`;
+      small.style.transform = `translate3d(${p2[0] - 1}px,${p2[1] + 14}px,0)`;
+      requestAnimationFrame(loop);
+    };
     requestAnimationFrame(loop);
-  };
-  requestAnimationFrame(loop);
+  }
   document.addEventListener('mouseover', e => {
-    const card = e.target.closest('.f-card');
-    root.classList.toggle('cur-card', !!card);
-    root.classList.toggle('cur-cta', !!e.target.closest('.topnav__cta,.btn-primary'));
-    root.classList.toggle('cur-text', !card && !!e.target.closest('p,h1,h2,h3,h4,h5,h6'));
+    root.classList.toggle('cur-lift', !!e.target.closest('a,button,.f-card'));
   });
   document.addEventListener('focusin', e => {
     if (e.target.closest('input,textarea,select')) root.classList.add('cur-hidden');
   });
   document.addEventListener('focusout', () => root.classList.remove('cur-hidden'));
-  document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { dot.style.opacity = ''; ring.style.opacity = ''; });
+  document.addEventListener('mouseleave', () => root.classList.remove('cur-on'));
+  document.addEventListener('mouseenter', () => { if (seen) root.classList.add('cur-on'); });
 }
 </script>
 <script type="module">
