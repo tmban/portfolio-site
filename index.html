@@ -714,14 +714,16 @@ a.proj { text-decoration: none; color: inherit; cursor: pointer }
 #heroCanvas{position:absolute;inset:0;z-index:0;pointer-events:none}
 </style>
 <style id="enh-cursor">
-/* ENHANCEMENT: custom cursor — drawn hand with two trailing hands */
-@media(pointer:fine){body,body *:not(input):not(textarea):not(select){cursor:none!important}}
-.cursor-hand{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .2s}
+/* ENHANCEMENT: custom cursor — regular arrow normally; drawn hand + two
+   trailing hands take over on clickable elements only */
+@media(pointer:fine){a,button,[role="button"],a *,button *{cursor:none!important}}
+.cursor-hand{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .18s}
 html.cur-on .cursor-hand--main{opacity:1}
 html.cur-on .cursor-hand--m{opacity:.85}
-html.cur-on .cursor-hand--s{opacity:.7}
-.cursor-hand svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));transition:transform .25s var(--ease-out)}
-html.cur-lift .cursor-hand--main svg{transform:scale(1.15)}
+html.cur-on .cursor-hand--s{opacity:.75}
+.cursor-hand svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.cursor-hand--m svg path{fill:#2c2c2c}
+.cursor-hand--s svg path{fill:#255056}
 html.cur-hidden .cursor-hand{opacity:0!important}
 @media(pointer:coarse){.cursor-hand{display:none}}
 </style>
@@ -1234,15 +1236,10 @@ if (matchMedia('(pointer: fine)').matches) {
   const mid = reduced ? null : make(17, 'cursor-hand--m');
   const small = reduced ? null : make(12, 'cursor-hand--s');
   const root = document.documentElement;
-  let mx = -100, my = -100, seen = false;
+  let mx = -100, my = -100, over = false;
   const p1 = [-100, -100], p2 = [-100, -100];
   addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    if (!seen) {
-      seen = true;
-      p1[0] = mx; p1[1] = my; p2[0] = mx; p2[1] = my;
-      root.classList.add('cur-on');
-    }
     main.style.transform = `translate3d(${mx - 4}px,${my - 3}px,0)`;
   }, { passive: true });
   if (!reduced) {
@@ -1256,14 +1253,19 @@ if (matchMedia('(pointer: fine)').matches) {
     requestAnimationFrame(loop);
   }
   document.addEventListener('mouseover', e => {
-    root.classList.toggle('cur-lift', !!e.target.closest('a,button,.f-card'));
+    const hit = !!e.target.closest('a,button,[role="button"]');
+    if (hit && !over) {
+      // the small hands assemble under the lead hand, then trail
+      p1[0] = mx; p1[1] = my; p2[0] = mx; p2[1] = my;
+    }
+    over = hit;
+    root.classList.toggle('cur-on', hit);
   });
   document.addEventListener('focusin', e => {
     if (e.target.closest('input,textarea,select')) root.classList.add('cur-hidden');
   });
   document.addEventListener('focusout', () => root.classList.remove('cur-hidden'));
   document.addEventListener('mouseleave', () => root.classList.remove('cur-on'));
-  document.addEventListener('mouseenter', () => { if (seen) root.classList.add('cur-on'); });
 }
 </script>
 <script type="module">
