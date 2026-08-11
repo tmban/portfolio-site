@@ -715,7 +715,7 @@ a.proj { text-decoration: none; color: inherit; cursor: pointer }
 </style>
 <style id="enh-cursor">
 /* ENHANCEMENT: custom cursor — drawn hand with two trailing hands */
-@media(pointer:fine){body{cursor:none}}
+@media(pointer:fine){body,body *:not(input):not(textarea):not(select){cursor:none!important}}
 .cursor-hand{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .2s}
 html.cur-on .cursor-hand--main{opacity:1}
 html.cur-on .cursor-hand--m{opacity:.85}
