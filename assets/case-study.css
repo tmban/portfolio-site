@@ -49,7 +49,7 @@
 .cs-gallery img { cursor: zoom-in; }
 .cs-gallery figure:first-child { grid-column: 1 / -1; }
 .cs-gallery figcaption { font-size: .9rem; line-height: 1.45; color: var(--cs-muted); margin-top: 10px; }
-.cs-block .cs-gallery__note { font-size: .8rem; color: var(--cs-muted); margin: clamp(28px, 4vw, 48px) 0 0 !important; }
+.cs-block .cs-gallery__note { font-size: .8rem; color: var(--cs-muted); margin: 0 0 clamp(20px, 3vw, 32px) !important; text-align: center !important; }
 
 .cs-end { padding: clamp(48px, 7vw, 88px) 0; }
 .cs-end a { max-width: 560px; }
@@ -250,7 +250,7 @@ body { background: transparent !important; }
   color: var(--c) !important; margin: 0 0 clamp(20px, 3vw, 32px) !important; opacity: 1 !important;
 }
 .cs-block p, .cs-process p, .cs-process .sec-sub, .cs-process .s-sub, .cs-process .r-p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
-.cs-process figcaption, .cs-process td p, .cs-process th p, .cs-gallery figcaption, .cs-block .cs-gallery__note { text-align: left; }
+.cs-process figcaption, .cs-process td p, .cs-process th p, .cs-gallery figcaption { text-align: left; }
 .cs-wrap > .cs-block:last-child { padding-bottom: clamp(24px, 3vw, 40px); }
 
 /* Text sections in a narrower column (the gallery stays wide). */
