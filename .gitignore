@@ -6,3 +6,19 @@ _cursor-*.html
 .agents/
 .claude/skills/
 skills-lock.json
+
+# Full-size originals: the site uses the smaller web copies made from these
+assets/about/*.HEIC
+assets/about/*.JPG
+assets/about/*.jpeg
+assets/home-projects/*.png
+assets/recommendations/*.png
+assets/OLX-logo.webp
+# Publish staging folder (built by the Pages workflow)
+_site/
+
+# Local reference files, never committed or published
+_ref/
+
+# Build scripts, Figma exports and notes: kept on this Mac only, never in the GitHub repo
+_sources/

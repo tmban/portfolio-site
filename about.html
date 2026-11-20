@@ -40,7 +40,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-
 <style>
 /* Self-hosted Fira Sans */
 @font-face { font-family: 'Fira Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/FiraSans-Regular.ttf') format('truetype'); }
@@ -592,53 +591,143 @@ img { display: block }
 /* IN SHORT — reuses bio statement style + .bio-line scroll highlight, centred */
 .about-short{max-width:820px;margin:0 auto;text-align:center;padding:8px 24px 130px}
 .about-short__eyebrow{font:700 12px/1 'Fira Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--c);opacity:.42;margin:0 0 30px}
-/* HOW I WORK — vertical timeline */
-.timeline{max-width:680px;margin:44px auto 0;padding:0 24px 0 0;list-style:none;position:relative}
-.tl-track{position:relative;padding-left:40px;list-style:none;margin:0}
-.tl-track::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line-faint,#ece7dd)}
-.tl-item{position:relative;padding:0 0 34px}
-.tl-item:last-child{padding-bottom:0}
-.tl-item::before{content:"";position:absolute;left:-40px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--s);border:3px solid var(--p,#fff);box-shadow:0 0 0 1px var(--line-faint,#ece7dd)}
-.tl-step{font:700 12px/1 'Fira Sans',sans-serif;letter-spacing:.06em;color:var(--s);margin-bottom:5px}
-.tl-h{font:700 18px/1.25 'Fira Sans',sans-serif;color:var(--c);margin:0 0 5px}
-.tl-p{font-size:14.5px;line-height:1.55;color:var(--c);opacity:.72;margin:0}
 </style>
 <style id="no-h-scroll">/* clip stray horizontal overflow (footer CONTACT text) without creating a scroll container, keeps position:sticky working */@supports (overflow-x: clip){html,body{overflow-x:clip}}</style>
-<link rel="stylesheet" href="assets/cursor.css">
-<script src="assets/cursor.js" defer></script>
+<link rel="stylesheet" href="assets/case-study.css">
+<style id="about-updates">
+/* Projects: hover tiles for OLX. */
+#row-olx:hover ~ .project-tiles .tile-olx .project-tile{opacity:1;transform:translate(calc(-50% + var(--tx,0px)),calc(-50% + var(--ty,0px))) scale(1) rotate(var(--rot,0deg))}
+#row-olx:hover ~ .project-tiles .tile-olx .project-tile--mid{transition-delay:.09s}
+#row-olx:hover ~ .project-tiles .tile-olx .project-tile--right{transition-delay:.18s}
+@media(max-width:760px){#row-olx:hover ~ .project-tiles .project-tile{opacity:0!important}}
+/* Outside of work: two full-width rows sliding in opposite directions. */
+.outside-section{overflow:hidden;padding:0;width:100vw;margin-left:calc(50% - 50vw)}
+.outside__row + .outside__row{margin-top:12px}
+.outside__track{display:flex;width:max-content;animation:outside-slide 60s linear infinite}
+.outside__row.is-reverse .outside__track{animation-direction:reverse}
+.outside__row:hover .outside__track{animation-play-state:paused}
+.outside__set{display:flex;gap:12px;padding:0 12px 0 0;margin:0;list-style:none}
+.outside__item{flex:none;width:clamp(200px,24vw,380px);aspect-ratio:1;overflow:hidden;border-radius:18px;background:color-mix(in srgb,var(--c) 7%,var(--p))}
+.outside__item img{width:100%;height:100%;object-fit:cover;display:block}
+.outside__item--empty{display:flex;align-items:center;justify-content:center}
+.outside__item--empty span{font-weight:600;color:var(--c);opacity:.35}
+@keyframes outside-slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.outside__track{animation:none}.outside__set[aria-hidden]{display:none}.outside__row{overflow-x:auto}}
+</style>
+<style id="about-more">
+/* What I Do: a little more room above. */
+.whatido-section { padding-top: clamp(56px, 7vw, 96px) !important; }
+/* Projects: bigger hover cards, spread wider. */
+.project-tile { width: clamp(170px, 19vw, 290px) !important; }
+.project-tile--left  { --tx: -32vw !important; --ty: -3vw !important; --rot: -7deg !important; }
+.project-tile--mid   { --tx: 31vw !important; --ty: -9vw !important; --rot: 5deg !important; }
+.project-tile--right { --tx: 29vw !important; --ty: 9vw !important; --rot: -4deg !important; }
+@media (max-width: 760px) {
+  .project-tile { width: clamp(110px, 30vw, 160px) !important; }
+  .project-tile--left { --tx: -22vw !important; --ty: 5vw !important; }
+  .project-tile--mid { --ty: -21vw !important; }
+  .project-tile--right { --tx: 22vw !important; --ty: 5vw !important; }
+}
+/* Recommendations: cards in the What I Do style, each its own colour; two on the first row, one centred below.
+   The round icon is a placeholder for each person's photo. */
+.recs-section { padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px) clamp(48px, 6vw, 80px); }
+.recs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 880px; margin: 0 auto; }
+.rec-card { flex: 0 1 432px; margin: 0; padding: 22px 24px 26px; border-radius: 18px; background: var(--card-bg); color: var(--card-fg); display: flex; flex-direction: column; gap: 18px; text-align: left; transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out); }
+.rec-card:hover { transform: scale(1.03) rotate(-1deg); box-shadow: 0 18px 44px rgba(0,0,0,.18); }
+.rec-card:nth-child(even):hover { transform: scale(1.03) rotate(1deg); }
+.rec-card__head { display: flex; align-items: center; gap: 16px; }
+.rec-card__photo { width: 68px; height: 68px; border-radius: 50%; overflow: hidden; }
+.rec-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+.rec-card figcaption { display: flex; flex-direction: column; gap: 4px; }
+.rec-card cite { font-family: 'Fira Sans', sans-serif !important; font-style: normal; font-weight: 700; font-size: 1.15rem; line-height: 1.1; text-transform: uppercase; letter-spacing: -.01em; }
+.rec-card figcaption span { font-size: .85rem; opacity: .8; }
+.rec-card blockquote { margin: 0; font-size: 15.5px; line-height: 1.6; font-weight: 500; }
+@media (max-width: 860px) { .rec-card { flex-basis: 100%; } }
+@media (hover: none) { .rec-card:hover { transform: none; box-shadow: none; } }
+
+/* Experience: a timeline whose line fills with the brand orange as you scroll. */
+.exp-section { padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 96px) clamp(80px, 10vw, 140px); }
+.timeline { --tl-line: color-mix(in srgb, var(--c) 14%, transparent); position: relative; max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 2px; background: linear-gradient(to bottom, var(--brand, #ff5629) var(--tl-progress, 0%), var(--tl-line) var(--tl-progress, 0%)); pointer-events: none; }
+.tl-item { width: 47%; position: relative; }
+.tl-left { align-self: flex-start; }
+.tl-right { align-self: flex-end; }
+.tl-item::before { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--p); border: 2px solid var(--tl-line); z-index: 2; transition: border-color .4s, box-shadow .4s, background-color .4s; }
+.tl-left::before { left: auto; right: calc(-3/47 * 100% - 7px); }
+.tl-right::before { left: calc(-3/47 * 100% - 7px); }
+.tl-item.tl-visible::before { border-color: var(--brand, #ff5629); background: var(--brand, #ff5629); box-shadow: 0 0 0 5px color-mix(in srgb, var(--brand, #ff5629) 20%, transparent); }
+.tl-card { position: relative; overflow: hidden; padding: 22px 24px 24px; border-radius: 18px; background: var(--card-bg); color: var(--card-fg); transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out); }
+.tl-card:hover { transform: scale(1.03) rotate(-1deg); box-shadow: 0 18px 44px rgba(0,0,0,.18); }
+.tl-right .tl-card:hover { transform: scale(1.03) rotate(1deg); }
+.tl-period { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--card-fg); opacity: .75; margin: 0 0 14px; }
+.tl-head { display: flex; align-items: center; gap: 16px; margin: 0 0 14px; }
+.tl-thumb { width: 68px; height: 68px; font-family: 'Fira Sans', sans-serif !important; font-weight: 800; font-size: 1.15rem !important; letter-spacing: -.01em; color: var(--card-fg) !important; }
+.tl-company { font-family: 'Fira Sans', sans-serif !important; font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 800; line-height: 1.05; letter-spacing: -.01em; text-transform: uppercase; color: var(--card-fg); margin: 0 0 4px; }
+.tl-role { font-size: .9rem; color: var(--card-fg); opacity: .85; margin: 0; }
+.tl-desc { font-size: .95rem; line-height: 1.6; color: var(--card-fg); margin: 0; }
+/* Company logos in the experience cards, one colour: the card's own text colour. */
+.tl-logo { display: block; width: 70%; height: 70%; background: var(--card-fg); -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
+.tl-thumb--evora .tl-logo { width: 62%; height: 62%; }
+.tl-thumb--onbuy .tl-logo { width: 80%; }
+.tl-thumb--finning { width: 128px; }
+.tl-thumb--olx { width: 112px; }
+.tl-thumb--olx .tl-logo { width: 82%; }
+.tl-thumb--finning .tl-logo { width: 84%; }
+/* Dates sit on the other side of the line and appear as the line reaches each dot. Nothing bold in the cards but the company. */
+.tl-date { position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: .8rem; font-weight: 400 !important; letter-spacing: .1em; text-transform: uppercase; color: var(--c); opacity: 0; transition: opacity .45s var(--ease-out), transform .45s var(--ease-out); }
+.tl-left .tl-date { left: calc(53 / 47 * 100% + 18px); transform: translate(-8px, -50%); }
+.tl-right .tl-date { right: calc(53 / 47 * 100% + 18px); transform: translate(8px, -50%); }
+.tl-item.tl-visible .tl-date { opacity: .7; transform: translate(0, -50%); }
+.tl-role, .tl-desc { font-weight: 400 !important; }
+@media (max-width: 860px) {
+  .tl-date, .tl-left .tl-date, .tl-right .tl-date { position: static; transform: none; display: block; margin: 0 0 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .tl-date { transition: none; } }
+@media (hover: none) { .tl-card:hover { transform: none; box-shadow: none; } }
+.tl-item { opacity: 0; transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+.tl-left { transform: translateX(-20px); }
+.tl-right { transform: translateX(20px); }
+.tl-item.tl-in { opacity: 1; transform: none; }
+@media (max-width: 860px) {
+  .timeline::before { left: 7px; transform: none; }
+  .tl-item, .tl-left, .tl-right { width: auto; align-self: stretch; padding-left: 36px; }
+  .tl-left::before, .tl-right::before { left: 1px; right: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .tl-item { opacity: 1; transform: none; transition: none; } }
+</style>
 </head>
 <body class="fade">
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="topnav" id="topnav">
-  <a class="topnav__brand" href="index.html"><svg class="topnav__logo" viewBox="0 0 64 64" width="30" height="30" role="img" aria-label="Home" xmlns="http://www.w3.org/2000/svg"><g transform="translate(3.552,44.667) scale(0.01692,-0.01692)"><path fill="currentColor" d="M1592 1308Q1592 1277 1582.5 1258.5Q1573 1240 1558.0 1229.5Q1543 1219 1525.5 1215.5Q1508 1212 1492 1212Q1456 1212 1427.5 1212.5Q1399 1213 1372.0 1214.0Q1345 1215 1315.5 1215.5Q1286 1216 1247 1216Q1222 1216 1189.5 1213.0Q1157 1210 1122.0 1205.0Q1087 1200 1052.0 1193.0Q1017 1186 987.0 1179.0Q957 1172 934.5 1164.5Q912 1157 902 1151Q895 1147 889.5 1128.5Q884 1110 884 1096L858 856Q843 716 829.5 580.5Q816 445 816 313Q816 295 819.0 261.5Q822 228 826.0 195.0Q830 162 833.0 137.0Q836 112 836 110Q836 86 828.5 61.0Q821 36 807.0 16.0Q793 -4 772.5 -16.5Q752 -29 726 -29Q709 -29 690.0 -20.5Q671 -12 653.0 2.5Q635 17 621.0 36.5Q607 56 599 78Q590 103 585.0 136.0Q580 169 577.0 203.5Q574 238 573.0 271.5Q572 305 572 332Q572 377 577.0 445.5Q582 514 589.5 592.5Q597 671 606.0 752.5Q615 834 623.5 905.5Q632 977 638.5 1030.0Q645 1083 647 1105Q615 1105 566.0 1099.5Q517 1094 460 1087Q388 1078 312.0 1070.0Q236 1062 168 1062Q154 1062 129.0 1064.5Q104 1067 80.0 1074.5Q56 1082 38.0 1095.5Q20 1109 20 1131Q18 1139 17.5 1141.5Q17 1144 17 1154Q17 1171 20.0 1187.0Q23 1203 31.0 1216.5Q39 1230 54.5 1240.0Q70 1250 94 1256Q150 1270 219.0 1277.5Q288 1285 357 1285Q370 1285 405.5 1289.0Q441 1293 488.5 1299.0Q536 1305 590.5 1312.5Q645 1320 694.5 1327.0Q744 1334 783.0 1340.0Q822 1346 840 1349Q905 1361 970.0 1375.0Q1035 1389 1100.0 1402.0Q1165 1415 1229.5 1423.5Q1294 1432 1357 1432Q1365 1432 1383.0 1431.5Q1401 1431 1424.0 1429.0Q1447 1427 1472.5 1423.0Q1498 1419 1520 1412Q1537 1407 1550.0 1394.0Q1563 1381 1572.5 1365.0Q1582 1349 1587.0 1333.5Q1592 1318 1592 1308ZM3345 1484Q3345 1469 3341.0 1461.5Q3337 1454 3331.0 1445.0Q3325 1436 3317.5 1422.0Q3310 1408 3304 1381Q3298 1353 3292.5 1332.0Q3287 1311 3283.0 1292.0Q3279 1273 3276.5 1253.5Q3274 1234 3274 1208Q3274 1163 3272.0 1119.0Q3270 1075 3266.0 1027.5Q3262 980 3256.5 928.5Q3251 877 3244 817Q3234 732 3224.0 637.0Q3214 542 3214 441Q3214 414 3214.0 378.0Q3214 342 3215.5 301.0Q3217 260 3219.5 217.5Q3222 175 3227 135Q3232 130 3235.5 128.5Q3239 127 3246 122Q3282 99 3298.0 82.0Q3314 65 3314 36Q3314 15 3301.0 -8.5Q3288 -32 3266.5 -52.0Q3245 -72 3217.5 -85.0Q3190 -98 3161 -98Q3103 -98 3065.0 -62.0Q3027 -26 3005.5 30.5Q2984 87 2975.5 156.5Q2967 226 2967 294V329Q2967 357 2972.5 414.0Q2978 471 2986.5 544.0Q2995 617 3005.5 699.0Q3016 781 3027.5 859.5Q3039 938 3049.5 1006.0Q3060 1074 3068 1118Q3056 1103 3034.5 1074.5Q3013 1046 2986.5 1011.0Q2960 976 2930.5 937.0Q2901 898 2873.5 860.5Q2846 823 2821.5 790.0Q2797 757 2780 734Q2742 682 2707.0 631.0Q2672 580 2634 526Q2631 523 2624.5 513.0Q2618 503 2610.0 490.5Q2602 478 2594.0 466.0Q2586 454 2580 448Q2510 354 2426 330Q2372 347 2339.5 367.0Q2307 387 2286.0 410.5Q2265 434 2250.5 462.0Q2236 490 2217 521Q2197 555 2181.0 583.0Q2165 611 2153 633Q2127 680 2104.0 732.0Q2081 784 2061 838Q2047 883 2036.5 915.0Q2026 947 2017.0 975.0Q2008 1003 1999.0 1032.0Q1990 1061 1979 1100Q1977 1093 1971.0 1066.0Q1965 1039 1956.0 999.0Q1947 959 1936.0 910.0Q1925 861 1914.0 810.0Q1903 759 1892.5 710.5Q1882 662 1873.5 623.0Q1865 584 1859.0 558.5Q1853 533 1852 528Q1832 448 1832 376Q1832 361 1831.0 329.5Q1830 298 1829.5 262.5Q1829 227 1828.0 194.0Q1827 161 1827 143Q1827 128 1818.0 106.0Q1809 84 1793.0 64.0Q1777 44 1756.0 29.5Q1735 15 1712 15Q1679 15 1655.0 18.0Q1631 21 1613.5 30.0Q1596 39 1583.0 56.0Q1570 73 1559 100Q1555 109 1553.0 119.5Q1551 130 1549.5 146.0Q1548 162 1547.5 185.5Q1547 209 1547 245Q1547 256 1554.5 289.5Q1562 323 1573.5 370.0Q1585 417 1599.0 471.5Q1613 526 1627.5 578.5Q1642 631 1654.5 677.5Q1667 724 1675 753Q1689 803 1704.0 857.0Q1719 911 1733.5 966.0Q1748 1021 1762.5 1075.5Q1777 1130 1789 1179Q1795 1229 1801 1252Q1807 1279 1817.0 1309.5Q1827 1340 1841.5 1365.5Q1856 1391 1876.5 1408.0Q1897 1425 1925 1425Q2006 1425 2054.5 1407.0Q2103 1389 2132.5 1351.5Q2162 1314 2179.0 1255.0Q2196 1196 2214 1113Q2219 1090 2226.0 1072.5Q2233 1055 2241 1034Q2275 930 2323.5 827.5Q2372 725 2436 625Q2462 646 2483.5 678.5Q2505 711 2531 758Q2554 799 2577.5 835.5Q2601 872 2631 905Q2642 917 2666.0 946.5Q2690 976 2721.5 1015.5Q2753 1055 2788.0 1099.0Q2823 1143 2854.0 1182.5Q2885 1222 2909.0 1252.5Q2933 1283 2943 1296Q2954 1309 2960.0 1316.5Q2966 1324 2975 1334Q2986 1350 3011.0 1383.0Q3036 1416 3063.5 1453.0Q3091 1490 3116.5 1523.5Q3142 1557 3154 1574Q3168 1595 3207 1595Q3228 1595 3252.0 1582.5Q3276 1570 3296.5 1552.0Q3317 1534 3330.5 1514.0Q3344 1494 3344 1479Z"/></g></svg></a>
   <div class="topnav__links">
+    <a class="topnav__link" href="index.html">Home</a>
     <a class="topnav__link" href="about.html">About</a>
     <div class="topnav__work">
-      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Work<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="topnav__dropdown">
-        <a class="topnav__dd-item" href="kova/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Kova</span><span class="topnav__dd-sub">Analytics intelligence</span></span></a>
-        <a class="topnav__dd-item" href="arbor/arbor.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Arbor</span><span class="topnav__dd-sub">Data platform</span></span></a>
-        <a class="topnav__dd-item" href="plio/plio.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Plio</span><span class="topnav__dd-sub">AI invoice pipeline</span></span></a>
-        <a class="topnav__dd-item" href="design-system/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Design system</span><span class="topnav__dd-sub">SIERA &middot; components &amp; tokens</span></span></a>
-        <a class="topnav__dd-item" href="finning/finning.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/finning-card.png" alt=""><span><span class="topnav__dd-name">Finning</span><span class="topnav__dd-sub">Dealer portal</span></span></a>
-        <a class="topnav__dd-item" href="onbuy/onbuy.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="assets/logos/onbuy.png" alt=""><span><span class="topnav__dd-name">OnBuy</span><span class="topnav__dd-sub">Marketplace UX</span></span></a>
+        <a class="topnav__dd-item" href="olx/olx.html" data-tiles="olx"><span class="topnav__dd-name">Dealer Permissions</span></a>
+        <a class="topnav__dd-item" href="assistant/assistant.html" data-tiles="ai-assistant"><span class="topnav__dd-name">AI Assistant</span></a>
+        <a class="topnav__dd-item" href="kova/index.html" data-tiles="esg-analytics-reporting"><span class="topnav__dd-name">Analytics and Reporting</span></a>
+        <a class="topnav__dd-item" href="arbor/arbor.html" data-tiles="portfolio-data-model"><span class="topnav__dd-name">Restructuring Data Model</span></a>
+        <a class="topnav__dd-item" href="finning/finning.html" data-tiles="finning"><span class="topnav__dd-name">Finance Calculator</span></a>
+        <a class="topnav__dd-item" href="onbuy/onbuy.html" data-tiles="marketplace-checkout"><span class="topnav__dd-name">Marketplace Checkout</span></a>
+        <div class="topnav__tiles" aria-hidden="true"><div class="topnav__tilegroup" data-tiles="olx"><img src="assets/work/olx/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/olx/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/olx/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="ai-assistant"><img src="assets/work/ai-assistant/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/ai-assistant/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/ai-assistant/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="esg-analytics-reporting"><img src="assets/work/esg-analytics-reporting/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/esg-analytics-reporting/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/esg-analytics-reporting/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="portfolio-data-model"><img src="assets/work/portfolio-data-model/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/portfolio-data-model/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/portfolio-data-model/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="finning"><img src="assets/work/finning/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/finning/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/finning/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="marketplace-checkout"><img src="assets/work/marketplace-checkout/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/marketplace-checkout/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="assets/work/marketplace-checkout/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div></div>
       </div>
     </div>
-    <a class="topnav__cta" href="mailto:thomascmbanefo@gmail.com">Contact</a>
   </div>
   <button class="topnav__burger" id="topnavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="topnav__mobile" id="topnavMobile">
   <a class="topnav__mlink" href="index.html">Home</a>
   <a class="topnav__mlink" href="about.html">About</a>
-  <a class="topnav__mlink" href="mailto:thomascmbanefo@gmail.com">Contact</a>
+  <button class="topnav__mwork" type="button" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="topnav__mgrid">
-  <a class="topnav__mproj" href="kova/index.html"><img loading="lazy" decoding="async" src="assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Kova</span><span class="topnav__msub">Analytics intelligence</span></span></a>
-  <a class="topnav__mproj" href="arbor/arbor.html"><img loading="lazy" decoding="async" src="assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Arbor</span><span class="topnav__msub">Data platform</span></span></a>
-  <a class="topnav__mproj" href="plio/plio.html"><img loading="lazy" decoding="async" src="assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Plio</span><span class="topnav__msub">AI invoice pipeline</span></span></a>
-  <a class="topnav__mproj" href="design-system/index.html"><img loading="lazy" decoding="async" src="assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Design system</span><span class="topnav__msub">SIERA &middot; components &amp; tokens</span></span></a>
-  <a class="topnav__mproj" href="finning/finning.html"><img loading="lazy" decoding="async" src="assets/logos/finning-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Finning</span><span class="topnav__msub">Dealer portal</span></span></a>
-  <a class="topnav__mproj" href="onbuy/onbuy.html"><img loading="lazy" decoding="async" src="assets/logos/onbuy.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">OnBuy</span><span class="topnav__msub">Marketplace UX</span></span></a>
+  <a class="topnav__mproj" href="olx/olx.html"><span class="topnav__mname">Dealer Permissions</span></a>
+  <a class="topnav__mproj" href="assistant/assistant.html"><span class="topnav__mname">AI Assistant</span></a>
+  <a class="topnav__mproj" href="kova/index.html"><span class="topnav__mname">Analytics and Reporting</span></a>
+  <a class="topnav__mproj" href="arbor/arbor.html"><span class="topnav__mname">Restructuring Data Model</span></a>
+  <a class="topnav__mproj" href="finning/finning.html"><span class="topnav__mname">Finance Calculator</span></a>
+  <a class="topnav__mproj" href="onbuy/onbuy.html"><span class="topnav__mname">Marketplace Checkout</span></a>
   </div>
 </div>
 
@@ -655,7 +744,12 @@ img { display: block }
       <span class="bio-line about-hero__block">I lead design end to end, from the data model and information architecture to the interface.</span>
       <span class="bio-line about-hero__block">Previously leading design at Evora Global. Trusted by Finning, OnBuy, and others.</span>
     </h1>
-    <img class="about-portrait" src="assets/thomas-portrait.jpg" alt="Thomas Mbanefo" width="800" height="1000" decoding="async">
+  </section>
+
+  <!-- OUTSIDE OF WORK: two rows of photos sliding in opposite directions -->
+  <section class="outside-section" aria-label="Outside of work">
+    <div class="outside__row"><div class="outside__track"><ul class="outside__set"><li class="outside__item"><img src="assets/about/outside-01.webp" alt="Thomas" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-05.webp" alt="Trying the Apple Vision Pro" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-02.webp" alt="Burgers at Burgermeister" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-08.webp" alt="An indoor go-kart track" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-10.webp" alt="Playing football" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-04.webp" alt="At a hilltop castle in Portugal" loading="lazy" decoding="async"></li></ul><ul class="outside__set" aria-hidden="true"><li class="outside__item"><img src="assets/about/outside-01.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-05.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-02.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-08.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-10.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-04.webp" alt="" loading="lazy" decoding="async"></li></ul></div></div>
+    <div class="outside__row is-reverse"><div class="outside__track"><ul class="outside__set"><li class="outside__item"><img src="assets/about/outside-06.webp" alt="Quad biking" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-03.webp" alt="A gaming setup" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-07.webp" alt="Dressed for a black-tie evening" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-11.webp" alt="A football match" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-09.webp" alt="The go-kart track from the start line" loading="lazy" decoding="async"></li></ul><ul class="outside__set" aria-hidden="true"><li class="outside__item"><img src="assets/about/outside-06.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-03.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-07.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-11.webp" alt="" loading="lazy" decoding="async"></li><li class="outside__item"><img src="assets/about/outside-09.webp" alt="" loading="lazy" decoding="async"></li></ul></div></div>
   </section>
 
   <!-- WHAT I DO -->
@@ -675,44 +769,17 @@ img { display: block }
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="projects-section reveal">
+  <!-- EXPERIENCE -->
+  <section class="exp-section" aria-labelledby="exp-h">
     <div class="section-head">
-      <h2 class="section-head__title">Projects</h2>
+      <h2 class="section-head__title" id="exp-h">Experience</h2>
     </div>
-    <div class="projects-stage">
-      <a class="project-row" id="row-kova"  href="kova/index.html"><span class="project-name">Kova</span></a>
-      <a class="project-row" id="row-arbor" href="arbor/arbor.html"><span class="project-name">Arbor</span></a>
-      <a class="project-row" id="row-plio"  href="plio/plio.html"><span class="project-name">Plio</span></a>
-      <a class="project-row" id="row-finning" href="finning/finning.html"><span class="project-name">Finning</span></a>
-      <a class="project-row" id="row-onbuy"  href="onbuy/onbuy.html"><span class="project-name">OnBuy</span></a>
-      <div class="project-tiles" aria-hidden="true">
-        <div class="project-tile-group tile-kova">
-          <img class="project-tile project-tile--left"  src="assets/tiles/kv2.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--mid"   src="assets/tiles/kv10.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--right" src="assets/tiles/kv4.webp" alt="" loading="lazy">
-        </div>
-        <div class="project-tile-group tile-arbor">
-          <img class="project-tile project-tile--left"  src="assets/tiles/ar4.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--mid"   src="assets/tiles/ar13.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--right" src="assets/tiles/ar3.webp" alt="" loading="lazy">
-        </div>
-        <div class="project-tile-group tile-plio">
-          <img class="project-tile project-tile--left"  src="assets/tiles/pl3.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--mid"   src="assets/tiles/pl8.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--right" src="assets/tiles/pl5.webp" alt="" loading="lazy">
-        </div>
-        <div class="project-tile-group tile-finning">
-          <img class="project-tile project-tile--left"  src="assets/tiles/fn2.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--mid"   src="assets/logos/finning-card.png" alt="" loading="lazy">
-          <img class="project-tile project-tile--right" src="assets/tiles/fn3.webp" alt="" loading="lazy">
-        </div>
-        <div class="project-tile-group tile-onbuy">
-          <img class="project-tile project-tile--left"  src="assets/tiles/ob4.webp" alt="" loading="lazy">
-          <img class="project-tile project-tile--mid"   src="assets/logos/onbuy.png" alt="" loading="lazy">
-          <img class="project-tile project-tile--right" src="assets/tiles/ob6.webp" alt="" loading="lazy">
-        </div>
-      </div>
+    <div class="timeline">
+      <div class="tl-item tl-left"><div class="tl-date">Jul 2026 to present</div><div class="tl-card" style="--card-bg:#ff7906;--card-fg:#2c2c2c"><div class="tl-head"><span class="skill-card__thumb tl-thumb tl-thumb--olx" aria-hidden="true"><span class="tl-logo" style="--logo:url(assets/logos/mask-olx.png)"></span></span><div><h3 class="tl-company">OLX Motors</h3><div class="tl-role">Senior Product Designer (contract)</div></div></div><p class="tl-desc">Dealer accounts for a multi-location car marketplace: which location you work in, who can do what, and what each account state allows.</p></div></div>
+      <div class="tl-item tl-right"><div class="tl-date">Oct 2024 to Jul 2026</div><div class="tl-card" style="--card-bg:#1f5b66;--card-fg:#ede6d3"><div class="tl-head"><span class="skill-card__thumb tl-thumb tl-thumb--evora" aria-hidden="true"><span class="tl-logo" style="--logo:url(assets/logos/mask-evora.png)"></span></span><div><h3 class="tl-company">Evora Global</h3><div class="tl-role">Senior Product Designer</div></div></div><p class="tl-desc">Rebuilt the ESG platform's asset hierarchy so rules inherit instead of repeating, and led a data quality dashboard teams could trust.</p></div></div>
+      <div class="tl-item tl-left"><div class="tl-date">Oct 2022 to Oct 2024</div><div class="tl-card" style="--card-bg:#C81E4A;--card-fg:#ede6d3"><div class="tl-head"><span class="skill-card__thumb tl-thumb tl-thumb--evora" aria-hidden="true"><span class="tl-logo" style="--logo:url(assets/logos/mask-evora.png)"></span></span><div><h3 class="tl-company">Evora Global</h3><div class="tl-role">Product Designer</div></div></div><p class="tl-desc">Defined the reporting and disclosure workflow, and built and owned the design system from tokens to documentation.</p></div></div>
+      <div class="tl-item tl-right"><div class="tl-date">2022</div><div class="tl-card" style="--card-bg:#2a7a5a;--card-fg:#ede6d3"><div class="tl-head"><span class="skill-card__thumb tl-thumb tl-thumb--onbuy" aria-hidden="true"><span class="tl-logo" style="--logo:url(assets/logos/mask-onbuy.png)"></span></span><div><h3 class="tl-company">OnBuy</h3><div class="tl-role">UX/UI Designer</div></div></div><p class="tl-desc">Led the checkout and mobile discovery redesign for a UK marketplace, rebuilt around the trust buyers needed before paying.</p></div></div>
+      <div class="tl-item tl-left"><div class="tl-date">Oct 2021 to Mar 2022</div><div class="tl-card" style="--card-bg:#7c3aed;--card-fg:#ede6d3"><div class="tl-head"><span class="skill-card__thumb tl-thumb tl-thumb--finning" aria-hidden="true"><span class="tl-logo" style="--logo:url(assets/logos/mask-finning.png)"></span></span><div><h3 class="tl-company">Finning</h3><div class="tl-role">UX/UI Designer (contract)</div></div></div><p class="tl-desc">A self-serve catalogue and finance calculator for the world's largest Caterpillar dealer, so buyers could price a machine first.</p></div></div>
     </div>
   </section>
 
@@ -727,7 +794,7 @@ img { display: block }
   <div class="footer__body" id="footerBody">
     <p class="footer__contact">CONTACT</p>
     <div class="footer__links">
-      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="mailto:tmbanefo@vividvault.studio">tmbanefo@vividvault.studio</a>
       <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
       <a class="footer__link" href="Thomas_Mbanefo_CV.pdf" target="_blank" rel="noopener">Resume</a>
       <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
@@ -905,5 +972,22 @@ document.querySelectorAll('.swatch').forEach(sw => {
   check();
 })();</script>
 <script id="topnav-js" src="assets/site-nav.js" defer></script>
+<script src="assets/particles.js" defer></script>
+<script>
+/* Experience timeline: cards fade in as they enter; the line fills as you scroll, and each dot and date
+   light up when the filled line reaches them. */
+(function(){
+  var tl=document.querySelector('.timeline'); if(!tl) return;
+  var items=[].slice.call(tl.querySelectorAll('.tl-item'));
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('tl-in'); io.unobserve(e.target); } }); },{threshold:.2});
+  items.forEach(function(el,i){ el.style.transitionDelay=(i*0.08)+'s'; io.observe(el); });
+  function line(){
+    var r=tl.getBoundingClientRect(); var done=Math.max(0, innerHeight*0.6 - r.top);
+    tl.style.setProperty('--tl-progress', Math.min(100, done/r.height*100)+'%');
+    items.forEach(function(el){ var b=el.getBoundingClientRect(); el.classList.toggle('tl-visible', (b.top+b.height/2-r.top) <= done); });
+  }
+  addEventListener('scroll', line, {passive:true}); addEventListener('resize', line); line();
+})();
+</script>
 </body>
 </html>

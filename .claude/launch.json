@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8123", "--directory", "C:\\Users\\thoma\\OneDrive\\Desktop\\portfolio-github"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/tmbanefo/Desktop/Personal/Portfolio/_sources/serve.mjs"],
       "port": 8123
     }
   ]

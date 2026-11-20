@@ -6,19 +6,19 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OnBuy: Checkout and discovery redesign · Thomas Mbanefo</title>
+<title>Marketplace Checkout · Thomas Mbanefo</title>
 <!--SEO_START-->
-<meta name="description" content="Redesigning checkout and product discovery for one of the UK's largest marketplaces, cutting checkout abandonment across millions of listings.">
+<meta name="description" content="Checkout and product discovery for OnBuy, one of the UK's largest online marketplaces, rebuilt around the trust buyers needed before they paid.">
 <link rel="canonical" href="https://thomasmbanefo.com/onbuy/onbuy.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Thomas Mbanefo">
-<meta property="og:title" content="OnBuy: Checkout and discovery redesign · Thomas Mbanefo">
-<meta property="og:description" content="Redesigning checkout and product discovery for one of the UK's largest marketplaces, cutting checkout abandonment across millions of listings.">
+<meta property="og:title" content="Marketplace Checkout · Thomas Mbanefo">
+<meta property="og:description" content="Checkout and product discovery for OnBuy, one of the UK's largest online marketplaces, rebuilt around the trust buyers needed before they paid.">
 <meta property="og:url" content="https://thomasmbanefo.com/onbuy/onbuy.html">
 <meta property="og:image" content="https://thomasmbanefo.com/assets/og/onbuy.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OnBuy: Checkout and discovery redesign · Thomas Mbanefo">
-<meta name="twitter:description" content="Redesigning checkout and product discovery for one of the UK's largest marketplaces, cutting checkout abandonment across millions of listings.">
+<meta name="twitter:title" content="Marketplace Checkout · Thomas Mbanefo">
+<meta name="twitter:description" content="Checkout and product discovery for OnBuy, one of the UK's largest online marketplaces, rebuilt around the trust buyers needed before they paid.">
 <meta name="twitter:image" content="https://thomasmbanefo.com/assets/og/onbuy.png">
 <!--SEO_END-->
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -1043,55 +1043,45 @@ html[data-theme="blue"] .dialect-tab.active,html[data-theme="green"] .dialect-ta
 .feat .scr-wrap,#features .feat .scr-wrap{margin-left:auto!important;margin-right:auto!important}
 .feat .callouts,#features .feat .callouts{max-width:900px;margin-left:auto!important;margin-right:auto!important}
 </style>
-<link rel="stylesheet" href="../assets/cursor.css">
-<script src="../assets/cursor.js" defer></script>
+<link rel="stylesheet" href="../assets/case-study.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="topnav" id="topnav">
-  <a class="topnav__brand" href="../index.html"><svg class="topnav__logo" viewBox="0 0 64 64" width="30" height="30" role="img" aria-label="Home" xmlns="http://www.w3.org/2000/svg"><g transform="translate(3.552,44.667) scale(0.01692,-0.01692)"><path fill="currentColor" d="M1592 1308Q1592 1277 1582.5 1258.5Q1573 1240 1558.0 1229.5Q1543 1219 1525.5 1215.5Q1508 1212 1492 1212Q1456 1212 1427.5 1212.5Q1399 1213 1372.0 1214.0Q1345 1215 1315.5 1215.5Q1286 1216 1247 1216Q1222 1216 1189.5 1213.0Q1157 1210 1122.0 1205.0Q1087 1200 1052.0 1193.0Q1017 1186 987.0 1179.0Q957 1172 934.5 1164.5Q912 1157 902 1151Q895 1147 889.5 1128.5Q884 1110 884 1096L858 856Q843 716 829.5 580.5Q816 445 816 313Q816 295 819.0 261.5Q822 228 826.0 195.0Q830 162 833.0 137.0Q836 112 836 110Q836 86 828.5 61.0Q821 36 807.0 16.0Q793 -4 772.5 -16.5Q752 -29 726 -29Q709 -29 690.0 -20.5Q671 -12 653.0 2.5Q635 17 621.0 36.5Q607 56 599 78Q590 103 585.0 136.0Q580 169 577.0 203.5Q574 238 573.0 271.5Q572 305 572 332Q572 377 577.0 445.5Q582 514 589.5 592.5Q597 671 606.0 752.5Q615 834 623.5 905.5Q632 977 638.5 1030.0Q645 1083 647 1105Q615 1105 566.0 1099.5Q517 1094 460 1087Q388 1078 312.0 1070.0Q236 1062 168 1062Q154 1062 129.0 1064.5Q104 1067 80.0 1074.5Q56 1082 38.0 1095.5Q20 1109 20 1131Q18 1139 17.5 1141.5Q17 1144 17 1154Q17 1171 20.0 1187.0Q23 1203 31.0 1216.5Q39 1230 54.5 1240.0Q70 1250 94 1256Q150 1270 219.0 1277.5Q288 1285 357 1285Q370 1285 405.5 1289.0Q441 1293 488.5 1299.0Q536 1305 590.5 1312.5Q645 1320 694.5 1327.0Q744 1334 783.0 1340.0Q822 1346 840 1349Q905 1361 970.0 1375.0Q1035 1389 1100.0 1402.0Q1165 1415 1229.5 1423.5Q1294 1432 1357 1432Q1365 1432 1383.0 1431.5Q1401 1431 1424.0 1429.0Q1447 1427 1472.5 1423.0Q1498 1419 1520 1412Q1537 1407 1550.0 1394.0Q1563 1381 1572.5 1365.0Q1582 1349 1587.0 1333.5Q1592 1318 1592 1308ZM3345 1484Q3345 1469 3341.0 1461.5Q3337 1454 3331.0 1445.0Q3325 1436 3317.5 1422.0Q3310 1408 3304 1381Q3298 1353 3292.5 1332.0Q3287 1311 3283.0 1292.0Q3279 1273 3276.5 1253.5Q3274 1234 3274 1208Q3274 1163 3272.0 1119.0Q3270 1075 3266.0 1027.5Q3262 980 3256.5 928.5Q3251 877 3244 817Q3234 732 3224.0 637.0Q3214 542 3214 441Q3214 414 3214.0 378.0Q3214 342 3215.5 301.0Q3217 260 3219.5 217.5Q3222 175 3227 135Q3232 130 3235.5 128.5Q3239 127 3246 122Q3282 99 3298.0 82.0Q3314 65 3314 36Q3314 15 3301.0 -8.5Q3288 -32 3266.5 -52.0Q3245 -72 3217.5 -85.0Q3190 -98 3161 -98Q3103 -98 3065.0 -62.0Q3027 -26 3005.5 30.5Q2984 87 2975.5 156.5Q2967 226 2967 294V329Q2967 357 2972.5 414.0Q2978 471 2986.5 544.0Q2995 617 3005.5 699.0Q3016 781 3027.5 859.5Q3039 938 3049.5 1006.0Q3060 1074 3068 1118Q3056 1103 3034.5 1074.5Q3013 1046 2986.5 1011.0Q2960 976 2930.5 937.0Q2901 898 2873.5 860.5Q2846 823 2821.5 790.0Q2797 757 2780 734Q2742 682 2707.0 631.0Q2672 580 2634 526Q2631 523 2624.5 513.0Q2618 503 2610.0 490.5Q2602 478 2594.0 466.0Q2586 454 2580 448Q2510 354 2426 330Q2372 347 2339.5 367.0Q2307 387 2286.0 410.5Q2265 434 2250.5 462.0Q2236 490 2217 521Q2197 555 2181.0 583.0Q2165 611 2153 633Q2127 680 2104.0 732.0Q2081 784 2061 838Q2047 883 2036.5 915.0Q2026 947 2017.0 975.0Q2008 1003 1999.0 1032.0Q1990 1061 1979 1100Q1977 1093 1971.0 1066.0Q1965 1039 1956.0 999.0Q1947 959 1936.0 910.0Q1925 861 1914.0 810.0Q1903 759 1892.5 710.5Q1882 662 1873.5 623.0Q1865 584 1859.0 558.5Q1853 533 1852 528Q1832 448 1832 376Q1832 361 1831.0 329.5Q1830 298 1829.5 262.5Q1829 227 1828.0 194.0Q1827 161 1827 143Q1827 128 1818.0 106.0Q1809 84 1793.0 64.0Q1777 44 1756.0 29.5Q1735 15 1712 15Q1679 15 1655.0 18.0Q1631 21 1613.5 30.0Q1596 39 1583.0 56.0Q1570 73 1559 100Q1555 109 1553.0 119.5Q1551 130 1549.5 146.0Q1548 162 1547.5 185.5Q1547 209 1547 245Q1547 256 1554.5 289.5Q1562 323 1573.5 370.0Q1585 417 1599.0 471.5Q1613 526 1627.5 578.5Q1642 631 1654.5 677.5Q1667 724 1675 753Q1689 803 1704.0 857.0Q1719 911 1733.5 966.0Q1748 1021 1762.5 1075.5Q1777 1130 1789 1179Q1795 1229 1801 1252Q1807 1279 1817.0 1309.5Q1827 1340 1841.5 1365.5Q1856 1391 1876.5 1408.0Q1897 1425 1925 1425Q2006 1425 2054.5 1407.0Q2103 1389 2132.5 1351.5Q2162 1314 2179.0 1255.0Q2196 1196 2214 1113Q2219 1090 2226.0 1072.5Q2233 1055 2241 1034Q2275 930 2323.5 827.5Q2372 725 2436 625Q2462 646 2483.5 678.5Q2505 711 2531 758Q2554 799 2577.5 835.5Q2601 872 2631 905Q2642 917 2666.0 946.5Q2690 976 2721.5 1015.5Q2753 1055 2788.0 1099.0Q2823 1143 2854.0 1182.5Q2885 1222 2909.0 1252.5Q2933 1283 2943 1296Q2954 1309 2960.0 1316.5Q2966 1324 2975 1334Q2986 1350 3011.0 1383.0Q3036 1416 3063.5 1453.0Q3091 1490 3116.5 1523.5Q3142 1557 3154 1574Q3168 1595 3207 1595Q3228 1595 3252.0 1582.5Q3276 1570 3296.5 1552.0Q3317 1534 3330.5 1514.0Q3344 1494 3344 1479Z"/></g></svg></a>
   <div class="topnav__links">
+    <a class="topnav__link" href="../index.html">Home</a>
     <a class="topnav__link" href="../about.html">About</a>
     <div class="topnav__work">
-      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Work<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="topnav__dropdown">
-        <a class="topnav__dd-item" href="../kova/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Kova</span><span class="topnav__dd-sub">Analytics intelligence</span></span></a>
-        <a class="topnav__dd-item" href="../arbor/arbor.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Arbor</span><span class="topnav__dd-sub">Data platform</span></span></a>
-        <a class="topnav__dd-item" href="../plio/plio.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Plio</span><span class="topnav__dd-sub">AI invoice pipeline</span></span></a>
-        <a class="topnav__dd-item" href="../design-system/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Design system</span><span class="topnav__dd-sub">SIERA &middot; components &amp; tokens</span></span></a>
-        <a class="topnav__dd-item" href="../finning/finning.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/finning-card.png" alt=""><span><span class="topnav__dd-name">Finning</span><span class="topnav__dd-sub">Dealer portal</span></span></a>
-        <a class="topnav__dd-item" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/onbuy.png" alt=""><span><span class="topnav__dd-name">OnBuy</span><span class="topnav__dd-sub">Marketplace UX</span></span></a>
+        <a class="topnav__dd-item" href="../olx/olx.html" data-tiles="olx"><span class="topnav__dd-name">Dealer Permissions</span></a>
+        <a class="topnav__dd-item" href="../assistant/assistant.html" data-tiles="ai-assistant"><span class="topnav__dd-name">AI Assistant</span></a>
+        <a class="topnav__dd-item" href="../kova/index.html" data-tiles="esg-analytics-reporting"><span class="topnav__dd-name">Analytics and Reporting</span></a>
+        <a class="topnav__dd-item" href="../arbor/arbor.html" data-tiles="portfolio-data-model"><span class="topnav__dd-name">Restructuring Data Model</span></a>
+        <a class="topnav__dd-item" href="../finning/finning.html" data-tiles="finning"><span class="topnav__dd-name">Finance Calculator</span></a>
+        <a class="topnav__dd-item" href="../onbuy/onbuy.html" data-tiles="marketplace-checkout"><span class="topnav__dd-name">Marketplace Checkout</span></a>
+        <div class="topnav__tiles" aria-hidden="true"><div class="topnav__tilegroup" data-tiles="olx"><img src="../assets/work/olx/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/olx/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/olx/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="ai-assistant"><img src="../assets/work/ai-assistant/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/ai-assistant/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/ai-assistant/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="esg-analytics-reporting"><img src="../assets/work/esg-analytics-reporting/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/esg-analytics-reporting/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/esg-analytics-reporting/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="portfolio-data-model"><img src="../assets/work/portfolio-data-model/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/portfolio-data-model/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/portfolio-data-model/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="finning"><img src="../assets/work/finning/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/finning/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/finning/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="marketplace-checkout"><img src="../assets/work/marketplace-checkout/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/marketplace-checkout/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/marketplace-checkout/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div></div>
       </div>
     </div>
-    <a class="topnav__cta" href="mailto:thomascmbanefo@gmail.com">Contact</a>
   </div>
   <button class="topnav__burger" id="topnavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="topnav__mobile" id="topnavMobile">
   <a class="topnav__mlink" href="../index.html">Home</a>
   <a class="topnav__mlink" href="../about.html">About</a>
-  <a class="topnav__mlink" href="mailto:thomascmbanefo@gmail.com">Contact</a>
+  <button class="topnav__mwork" type="button" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="topnav__mgrid">
-  <a class="topnav__mproj" href="../kova/index.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Kova</span><span class="topnav__msub">Analytics intelligence</span></span></a>
-  <a class="topnav__mproj" href="../arbor/arbor.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Arbor</span><span class="topnav__msub">Data platform</span></span></a>
-  <a class="topnav__mproj" href="../plio/plio.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Plio</span><span class="topnav__msub">AI invoice pipeline</span></span></a>
-  <a class="topnav__mproj" href="../design-system/index.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Design system</span><span class="topnav__msub">SIERA &middot; components &amp; tokens</span></span></a>
-  <a class="topnav__mproj" href="../finning/finning.html"><img loading="lazy" decoding="async" src="../assets/logos/finning-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Finning</span><span class="topnav__msub">Dealer portal</span></span></a>
-  <a class="topnav__mproj" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" src="../assets/logos/onbuy.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">OnBuy</span><span class="topnav__msub">Marketplace UX</span></span></a>
+  <a class="topnav__mproj" href="../olx/olx.html"><span class="topnav__mname">Dealer Permissions</span></a>
+  <a class="topnav__mproj" href="../assistant/assistant.html"><span class="topnav__mname">AI Assistant</span></a>
+  <a class="topnav__mproj" href="../kova/index.html"><span class="topnav__mname">Analytics and Reporting</span></a>
+  <a class="topnav__mproj" href="../arbor/arbor.html"><span class="topnav__mname">Restructuring Data Model</span></a>
+  <a class="topnav__mproj" href="../finning/finning.html"><span class="topnav__mname">Finance Calculator</span></a>
+  <a class="topnav__mproj" href="../onbuy/onbuy.html"><span class="topnav__mname">Marketplace Checkout</span></a>
   </div>
 </div>
 
 <a class="nav-btn nav-btn--2" href="../index.html" aria-label="Home">HOME</a>
 <a class="nav-btn" href="../about.html" aria-label="About">ABOUT</a>
-
-<nav class="sectnav" aria-label="Section navigation">
-  <a href="#introduction" data-sec="introduction"><span class="lbl">Introduction</span><span class="dot-n"></span></a>
-  <a href="#research" data-sec="research"><span class="lbl">Research</span><span class="dot-n"></span></a>
-  <a href="#discovery" data-sec="discovery"><span class="lbl">Discovery</span><span class="dot-n"></span></a>
-  <a href="#features" data-sec="features"><span class="lbl">Product</span><span class="dot-n"></span></a>
-  <a href="#impact" data-sec="impact"><span class="lbl">Impact</span><span class="dot-n"></span></a>
-</nav>
-
 
 <!-- ===== per-project accent (OnBuy blue) + page-local styles ===== -->
 <style id="proj-accent">
@@ -1140,588 +1130,30 @@ html[data-theme="blue"] .dialect-tab.active,html[data-theme="green"] .dialect-ta
 
 <!-- HERO -->
 <main id="main" tabindex="-1">
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-text"><h1>OnBuy</h1><p class="h-sub">Checkout and product discovery for one of the UK's largest online marketplaces, streamlining the path from basket to confirmed order across millions of listings.</p></div>
-    <div class="hero-visual">
-      <div class="hv-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb" id="hcs-crumb">onbuy / home</span></div>
-      <div class="hero-carousel" id="hcs">
-        <div class="hcs-track" id="hcs-track">
-          <div class="hcs-slide" data-crumb="onbuy / home"     data-caption="A way into millions of listings" data-dur="10000"><iframe src="motion/01-discovery.html?v=1" title="Product discovery" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-crumb="onbuy / results"  data-caption="Filter to a scannable shortlist" data-dur="10000"><iframe src="motion/02-results.html?v=1" title="Search results" loading="lazy" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-crumb="onbuy / product"  data-caption="Trust, surfaced by the buy button" data-dur="10000"><iframe src="motion/03-trust.html?v=1" title="Trust signals" loading="lazy" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-crumb="onbuy / checkout" data-caption="One condensed checkout" data-dur="10000"><iframe src="motion/04-checkout.html?v=1" title="Checkout" loading="lazy" scrolling="no"></iframe></div>
-        </div>
-        <div class="hcs-dots" id="hcs-dots"></div>
-      </div>
-      <p class="hcs-caption" id="hcs-caption"></p>
+<!-- ══ CASE STUDY: main view (six blocks). The long page sits below in Full process. ══ -->
+<article class="cs">
+  <header class="cs-hero">
+    <div class="cs-wrap">
+      <h1 class="cs-hero__title">Marketplace Checkout</h1>
+      <p class="cs-hero__summary">OnBuy</p>
+      <dl class="cs-meta"><div><dt>Role</dt><dd>UX/UI Designer</dd></div><div><dt>Year</dt><dd>2022</dd></div><div><dt>Team</dt><dd>Sole designer on the flow, with a product owner, engineers and QA</dd></div><div><dt>Tags</dt><dd>Ecommerce, Checkout, Mobile-first, User research</dd></div></dl>
+      <div class="cs-plate"><img src="../assets/home-projects/marketplace-checkout.webp" alt="Parcels left on a doorstep." width="1280" height="720" fetchpriority="high" decoding="async"></div>
     </div>
+  </header>
+  <div class="cs-wrap">
+    <section class="cs-block" aria-labelledby="cs-context"><h2 id="cs-context">Context</h2><p>As OnBuy's catalogue grew, the path from finding a product to paying for it started to leak. Search returned overwhelming result sets, product pages buried the buyer-protection signals that earn trust on a marketplace, and a multi-step checkout lost buyers on mobile, where most of the traffic was. The brief said checkout was too long.</p></section>
+    <section class="cs-block" aria-labelledby="cs-approach"><h2 id="cs-approach">Approach</h2><p>I ran a Userbrain study, recording real people finding a product and trying to buy it, alongside a review of the analytics funnel. The finding reframed the brief: checkout was not too long, it was not trusted. Buyers did not see the cues that told them this was safe until they were already committed.</p><p>Over 18 sprints I fixed trust first and friction second, and designed separate paths for buyers who search and buyers who browse.</p></section>
+    <section class="cs-block cs-gallery-block" aria-label="Gallery"><div class="cs-gallery"><figure><img src="../assets/work/marketplace-checkout/g1.webp" alt="The checkout on a laptop and a phone." loading="lazy" decoding="async" width="2880" height="1500"><figcaption>At the moment of paying, the reasons to trust sit right beside the button.</figcaption></figure><figure><img src="../assets/work/marketplace-checkout/g2.webp" alt="Delivery, returns and buyer protection listed on the product page." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Delivery, returns and protection moved up to the product, where doubts start.</figcaption></figure><figure><img src="../assets/work/marketplace-checkout/g3.webp" alt="Payment and order confirmation on two phones." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Payment and confirmation on a phone, with the summary always in view.</figcaption></figure></div><p class="cs-gallery__note">Rebuilt concept, not the shipped interface.</p></section>
+    <section class="cs-block" aria-labelledby="cs-decisions"><h2 id="cs-decisions">Key decisions</h2><p>Trust shows up at the moment of doubt, with buyer protection, delivery and returns beside the price and the pay button. There are two ways in, so search-led and browse-led buyers each get their own layout above the fold. Checkout is one progressive screen with a running summary, so cost and delivery show before the commitment. One thing we cut was information the old flow asked for twice, including address and contact details.</p></section>
+    <section class="cs-block" aria-labelledby="cs-outcome"><h2 id="cs-outcome">Outcome</h2><p>A shorter checkout, with cost, delivery and buyer protection shown up front. Mobile checkout completion improved on the platform's highest-traffic flow. The trust-led framework became the team's shared language for later commerce decisions.</p><p>The design followed what testers said made them leave, not the brief's first assumption.</p></section>
   </div>
-</section>
+</article>
 
-<!-- OVERVIEW / BRIEF -->
-<section class="overview" id="introduction">
-  <div class="wrap">
-    <div class="ov-grid">
-      <div class="ov-meta">
-        <div class="ov-item"><div class="l">Read time</div><div class="v">~5 min read</div></div>
-        <div class="ov-item"><div class="l">Client</div><div class="v">OnBuy</div></div>
-        <div class="ov-item"><div class="l">Timeline</div><div class="v">2023</div></div>
-        <div class="ov-item"><div class="l">Role</div><div class="v">Product designer</div></div>
-        <div class="ov-item"><div class="l">Team</div><div class="v team">Designer (me)
-2 other designers
-1 Product owner
-Engineering team
-2 QA devs</div></div>
-      </div>
-      <div class="ov-brief">
-        <h2>The brief</h2>
-        <p>OnBuy is one of the UK's largest online marketplaces, millions of listings from thousands of sellers, reaching millions of buyers. As the catalogue scaled, the journey from finding a product to confirming an order started to leak. Search returned overwhelming result sets, product pages buried the buyer-protection signals that earn trust on a marketplace, and a multi-step checkout shed conversions on mobile, where most of the traffic actually was.</p>
-        <p>My role was product discovery and UX: map where buyers hesitated and dropped, then redesign the discovery and basket-to-confirmation flow so the path was scannable, trustworthy and fast on a phone. I worked alongside a product manager and the engineering team, who built against the flows and requirements that came out of the design work.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<details class="cs-process" id="process">
+<summary><span>Full process</span></summary>
 
-<!-- EARLY STATS -->
-<section class="early-stats-section">
-  <div class="wrap">
-    <div class="early-stats">
-      <div class="est"><div class="ev">8M+</div><div class="el">Marketplace buyers the experience serves</div></div>
-      <div class="est"><div class="ev">Millions</div><div class="el">Of live listings across thousands of sellers</div></div>
-      <div class="est"><div class="ev">Mobile-first</div><div class="el">Where the majority of the journey happens</div></div>
-      <div class="est"><div class="ev">Basket &rarr; order</div><div class="el">The flow this project rebuilt end to end</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="wrap">
-    <div class="sec-label">Problem</div>
-    <h2 class="sec-h">A marketplace lives on trust and momentum, and both were leaking between basket and confirmation.</h2>
-    <p class="sec-sub">Four problems tangled into one drop-off. None of them was a single broken screen. All of them were about what happens to a hesitant buyer between wanting something and paying for it.</p>
-    <div class="pb-grid">
-      <div class="pb-card">
-        <div class="pb-tag">Where it hurt</div>
-        <p>Checkout was a multi-step flow that asked too much, too early, and surfaced delivery and total cost too late. On mobile, where most buyers were, each extra step was another chance to abandon.</p>
-      </div>
-      <div class="pb-card">
-        <div class="pb-tag">Who felt it</div>
-        <p>Buyers comparing across millions of listings, and the thousands of sellers who lost a sale every time a full basket was abandoned at the last step.</p>
-      </div>
-      <div class="pb-card">
-        <div class="pb-tag">The trap</div>
-        <p>A marketplace earns the sale on trust. Buyer protection, returns and delivery promises existed but were buried below the fold, so the exact buyers who needed reassurance never saw it.</p>
-      </div>
-      <div class="pb-card">
-        <div class="pb-tag">The hardest case</div>
-        <p>Discovery across millions of listings. Results had to stay scannable and filterable without overwhelming a buyer who only knew roughly what they wanted.</p>
-      </div>
-    </div>
-    <div class="before-pair">
-      <figure>
-        <img src="assets/before/onbuy-before-multistep-checkout.webp" alt="A dated seven-step OnBuy checkout with the order total hidden until the final step" class="before-img" loading="lazy">
-        <figcaption class="img-caption">The checkout this replaced, seven steps with the total hidden until the end</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/before/onbuy-before-trust-buried.webp" alt="An OnBuy product page with buyer protection and returns relegated to footer links" class="before-img" loading="lazy">
-        <figcaption class="img-caption">Buyer protection lived in the footer, not where buyers hesitated</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- RESEARCH -->
-<section class="research" id="research">
-  <div class="wrap">
-    <div class="sec-label">Research</div>
-    <h2 class="sec-h">Find where the journey leaks, and why hesitant buyers bounce before they pay.</h2>
-    <p class="sec-sub">A focused discovery loop: an analytics and heuristic review to locate the drop-off, then usability sessions to understand the hesitation behind it.</p>
-
-    <div class="three-q">
-      <div class="tq"><div class="tq-n">Q1</div><p>Where in the basket-to-confirmation flow do buyers actually drop, and how much of that is concentrated on mobile?</p></div>
-      <div class="tq"><div class="tq-n">Q2</div><p>Which trust signals, buyer protection, returns, delivery, seller rating, change a hesitant buyer's mind, and where do they need to appear?</p></div>
-      <div class="tq"><div class="tq-n">Q3</div><p>How do you make a result set of millions of listings feel scannable instead of infinite?</p></div>
-    </div>
-
-    <div class="r-block">
-      <h3 class="r-h">What the journey told us</h3>
-      <p class="r-p">Mapping the funnel, the steepest drop sat in the back half of checkout, not in discovery. Buyers were getting to the basket and stalling. In sessions, the pattern was consistent: people wanted the total cost, the delivery date and the safety net visible before they committed, not revealed one step at a time. Uncertainty, not price, was doing the damage.</p>
-      <blockquote class="pullquote">"I'll add it to the basket, but if I can't see what delivery costs and whether I can send it back, I'll just go and check Amazon instead."<cite>Usability participant</cite></blockquote>
-      <p class="r-p">That became the design principle for the flow: <em>show the reasons to trust before you ask for the commitment</em>. Cost, delivery and protection move up; steps come down.</p>
-    </div>
-    <div class="obux" style="margin-top: 36px;">
-<section class="section active" id="s-research">
-  <div class="r-block">
-    <div>
-      <div class="sec-label">01 · Discovery &amp; user research</div>
-      <h3 class="r-h">Search or browse? The data answered.</h3>
-      <p class="r-p">The product team flagged that a percentage of users were dropping out of checkout. I ran a study on Userbrain, recording real users finding a product and trying to buy it, each leaving a rating and a comment. The first thing it settled: how people actually want to find things.</p>
-    </div>
-    <div class="stamp">Userbrain study</div>
-  </div>
-
-  <div class="split" style="margin-bottom:26px;">
-    <div class="a">
-      <h4>They search.</h4>
-      <p>Users with a specific product in mind went straight to the search bar, not the menu. Search was the preferred path, and the comments backed it: "search works well for specific products". So search has to be fast, prominent and forgiving.</p>
-    </div>
-    <div class="b">
-      <h4>They browse.</h4>
-      <p>The opposite held when users had nothing specific in mind. They were happy navigating the menu and leaning on page filters to see everything available. So the menu and taxonomy still carry real weight, which is exactly what the card sort in section 04 is about.</p>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:26px;">
-    <div class="card-hd"><h3>Voice of the users</h3></div>
-    <div class="card-bd">
-      <p class="lead-note" style="margin-bottom:18px;">I don't paraphrase user feedback into something tidier than it was. Here it is verbatim. Read together, the negatives cluster on two things: trust and friction. That clustering is the whole brief.</p>
-      <div class="voq-grid">
-        <div class="voq neg"><div class="q">"Site looks untrustworthy, unsure about security"</div><div class="src"><span class="tag">trust</span>usability test</div></div>
-        <div class="voq neg"><div class="q">"Too many checkout steps"</div><div class="src"><span class="tag">friction</span>usability test</div></div>
-        <div class="voq neg"><div class="q">"Branding feels dated compared to Amazon"</div><div class="src"><span class="tag">trust</span>survey</div></div>
-        <div class="voq neg"><div class="q">"Checkout fields are repetitive"</div><div class="src"><span class="tag">friction</span>usability test</div></div>
-        <div class="voq neg"><div class="q">"Mobile site navigation is confusing"</div><div class="src"><span class="tag">nav</span>usability test</div></div>
-        <div class="voq neg"><div class="q">"Delivery options not clear enough"</div><div class="src"><span class="tag">clarity</span>survey</div></div>
-        <div class="voq neg"><div class="q">"Hard to find deals or bundle offers"</div><div class="src"><span class="tag">discovery</span>survey</div></div>
-        <div class="voq pos"><div class="q">"Search works well for specific products"</div><div class="src"><span class="tag">keep</span>usability test</div></div>
-        <div class="voq pos"><div class="q">"I appreciate the variety of sellers and UK-based options"</div><div class="src"><span class="tag">keep</span>survey</div></div>
-      </div>
-      <div class="notes">
-        <div class="note bad">The loudest negative isn't about steps. It's "unsure about security". Users were abandoning as a precaution against identity theft, not out of impatience.</div>
-        <div class="note good">Search and seller variety are already working. Don't break what users came to praise.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="r-block">
-    <h3 class="r-h">Three problems, one root</h3>
-    <p class="r-p"><b>Trust.</b> Users called the site "dubious" and "blank in places". The fear was looking like a scam, so they bailed.</p>
-    <p class="r-p"><b>Friction.</b> Too many steps, repetitive fields, unclear delivery. Each one adds a reason to second-guess the purchase.</p>
-    <p class="r-p"><b>Retention.</b> Even after a sale, OnBuy struggled to be remembered. A weak brand leaves no imprint to come back to.</p>
-  </div>
-
-  <div class="r-block">
-    <h3 class="r-h">It wasn't the number of clicks. It was the signals.</h3>
-    <p class="r-p">The easy read was "too many steps, so cut steps". Userbrain said something sharper. Users weren't getting the cues they needed to believe this wasn't a scam: Trustpilot badges, secure-payment gateways, the company logo and a consistent colour scheme. It needed to look like a user hadn't left one site and gone to another just to pay.</p>
-    <p class="r-p">My read: fix friction and trust together, but trust leads. A three-step checkout still fails if step two feels fraudulent. So the ranking was clear: trust first, friction second, with search-first journeys for known items and browse-and-filter for discovery.</p>
-  </div>
-</section>
-<section class="section" id="s-personas">
-  <div class="r-block">
-    <div>
-      <div class="sec-label">02 · Personas</div>
-      <h3 class="r-h">Two shoppers, one shared doubt.</h3>
-      <p class="r-p">The research split cleanly into two behaviours, the buyer who arrives knowing exactly what they want, and the buyer who's browsing for ideas. I built a persona for each. Different journeys, but the same thing makes them close the tab: a flicker of "is this site safe?"</p>
-    </div>
-    <div class="stamp">2 personas</div>
-  </div>
-
-  <div class="cols-2">
-    <div class="persona">
-      <div class="p-head"><div class="p-avatar">PT</div><div><div class="p-role">Persona 01 · The decided buyer</div><h3>Priya, the search-first shopper</h3><div class="p-tags"><span class="p-tag">28–45</span><span class="p-tag">Mobile-first</span><span class="p-tag">Time-poor</span></div></div></div>
-      <div class="p-body">
-        <div class="p-block"><div class="pb-label">Behaviour</div><div class="p-list">
-          <div class="pl">Arrives with a specific product and types it straight into search.</div>
-          <div class="pl">Compares a couple of sellers on price and delivery, then commits fast.</div>
-          <div class="pl">Shops on her phone in stolen minutes, so any snag ends the session.</div>
-        </div></div>
-        <div class="p-block"><div class="pb-label">What she wants</div><div class="p-list want">
-          <div class="pl">Search that finds the right item first time.</div>
-          <div class="pl">A short, predictable checkout with no repeated fields.</div>
-          <div class="pl">Clear delivery options before she commits.</div>
-        </div></div>
-        <div class="p-block"><div class="pb-label">What stops her</div><div class="p-list pain">
-          <div class="pl">Checkout that looks unfamiliar at the payment step.</div>
-          <div class="pl">Repetitive fields that make a quick buy feel like admin.</div>
-        </div>
-          <div class="p-quote">"If the pay screen looks even slightly <span class="a">off</span>, I'm out. It's not worth the risk for £30."</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="persona">
-      <div class="p-head"><div class="p-avatar">MC</div><div><div class="p-role">Persona 02 · The browser</div><h3>Marcus, the deal-led explorer</h3><div class="p-tags"><span class="p-tag">22–38</span><span class="p-tag">Desktop + mobile</span><span class="p-tag">Bargain-hunter</span></div></div></div>
-      <div class="p-body">
-        <div class="p-block"><div class="pb-label">Behaviour</div><div class="p-list">
-          <div class="pl">No specific item in mind; happily navigates the menu and filters.</div>
-          <div class="pl">Hunts for deals, bundles and UK-based sellers he can trust.</div>
-          <div class="pl">Will abandon a cart and come back, or not, depending on the impression.</div>
-        </div></div>
-        <div class="p-block"><div class="pb-label">What he wants</div><div class="p-list want">
-          <div class="pl">A menu and taxonomy that matches how he thinks, not internal org charts.</div>
-          <div class="pl">Easy ways to find deals and compare prices.</div>
-          <div class="pl">A brand he'll actually remember next time.</div>
-        </div></div>
-        <div class="p-block"><div class="pb-label">What stops him</div><div class="p-list pain">
-          <div class="pl">Confusing mobile navigation that hides what he's hunting for.</div>
-          <div class="pl">A site that feels dated next to Amazon, so he doesn't trust the deal.</div>
-        </div>
-          <div class="p-quote">"If I can't tell it apart from a dodgy site, the discount doesn't matter. <span class="a">I'll just use Amazon.</span>"</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="r-block" style="margin-top: 36px;">
-    <h3 class="r-h">Where the personas overlap</h3>
-    <p class="r-p">Priya needs speed: a clean, short checkout that doesn't make her re-enter what she's already given. Marcus needs findability: a menu and filters built around shopper mental models, not OnBuy's internal structure. Both need trust: visible proof it's safe to pay. Without it, neither persona finishes, whatever else you fix. That is the shared design target the rest of the work aims at.</p>
-  </div>
-</section>
-<section class="section" id="s-journey" style="margin-top: 12px;">
-  <div class="r-block">
-    <div>
-      <div class="sec-label">03 · Journey map &amp; drop-off</div>
-      <h3 class="r-h">Mapping exactly where they leave.</h3>
-      <p class="r-p">To fix abandonment you have to see it stage by stage. I mapped Priya's checkout journey against what she's thinking and where she stalls, then turned the recordings into a drop-off funnel. The biggest fall sits right at payment, the moment trust gets tested.</p>
-    </div>
-    <div class="stamp">journey + funnel</div>
-  </div>
-
-  <div class="journey" style="margin-bottom:26px;">
-    <div class="jm-grid">
-      <div></div>
-      <div class="jm-stage">Find</div><div class="jm-stage">Product</div><div class="jm-stage">Cart</div><div class="jm-stage">Details</div><div class="jm-stage">Payment</div>
-
-      <div class="jm-rowlabel">Action</div>
-      <div class="jm-cell">Searches a specific item, scans results</div>
-      <div class="jm-cell">Checks price, seller and delivery</div>
-      <div class="jm-cell">Adds to bag, starts checkout</div>
-      <div class="jm-cell">Enters details across several steps</div>
-      <div class="jm-cell drop">Reaches the pay screen</div>
-
-      <div class="jm-rowlabel">Thinking</div>
-      <div class="jm-cell"><span class="jm-emoji">🙂</span> "Search actually works here"</div>
-      <div class="jm-cell"><span class="jm-emoji">🤔</span> "Delivery options aren't clear"</div>
-      <div class="jm-cell"><span class="jm-emoji">🙂</span> "Right, let's get this done"</div>
-      <div class="jm-cell drop"><span class="jm-emoji">😕</span> "Why is it asking the same thing twice?"</div>
-      <div class="jm-cell drop"><span class="jm-emoji">😟</span> "This looks off. Is my card safe here?"</div>
-
-      <div class="jm-rowlabel">Friction</div>
-      <div class="jm-cell">Low. The praised path.</div>
-      <div class="jm-cell q">Delivery clarity gap</div>
-      <div class="jm-cell">Low</div>
-      <div class="jm-cell drop">Repetitive fields, too many steps</div>
-      <div class="jm-cell drop">No trust signals, feels like a new site</div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:26px;">
-    <div class="card-hd"><h3>Drop-off funnel</h3></div>
-    <div class="card-bd">
-      <div class="funnel">
-        <div class="fn-row"><div class="fn-label">Product viewed<small>entered checkout flow</small></div><div class="fn-track"><div class="fn-fill" style="width:100%;">Search → product</div></div><div class="fn-pct">100</div></div>
-        <div class="fn-row"><div class="fn-label">Added to cart<small>intent confirmed</small></div><div class="fn-track"><div class="fn-fill" style="width:82%;">Cart</div></div><div class="fn-pct">82</div></div>
-        <div class="fn-row"><div class="fn-label">Details entered<small>repetitive fields bite</small></div><div class="fn-track"><div class="fn-fill" style="width:61%;">Details</div></div><div class="fn-pct">61</div></div>
-        <div class="fn-row"><div class="fn-label">Reached payment<small>the trust test</small></div><div class="fn-track"><div class="fn-fill drop" style="width:44%;">Payment</div></div><div class="fn-pct bad">44</div></div>
-        <div class="fn-row"><div class="fn-label">Completed<small>order placed</small></div><div class="fn-track"><div class="fn-fill" style="width:31%;">Done</div></div><div class="fn-pct">31</div></div>
-      </div>
-      <div class="notes">
-        <div class="note bad">The steepest single drop is details → payment, where the screen stops looking like OnBuy and starts feeling like a stranger asking for a card.</div>
-        <div class="note">The shape is the point: the steepest fall is at the payment step, where trust gets tested.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="r-block">
-    <h3 class="r-h">What we changed: friction and trust</h3>
-    <p class="r-p"><b>Fewer steps, no repeats.</b> Working with the product owners, I cut the number of steps and stripped the "unnecessary" information the old flow demanded. Address and contact details stopped being asked twice. A quick buy started to feel quick again.</p>
-    <p class="r-p"><b>Make the pay screen feel like home.</b> Carry the OnBuy logo, colours and Trustpilot badges all the way into payment, with visible secure-gateway cues. The brief in one line: a user should never feel they've left one site and landed on another just to pay.</p>
-  </div>
-</section>
-    </div>
-  </div>
-</section>
-
-<!-- DISCOVERY -->
-<section class="discovery" id="discovery">
-  <div class="wrap">
-    <div class="sec-label">Discovery</div>
-    <h2 class="sec-h">From a leaky funnel to a fast, trustworthy path to order.</h2>
-    <p class="sec-sub">Two moves shaped the redesign: make a catalogue of millions of products feel navigable, and win on trust at the exact moments a marketplace is most exposed.</p>
-    <div class="obux" style="margin-top: 36px;">
-<section class="section" id="s-sort">
-  <div class="r-block">
-    <div>
-      <div class="sec-label">04 · Card sorting &amp; IA</div>
-      <h3 class="r-h">35 million products, one mental model.</h3>
-      <p class="r-p">Research showed browsers rely on the menu and filters, so the taxonomy had to match how shoppers group things, not how the business does. I ran a card sort on the top-level categories to surface where OnBuy's structure fought the user's. "Mobile navigation is confusing" was an IA problem before it was a UI one.</p>
-    </div>
-    <div class="stamp">open card sort</div>
-  </div>
-
-  <div class="card" style="margin-bottom:26px;">
-    <div class="card-hd"><h3>How participants grouped the categories</h3></div>
-    <div class="card-bd">
-      <p class="lead-note" style="margin-bottom:18px;">Participants sorted product cards into groups that made sense to them and named each group. Solid borders are placements people agreed on. Dashed amber cards are the ones that kept jumping groups, the friction points worth redesigning around.</p>
-      <div class="sort-board">
-        <div class="sort-col"><div class="sc-head">Home &amp; Living</div><div class="sc-body"><div class="chip agree">Furniture</div><div class="chip agree">Kitchen &amp; Dining</div><div class="chip agree">Garden &amp; Outdoor</div><div class="chip moved">Home Office ↔ Tech</div></div></div>
-        <div class="sort-col alt"><div class="sc-head">Tech &amp; Electronics</div><div class="sc-body"><div class="chip agree">Phones &amp; Accessories</div><div class="chip agree">Computing</div><div class="chip agree">TV &amp; Audio</div><div class="chip moved">Smart Home ↔ Home</div></div></div>
-        <div class="sort-col"><div class="sc-head">Health &amp; Beauty</div><div class="sc-body"><div class="chip agree">Skincare</div><div class="chip agree">Fragrance</div><div class="chip agree">Vitamins</div><div class="chip moved">Electricals ↔ Tech</div></div></div>
-        <div class="sort-col"><div class="sc-head">Family &amp; Leisure</div><div class="sc-body"><div class="chip agree">Toys &amp; Games</div><div class="chip agree">Sports &amp; Fitness</div><div class="chip agree">Pet Supplies</div><div class="chip moved">Baby ↔ Health</div></div></div>
-      </div>
-      <div class="notes">
-        <div class="note good">Four clean clusters emerged. Most products had an obvious home, which means a flatter, shopper-led top level is achievable.</div>
-        <div class="note q">The movers (Smart Home, Home Office, Beauty Electricals, Baby) live between two groups. Solution: let them appear in both, with filters doing the disambiguating.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cols-2">
-    <div class="card"><div class="card-hd"><h3>The old menu problem</h3></div><div class="card-bd"><div class="notes" style="margin-top:0;">
-      <div class="note bad">Deep, business-shaped categories meant shoppers tunnelled the wrong branch and bounced.</div>
-      <div class="note bad">On mobile the depth was worse, hence "navigation is confusing".</div>
-      <div class="note bad">Cross-category items had exactly one home, so half the users never found them.</div>
-    </div></div></div>
-    <div class="card"><div class="card-hd"><h3>The IA the sort points to</h3></div><div class="card-bd"><div class="notes" style="margin-top:0;">
-      <div class="note good">A flatter top level built on the four shopper clusters.</div>
-      <div class="note good">Ambiguous items listed in both sensible places, resolved by filters.</div>
-      <div class="note good">Search stays front and centre for the decided buyer; the menu finally serves the browser.</div>
-    </div></div></div>
-  </div>
-
-  <div class="r-block" style="margin-top: 36px;">
-    <h3 class="r-h">Why card sort, not opinion</h3>
-    <p class="r-p">Category trees are where everyone has a view and nobody has evidence. A card sort replaces the loudest opinion in the room with how actual shoppers group products. The movers are the gold, they tell you exactly which items need to live in two places instead of forcing a false single home.</p>
-    <p class="r-p">This ties straight back to research: the browser persona lives in the menu. Fix the taxonomy and you fix the navigation complaint at its root. The output: four shopper-led clusters, four cross-category movers, and a flatter, dual-homed IA where filters do the tie-break.</p>
-  </div>
-</section>
-<section class="section" id="s-trust">
-  <div class="r-block">
-    <div>
-      <div class="sec-label">05 · Competitor &amp; trust analysis</div>
-      <h3 class="r-h">Beating Amazon on trust, not scale.</h3>
-      <p class="r-p">OnBuy can't out-scale Amazon or eBay, and it doesn't need to. But in a market that competitive, looking less trustworthy is fatal, and users said the brand felt dated and dubious. I benchmarked the trust signals the big players use, then turned them into a rebrand brief aimed at one feeling: this is safe, and worth coming back to.</p>
-    </div>
-    <div class="stamp">rebrand brief</div>
-  </div>
-
-  <div class="card" style="margin-bottom:26px;">
-    <div class="card-hd"><h3>Trust-signal benchmark</h3></div>
-    <div class="card-bd" style="padding:0;">
-      <div class="tbl-scroll"><table class="ctable">
-        <thead><tr><th>Marketplace</th><th>Consistent brand to payment</th><th>Visible trust badges</th><th>Clear delivery info</th><th class="ob">Memorable identity</th></tr></thead>
-        <tbody>
-          <tr><td class="brand">OnBuy<small>before rebrand</small></td><td><span class="yn n"><span class="dot"></span>Breaks at pay</span></td><td><span class="yn p"><span class="dot"></span>Underused</span></td><td><span class="yn n"><span class="dot"></span>Unclear</span></td><td class="obcol"><span class="yn n"><span class="dot"></span>Forgettable</span></td></tr>
-          <tr><td class="brand">Amazon</td><td><span class="yn y"><span class="dot"></span>Seamless</span></td><td><span class="yn y"><span class="dot"></span>Strong</span></td><td><span class="yn y"><span class="dot"></span>Explicit</span></td><td class="obcol"><span class="yn y"><span class="dot"></span>Iconic</span></td></tr>
-          <tr><td class="brand">eBay</td><td><span class="yn y"><span class="dot"></span>Consistent</span></td><td><span class="yn y"><span class="dot"></span>Buyer protection</span></td><td><span class="yn p"><span class="dot"></span>Varies by seller</span></td><td class="obcol"><span class="yn y"><span class="dot"></span>Established</span></td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </div>
-
-  <div class="r-block">
-    <h3 class="r-h">The trust signals the rebrand had to deliver</h3>
-    <p class="r-p">Continuity to payment: Logo, colours and layout carry unbroken into the pay screen, so users never feel handed off to a stranger. Proof badges: Trustpilot ratings and secure-gateway marks placed where doubt peaks, at details and payment. A bolder identity - A stronger colour palette and cleaner hierarchy so OnBuy reads as established, not "in its infancy".</p>
-    <p class="r-p">Users abandoned as a precaution against identity theft. That's not a friction problem, it's a credibility problem, and a competitive market punishes it fast. After competitor analysis and best-practice research, the output was a new design system: a bolder brand palette, fresh components and clearer hierarchy, all aimed at trust and recognition.</p>
-  </div>
-
-  <div class="r-block">
-    <h3 class="r-h">One study set the whole direction</h3>
-    <p class="r-p">Userbrain found the drop-off. Personas gave it two faces. The journey map and funnel pinned it to the payment step. The card sort fixed the navigation it surfaced. Competitor analysis turned "looks dubious" into a concrete trust brief. Every method answered a question the one before it asked.</p>
-    <p class="r-p">My read on OnBuy: the trap was treating abandonment as a step-count problem. It was a trust problem wearing a friction costume. Cut steps and you help. Earn trust and you actually keep the sale.</p>
-  </div>
-</section>
-    </div>
-  </div>
-</section>
-
-<section class="features" id="features">
-  <div class="wrap">
-    <div class="sec-label">Product</div>
-    <h2 class="sec-h">The screens that carried the buyer from browse to confirmed order.</h2>
-    <p class="sec-sub">Discovery, product detail and a condensed checkout, designed mobile-first and built to make trust visible at every step.</p>
-  <div class="feat-stream" id="feat-featured">
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Discovery</div>
-    <div class="frame-heading">A scannable way into millions of listings</div>
-    <div class="frame-sub">The home is built to get a buyer narrowing fast, search and curated deals up front, not an endless wall of products.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:36px;left:300px;">1</div>
-      <div class="marker" style="top:300px;left:70px;">2</div>
-      <div class="marker" style="top:120px;left:48px;">3</div>
-      <div class="screen obs">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">onbuy.com / home</span></div>
-        <div class="screen-body" style="padding:0">
-          <div class="obs-nav">
-            <div class="obs-logo">OnBuy<span>.</span></div>
-            <div class="obs-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#646c92" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span class="q">wireless headphones</span><span class="cnt">35M products</span></div>
-          </div>
-          <div class="obs-chips"><span class="obs-chip on">Tech</span><span class="obs-chip">Home</span><span class="obs-chip">Garden</span><span class="obs-chip">Beauty</span><span class="obs-chip">Sports</span></div>
-          <div class="obs-grid" style="grid-template-columns:repeat(4,1fr)">
-            <div class="obs-card"><div class="obs-thumb"><span class="obs-deal">Deal</span><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Sony WH-1000XM5</div><div class="obs-price">£249</div><div class="obs-rate">★ 4.8 · 2.1k</div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><span class="obs-deal">Deal</span><img loading="lazy" decoding="async" src="assets/photos/p_tv.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Samsung 55&quot; 4K TV</div><div class="obs-price">£549</div><div class="obs-rate">★ 4.6 · 980</div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><span class="obs-deal">Deal</span><img loading="lazy" decoding="async" src="assets/photos/p_trainers.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Nike Air Max 270</div><div class="obs-price">£129</div><div class="obs-rate">★ 4.9 · 640</div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><span class="obs-deal">Deal</span><img loading="lazy" decoding="async" src="assets/photos/p_watch.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Apple Watch S9</div><div class="obs-price">£399</div><div class="obs-rate">★ 4.7 · 1.3k</div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Search leads.</b> The search bar sits up top with the catalogue scale stated, so a buyer starts by narrowing rather than scrolling.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Curated deals.</b> Trending and discounted products give a low-effort entry point for buyers who don't yet know exactly what they want.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Category shortcuts.</b> Departments are one tap away, turning a giant catalogue into a handful of obvious starting points.</div></div>
-  </div></div></article>
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Search results</div>
-    <div class="frame-heading">Results that stay scannable at marketplace scale</div>
-    <div class="frame-sub">Every card carries only the few signals that decide a marketplace click, and filtering turns millions of listings into a shortlist fast.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:150px;left:60px;">1</div>
-      <div class="marker" style="top:64px;right:60px;">2</div>
-      <div class="marker" style="top:300px;left:150px;">3</div>
-      <div class="screen obs">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">onbuy.com / search / wireless-headphones</span></div>
-        <div class="screen-body" style="padding:22px">
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-            <div style="font:700 20px/1 var(--serif);color:var(--oink)">38 results</div>
-            <div style="margin-left:auto;display:flex;gap:9px">
-              <span class="obs-chip on">★ 4.5+ &amp; Protected</span>
-              <span class="obs-chip">Under £100</span>
-              <span class="obs-chip">Prime delivery</span>
-            </div>
-          </div>
-          <div class="obs-grid" style="grid-template-columns:repeat(3,1fr);padding:0">
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Anker Soundcore Q30</div><div class="obs-price">£59</div><div class="obs-rate">★ 4.7<span class="obs-prot">✓ Protected</span></div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">JBL Tune 770NC</div><div class="obs-price">£79</div><div class="obs-rate">★ 4.6<span class="obs-prot">✓ Protected</span></div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Sennheiser HD 350</div><div class="obs-price">£89</div><div class="obs-rate">★ 4.8<span class="obs-prot">✓ Protected</span></div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Sony WH-CH720N</div><div class="obs-price">£99</div><div class="obs-rate">★ 4.7<span class="obs-prot">✓ Protected</span></div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Bose QC SE</div><div class="obs-price">£99</div><div class="obs-rate">★ 4.9<span class="obs-prot">✓ Protected</span></div></div></div>
-            <div class="obs-card"><div class="obs-thumb"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt=""></div><div class="obs-cb"><div class="obs-pname">Beats Studio Buds</div><div class="obs-price">£89</div><div class="obs-rate">★ 4.6<span class="obs-prot">✓ Protected</span></div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Signals that matter.</b> Price, rating and buyer protection lead each card, everything else is secondary.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Filter to a shortlist.</b> Faceted filters let a buyer cut millions of listings down to a handful without losing their place.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Protection on the card.</b> The buyer-protection signal appears before the click, not after, so trust is part of the scan.</div></div>
-  </div></div></article>
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Product page</div>
-    <div class="frame-heading">Trust, surfaced at the moment of doubt</div>
-    <div class="frame-sub">Buyer protection, delivery and returns are promoted next to the price and the call to action, exactly where a hesitant buyer looks.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:120px;right:60px;">1</div>
-      <div class="marker" style="top:300px;right:48px;">2</div>
-      <div class="marker" style="top:222px;right:300px;">3</div>
-      <div class="screen obs">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">onbuy.com / sony-wh-1000xm5</span></div>
-        <div class="screen-body" style="padding:24px;display:flex;gap:28px;align-items:flex-start">
-          <div style="flex:0 0 320px;height:340px;background:#fff;border:1px solid var(--obord);border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt="" style="width:260px;height:260px;object-fit:contain"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font:600 22px/1.25 var(--serif);color:var(--oink)">Sony WH-1000XM5, Over-Ear</div>
-            <div style="font:500 12px/1 var(--omut);margin-top:9px">★ 4.8 (2,140) · Sold by AudioHub</div>
-            <div style="font:700 34px/1 var(--serif);color:var(--oink);margin:16px 0 4px">£249<span style="font:500 15px/1 var(--sans);color:var(--omut2);text-decoration:line-through;margin-left:10px">£379</span></div>
-            <div style="font:600 12px/1 var(--ogood);margin-bottom:16px">In stock · Free delivery tomorrow</div>
-            <div style="background:var(--blue);color:#fff;border-radius:11px;padding:15px 0;text-align:center;font:700 15px/1 var(--sans)">Add to basket</div>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
-              <div class="obs-trust"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f9d57" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div><div class="tt">Buyer protection</div><div class="ts">Covered start to finish, or your money back</div></div></div>
-              <div class="obs-trust"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f9d57" stroke-width="2"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div><div><div class="tt">Free delivery, tomorrow</div><div class="ts">Dispatched today if ordered within 4 hrs</div></div></div>
-              <div class="obs-trust"><div class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f9d57" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg></div><div><div class="tt">30-day free returns</div><div class="ts">Changed your mind? Send it back, no cost</div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Reassurance by the CTA.</b> Protection, delivery date and returns sit beside the buy button, not below the fold.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>The price tells the whole story.</b> Total cost and delivery are shown together, so there's no surprise at checkout.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>One clear action.</b> A single prominent add-to-basket keeps the decision simple once the buyer is convinced.</div></div>
-  </div></div></article>
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Checkout</div>
-    <div class="frame-heading">A multi-step checkout, condensed into one</div>
-    <div class="frame-sub">The flow collapsed into a single progressive screen with a persistent summary, so the buyer always sees cost and delivery before committing.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:96px;right:60px;">1</div>
-      <div class="marker" style="top:150px;left:60px;">2</div>
-      <div class="marker" style="bottom:60px;right:140px;">3</div>
-      <div class="screen obs">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">onbuy.com / checkout</span></div>
-        <div class="screen-body" style="padding:24px;display:flex;gap:26px;align-items:flex-start">
-          <div style="flex:1;min-width:0">
-            <div style="font:600 18px/1.2 var(--serif);color:var(--oink);margin-bottom:14px">One screen, everything in view</div>
-            <div style="font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--omut2);margin-bottom:9px">Deliver to</div>
-            <div class="obs-field" style="margin-bottom:10px"><b>Alex Mercer</b>&nbsp;· 14 Trinity Way, Leeds LS1 4DJ</div>
-            <div class="obs-field" style="margin-bottom:18px;justify-content:space-between"><span><b>Free delivery</b> · arrives tomorrow</span><span style="color:var(--ogood);font-weight:600">Selected</span></div>
-            <div style="font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--omut2);margin-bottom:9px">Pay with</div>
-            <div class="obs-field" style="justify-content:space-between"><span><b>Visa</b> ending 6411</span><span style="color:var(--omut2)">Change</span></div>
-          </div>
-          <div style="flex:0 0 300px;background:#fbfcfe;border:1px solid var(--obord);border-radius:14px;padding:20px">
-            <div style="display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--obord)">
-              <div style="width:48px;height:48px;border-radius:10px;background:#fff;border:1px solid var(--obord);overflow:hidden;flex:0 0 auto"><img loading="lazy" decoding="async" src="assets/photos/p_headphones.jpg" alt="" style="width:100%;height:100%;object-fit:contain;padding:4px"></div>
-              <div><div style="font:600 13px/1.3 var(--oink)">Sony WH-1000XM5</div><div style="font:500 11px/1 var(--omut);margin-top:5px">Qty 1 · AudioHub</div></div>
-            </div>
-            <div style="padding-top:6px">
-              <div class="obs-sumrow"><span>Subtotal</span><b>£249.00</b></div>
-              <div class="obs-sumrow"><span>Delivery (tomorrow)</span><b style="color:var(--ogood)">Free</b></div>
-              <div class="obs-sumrow"><span>Buyer protection</span><b>Included</b></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;padding-top:13px;border-top:2px solid var(--oink)"><span style="font:700 15px/1 var(--serif);color:var(--oink)">Total</span><span style="font:700 23px/1 var(--serif);color:var(--oink)">£249.00</span></div>
-            <div style="margin-top:18px;background:var(--blue);color:#fff;border-radius:11px;padding:15px 0;text-align:center;font:700 15px/1 var(--sans)">Place order</div>
-            <div style="text-align:center;font:500 11px/1 var(--omut);margin-top:11px">Nothing revealed at the last step</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Persistent summary.</b> Order total, delivery and protection stay on screen through the whole flow.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Cost up front.</b> Nothing is revealed only at the final step, the buyer commits with full information.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Fewer steps.</b> Full-page steps became one progressive screen, removing the points where mobile buyers dropped.</div></div>
-  </div></div></article>
-  </div>
-</section>
-
-
-<!-- IMPACT -->
-<section class="impact" id="impact">
-  <div class="wrap">
-    <div class="sec-label">Impact</div>
-    <h2 class="impact-h">A faster, more trustworthy path from basket to order.</h2>
-    <div class="impact-grid">
-      <div class="ist"><div class="iv">+18%</div><div class="il">Mobile checkout completion</div></div>
-      <div class="ist"><div class="iv">&minus;3</div><div class="il">Steps removed from the basket-to-confirmation flow</div></div>
-      <div class="ist"><div class="iv">&minus;12%</div><div class="il">Basket abandonment on mobile</div></div>
-      <div class="ist"><div class="iv">8M+</div><div class="il">Buyers the redesigned experience reaches</div></div>
-    </div>
-    <p class="impact-note">The clearest signal was behavioural: moving cost, delivery and buyer protection ahead of the commitment changed where buyers hesitated. The drop-off that had sat in the back half of checkout flattened once the flow stopped asking people to advance a step just to learn what they were agreeing to.</p>
-    <div class="obux" style="background:transparent;background-image:none;margin-top:44px">
-      <div class="card">
-        <div class="card-hd"><h3>Expected outcomes</h3></div>
-        <div class="card-bd">
-          <div class="outcomes">
-            <div class="oc"><div class="oc-v">&darr;</div><div class="oc-l">Checkout abandonment</div><p>Fewer steps plus visible trust signals remove both reasons users were dropping at payment.</p></div>
-            <div class="oc"><div class="oc-v">&uarr;</div><div class="oc-l">Customer retention</div><p>A memorable, trusted brand leaves an imprint, so shoppers come back instead of defaulting to Amazon.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SIBLINGS -->
-<section class="siblings">
-  <div class="section-head">
-    <h2 class="section-head__title">Other Work</h2>
-    <p class="section-head__sub">The rest of the work, from greenfield builds to systemic redesigns.</p>
-  </div>
-  <div class="grid-wrap">
-    <div class="grid">
-      <a class="proj f-card" href="../design-system/index.html"><div class="proj-inner"><span class="proj-badge">30+ shared components</span><img src="../assets/logos/evora-card.png" alt="SIERA Design System" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Design system</span><span class="proj-label__desc">The design system behind the SIERA platform: tokens, components, patterns and the design-to-dev workflow that keeps design and engineering in step.</span></div></a>
-      <a class="proj f-card" href="../kova/index.html"><div class="proj-inner"><span class="proj-badge">67% of managers off Power BI</span><img src="../assets/logos/evora-card.png" alt="Kova" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Kova</span><span class="proj-label__desc">Turning raw portfolio data into the answers fund managers were actually asking, with a data-quality layer underneath the analytics.</span></div></a>
-      <a class="proj f-card" href="../verde/verde.html"><div class="proj-inner"><span class="proj-badge">32% less reconciliation time</span><img src="../assets/logos/evora-card.png" alt="Verde" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Verde</span><span class="proj-label__desc">A live, governed, traceable ESG reporting workspace. From raw portfolio data to filed disclosure, with a paper trail on every number.</span></div></a>
-      <a class="proj f-card" href="../arbor/arbor.html"><div class="proj-inner"><span class="proj-badge">66.7% faster onboarding</span><img src="../assets/logos/evora-card.png" alt="Arbor" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Arbor</span><span class="proj-label__desc">Rebuilding the entity foundation the whole asset platform stands on. From the data model up through onboarding and the interface.</span></div></a>
-      <a class="proj f-card" href="../plio/plio.html"><div class="proj-inner"><span class="proj-badge">86% parsing accuracy</span><img src="../assets/logos/evora-card.png" alt="Plio" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Plio</span><span class="proj-label__desc">AI-assisted invoice ingestion with guardrails, not a black box. Confidence-graded and human-in-the-loop across a multi-country portfolio.</span></div></a>
-      <a class="proj f-card" href="../finning/finning.html"><div class="proj-inner"><span class="proj-badge">Self-serve quoting and finance</span><img src="../assets/logos/finning-card.png" alt="Finning UK" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Finning UK</span><span class="proj-label__desc">Dealer portal and finance calculator for a major Caterpillar dealer. Turning multi-step, sales-gated quotes into a self-serve estimate and repayment flow.</span></div></a>
-    </div>
-  </div>
-</section>
+<div class="fp"><section class="fp-sec" id="fp-problem"><h2 class="fp-title">Problem</h2><p>A marketplace lives on trust and momentum, and both were leaking between basket and confirmation.</p><div class="fp-tags"><div class="fp-card"><span class="pb-tag">Where it hurt</span><p>Checkout asked too much, too early, and showed delivery and total cost too late. On mobile, every extra step was another chance to leave.</p></div><div class="fp-card"><span class="pb-tag">Who felt it</span><p>Buyers comparing listings across the marketplace, and the sellers who lost a sale every time a full basket was abandoned at the last step.</p></div><div class="fp-card"><span class="pb-tag">The end goal</span><p>Show the reasons to trust before asking for the commitment: cost, delivery and buyer protection up front, with fewer steps.</p></div></div><div class="fp-pair"><figure class="fp-fig fp-before"><img src="assets/before/onbuy-before-multistep-checkout.webp" alt="The old multi-step checkout." loading="lazy" decoding="async"><figcaption>The checkout this replaced, with the total hidden until the end.</figcaption></figure><figure class="fp-fig fp-before"><img src="assets/before/onbuy-before-trust-buried.webp" alt="Buyer protection information placed in the footer." loading="lazy" decoding="async"><figcaption>Buyer protection lived in the footer, not where buyers hesitated.</figcaption></figure></div></section><section class="fp-sec" id="fp-research"><h2 class="fp-title">Research</h2><p>The product team had flagged buyers dropping out of checkout. An analytics and heuristic review located the drop, then a study on Userbrain recorded real users finding a product and trying to buy it, each leaving a rating and a comment.</p><h3 class="fp-h">Search or browse</h3><figure class="fp-fig fp-diagram"><div class="fp-split"><div class="fp-splitbox"><b>They search</b><span>Buyers with a specific product in mind went straight to the search bar. Search has to be fast, prominent and forgiving.</span></div><div class="fp-splitbox"><b>They browse</b><span>Buyers with nothing specific in mind used the menu and leaned on filters. The menu still carries real weight.</span></div></div><figcaption>The first thing the study settled: two ways in, each needing its own layout above the fold.</figcaption></figure><h3 class="fp-h">What users said, sorted</h3><figure class="fp-fig fp-board-fig fp-wide"><div class="fp-board" style="--cols:4"><div class="fp-col"><h4>Trust</h4><div class="fp-sticky fp-pink">Site looks untrustworthy, unsure about security</div><div class="fp-sticky fp-pink">Branding feels dated compared to Amazon</div></div><div class="fp-col"><h4>Friction</h4><div class="fp-sticky fp-yellow">Too many checkout steps</div><div class="fp-sticky fp-yellow">Checkout fields are repetitive</div><div class="fp-sticky fp-yellow">Delivery options not clear enough</div></div><div class="fp-col"><h4>Finding things</h4><div class="fp-sticky fp-blue">Mobile site navigation is confusing</div><div class="fp-sticky fp-blue">Hard to find deals or bundle offers</div></div><div class="fp-col"><h4>Keep</h4><div class="fp-sticky fp-green">Search works well for specific products</div><div class="fp-sticky fp-green">I appreciate the variety of sellers and UK-based options</div></div></div><figcaption>Verbatim feedback from usability tests and the survey, grouped. The loudest negative was security, not the number of steps.</figcaption></figure><blockquote class="fp-quote"><p>&ldquo;I'll add it to the basket, but if I can't see what delivery costs and whether I can send it back, I'll just go and check Amazon instead.&rdquo;</p><cite>Usability participant</cite></blockquote></section><section class="fp-sec" id="fp-discovery"><h2 class="fp-title">Discovery</h2><h3 class="fp-h">Mapping where buyers leave</h3><figure class="fp-fig fp-diagram fp-wide"><div class="fp-journey" style="--cols:5"><div class="fp-stage fp-low"><h4>Find</h4><p class="fp-doing">Searches for a specific item and scans the results.</p><p class="fp-thinking">&ldquo;Search actually works here.&rdquo;</p><span class="fp-friction">Low friction</span></div><div class="fp-stage fp-mid"><h4>Product</h4><p class="fp-doing">Checks price, seller and delivery.</p><p class="fp-thinking">&ldquo;Delivery options aren't clear.&rdquo;</p><span class="fp-friction">Some friction</span></div><div class="fp-stage fp-low"><h4>Basket</h4><p class="fp-doing">Adds to basket and starts checkout.</p><p class="fp-thinking">&ldquo;Right, let's get this done.&rdquo;</p><span class="fp-friction">Low friction</span></div><div class="fp-stage fp-mid"><h4>Details</h4><p class="fp-doing">Enters details across several steps.</p><p class="fp-thinking">&ldquo;Why is it asking the same thing twice?&rdquo;</p><span class="fp-friction">Some friction</span></div><div class="fp-stage fp-high"><h4>Payment</h4><p class="fp-doing">Reaches the pay screen.</p><p class="fp-thinking">&ldquo;This looks off. Is my card safe here?&rdquo;</p><span class="fp-friction">High friction</span></div></div><figcaption>The decided buyer's checkout, stage by stage. The steepest fall was at payment, where trust gets tested.</figcaption></figure><p>The easy read was too many steps, so cut steps. The sessions said something sharper: buyers weren't getting the cues they needed to believe the site was safe, like Trustpilot badges, a secure payment gateway, the company logo and a consistent look all the way to payment. So trust led and friction came second. A three-step checkout still fails if step two feels fraudulent.</p><h3 class="fp-h">A menu built the way shoppers group things</h3><figure class="fp-fig fp-board-fig fp-wide"><div class="fp-board" style="--cols:4"><div class="fp-col"><h4>Home &amp; Living</h4><div class="fp-sticky fp-green">Furniture</div><div class="fp-sticky fp-green">Kitchen &amp; Dining</div><div class="fp-sticky fp-green">Garden &amp; Outdoor</div><div class="fp-sticky fp-green">Home Office ↔ Tech</div></div><div class="fp-col"><h4>Tech &amp; Electronics</h4><div class="fp-sticky fp-blue">Phones &amp; Accessories</div><div class="fp-sticky fp-blue">Computing</div><div class="fp-sticky fp-blue">TV &amp; Audio</div><div class="fp-sticky fp-blue">Smart Home ↔ Home</div></div><div class="fp-col"><h4>Health &amp; Beauty</h4><div class="fp-sticky fp-pink">Skincare</div><div class="fp-sticky fp-pink">Fragrance</div><div class="fp-sticky fp-pink">Vitamins</div><div class="fp-sticky fp-pink">Beauty electricals ↔ Tech</div></div><div class="fp-col"><h4>Family &amp; Leisure</h4><div class="fp-sticky fp-yellow">Toys &amp; Games</div><div class="fp-sticky fp-yellow">Sports &amp; Fitness</div><div class="fp-sticky fp-yellow">Pet Supplies</div><div class="fp-sticky fp-yellow">Baby ↔ Health</div></div></div><figcaption>Open card sort: four clean clusters. The items marked ↔ kept jumping between groups.</figcaption></figure><p>Most products had an obvious home, so a flatter, shopper-led top level was possible. The items that kept jumping groups are listed in both sensible places, with filters doing the rest.</p></section></div>
+</details>
 
 
 </main>
@@ -1730,7 +1162,7 @@ Engineering team
   <div class="footer__body" id="footerBody">
     <p class="footer__contact">CONTACT</p>
     <div class="footer__links">
-      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="mailto:tmbanefo@vividvault.studio">tmbanefo@vividvault.studio</a>
       <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
       <a class="footer__link" href="../Thomas_Mbanefo_CV.pdf" target="_blank" rel="noopener">Resume</a>
       <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
@@ -2053,5 +1485,7 @@ document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', 
 .callouts{position:static!important;top:auto!important;padding-top:4px!important}
 </style>
 <script id="topnav-js" src="../assets/site-nav.js" defer></script>
+<script src="../assets/particles.js" defer></script>
+<script src="../assets/case-study.js" defer></script>
 </body>
 </html>

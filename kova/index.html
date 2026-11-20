@@ -6,19 +6,19 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kova: Analytics and data-quality intelligence · Thomas Mbanefo</title>
+<title>Analytics and Reporting · Thomas Mbanefo</title>
 <!--SEO_START-->
-<meta name="description" content="How fund managers stopped exporting to Power BI: an analytics and data-quality platform turning raw portfolio data into the answers they were asking.">
+<meta name="description" content="Turning an ESG platform's portfolio data into answers fund managers could trust, and reports they could sign off inside the product.">
 <link rel="canonical" href="https://thomasmbanefo.com/kova/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Thomas Mbanefo">
-<meta property="og:title" content="Kova: Analytics and data-quality intelligence · Thomas Mbanefo">
-<meta property="og:description" content="How fund managers stopped exporting to Power BI: an analytics and data-quality platform turning raw portfolio data into the answers they were asking.">
+<meta property="og:title" content="Analytics and Reporting · Thomas Mbanefo">
+<meta property="og:description" content="Turning an ESG platform's portfolio data into answers fund managers could trust, and reports they could sign off inside the product.">
 <meta property="og:url" content="https://thomasmbanefo.com/kova/">
 <meta property="og:image" content="https://thomasmbanefo.com/assets/og/kova.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kova: Analytics and data-quality intelligence · Thomas Mbanefo">
-<meta name="twitter:description" content="How fund managers stopped exporting to Power BI: an analytics and data-quality platform turning raw portfolio data into the answers they were asking.">
+<meta name="twitter:title" content="Analytics and Reporting · Thomas Mbanefo">
+<meta name="twitter:description" content="Turning an ESG platform's portfolio data into answers fund managers could trust, and reports they could sign off inside the product.">
 <meta name="twitter:image" content="https://thomasmbanefo.com/assets/og/kova.png">
 <!--SEO_END-->
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -284,41 +284,534 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 .feat .scr-wrap,#features .feat .scr-wrap{margin-left:auto!important;margin-right:auto!important}
 .feat .callouts,#features .feat .callouts{max-width:900px;margin-left:auto!important;margin-right:auto!important}
 </style>
-<link rel="stylesheet" href="../assets/cursor.css">
-<script src="../assets/cursor.js" defer></script>
+<link rel="stylesheet" href="../assets/case-study.css">
+<style id="cs-rep-css">
+/* Reporting pieces merged in from the old reporting page, scoped to .cs-rep */
+.cs-rep{--p:#ffffff;
+  --s:#c2410c;
+  --c:#2c2c2c;
+  --paper:#ffffff;
+  --paper-2:#f6f3ee;
+  --paper-3:#efeadf;
+  --surface:#ffffff;
+  --ink:#1a1611;
+  --ink-2:#423b32;
+  --muted:#6f6a60;
+  --muted-2:#9b9488;
+  --line:#c4bdaf;
+  --line-soft:#d9d3c7;
+  --line-faint:#ece7dd;
+  --accent:#2a7a5a;
+  --accent-2:#3f9777;
+  --accent-soft:rgba(42,122,90,.12);
+  --gold:#a8782c;
+  --gold-soft:rgba(168,120,44,.14);
+  --good:#2a7a5a;
+  --good-soft:rgba(42,122,90,.14);
+  --warn:#c08a2e;
+  --warn-soft:rgba(192,138,46,.16);
+  --bad:#a8432e;
+  --bad-soft:rgba(168,67,46,.14);
+
+  --review-bg:#fff8e6; --review-ink:#a16207;
+  --approved-bg:#e8f5ee;--hm-good:#2e8d63;--hm-warn:#e0913a;--hm-bad:#d64a3f; --approved-ink:#166534;
+  --rejected-bg:#fef2f2; --rejected-ink:#b91c1c;
+
+  --av-blue:#3d5a8a; --av-rose:#c4677c; --av-amber:#c6892b; --av-purple:#7c5dc6;
+
+  --serif:'Fira Sans',sans-serif;
+  --sans:'Inter',sans-serif;
+  --mono:'Fira Sans',sans-serif;
+  --hand:'Kalam',cursive;
+  --hand-display:'Caveat',cursive;
+
+  --maxw:1200px;
+  --shadow-sm:0 1px 2px 0 rgba(15,21,28,.04);
+  --shadow-md:0 4px 12px -2px rgba(15,21,28,.10);
+  --shadow-xl:0 24px 48px -12px rgba(15,21,28,.16);}
+.cs-rep .nav{position:sticky;top:0;z-index:50;background:rgba(244,241,232,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-faint)}
+.cs-rep .logo{display:flex;align-items:center;gap:10px;font:500 14px/1 var(--sans);color:var(--ink);text-decoration:none}
+.cs-rep .logo .lk{width:26px;height:26px;border-radius:6px;background:var(--accent);color:#fff;font:500 14px/26px var(--sans);text-align:center}
+@media(max-width:767px){
+  .cs-rep .sectnav{right:14px;gap:6px}
+  .cs-rep .sectnav a{padding:9px 2px}
+  .cs-rep .sectnav a .dot-n{width:14px;height:14px;flex:0 0 14px}
+  .cs-rep .sectnav a.active .dot-n{width:17px;height:17px;flex:0 0 17px}
+  .cs-rep .sectnav .lbl{display:none}
+}
+.cs-rep .hero{padding:0 0 64px;position:relative;text-align:center}
+.cs-rep .hero .wrap{position:relative;z-index:1}
+.cs-rep .hero .eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.cs-rep .hero h1{font:600 128px/1 var(--serif);letter-spacing:-.045em;color:var(--ink);margin-bottom:14px}
+.cs-rep .hero .lede{font:400 19px/1.55 var(--sans);color:var(--ink-2);margin-bottom:38px;max-width:none}
+@media(max-width:860px){
+  .cs-rep .hero h1{font-size:80px}
+}
+.cs-rep .hero-visual{margin-top:40px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-xl);border:1px solid var(--line-faint);background:var(--surface)}
+.cs-rep .hero-visual .hv-bar{height:44px;background:var(--surface);border-bottom:1px solid var(--line-faint);display:flex;align-items:center;gap:8px;padding:0 18px}
+.cs-rep .hero-visual .dot{width:11px;height:11px;border-radius:50%;background:var(--line-faint)}
+.cs-rep .hero-carousel{position:relative;width:100%;aspect-ratio:1/1;margin:0 auto;background:var(--paper);overflow:hidden}
+.cs-rep .hcs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(255,255,255,.86);border:1px solid var(--line-faint);padding:6px 12px;border-radius:999px;backdrop-filter:blur(4px);z-index:6}
+.cs-rep .overview{padding:64px 0;background:var(--paper)}
+.cs-rep .ov-grid{display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:start}
+.cs-rep .ov-item{margin-bottom:28px}
+@media(max-width:860px){
+  .cs-rep .ov-grid{grid-template-columns:1fr;gap:32px}
+}
+.cs-rep .sec-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;color:var(--ink);margin-bottom:16px}
+.cs-rep .sec-sub{font:400 17px/1.6 var(--sans);color:var(--muted)}
+.cs-rep .problem{padding:40px 0;background:var(--paper);position:relative}
+.cs-rep .pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.cs-rep .pb-card .pb-tag{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:1px solid var(--line-faint);border-radius:6px;padding:8px 12px;display:inline-block;margin-bottom:18px}
+.cs-rep .pb-card p{font:400 15px/1.65 var(--sans);color:var(--ink-2)}
+@media(max-width:860px){
+  .cs-rep .pb-grid{grid-template-columns:1fr}
+}
+.cs-rep .research{padding:40px 0;background:var(--paper)}
+.cs-rep .tq{background:var(--surface);border:1px solid var(--line-faint);border-radius:14px;padding:24px}
+.cs-rep .tq-n{font:600 12px/1 var(--mono);color:var(--accent);margin-bottom:14px}
+.cs-rep .r-fig{margin-top:24px;border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface)}
+.cs-rep .r-fig figcaption{font:400 12px/1.4 var(--mono);color:var(--muted);padding:12px 16px;border-top:1px solid var(--line-faint)}
+.cs-rep .pullquote{border-left:3px solid var(--accent);padding:14px 0 14px 22px;margin:32px 0;font:italic 400 22px/1.45 var(--serif);color:var(--ink)}
+.cs-rep .pullquote cite{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:12px;font-style:normal}
+@media(max-width:860px){
+  .cs-rep .three-q{grid-template-columns:1fr}
+  .cs-rep .feedback-grid{grid-template-columns:1fr}
+}
+.cs-rep .discovery{padding:40px 0;background:var(--paper)}
+.cs-rep .wireframes{padding:40px 0;background:var(--paper)}
+.cs-rep .aisplit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
+.cs-rep .aisplit .ai-col{border:1px solid var(--line-faint);border-radius:16px;background:var(--paper-2);padding:28px;position:relative;overflow:hidden}
+.cs-rep .aisplit .ai-col.pen{background:var(--surface);border-color:var(--accent)}
+.cs-rep .aisplit .ai-col.pen::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.cs-rep .aisplit .ai-eyebrow{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cs-rep .aisplit .ai-col.pen .ai-eyebrow{color:var(--accent)}
+.cs-rep .aisplit .ai-col-h{font:600 22px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+.cs-rep .aisplit .ai-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.cs-rep .aisplit .ai-list li{font:400 15px/1.55 var(--sans);color:var(--ink-2);padding-left:26px;position:relative}
+.cs-rep .aisplit .ai-list li::before{position:absolute;left:0;top:1px;font:600 13px/1.4 var(--mono)}
+.cs-rep .aisplit .ai-col.ai .ai-list li::before{content:'+';color:var(--muted)}
+.cs-rep .aisplit .ai-col.pen .ai-list li::before{content:'→';color:var(--accent)}
+.cs-rep .aisplit .ai-list li b{color:var(--ink);font-weight:600}
+.cs-rep .aisplit .ai-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line-faint);font:400 13px/1.5 var(--mono);color:var(--muted)}
+.cs-rep .aisplit .ai-col.pen .ai-foot{color:var(--accent)}
+@media(max-width:860px){
+  .cs-rep .aisplit{grid-template-columns:1fr}
+}
+.cs-rep .pwf-tabs, .pwf-tabs.cs-rep{display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;border-bottom:1.5px solid var(--line-faint);margin-bottom:0;scrollbar-width:none}
+.cs-rep .pwf-tab, .pwf-tab.cs-rep{font:500 14px/1 var(--sans);background:transparent;border:0;cursor:pointer;padding:14px 18px;color:var(--muted);display:flex;align-items:center;gap:10px;border-bottom:3px solid transparent;white-space:nowrap;margin-bottom:-1.5px;transition:color .15s,border-bottom-color .15s}
+.cs-rep .pwf-tab-n, .pwf-tab-n.cs-rep{font:500 10px/1 var(--mono);letter-spacing:.06em;background:var(--paper-2);color:var(--muted-2);padding:3px 7px;border-radius:999px}
+.cs-rep .pwf-tab.active .pwf-tab-n, .pwf-tab.active.cs-rep .pwf-tab-n{background:var(--accent-soft);color:var(--accent)}
+.cs-rep .features{padding:40px 0 0;background:var(--paper)}
+.cs-rep .feat-stream{margin-top:48px}
+.cs-rep .feat:first-child{border-top:0}
+.cs-rep .frame-heading{font:600 30px/1.08 var(--serif);letter-spacing:-.025em;margin-bottom:8px;color:var(--ink)}
+.cs-rep .frame-sub{font:400 15px/1.6 var(--sans);color:var(--muted);max-width:none;margin-bottom:26px}
+.cs-rep .feat .screen{background:var(--surface);border:1px solid var(--line-faint);border-radius:14px;box-shadow:var(--shadow-xl);overflow:hidden}
+.cs-rep .feat .screen-bar{height:42px;background:var(--surface);border-bottom:1px solid var(--line-faint);display:flex;align-items:center;gap:8px;padding:0 16px}
+.cs-rep .feat .screen-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--line-faint)}
+.cs-rep .feat .crumb{margin-left:14px;font:400 12px/1 var(--mono);color:var(--muted)}
+.cs-rep .ctext{font:400 13px/1.55 var(--sans);color:var(--ink-2)}
+.cs-rep .gutter-head{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+@media(max-width:1024px){
+  .cs-rep .feat-inner{grid-template-columns:1fr}
+}
+.cs-rep .supporting{padding:40px 0;background:var(--paper)}
+.cs-rep .supp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.cs-rep .supp-card{border:1px solid var(--line-faint);border-radius:14px;overflow:hidden;background:var(--surface);text-decoration:none;display:block;transition:box-shadow .25s,transform .25s}
+.cs-rep .supp-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.cs-rep .supp-thumb{aspect-ratio:16/9;background:var(--paper-2);border-bottom:1px solid var(--line-faint);overflow:hidden;position:relative}
+.cs-rep .supp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-rep .supp-thumb iframe{position:absolute;top:0;left:0;width:285.714%;height:285.714%;border:0;background:#fff;pointer-events:none;transform-origin:top left;transform:scale(.35)}
+.cs-rep .supp-thumb-frame{position:absolute;inset:0;overflow:hidden}
+.cs-rep .supp-body{padding:18px 20px}
+.cs-rep .supp-h{font:600 17px/1.3 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+@media(max-width:860px){
+  .cs-rep .supp-grid{grid-template-columns:1fr}
+}
+.cs-rep .impact{padding:40px 0;background:var(--paper);color:var(--ink)}
+.cs-rep .impact-h{font:600 38px/1.1 var(--serif);letter-spacing:-.03em;margin-bottom:48px}
+.cs-rep .early-stats-section{padding:0 0 24px;background:var(--paper)}
+@media(max-width:860px){
+  .cs-rep .early-stats{flex-wrap:wrap;gap:24px}
+  .cs-rep .early-stats .est{flex:0 0 calc(50% - 12px)}
+}
+.cs-rep .impact-note{font:400 18px/1.6 var(--serif);color:var(--ink-2);border-left:2px solid var(--accent);padding-left:22px;font-style:italic}
+@media(max-width:860px){
+  .cs-rep .impact-grid{grid-template-columns:1fr 1fr}
+}
+.cs-rep .siblings{padding:96px 0;background:var(--paper)}
+.cs-rep .sib-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line-faint);border-radius:16px;padding:32px 32px 24px;background:var(--surface);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.cs-rep .sib-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.cs-rep .sib-meta{font:500 11px/1 var(--mono);letter-spacing:.08em;color:var(--muted);margin-bottom:14px;display:flex;gap:8px}
+.cs-rep .sib-meta .sib-co{color:var(--sib,var(--accent))}
+.cs-rep .sib-card h3{font:600 28px/1.2 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:0}
+.cs-rep .sib-card p{font:400 14px/1.6 var(--sans);color:var(--ink-2);margin-bottom:18px}
+.cs-rep .sib-go{font:500 13px/1 var(--sans);color:var(--sib,var(--accent))}
+@media(max-width:860px){
+  .cs-rep .sib-grid{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .cs-rep .wrap{padding:0 20px}
+  .cs-rep .nav-inner{padding:14px 20px}
+  .cs-rep .sec-h, .cs-rep .impact-h{font-size:32px}
+  .cs-rep .frame-heading{font-size:26px}
+}
+.cs-rep .pwf .section-head, .pwf.cs-rep .section-head{margin-bottom:28px;display:block;padding-bottom:0;border-bottom:0;position:relative}
+.cs-rep .pwf .section-head::after, .pwf.cs-rep .section-head::after{display:none}
+.cs-rep .pwf .s-tag, .pwf.cs-rep .s-tag, .cs-rep .pwf .s-stamp, .pwf.cs-rep .s-stamp{display:none}
+.cs-rep .pwf .s-title, .pwf.cs-rep .s-title{font:600 22px/1.15 var(--serif);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.cs-rep .pwf .s-title em, .pwf.cs-rep .s-title em{font-style:normal;color:inherit;font-weight:inherit}
+.cs-rep .pwf .s-title br, .pwf.cs-rep .s-title br{display:none}
+.cs-rep .pwf .s-sub, .pwf.cs-rep .s-sub{font:400 16px/1.65 var(--sans);color:var(--ink-2);max-width:none}
+.cs-rep .pwf .s-sub em, .pwf.cs-rep .s-sub em{font-style:normal;color:inherit;font-weight:inherit}
+.cs-rep .pwf .s-sub b, .pwf.cs-rep .s-sub b{color:var(--ink);font-weight:600}
+.cs-rep .pwf-p, .pwf-p.cs-rep{font:400 16px/1.65 var(--sans);color:var(--ink-2);margin-bottom:24px;max-width:none}
+.cs-rep .wireframes .sec-sub{max-width:none}
+.cs-rep .pwf, .pwf.cs-rep{padding:32px 0;font-family:var(--sans);color:var(--ink)}
+.cs-rep .pwf .iters, .pwf.cs-rep .iters{display:grid;gap:24px}
+.cs-rep .pwf .iters.cols-4, .pwf.cs-rep .iters.cols-4{grid-template-columns:repeat(4,1fr)}
+.cs-rep .pwf .iters.cols-3, .pwf.cs-rep .iters.cols-3{grid-template-columns:repeat(3,1fr)}
+.cs-rep .pwf .iters.cols-2, .pwf.cs-rep .iters.cols-2{grid-template-columns:repeat(2,1fr)}
+.cs-rep .pwf .iters.cols-1, .pwf.cs-rep .iters.cols-1{grid-template-columns:1fr}
+.cs-rep .pwf .iters + .iters, .pwf.cs-rep .iters + .iters{margin-top:24px}
+.cs-rep .pwf .board, .pwf.cs-rep .board{position:relative;background:#fbf7ed;border:2px solid var(--line);border-radius:18px 10px 22px 12px / 14px 20px 10px 18px;padding:18px 18px 16px;box-shadow:4px 5px 0 -2px var(--line-soft), 0 18px 30px -22px rgba(0,0,0,.25)}
+.cs-rep .pwf .board.tilt-l, .pwf.cs-rep .board.tilt-l{transform:rotate(-.4deg)}
+.cs-rep .pwf .board.tilt-r, .pwf.cs-rep .board.tilt-r{transform:rotate(.4deg)}
+.cs-rep .pwf .board.dim, .pwf.cs-rep .board.dim{opacity:.7}
+.cs-rep .pwf .board.killed, .pwf.cs-rep .board.killed{background:#efece1}
+.cs-rep .pwf .board.killed::after, .pwf.cs-rep .board.killed::after{content:'killed';position:absolute;top:14px;right:14px;font-family:var(--hand-display);font-size:20px;color:var(--bad);border:2px solid var(--bad);border-radius:999px;padding:1px 12px;transform:rotate(8deg);background:rgba(255,255,255,.85);z-index:6}
+.cs-rep .pwf .board.win, .pwf.cs-rep .board.win{background:#fbf7ed}
+.cs-rep .pwf .board.win::after, .pwf.cs-rep .board.win::after{content:'shipped ✓';position:absolute;top:-10px;right:18px;font-family:var(--hand-display);font-size:18px;color:var(--good);border:2px solid var(--good);border-radius:999px;padding:1px 12px;transform:rotate(-2deg);background:var(--paper);z-index:6}
+.cs-rep .pwf .board-hdr, .pwf.cs-rep .board-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px dashed var(--line-soft)}
+.cs-rep .pwf .b-version, .pwf.cs-rep .b-version{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em;font-weight:600;text-transform:uppercase}
+.cs-rep .pwf .b-name, .pwf.cs-rep .b-name{font-family:var(--hand);font-weight:400;font-size:17px;color:var(--ink-2)}
+.cs-rep .pwf .b-tag, .pwf.cs-rep .b-tag{font:500 9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.cs-rep .pwf .canvas, .pwf.cs-rep .canvas{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:8px 12px 6px 14px / 10px 8px 14px 6px;padding:12px;min-height:240px;overflow:hidden}
+.cs-rep .pwf .canvas.tall, .pwf.cs-rep .canvas.tall{min-height:360px}
+.cs-rep .pwf .canvas.short, .pwf.cs-rep .canvas.short{min-height:180px}
+.cs-rep .pwf .sk-row, .pwf.cs-rep .sk-row{display:flex;gap:6px;margin-bottom:8px;align-items:stretch}
+.cs-rep .pwf .sk-col, .pwf.cs-rep .sk-col{display:flex;flex-direction:column;gap:6px}
+.cs-rep .pwf .sk-box, .pwf.cs-rep .sk-box{border:1.5px solid var(--line);border-radius:6px 9px 5px 10px / 8px 5px 11px 7px;background:#fff;padding:8px;position:relative;font:400 9.5px/1.4 var(--mono);color:var(--ink-2);letter-spacing:.02em}
+.cs-rep .pwf .sk-box.dashed, .pwf.cs-rep .sk-box.dashed{border-style:dashed;background:#fbf7ed}
+.cs-rep .pwf .sk-box.fill, .pwf.cs-rep .sk-box.fill{background:var(--paper-2)}
+.cs-rep .pwf .sk-box.dark, .pwf.cs-rep .sk-box.dark{background:var(--ink);color:#fff}
+.cs-rep .pwf .sk-box.accent, .pwf.cs-rep .sk-box.accent{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cs-rep .pwf .sk-bar, .pwf.cs-rep .sk-bar{height:6px;background:var(--line-soft);border-radius:999px;margin:4px 0}
+.cs-rep .pwf .sk-bar.short, .pwf.cs-rep .sk-bar.short{width:38%}
+.cs-rep .pwf .sk-bar.mid, .pwf.cs-rep .sk-bar.mid{width:64%}
+.cs-rep .pwf .sk-bar.full, .pwf.cs-rep .sk-bar.full{width:100%}
+.cs-rep .pwf .sk-bar.accent, .pwf.cs-rep .sk-bar.accent{background:var(--accent)}
+.cs-rep .pwf .sk-bar.good, .pwf.cs-rep .sk-bar.good{background:var(--good)}
+.cs-rep .pwf .sk-bar.bad, .pwf.cs-rep .sk-bar.bad{background:var(--bad)}
+.cs-rep .pwf .sk-bar.warn, .pwf.cs-rep .sk-bar.warn{background:var(--warn)}
+.cs-rep .pwf .sk-label, .pwf.cs-rep .sk-label{font:500 9px/1 var(--mono);color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.cs-rep .pwf .sk-val, .pwf.cs-rep .sk-val{font:600 22px/1 var(--serif);color:var(--ink);letter-spacing:-.02em}
+.cs-rep .pwf .sk-val.sm, .pwf.cs-rep .sk-val.sm{font-size:16px}
+.cs-rep .pwf .sk-val.accent, .pwf.cs-rep .sk-val.accent{color:var(--accent)}
+.cs-rep .pwf .sk-cap, .pwf.cs-rep .sk-cap{font:400 8.5px/1.4 var(--mono);color:var(--muted-2);margin-top:2px}
+.cs-rep .pwf .sk-line, .pwf.cs-rep .sk-line{height:4px;background:var(--line-soft);border-radius:999px}
+.cs-rep .pwf .sk-line.thin, .pwf.cs-rep .sk-line.thin{height:2px}
+.cs-rep .pwf .sk-pill, .pwf.cs-rep .sk-pill{display:inline-flex;align-items:center;gap:4px;font:500 8.5px/1 var(--mono);letter-spacing:.04em;padding:3px 8px;border-radius:999px;background:var(--paper-2);color:var(--ink-2)}
+.cs-rep .pwf .sk-pill.good, .pwf.cs-rep .sk-pill.good{background:var(--good-soft);color:var(--good)}
+.cs-rep .pwf .sk-pill.warn, .pwf.cs-rep .sk-pill.warn{background:var(--warn-soft);color:var(--warn)}
+.cs-rep .pwf .sk-pill.bad, .pwf.cs-rep .sk-pill.bad{background:var(--bad-soft);color:var(--bad)}
+.cs-rep .pwf .sk-pill.draft, .pwf.cs-rep .sk-pill.draft{background:var(--paper-2);color:var(--muted)}
+.cs-rep .pwf .sk-pill::before, .pwf.cs-rep .sk-pill::before{content:'●';font-size:7px}
+.cs-rep .pwf .sk-fw, .pwf.cs-rep .sk-fw{font:500 8.5px/1 var(--mono);letter-spacing:.04em;padding:3px 7px;border-radius:4px;background:var(--accent-soft);color:var(--accent);display:inline-block}
+.cs-rep .pwf .sk-avatar, .pwf.cs-rep .sk-avatar{width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font:600 7.5px/1 var(--mono);display:inline-flex;align-items:center;justify-content:center;border:1.5px solid #fff;margin-left:-6px}
+.cs-rep .pwf .sk-avatar:first-child, .pwf.cs-rep .sk-avatar:first-child{margin-left:0}
+.cs-rep .pwf .sk-avatar.b2, .pwf.cs-rep .sk-avatar.b2{background:#3d5a8a}
+.cs-rep .pwf .sk-avatar.b3, .pwf.cs-rep .sk-avatar.b3{background:var(--warn)}
+.cs-rep .pwf .sk-chart-mini, .pwf.cs-rep .sk-chart-mini{height:40px;display:flex;align-items:end;gap:2px;padding:0 2px}
+.cs-rep .pwf .sk-chart-mini span, .pwf.cs-rep .sk-chart-mini span{flex:1;background:#2a7a5a;border-radius:2px 2px 0 0;opacity:.85}
+.cs-rep .pwf .sk-chart-mini span:nth-child(2n), .pwf.cs-rep .sk-chart-mini span:nth-child(2n){background:#3f9777}
+.cs-rep .pwf .sk-chart-mini span:nth-child(3n), .pwf.cs-rep .sk-chart-mini span:nth-child(3n){background:#7fb091}
+.cs-rep .pwf .sk-chart-mini span:nth-child(5n), .pwf.cs-rep .sk-chart-mini span:nth-child(5n){background:#1d4a3a}
+.cs-rep .pwf .callout, .pwf.cs-rep .callout{position:absolute;display:block;max-width:200px;font:400 13px/1.3 var(--hand);color:var(--ink);background:#fff5c9;border:1.5px solid #c9b966;border-radius:10px 14px 9px 13px;padding:8px 11px;box-shadow:2px 2px 0 -1px rgba(0,0,0,.12);z-index:5}
+.cs-rep .pwf .callout.pink, .pwf.cs-rep .callout.pink{background:#f8d3cf;border-color:#d99891}
+.cs-rep .pwf .callout.amber, .pwf.cs-rep .callout.amber{background:#ffe7b3;border-color:#d6a753}
+.cs-rep .pwf .callout.verde, .pwf.cs-rep .callout.verde{background:var(--accent-soft);border-color:var(--accent)}
+.cs-rep .pwf .callout.verde strong, .pwf.cs-rep .callout.verde strong{color:var(--accent)}
+.cs-rep .pwf .callout.mint, .pwf.cs-rep .callout.mint{background:#d6efd9;border-color:#82b59a}
+.cs-rep .pwf .b-notes, .pwf.cs-rep .b-notes{margin-top:12px;display:grid;gap:6px}
+.cs-rep .pwf .b-note, .pwf.cs-rep .b-note{font:400 13px/1.4 var(--hand);color:var(--ink-2);padding:4px 0 4px 18px;position:relative}
+.cs-rep .pwf .b-note::before, .pwf.cs-rep .b-note::before{content:'→';font:600 12px/1 var(--mono);color:var(--accent);position:absolute;left:0;top:5px}
+.cs-rep .pwf .b-note.bad::before, .pwf.cs-rep .b-note.bad::before{content:'✕';color:var(--bad)}
+.cs-rep .pwf .b-note.good::before, .pwf.cs-rep .b-note.good::before{content:'✓';color:var(--good)}
+.cs-rep .pwf .b-note.q::before, .pwf.cs-rep .b-note.q::before{content:'?';color:var(--accent)}
+.cs-rep .pwf .b-note b, .pwf.cs-rep .b-note b{color:var(--ink);font-weight:600}
+.cs-rep .pwf .lane-notes, .pwf.cs-rep .lane-notes{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px;padding-top:36px;border-top:1px dashed var(--line-soft)}
+.cs-rep .pwf .lane-notes h4, .pwf.cs-rep .lane-notes h4{font:600 20px/1.25 var(--serif);letter-spacing:-.015em;color:var(--ink);margin-bottom:8px}
+.cs-rep .pwf .lane-notes h4 small, .pwf.cs-rep .lane-notes h4 small{display:block;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cs-rep .pwf .lane-notes p, .pwf.cs-rep .lane-notes p{font:400 15px/1.6 var(--sans);color:var(--ink-2);margin-bottom:8px}
+.cs-rep .pwf .lane-notes p b, .pwf.cs-rep .lane-notes p b{color:var(--ink);font-weight:600}
+.cs-rep .pwf .stickies, .pwf.cs-rep .stickies{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cs-rep .pwf .sticky, .pwf.cs-rep .sticky{font:400 14px/1.4 var(--hand);background:#fff5c9;padding:18px 18px 22px;border:1.5px solid #c9b966;box-shadow:4px 5px 0 -2px var(--line-soft), 0 12px 24px -16px rgba(0,0,0,.18);position:relative}
+.cs-rep .pwf .sticky.k1, .pwf.cs-rep .sticky.k1{transform:rotate(-1.2deg)}
+.cs-rep .pwf .sticky.k2, .pwf.cs-rep .sticky.k2{transform:rotate(.8deg);background:#d6efd9;border-color:#82b59a}
+.cs-rep .pwf .sticky.k3, .pwf.cs-rep .sticky.k3{transform:rotate(-.6deg);background:#ffe7b3;border-color:#d6a753}
+.cs-rep .pwf .sticky.k4, .pwf.cs-rep .sticky.k4{transform:rotate(1deg);background:var(--accent-soft);border-color:var(--accent)}
+.cs-rep .pwf .sticky h5, .pwf.cs-rep .sticky h5{font-family:var(--hand);font-weight:400;font-size:17px;margin-bottom:6px;color:var(--ink-2);letter-spacing:0}
+.cs-rep .pwf .sticky .tag, .pwf.cs-rep .sticky .tag{font:500 9px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;display:block}
+.cs-rep .pwf .trade-table, .pwf.cs-rep .trade-table{width:100%;border-collapse:separate;border-spacing:0;font-family:var(--hand);font-size:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px 8px 18px 10px;overflow:hidden}
+.cs-rep .pwf .trade-table th, .pwf.cs-rep .trade-table th{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--ink);padding:12px 14px;text-align:left;border-bottom:2px solid var(--line-soft);background:var(--paper-2)}
+.cs-rep .pwf .trade-table td, .pwf.cs-rep .trade-table td{padding:14px;vertical-align:top;line-height:1.5;border-bottom:1px dashed var(--line-soft);color:var(--ink-2)}
+.cs-rep .pwf .trade-table tr:last-child td, .pwf.cs-rep .trade-table tr:last-child td{border-bottom:0}
+.cs-rep .pwf .trade-table td:first-child, .pwf.cs-rep .trade-table td:first-child{font-family:var(--sans);font-weight:600;font-size:17px;color:var(--ink);width:22%}
+.cs-rep .pwf .trade-table td b, .pwf.cs-rep .trade-table td b{color:var(--ink);font-weight:600}
+.cs-rep .pwf .trade-table .chip, .pwf.cs-rep .trade-table .chip{display:inline-block;font:500 9.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:6px}
+.cs-rep .pwf .trade-table .chip.kept, .pwf.cs-rep .trade-table .chip.kept{background:var(--good-soft);color:var(--good)}
+.cs-rep .pwf .trade-table .chip.cut, .pwf.cs-rep .trade-table .chip.cut{background:var(--bad-soft);color:var(--bad)}
+.cs-rep .pwf .trade-table .chip.def, .pwf.cs-rep .trade-table .chip.def{background:var(--accent-soft);color:var(--accent)}
+.cs-rep .pwf .swim, .pwf.cs-rep .swim{margin-top:28px;background:#fff;border:1.5px solid var(--line);border-radius:14px 8px 18px 10px;padding:20px;position:relative}
+.cs-rep .pwf .swim h4, .pwf.cs-rep .swim h4{font-family:var(--hand);font-size:18px;color:var(--ink-2);margin-bottom:12px;font-weight:400}
+.cs-rep .pwf .swim-grid, .pwf.cs-rep .swim-grid{display:grid;grid-template-columns:140px repeat(5,1fr);gap:8px;align-items:stretch}
+.cs-rep .pwf .swim-lane-label, .pwf.cs-rep .swim-lane-label{font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:14px 8px;border-right:1.5px dashed var(--line-soft);display:flex;align-items:center}
+.cs-rep .pwf .swim-stage-h, .pwf.cs-rep .swim-stage-h{font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 0;border-bottom:1.5px dashed var(--line-soft);text-align:center}
+.cs-rep .pwf .swim-step, .pwf.cs-rep .swim-step{background:var(--paper-2);border:1.2px solid var(--line-soft);border-radius:6px 9px 5px 10px;padding:8px 9px;font:400 12.5px/1.3 var(--hand);color:var(--ink-2);position:relative;min-height:56px}
+.cs-rep .pwf .swim-step.warn, .pwf.cs-rep .swim-step.warn{background:#f8d3cf;border-color:#d99891}
+.cs-rep .pwf .swim-step.fix, .pwf.cs-rep .swim-step.fix{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+@media(max-width:1100px){
+  .cs-rep .pwf .iters.cols-4, .pwf.cs-rep .iters.cols-4, .cs-rep .pwf .iters.cols-3, .pwf.cs-rep .iters.cols-3{grid-template-columns:repeat(2,1fr)}
+  .cs-rep .pwf .lane-notes, .pwf.cs-rep .lane-notes{grid-template-columns:1fr}
+  .cs-rep .pwf .stickies, .pwf.cs-rep .stickies{grid-template-columns:1fr 1fr}
+}
+.cs-rep .feat .screen-body{padding:20px;background:var(--surface)}
+@media(max-width:860px){
+  .cs-rep .marker{display:none}
+}
+.cs-rep .feat .a-eyebrow{font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cs-rep .feat .a-h{font:600 17px/1.2 var(--serif);letter-spacing:-.015em;color:var(--ink)}
+.cs-rep .feat .a-sub{font:400 12px/1.5 var(--sans);color:var(--muted)}
+.cs-rep .feat .a-divider{height:1px;background:var(--line-faint);margin:14px 0}
+.cs-rep .feat .a-dot{display:inline-block;width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.cs-rep .feat .a-pill{display:inline-flex;align-items:center;gap:6px;font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px solid var(--line-faint);background:var(--surface);color:var(--ink-2);white-space:nowrap}
+.cs-rep .feat .a-pill.good{background:var(--approved-bg);border-color:var(--approved-ink);color:var(--approved-ink)}
+.cs-rep .feat .a-pill.warn{background:var(--review-bg);border-color:var(--review-ink);color:var(--review-ink)}
+.cs-rep .feat .a-pill.bad{background:var(--rejected-bg);border-color:var(--rejected-ink);color:var(--rejected-ink)}
+.cs-rep .feat .a-pill.acc{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cs-rep .feat .a-pill.muted{color:var(--muted);background:var(--paper)}
+.cs-rep .feat .a-tile{border:1px solid var(--line-faint);border-radius:8px;padding:10px 12px;background:var(--surface);min-width:0}
+.cs-rep .feat .a-tile .l{font:500 9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cs-rep .feat .a-tile .v{font:600 18px/1.1 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.cs-rep .feat .a-tile .s{font:400 10px/1.2 var(--mono);color:var(--muted);margin-top:4px}
+.cs-rep .feat .a-panel{border:1px solid var(--line-faint);border-radius:10px;background:var(--surface);overflow:hidden}
+.cs-rep .feat .a-panel-head{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:1px solid var(--line-faint);background:var(--paper)}
+.cs-rep .feat .a-panel-head .t{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.cs-rep .feat .a-panel-head .m{font:400 10px/1 var(--mono);color:var(--muted)}
+.cs-rep .feat .rcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cs-rep .feat .rcard{border:1px solid var(--line-faint);border-radius:12px;background:var(--surface);padding:14px;position:relative;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm)}
+.cs-rep .feat .rcard.focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.cs-rep .feat .rcard .top{display:flex;justify-content:space-between;align-items:center}
+.cs-rep .feat .rcard .fw{font:500 9.5px/1 var(--mono);letter-spacing:.06em;padding:4px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.cs-rep .feat .rcard .heart{color:var(--bad);font-size:14px;line-height:1}
+.cs-rep .feat .rcard .heart.off{color:var(--muted-2)}
+.cs-rep .feat .rcard .nm{font:600 14px/1.25 var(--serif);color:var(--ink);letter-spacing:-.01em}
+.cs-rep .feat .rcard .meta{font:400 10.5px/1 var(--mono);color:var(--muted)}
+.cs-rep .feat .rcard .mini{height:36px;display:flex;align-items:end;gap:3px;padding:0 2px}
+.cs-rep .feat .rcard .mini span{flex:1;background:#2a7a5a;opacity:.9;border-radius:2px 2px 0 0}
+.cs-rep .feat .rcard .mini span:nth-child(2n){background:#3f9777}
+.cs-rep .feat .rcard .mini span:nth-child(3n){background:#7fb091}
+.cs-rep .feat .rcard .mini span:nth-child(5n){background:#1d4a3a}
+.cs-rep .feat .rcard .foot{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.cs-rep .feat .rcard .avs{display:flex}
+.cs-rep .feat .rcard .av{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface);display:flex;align-items:center;justify-content:center;font:600 8.5px/1 var(--mono);color:#fff;margin-left:-6px}
+.cs-rep .feat .rcard .av:first-child{margin-left:0}
+.cs-rep .feat .rcard .av.b1{background:var(--av-blue)}
+.cs-rep .feat .rcard .av.b2{background:var(--av-rose)}
+.cs-rep .feat .rcard .av.b3{background:var(--av-amber)}
+.cs-rep .feat .rcard .av.b4{background:var(--av-purple)}
+.cs-rep .feat .pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:center;padding:12px 0}
+.cs-rep .feat .pipe .stage{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.cs-rep .feat .pipe .stage .pip{width:14px;height:14px;border-radius:50%;background:var(--line-faint);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line-faint)}
+.cs-rep .feat .pipe .stage.done .pip{background:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.cs-rep .feat .pipe .stage.cur .pip{background:var(--review-ink);box-shadow:0 0 0 1px var(--review-ink);width:16px;height:16px}
+.cs-rep .feat .pipe .stage .lbl{font:500 10px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cs-rep .feat .pipe .stage.cur .lbl{color:var(--review-ink)}
+.cs-rep .feat .pipe .stage.done .lbl{color:var(--accent)}
+.cs-rep .feat .pipe .bar{height:2px;background:var(--line-faint);position:relative}
+.cs-rep .feat .pipe .bar.done{background:var(--accent)}
+.cs-rep .feat .wiz-progress{display:flex;gap:6px;margin-bottom:14px}
+.cs-rep .feat .wiz-progress span{flex:1;height:4px;border-radius:2px;background:var(--line-faint)}
+.cs-rep .feat .wiz-progress span.done{background:var(--accent)}
+.cs-rep .feat .wiz-progress span.cur{background:var(--accent);opacity:.7}
+.cs-rep .feat .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cs-rep .feat .fw-card{border:1px solid var(--line-faint);border-radius:10px;background:var(--surface);padding:14px 12px;text-align:center;position:relative}
+.cs-rep .feat .fw-card.picked{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 2px var(--accent-soft)}
+.cs-rep .feat .fw-card .logo{width:28px;height:28px;border-radius:6px;margin:0 auto 8px;background:var(--paper-2)}
+.cs-rep .feat .fw-card.picked .logo{background:var(--accent)}
+.cs-rep .feat .fw-card .nm{font:600 12px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.cs-rep .feat .fw-card .ct{font:400 9px/1 var(--mono);color:var(--muted);margin-top:4px}
+.cs-rep .feat .ai-draft{background:var(--ink);border-radius:10px;padding:14px;color:#fff;margin-top:12px}
+.cs-rep .feat .ai-draft .eye{font:500 9px/1 var(--mono);letter-spacing:.14em;color:var(--accent-2);text-transform:uppercase;margin-bottom:8px}
+.cs-rep .feat .ai-draft .ln{height:5px;background:rgba(255,255,255,.18);border-radius:999px;margin:6px 0}
+.cs-rep .feat .ai-draft .ln.mid{width:64%}
+.cs-rep .feat .ai-draft .ln.short{width:44%}
+.cs-rep .feat .ai-draft .stat{font:500 11px/1.4 var(--mono);color:var(--accent-2);margin-top:8px}
+.cs-rep .feat .sh-tabs{display:flex;gap:6px;margin-bottom:12px}
+.cs-rep .feat .sh-tabs span{flex:1;padding:8px 10px;border:1px solid var(--line-faint);border-radius:6px;font:500 11px/1 var(--mono);letter-spacing:.06em;text-align:center;color:var(--muted);text-transform:uppercase;background:var(--surface)}
+.cs-rep .feat .sh-tabs span.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.cs-rep .feat .ints{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cs-rep .feat .int{border:1px solid var(--line-faint);border-radius:10px;padding:12px;background:var(--surface);display:flex;align-items:center;gap:10px}
+.cs-rep .feat .int.live{border-color:var(--accent);background:var(--accent-soft)}
+.cs-rep .feat .int .ic{width:30px;height:30px;border-radius:6px;background:var(--paper-2);flex:0 0 30px}
+.cs-rep .feat .int.live .ic{background:var(--accent)}
+.cs-rep .feat .int .nm{font:600 12px/1.2 var(--sans);color:var(--ink)}
+.cs-rep .feat .int .st{font:400 9.5px/1 var(--mono);color:var(--muted);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
+.cs-rep .feat .int.live .st{color:var(--accent)}
+.cs-rep .footer__cap{height:48px;background:var(--paper)}
+.cs-rep html[data-theme="blue"]{--paper:#0779ff;--bg:#0779ff;--paper-2:#0a6ad6;--bg-2:#0a6ad6;--paper-3:#0858b0;--bg-3:#0858b0;--surface:#0a6ad6;--ink:#eaf6ff;--ink-2:#c5e8ff;--muted:#8fc4f5;--muted-2:#6fa8e0;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+.cs-rep html[data-theme="green"]{--paper:#37af5d;--bg:#37af5d;--paper-2:#2f9a51;--bg-2:#2f9a51;--paper-3:#298a48;--bg-3:#298a48;--surface:#2f9a51;--ink:#f3fff7;--ink-2:#d6f5e0;--muted:#a9dcb9;--muted-2:#8bc79e;--line-faint:rgba(255,255,255,.20);--line-soft:rgba(255,255,255,.32);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+.cs-rep html[data-theme="purple"]{--paper:#3c0350;--bg:#3c0350;--paper-2:#330246;--bg-2:#330246;--paper-3:#2b023b;--bg-3:#2b023b;--surface:#330246;--ink:#fce9ff;--ink-2:#f0d4fb;--muted:#c79bd6;--muted-2:#a87cb9;--line-faint:rgba(255,255,255,.18);--line-soft:rgba(255,255,255,.30);--line:rgba(255,255,255,.55);--accent:var(--ink);--accent-2:var(--ink);--accent-soft:color-mix(in srgb,var(--ink) 16%,transparent)}
+.cs-rep html[data-theme="mono"]{--paper:#ffffff;--bg:#ffffff;--paper-2:#eeeeee;--bg-2:#eeeeee;--paper-3:#e2e2e2;--bg-3:#e2e2e2;--surface:#ffffff;--ink:#1f1f22;--ink-2:#34343a;--muted:#6b6b72;--muted-2:#9a9aa2;--line-faint:#e2e2e2;--line-soft:#cfcfcf;--line:#b8b8b8}
+html[data-theme="blue"] .cs-rep .logo .lk, html[data-theme="green"] .cs-rep .logo .lk, html[data-theme="purple"] .cs-rep .logo .lk, html[data-theme="blue"] .cs-rep .cnum, html[data-theme="green"] .cs-rep .cnum, html[data-theme="purple"] .cs-rep .cnum, html[data-theme="blue"] .cs-rep .board.win::before, html[data-theme="green"] .cs-rep .board.win::before, html[data-theme="purple"] .cs-rep .board.win::before, html[data-theme="blue"] .cs-rep .pwf .sk-avatar, html[data-theme="blue"] .pwf .sk-avatar.cs-rep, html[data-theme="green"] .cs-rep .pwf .sk-avatar, html[data-theme="green"] .pwf .sk-avatar.cs-rep, html[data-theme="purple"] .cs-rep .pwf .sk-avatar, html[data-theme="purple"] .pwf .sk-avatar.cs-rep{color:var(--paper)}
+html[data-theme="blue"] .cs-rep .pwf .canvas, html[data-theme="blue"] .pwf .canvas.cs-rep, html[data-theme="green"] .cs-rep .pwf .canvas, html[data-theme="green"] .pwf .canvas.cs-rep, html[data-theme="purple"] .cs-rep .pwf .canvas, html[data-theme="purple"] .pwf .canvas.cs-rep, html[data-theme="blue"] .cs-rep .pwf .board, html[data-theme="blue"] .pwf .board.cs-rep, html[data-theme="green"] .cs-rep .pwf .board, html[data-theme="green"] .pwf .board.cs-rep, html[data-theme="purple"] .cs-rep .pwf .board, html[data-theme="purple"] .pwf .board.cs-rep, html[data-theme="blue"] .cs-rep .pwf .swim, html[data-theme="blue"] .pwf .swim.cs-rep, html[data-theme="green"] .cs-rep .pwf .swim, html[data-theme="green"] .pwf .swim.cs-rep, html[data-theme="purple"] .cs-rep .pwf .swim, html[data-theme="purple"] .pwf .swim.cs-rep, html[data-theme="blue"] .cs-rep .pwf .trade-table, html[data-theme="blue"] .pwf .trade-table.cs-rep, html[data-theme="green"] .cs-rep .pwf .trade-table, html[data-theme="green"] .pwf .trade-table.cs-rep, html[data-theme="purple"] .cs-rep .pwf .trade-table, html[data-theme="purple"] .pwf .trade-table.cs-rep, html[data-theme="blue"] .cs-rep .pwf .sk-box, html[data-theme="blue"] .pwf .sk-box.cs-rep, html[data-theme="green"] .cs-rep .pwf .sk-box, html[data-theme="green"] .pwf .sk-box.cs-rep, html[data-theme="purple"] .cs-rep .pwf .sk-box, html[data-theme="purple"] .pwf .sk-box.cs-rep{background:var(--surface);color:var(--ink)}
+@media(max-width:860px){
+  .cs-rep .scr-wrap{max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .cs-rep .pwf, .pwf.cs-rep{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .cs-rep .trade-table, .cs-rep .swim, .cs-rep .pwf-stack, .pwf-stack.cs-rep{max-width:100%;}
+  .cs-rep .figure{width:100%!important; max-width:100%!important; grid-template-columns:1fr!important; gap:22px;}
+  .cs-rep .callouts{position:static!important;}
+  .cs-rep .screen{overflow-x:auto;}
+  .cs-rep .figure>*{min-width:0;}
+}
+@media(max-width:560px){
+  .cs-rep .scr-wrap .marker{display:none;}
+}
+@media(max-width:760px){
+  .cs-rep .feat .scr-wrap .screen, .cs-rep .feat .scr-wrap .marker{display:none!important}
+  .cs-rep .feat .scr-wrap{overflow:visible}
+  .cs-rep .feat .scr-wrap::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}
+}
+@media(max-width:600px){
+  .cs-rep #hcs{aspect-ratio:auto}
+  .cs-rep #hcs .hcs-track, .cs-rep #hcs .hcs-dots{display:none!important}
+  .cs-rep #hcs::after{content:"Best viewed on a larger screen";display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;padding:34px 24px;border:1px dashed var(--line,#cfcfcf);border-radius:16px;background:var(--paper-2,#f2f2f2);color:var(--muted,#8a8a8a);font:500 13px/1.5 var(--sans,system-ui,sans-serif);letter-spacing:.01em}
+}
+@media(min-width:1400px){
+  .cs-rep #features .feat .feat-inner{display:grid!important;grid-template-columns:minmax(0,1fr) 300px!important;column-gap:clamp(40px,3.4vw,64px)!important;align-items:start!important;max-width:var(--maxw)!important}
+  .cs-rep #features .feat .feat-inner > div:first-child{min-width:0!important}
+  .cs-rep #features .feat .callouts{margin:0!important;display:flex!important;flex-direction:column!important;gap:18px!important}
+}
+@media(max-width:767px){
+  .cs-rep #features .wrap{padding-left:20px!important;padding-right:20px!important}
+  .cs-rep #features .feat .feat-inner{padding-left:20px!important;padding-right:20px!important}
+}
+@media(max-width:600px){
+  .cs-rep .siblings .sib-h{font-size:30px!important}
+}
+@media(max-width:860px){
+  .cs-rep .siblings .sib-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:560px){
+  .cs-rep .siblings .sib-grid{grid-template-columns:1fr!important}
+}
+@media(min-width:1280px){
+  .cs-rep .siblings .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .cs-rep .siblings .grid{grid-template-columns:repeat(2,1fr);gap:28px 22px}
+}
+@media(max-width:425px){
+  .cs-rep .siblings .grid{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:560px){
+  .cs-rep .siblings .proj-label{grid-template-columns:1fr;grid-template-areas:"name" "metric" "desc";row-gap:4px}
+  .cs-rep .siblings .proj-label__metric{justify-self:start;white-space:normal}
+  .cs-rep .siblings .proj-label__desc{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+}
+@media(max-width:600px){
+  .cs-rep .hcs-playpause{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .cs-rep *, .cs-rep *::before, .cs-rep *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+@media print{
+  .cs-rep .topnav, .cs-rep .picker, .cs-rep .sectnav, .cs-rep .nav-btn, .cs-rep .hcs-dots, .cs-rep .back-link{display:none!important}
+  .cs-rep .hero{min-height:auto!important}
+}
+@media(max-width:680px){
+  .cs-rep #wireframes .board:has(.canvas){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cs-rep #wireframes .canvas{max-width:none}
+}
+@media(max-width:600px){
+  .cs-rep #hcs{aspect-ratio:1/1!important}
+  .cs-rep #hcs .hcs-track{display:flex!important}
+  .cs-rep #hcs .hcs-dots{display:flex!important}
+  .cs-rep #hcs::after{content:none!important;display:none!important}
+}
+@media(max-width:1100px){
+  .cs-rep .feat .scr-wrap .screen{display:block!important;width:900px}
+  .cs-rep .feat .scr-wrap::after{content:none!important;display:none!important}
+}
+@media(max-width:1100px){
+  .cs-rep .figure{width:100%!important;grid-template-columns:1fr!important;gap:22px}
+}
+@media(max-width:680px){
+  .cs-rep #wireframes .pwf-tabs{gap:2px}
+  .cs-rep #wireframes .pwf-tab{flex:0 0 auto;padding:11px 14px;font-size:13px}
+  .cs-rep #wireframes .cols-2, .cs-rep #wireframes .cols-3, .cs-rep #wireframes .cols-4, .cs-rep #wireframes .iters, .cs-rep #wireframes .lane-notes, .cs-rep #wireframes .lane-notes.lead{grid-template-columns:1fr!important}
+  .cs-rep #wireframes .swim{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .cs-rep #wireframes .swim-grid{min-width:540px}
+  .cs-rep #wireframes .trade-table{display:block;overflow-x:auto;white-space:normal}
+}
+@media(max-width:1100px){
+  .cs-rep .feat .scr-wrap{cursor:zoom-in}
+}
+@media(max-width:768px){
+  .cs-rep .prob-grid, .cs-rep .pb-grid, .cs-rep .impact-grid, .cs-rep .sib-grid{grid-template-columns:1fr!important}
+  .cs-rep .iters.cols-4, .cs-rep .iters.cols-3, .cs-rep .paths{grid-template-columns:1fr!important}
+  .cs-rep .hero-visual{max-width:100%!important}
+}
+@media(min-width:1200px){
+  .cs-rep .hero{min-height:auto!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:96px 0 120px!important}
+  .cs-rep .hero .wrap{max-width:1260px!important;display:flex!important;align-items:center!important;gap:96px!important;text-align:left!important}
+  .cs-rep .hero-text{flex:1 1 auto!important;min-width:0!important;text-align:left!important}
+  .cs-rep .hero .wrap > .hero-visual, .cs-rep .hero-visual{flex:0 0 560px!important;width:560px!important;max-width:560px!important;margin:0!important;align-self:center!important}
+  .cs-rep .hero h1{font-size:clamp(3.2rem,6vw,108px)!important;margin-bottom:18px!important;line-height:1.02!important}
+  .cs-rep .h-sub{max-width:54ch!important}
+}
+@media(max-width:480px){
+  .cs-rep .wrap{padding-left:20px!important;padding-right:20px!important}
+}
+@media (max-width:720px){
+  .cs-rep .before-pair, .cs-rep .after-pair, .cs-rep .research-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav class="topnav" id="topnav">
-  <a class="topnav__brand" href="../index.html"><svg class="topnav__logo" viewBox="0 0 64 64" width="30" height="30" role="img" aria-label="Home" xmlns="http://www.w3.org/2000/svg"><g transform="translate(3.552,44.667) scale(0.01692,-0.01692)"><path fill="currentColor" d="M1592 1308Q1592 1277 1582.5 1258.5Q1573 1240 1558.0 1229.5Q1543 1219 1525.5 1215.5Q1508 1212 1492 1212Q1456 1212 1427.5 1212.5Q1399 1213 1372.0 1214.0Q1345 1215 1315.5 1215.5Q1286 1216 1247 1216Q1222 1216 1189.5 1213.0Q1157 1210 1122.0 1205.0Q1087 1200 1052.0 1193.0Q1017 1186 987.0 1179.0Q957 1172 934.5 1164.5Q912 1157 902 1151Q895 1147 889.5 1128.5Q884 1110 884 1096L858 856Q843 716 829.5 580.5Q816 445 816 313Q816 295 819.0 261.5Q822 228 826.0 195.0Q830 162 833.0 137.0Q836 112 836 110Q836 86 828.5 61.0Q821 36 807.0 16.0Q793 -4 772.5 -16.5Q752 -29 726 -29Q709 -29 690.0 -20.5Q671 -12 653.0 2.5Q635 17 621.0 36.5Q607 56 599 78Q590 103 585.0 136.0Q580 169 577.0 203.5Q574 238 573.0 271.5Q572 305 572 332Q572 377 577.0 445.5Q582 514 589.5 592.5Q597 671 606.0 752.5Q615 834 623.5 905.5Q632 977 638.5 1030.0Q645 1083 647 1105Q615 1105 566.0 1099.5Q517 1094 460 1087Q388 1078 312.0 1070.0Q236 1062 168 1062Q154 1062 129.0 1064.5Q104 1067 80.0 1074.5Q56 1082 38.0 1095.5Q20 1109 20 1131Q18 1139 17.5 1141.5Q17 1144 17 1154Q17 1171 20.0 1187.0Q23 1203 31.0 1216.5Q39 1230 54.5 1240.0Q70 1250 94 1256Q150 1270 219.0 1277.5Q288 1285 357 1285Q370 1285 405.5 1289.0Q441 1293 488.5 1299.0Q536 1305 590.5 1312.5Q645 1320 694.5 1327.0Q744 1334 783.0 1340.0Q822 1346 840 1349Q905 1361 970.0 1375.0Q1035 1389 1100.0 1402.0Q1165 1415 1229.5 1423.5Q1294 1432 1357 1432Q1365 1432 1383.0 1431.5Q1401 1431 1424.0 1429.0Q1447 1427 1472.5 1423.0Q1498 1419 1520 1412Q1537 1407 1550.0 1394.0Q1563 1381 1572.5 1365.0Q1582 1349 1587.0 1333.5Q1592 1318 1592 1308ZM3345 1484Q3345 1469 3341.0 1461.5Q3337 1454 3331.0 1445.0Q3325 1436 3317.5 1422.0Q3310 1408 3304 1381Q3298 1353 3292.5 1332.0Q3287 1311 3283.0 1292.0Q3279 1273 3276.5 1253.5Q3274 1234 3274 1208Q3274 1163 3272.0 1119.0Q3270 1075 3266.0 1027.5Q3262 980 3256.5 928.5Q3251 877 3244 817Q3234 732 3224.0 637.0Q3214 542 3214 441Q3214 414 3214.0 378.0Q3214 342 3215.5 301.0Q3217 260 3219.5 217.5Q3222 175 3227 135Q3232 130 3235.5 128.5Q3239 127 3246 122Q3282 99 3298.0 82.0Q3314 65 3314 36Q3314 15 3301.0 -8.5Q3288 -32 3266.5 -52.0Q3245 -72 3217.5 -85.0Q3190 -98 3161 -98Q3103 -98 3065.0 -62.0Q3027 -26 3005.5 30.5Q2984 87 2975.5 156.5Q2967 226 2967 294V329Q2967 357 2972.5 414.0Q2978 471 2986.5 544.0Q2995 617 3005.5 699.0Q3016 781 3027.5 859.5Q3039 938 3049.5 1006.0Q3060 1074 3068 1118Q3056 1103 3034.5 1074.5Q3013 1046 2986.5 1011.0Q2960 976 2930.5 937.0Q2901 898 2873.5 860.5Q2846 823 2821.5 790.0Q2797 757 2780 734Q2742 682 2707.0 631.0Q2672 580 2634 526Q2631 523 2624.5 513.0Q2618 503 2610.0 490.5Q2602 478 2594.0 466.0Q2586 454 2580 448Q2510 354 2426 330Q2372 347 2339.5 367.0Q2307 387 2286.0 410.5Q2265 434 2250.5 462.0Q2236 490 2217 521Q2197 555 2181.0 583.0Q2165 611 2153 633Q2127 680 2104.0 732.0Q2081 784 2061 838Q2047 883 2036.5 915.0Q2026 947 2017.0 975.0Q2008 1003 1999.0 1032.0Q1990 1061 1979 1100Q1977 1093 1971.0 1066.0Q1965 1039 1956.0 999.0Q1947 959 1936.0 910.0Q1925 861 1914.0 810.0Q1903 759 1892.5 710.5Q1882 662 1873.5 623.0Q1865 584 1859.0 558.5Q1853 533 1852 528Q1832 448 1832 376Q1832 361 1831.0 329.5Q1830 298 1829.5 262.5Q1829 227 1828.0 194.0Q1827 161 1827 143Q1827 128 1818.0 106.0Q1809 84 1793.0 64.0Q1777 44 1756.0 29.5Q1735 15 1712 15Q1679 15 1655.0 18.0Q1631 21 1613.5 30.0Q1596 39 1583.0 56.0Q1570 73 1559 100Q1555 109 1553.0 119.5Q1551 130 1549.5 146.0Q1548 162 1547.5 185.5Q1547 209 1547 245Q1547 256 1554.5 289.5Q1562 323 1573.5 370.0Q1585 417 1599.0 471.5Q1613 526 1627.5 578.5Q1642 631 1654.5 677.5Q1667 724 1675 753Q1689 803 1704.0 857.0Q1719 911 1733.5 966.0Q1748 1021 1762.5 1075.5Q1777 1130 1789 1179Q1795 1229 1801 1252Q1807 1279 1817.0 1309.5Q1827 1340 1841.5 1365.5Q1856 1391 1876.5 1408.0Q1897 1425 1925 1425Q2006 1425 2054.5 1407.0Q2103 1389 2132.5 1351.5Q2162 1314 2179.0 1255.0Q2196 1196 2214 1113Q2219 1090 2226.0 1072.5Q2233 1055 2241 1034Q2275 930 2323.5 827.5Q2372 725 2436 625Q2462 646 2483.5 678.5Q2505 711 2531 758Q2554 799 2577.5 835.5Q2601 872 2631 905Q2642 917 2666.0 946.5Q2690 976 2721.5 1015.5Q2753 1055 2788.0 1099.0Q2823 1143 2854.0 1182.5Q2885 1222 2909.0 1252.5Q2933 1283 2943 1296Q2954 1309 2960.0 1316.5Q2966 1324 2975 1334Q2986 1350 3011.0 1383.0Q3036 1416 3063.5 1453.0Q3091 1490 3116.5 1523.5Q3142 1557 3154 1574Q3168 1595 3207 1595Q3228 1595 3252.0 1582.5Q3276 1570 3296.5 1552.0Q3317 1534 3330.5 1514.0Q3344 1494 3344 1479Z"/></g></svg></a>
   <div class="topnav__links">
+    <a class="topnav__link" href="../index.html">Home</a>
     <a class="topnav__link" href="../about.html">About</a>
     <div class="topnav__work">
-      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Work<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="topnav__work-btn" aria-haspopup="true" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="topnav__dropdown">
-        <a class="topnav__dd-item" href="../kova/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Kova</span><span class="topnav__dd-sub">Analytics intelligence</span></span></a>
-        <a class="topnav__dd-item" href="../arbor/arbor.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Arbor</span><span class="topnav__dd-sub">Data platform</span></span></a>
-        <a class="topnav__dd-item" href="../plio/plio.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Plio</span><span class="topnav__dd-sub">AI invoice pipeline</span></span></a>
-        <a class="topnav__dd-item" href="../design-system/index.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/evora-card.png" alt=""><span><span class="topnav__dd-name">Design system</span><span class="topnav__dd-sub">SIERA &middot; components &amp; tokens</span></span></a>
-        <a class="topnav__dd-item" href="../finning/finning.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/finning-card.png" alt=""><span><span class="topnav__dd-name">Finning</span><span class="topnav__dd-sub">Dealer portal</span></span></a>
-        <a class="topnav__dd-item" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" class="topnav__dd-thumb" src="../assets/logos/onbuy.png" alt=""><span><span class="topnav__dd-name">OnBuy</span><span class="topnav__dd-sub">Marketplace UX</span></span></a>
+        <a class="topnav__dd-item" href="../olx/olx.html" data-tiles="olx"><span class="topnav__dd-name">Dealer Permissions</span></a>
+        <a class="topnav__dd-item" href="../assistant/assistant.html" data-tiles="ai-assistant"><span class="topnav__dd-name">AI Assistant</span></a>
+        <a class="topnav__dd-item" href="../kova/index.html" data-tiles="esg-analytics-reporting"><span class="topnav__dd-name">Analytics and Reporting</span></a>
+        <a class="topnav__dd-item" href="../arbor/arbor.html" data-tiles="portfolio-data-model"><span class="topnav__dd-name">Restructuring Data Model</span></a>
+        <a class="topnav__dd-item" href="../finning/finning.html" data-tiles="finning"><span class="topnav__dd-name">Finance Calculator</span></a>
+        <a class="topnav__dd-item" href="../onbuy/onbuy.html" data-tiles="marketplace-checkout"><span class="topnav__dd-name">Marketplace Checkout</span></a>
+        <div class="topnav__tiles" aria-hidden="true"><div class="topnav__tilegroup" data-tiles="olx"><img src="../assets/work/olx/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/olx/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/olx/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="ai-assistant"><img src="../assets/work/ai-assistant/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/ai-assistant/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/ai-assistant/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="esg-analytics-reporting"><img src="../assets/work/esg-analytics-reporting/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/esg-analytics-reporting/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/esg-analytics-reporting/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="portfolio-data-model"><img src="../assets/work/portfolio-data-model/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/portfolio-data-model/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/portfolio-data-model/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="finning"><img src="../assets/work/finning/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/finning/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/finning/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div><div class="topnav__tilegroup" data-tiles="marketplace-checkout"><img src="../assets/work/marketplace-checkout/nav-1.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/marketplace-checkout/nav-2.webp" alt="" loading="lazy" decoding="async" width="260" height="260"><img src="../assets/work/marketplace-checkout/nav-3.webp" alt="" loading="lazy" decoding="async" width="260" height="260"></div></div>
       </div>
     </div>
-    <a class="topnav__cta" href="mailto:thomascmbanefo@gmail.com">Contact</a>
   </div>
   <button class="topnav__burger" id="topnavBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="topnav__mobile" id="topnavMobile">
   <a class="topnav__mlink" href="../index.html">Home</a>
   <a class="topnav__mlink" href="../about.html">About</a>
-  <a class="topnav__mlink" href="mailto:thomascmbanefo@gmail.com">Contact</a>
+  <button class="topnav__mwork" type="button" aria-expanded="false">Projects<svg viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="topnav__mgrid">
-  <a class="topnav__mproj" href="../kova/index.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Kova</span><span class="topnav__msub">Analytics intelligence</span></span></a>
-  <a class="topnav__mproj" href="../arbor/arbor.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Arbor</span><span class="topnav__msub">Data platform</span></span></a>
-  <a class="topnav__mproj" href="../plio/plio.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Plio</span><span class="topnav__msub">AI invoice pipeline</span></span></a>
-  <a class="topnav__mproj" href="../design-system/index.html"><img loading="lazy" decoding="async" src="../assets/logos/evora-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Design system</span><span class="topnav__msub">SIERA &middot; components &amp; tokens</span></span></a>
-  <a class="topnav__mproj" href="../finning/finning.html"><img loading="lazy" decoding="async" src="../assets/logos/finning-card.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">Finning</span><span class="topnav__msub">Dealer portal</span></span></a>
-  <a class="topnav__mproj" href="../onbuy/onbuy.html"><img loading="lazy" decoding="async" src="../assets/logos/onbuy.png" alt=""><span class="topnav__mtext"><span class="topnav__mname">OnBuy</span><span class="topnav__msub">Marketplace UX</span></span></a>
+  <a class="topnav__mproj" href="../olx/olx.html"><span class="topnav__mname">Dealer Permissions</span></a>
+  <a class="topnav__mproj" href="../assistant/assistant.html"><span class="topnav__mname">AI Assistant</span></a>
+  <a class="topnav__mproj" href="../kova/index.html"><span class="topnav__mname">Analytics and Reporting</span></a>
+  <a class="topnav__mproj" href="../arbor/arbor.html"><span class="topnav__mname">Restructuring Data Model</span></a>
+  <a class="topnav__mproj" href="../finning/finning.html"><span class="topnav__mname">Finance Calculator</span></a>
+  <a class="topnav__mproj" href="../onbuy/onbuy.html"><span class="topnav__mname">Marketplace Checkout</span></a>
   </div>
 </div>
 
@@ -900,1471 +1393,33 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
 <a class="nav-btn nav-btn--2" href="../index.html" aria-label="Home">HOME</a>
 <a class="nav-btn" href="../about.html" aria-label="About">ABOUT</a>
 
-<nav class="sectnav" aria-label="Section navigation">
-  <a href="#introduction" data-sec="introduction"><span class="lbl">Introduction</span><span class="dot-n"></span></a>
-  <a href="#research" data-sec="research"><span class="lbl">Research</span><span class="dot-n"></span></a>
-  <a href="#discovery" data-sec="discovery"><span class="lbl">Discovery</span><span class="dot-n"></span></a>
-  <a href="#features" data-sec="features"><span class="lbl">Product</span><span class="dot-n"></span></a>
-  <a href="#impact" data-sec="impact"><span class="lbl">Impact</span><span class="dot-n"></span></a>
-</nav>
-
 <!-- ══ HERO ══ -->
 <main id="main" tabindex="-1">
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-text"><h1>Kova</h1><p class="h-sub">A data-visualisation and analytics platform turning raw portfolio data into the answers fund managers were actually asking.</p></div>
-    <div class="hero-visual">
-      <div class="hv-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb" id="hcs-crumb">kova / Castlebrook Capital / overview</span></div>
-      <div class="hero-carousel" id="hcs">
-        <div class="hcs-track" id="hcs-track">
-          <div class="hcs-slide" data-label="01 · Data quality" data-crumb="kova / data quality / Castlebrook Capital" data-caption="DQ score split into coverage, completeness and automation, with a live breakdown per asset." data-dur="9400"><iframe src="motion/dq-rings.html?v=10" title="Data quality rings and meters" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-label="02 · Variance indicators" data-crumb="kova / data quality / variance" data-caption="" data-dur="8000"><iframe src="motion/variance.html?v=10" title="Variance indicators" loading="lazy" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-label="03 · Portfolio map" data-crumb="kova / portfolio / map" data-caption="Every asset across the UK, Ireland and Europe on a real basemap, colour-coded by carbon intensity." data-dur="10500"><iframe src="motion/asset-map.html?v=10" title="Portfolio asset map" loading="lazy" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-label="04 · Gap-filling" data-crumb="kova / data quality / gap-filling" data-caption="Missing readings get scanned, flagged, then filled with an estimate plus a confidence figure." data-dur="9500"><iframe src="motion/gap-filling.html?v=10" title="Gap-filling logic" loading="lazy" scrolling="no"></iframe></div>
-          <div class="hcs-slide" data-label="05 · Toast notifications" data-crumb="kova / dashboard / notifications" data-caption="Realtime alerts always keeping you in the loop." data-dur="9600"><iframe src="motion/toast.html?v=10" title="Toast notification stack" loading="lazy" scrolling="no"></iframe></div>
-        </div>
-        <div class="hcs-dots" id="hcs-dots"></div>
-      </div>
-      <p class="hcs-caption" id="hcs-caption"></p>
+<!-- ══ CASE STUDY: main view (six blocks). The long page sits below in Full process. ══ -->
+<article class="cs">
+  <header class="cs-hero">
+    <div class="cs-wrap">
+      <h1 class="cs-hero__title">Analytics and Reporting</h1>
+      <p class="cs-hero__summary">Evora Global</p>
+      <dl class="cs-meta"><div><dt>Role</dt><dd>Product Designer, then Senior Product Designer</dd></div><div><dt>Year</dt><dd>2023 to 2025</dd></div><div><dt>Team</dt><dd>UX researchers, product managers, engineers and reporting consultants</dd></div><div><dt>Tags</dt><dd>Data visualisation, Data quality, Workflow design, B2B SaaS</dd></div></dl>
+      <div class="cs-plate"><img src="../assets/home-projects/esg-analytics-reporting.webp" alt="Glass office towers seen from street level." width="1280" height="720" fetchpriority="high" decoding="async"></div>
     </div>
+  </header>
+  <div class="cs-wrap">
+    <section class="cs-block" aria-labelledby="cs-context"><h2 id="cs-context">Context</h2><p>The platform stored ESG data well but interpreted it poorly. Fund managers could see figures, but not answer the questions that mattered: are we on track, which asset is the problem, can I trust this number? Reporting lived outside the product entirely, drafted in slides, signed off by email and shared as PDFs that drifted out of sync with the live data.</p></section>
+    <section class="cs-block" aria-labelledby="cs-approach"><h2 id="cs-approach">Approach</h2><p>I led design for both halves, analytics first and reporting second, because a report is only as good as the data under it. Interviews with fund managers, consultants and analysts were affinity-mapped into six problem areas. Rather than run six workstreams, I sequenced them into four phases by dependency.</p><p>For analytics, that meant drill-downs by scope, sector and asset, and a new data quality module. For reporting, I modelled the workflow before the screens: every report gets a state, a named reviewer and an audit trail.</p></section>
+    <section class="cs-block cs-gallery-block" aria-label="Gallery"><div class="cs-gallery"><figure><img src="../assets/work/esg-analytics-reporting/g1.webp" alt="The analytics dashboard on a laptop and the generate report flow beside it." loading="lazy" decoding="async" width="2880" height="1500"><figcaption>The asset dashboard, with report generation working from the same live data.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/g2.webp" alt="The chart settings drawer with like-for-like and gap-filled options highlighted." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Chart settings: compare like for like, with gap-filled data marked.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/g3.webp" alt="Reviewers and their sign-off status, above the audit trail." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Reviewers sign off in turn, and every change lands in the audit trail.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/f-dq-score.webp" alt="Coverage, completeness and automation rings above a table of assets." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Coverage, completeness and automation scored apart, then broken down by asset.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/f-gap-filling.webp" alt="A monthly chart with three estimated months and the proposed estimate." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Each gap gets a named method and a confidence level, labelled everywhere.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/f-set-target.webp" alt="Three ways to set a target above a pathway preview chart." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Three ways to set a target, with the pathway shown before saving.</figcaption></figure><figure><img src="../assets/work/esg-analytics-reporting/f-share.webp" alt="A share dialog with people, BI tools and a revocable link." loading="lazy" decoding="async" width="1800" height="1200"><figcaption>Approved reports go to named people, to Power BI, or as a revocable link.</figcaption></figure></div><p class="cs-gallery__note">Rebuilt concept, not the shipped interface.</p></section>
+    <section class="cs-block" aria-labelledby="cs-decisions"><h2 id="cs-decisions">Key decisions</h2><p>Coverage and completeness are shown apart, because a meter can report every month and still be mostly estimated, and one blended score hid that. Quality sits beside every number, so each figure shows how much of it is actual, estimated or missing. Approval works as a lifecycle, moving from draft to in review to approved or rejected, with a named reviewer at each step. One thing we cut was one-click report generation: the AI writes a draft, a consultant edits it and a senior approves it.</p></section>
+    <section class="cs-block" aria-labelledby="cs-outcome"><h2 id="cs-outcome">Outcome</h2><p>Managers could spot a problem, trace it to the meter behind it and see how far to trust the figure, without leaving the platform. Reports became tracked items with a state, a named reviewer and a visible history. Approved reports could be shared as a PDF, a revocable link or straight into Power BI.</p><p>The platform moved from storing data to answering questions about it, and reporting moved out of email threads and into the product.</p></section>
   </div>
-</section>
+</article>
 
-<!-- ══ OVERVIEW ══ -->
-<section class="overview" id="introduction">
-  <div class="wrap">
-    <div class="ov-grid">
-      <div class="ov-meta">
-        <div class="ov-item"><div class="l">Read time</div><div class="v">~7 min read</div></div>
-        <div class="ov-item"><div class="l">Company</div><div class="v">Evora Global</div></div>
-        <div class="ov-item"><div class="l">Product</div><div class="v">SIERA</div></div>
-        <div class="ov-item"><div class="l">Timeline</div><div class="v">2023 – 2024</div></div>
-        <div class="ov-item"><div class="l">Role</div><div class="v">Lead User Experience Designer</div></div>
-        <div class="ov-item"><div class="l">Team</div><div class="v team">Design lead (me)
-1 UX Researcher
-2 Product owners
-3–4 Engineers</div></div>
-      </div>
-      <div class="ov-brief">
-        <h2>The brief</h2>
-        <p>A customer fund held energy and carbon data across 32 assets, but the analytics layer surfaced numbers without meaning. Fund managers could see figures, yet couldn't answer the questions that mattered: are we on track, which asset is the problem, can I even trust this number?</p>
-        <p>My job was to redesign the analytics layer end to end, and to design and ship a 0→1 intelligence module on top of it, so the platform moved from a passive data repository to something that actively told users what was going on.</p>
-        <p>The sharpest call came early. Eight interviews mapped into six root-cause categories, but six parallel workstreams would have been six things half-finished, so I sequenced them into four deliverable phases on dependency rather than on how loud each complaint was. The two categories that couldn't earn a phase of their own folded into the work they were closest to.</p>
-        <div class="phase-note">Kova was the second phase of a larger product effort. The first phase fixed a broken underlying data model; only once that foundation was sound could a trustworthy analytics layer be built on top. You can't build intelligence on data you don't trust.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<details class="cs-process" id="process">
+<summary><span>Full process</span></summary>
 
-<!-- ══ EARLY STATS ══ -->
-<section class="early-stats-section">
-  <div class="wrap">
-    <div class="early-stats">
-      <div class="est"><div class="ev">8 of 12</div><div class="el">Fund managers who stopped exporting to Power BI within a quarter of launch</div></div>
-      <div class="est"><div class="ev">0→1</div><div class="el">Data quality module, a net new capability the platform had never had</div></div>
-      <div class="est"><div class="ev">4</div><div class="el">Analytics modules shipped across phased delivery</div></div>
-      <div class="est"><div class="ev">50%+</div><div class="el">Fewer review rounds after four design principles were agreed before any wireframe began</div></div>
-    </div>
-  </div>
-</section>
+<div class="fp"><section class="fp-sec" id="fp-problem"><h2 class="fp-title">Problem</h2><p>The platform stored ESG data well but interpreted it poorly, and the reports built from that data lived outside it.</p><div class="fp-tags"><div class="fp-card"><span class="pb-tag">Where it hurt</span><p>Users exported raw figures into Power BI and spreadsheets to make sense of them. Reports were drafted in PowerPoint from Excel exports, signed off over email and shared as PDFs that drifted out of sync with the live data.</p></div><div class="fp-card"><span class="pb-tag">Who felt it</span><p>Fund managers and asset owners who needed to know what was wrong, the analysts maintaining the data behind them, and reporting consultants running several reports across frameworks with no shared status or named reviewer.</p></div><div class="fp-card"><span class="pb-tag">The end goal</span><p>Data people could act on, data quality they could see, and reports as first-class objects with a state, an owner and an audit trail.</p></div></div><div class="fp-pair"><figure class="fp-fig fp-before"><img src="assets/before/kova-before-old-dashboard.webp" alt="The old dashboard: figures with no direction." loading="lazy" decoding="async"><figcaption>What fund managers inherited: data without direction.</figcaption></figure><figure class="fp-fig fp-before"><img src="../verde/assets/before/verde-before-documents.webp" alt="The old reports area: a list of uploaded files." loading="lazy" decoding="async"><figcaption>A report was a file, with no state, owner or trail.</figcaption></figure></div></section><section class="fp-sec" id="fp-research"><h2 class="fp-title">Research</h2><p>I ran structured interviews and review sessions with fund managers, ESG managers and sustainability consultants, and shadowed live report cycles from brief to disclosure. Every session was tagged in Dovetail but listened back to in full, because the hedges that shape a real insight rarely survive a summary.</p><h3 class="fp-h">Mapping the investigation journey</h3><p>I mapped the experience across user types in four phases: spotting a problem, analysing it, drilling down, and what comes next. Every note on the map is something a user needed and couldn't do.</p><figure class="fp-fig fp-wide"><img src="assets/Experience map.webp" alt="An experience map of sticky notes under four phases: spotting problems, analysing data, drilling down and future areas." loading="lazy" decoding="async"><figcaption>Experience map: what users needed at each phase of an investigation.</figcaption></figure><blockquote class="fp-quote"><p>&ldquo;I'm looking at a wall of numbers with nothing telling me where to start.&rdquo;</p><cite>Asset manager, customer fund</cite></blockquote><p>The swim-lane showed what happened when a consultant spotted a problem. A simple data question became a chain of escalations across three roles, with a spreadsheet at every broken step.</p><figure class="fp-fig fp-wide"><img src="assets/User journey - swimlanes.webp" alt="A swim-lane across consultant, fund manager and data team, with high-friction steps highlighted." loading="lazy" decoding="async"><figcaption>Where a simple query became an escalation. High-friction steps are in orange.</figcaption></figure><blockquote class="fp-quote"><p>&ldquo;I have to ping three people on Slack to find out if this report shipped. And then I still have to open the PDF to check the version.&rdquo;</p><cite>Reporting consultant, customer fund</cite></blockquote></section><section class="fp-sec" id="fp-discovery"><h2 class="fp-title">Discovery</h2><p>The interviews were affinity-mapped into root-cause categories, and each one was reframed as a How Might We to set the brief with product and engineering. Six categories became four phases, sequenced on dependency rather than on how loud each complaint was: performance first, then dashboards, then data quality, then site-wide fixes.</p><figure class="fp-fig fp-wide"><img src="assets/roadmap.webp" alt="A roadmap of sticky notes: columns for home page, performance, dashboard, data quality and site-wide, rows for four phases." loading="lazy" decoding="async"><figcaption>Roadmap: each column a data domain, each row a phase.</figcaption></figure><h3 class="fp-h">The report as an object, drawn before any wireframe</h3><p>For reporting, I modelled the workflow before the screens. The flowchart traced every path a consultant or the reporting team took, from opening the reports section to disclosure, and showed where a report left the platform for Microsoft tools or Power BI and came back as a file. Draft, in review, approved and rejected became states with a named reviewer, and that lifecycle was the contract every screen had to honour.</p><figure class="fp-fig fp-tall"><img src="../verde/assets/Reporting - Desired Flowchart 1.webp" alt="A flowchart from logging in to disclosing a report, through view, edit, download, upload, format checks and final checks." loading="lazy" decoding="async"><figcaption>Reporting flow: every path from the reports section to disclosure.</figcaption></figure><h3 class="fp-h">One metric set, every framework</h3><p>GRESB, EPRA, INREV and SFDR ask for the same numbers in different shapes. A report type per framework would have rebuilt the spreadsheet problem inside the platform, so the metric set was defined once and every framework reads from it. The AI drafts a first pass from those validated numbers; the consultant edits, decides and signs off, and every edit is logged.</p></section></div>
+</details>
 
-<!-- ══ PROBLEM ══ -->
-<section class="problem" id="problem">
-  <div class="wrap">
-    <div class="sec-label">Problem</div>
-    <div class="prob-grid">
-      <div class="prob-block">
-        <div class="pb-tag">Where it hurt</div>
-        <p>The platform stored ESG data well but interpreted it poorly. Users were exporting raw figures into Power BI and spreadsheets just to make sense of them, the product wasn't doing the thinking it promised to.</p>
-      </div>
-      <div class="prob-block">
-        <div class="pb-tag">Who felt it</div>
-        <p>Fund managers and asset owners who needed diagnostic clarity, plus the ESG analysts maintaining the data behind them. Seven distinct role types surfaced in research, each reading the same data for different decisions.</p>
-      </div>
-      <div class="prob-block">
-        <div class="pb-tag">The end goal</div>
-        <p>Turn raw ESG data into signals people could act on. Make data quality something users could see and trust, and surface the one asset or anomaly that actually needed attention.</p>
-      </div>
-    </div>
-  <div class="before-pair">
-  <figure>
-    <img src="assets/before/kova-before-old-dashboard.webp"
-         alt="Old ESG dashboard showing raw data with no variance indicators, no targets and no data quality signal"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">What fund managers inherited, data without direction</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/before/kova-before-data-entry.webp"
-         alt="Manual data entry process with no validation, no quality scoring and no audit trail"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">Data entry with no quality gate</figcaption>
-  </figure>
-</div>
-  </div>
-</section>
-
-<!-- ══ PROCESS ══ -->
-<section class="research" id="research">
-  <div class="wrap">
-    <div class="sec-label">Research</div>
-    <h2 class="sec-h">Users knew the questions, the platform couldn't answer them</h2>
-    <p class="sec-sub">Structured interviews and annotated review sessions with fund managers, ESG managers and sustainability consultants, every session tagged and themed in Dovetail, but listened back to in full because the hedges that shape a real insight rarely survive a summary.</p>
-
-    <div class="research-grid">
-  <figure>
-    <img src="assets/before/kova-before-metrics-no-charts.webp"
-         alt="Wall of performance numbers with no trend charts, no variance and no benchmark context"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">No variance, no benchmark</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/before/kova-before-coverage-undefined.webp"
-         alt="Single composite DQ percentage score hiding two independent failure modes"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">DQ%, one number, two problems hidden</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/before/kova-before-whos-responsible.webp"
-         alt="Procurement and meter access responsibility chased by email with nothing tracked in the platform"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">Responsibility chased by email</figcaption>
-  </figure>
-  <figure>
-    <img src="assets/before/kova-before-asset-list-no-filter.webp"
-         alt="Asset list with over a thousand items and no search, filter, map or attribution"
-         class="before-img" loading="lazy">
-    <figcaption class="img-caption">Assets with no way to navigate them</figcaption>
-  </figure>
-</div>
-
-    <div class="three-q">
-      <div class="tq"><div class="tq-n">Q1</div><p>When something looks off, why do people have to leave the platform to figure out why?</p></div>
-      <div class="tq"><div class="tq-n">Q2</div><p>Why does data quality only show up after the report's already wrong?</p></div>
-      <div class="tq"><div class="tq-n">Q3</div><p>What's the shortest path from a number on screen to the meter behind it?</p></div>
-    </div>
-
-    <div class="r-block">
-      <h3 class="r-h">Mapping the experience</h3>
-      <p class="r-p">I mapped the full experience across user types, the fund manager reading portfolio performance, the consultant diagnosing a meter issue, the data admin working out why the numbers looked wrong. Organised across four phases, spotting problems, analysing, drilling down, and what comes next, the map surfaced exactly where the platform fell short at each stage.</p>
-      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/Experience map.webp" alt="Experience map across the investigation journey, four phases"><figcaption>Experience map · four phases of the investigation journey</figcaption></figure>
-    </div>
-
-    <div class="r-block">
-      <p class="r-p">The swim-lane traced what actually happened when a fund manager spotted a problem, three roles across five phases, and how a simple data query turned into a multi-person escalation chain.</p>
-      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/User journey - swimlanes.webp" alt="Swim-lane journey showing the escalation chain and bottlenecks"><figcaption>Swim-lane journey · where a simple query became an escalation</figcaption></figure>
-    </div>
-
-    <div class="r-block">
-      <h3 class="r-h">What we heard on data visualisation</h3>
-      <p class="r-p">Users could navigate the platform but consistently struggled to interpret what they saw. Charts showed values without context, no benchmark comparison, no trend direction, no clear signal about what to do next. The same issue surfaced again and again.</p>
-      <blockquote class="pullquote">"I'm looking at a wall of numbers with nothing telling me where to start."<cite>Asset Manager, customer fund</cite></blockquote>
-      <p class="r-p">At fund level, users wanted breakdowns by floor area, sector and landlord/tenant split without clicking through multiple pages. At asset level, they wanted consistency, the same metrics at the same depth. A configurable view, surfacing the most relevant data first, came up repeatedly.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ DISCOVERY / DEFINE ══ -->
-<section class="discovery" id="discovery">
-  <div class="wrap">
-    <div class="sec-label">Discovery</div>
-    <h2 class="sec-h">A redesigned analytics layer, and a new intelligence module beneath it</h2>
-    <p class="sec-sub">Eight interview sessions affinity-mapped into six problem categories. Dovetail's AI clustered the initial themes; I interrogated, collapsed and re-labelled them until the groupings reflected what I'd actually heard, then reframed each root cause as a How-Might-We to set the brief with product and engineering.</p>
-
-    <div class="r-block">
-      <h3 class="r-h">Phased roadmap, ship incrementally, validate between phases</h3>
-      <p class="r-p">The work split into four phases, each tackling a different data domain, performance, dashboards, data quality, and site-wide improvements. That let us ship incrementally and validate with users between phases rather than redesigning everything at once.</p>
-      <figure class="r-fig"><img loading="lazy" decoding="async" src="assets/roadmap.webp" alt="Roadmap diagram showing the four phases of work"><figcaption>Phased roadmap across data visualisation and data quality</figcaption></figure>
-    </div>
-
-    <div class="r-block">
-      <h3 class="r-h">Six problem categories, four phases, one defensible cut</h3>
-      <p class="r-p">The affinity map gave me six root-cause categories. Six parallel workstreams would have been six things half-finished, so I collapsed them into four phases by sequencing on dependency, not on how loud each complaint was. Two categories that couldn't earn a phase of their own folded into the work they were closest to, rather than living on as a backlog nobody owned.</p>
-
-      <div class="dv-map">
-        <div>
-          <div class="dv-col-h">6 problem categories</div>
-          <div class="dv-cats">
-            <div class="dv-chip"><span class="dv-dot"></span>Hard to read performance</div>
-            <div class="dv-chip"><span class="dv-dot"></span>Dashboard answers no question</div>
-            <div class="dv-chip"><span class="dv-dot"></span>Data quality is invisible</div>
-            <div class="dv-chip"><span class="dv-dot"></span>Drill-down loses context</div>
-            <div class="dv-chip folded"><span class="dv-dot"></span>Inconsistent metrics<span class="dv-fold-tag">folded in</span></div>
-            <div class="dv-chip folded"><span class="dv-dot"></span>Slow, scattered navigation<span class="dv-fold-tag">folded in</span></div>
-          </div>
-        </div>
-        <div class="dv-arrow">
-          <div class="dv-six-four">6 → 4</div>
-          <div class="dv-rule">collapsed on dependency, not complaint volume</div>
-        </div>
-        <div>
-          <div class="dv-col-h">4 sequenced phases</div>
-          <div class="dv-phases">
-            <div class="dv-phase"><div class="dv-phase-n">Performance</div><div class="dv-phase-d">What users touched every day, fixed first.</div></div>
-            <div class="dv-phase"><div class="dv-phase-n">Dashboards</div><div class="dv-phase-d">Make every tile answer a question.</div></div>
-            <div class="dv-phase seq"><div class="dv-phase-n">Data quality</div><div class="dv-phase-d">Trust had to be visible before anyone acts on a signal.</div></div>
-            <div class="dv-phase"><div class="dv-phase-n">Site-wide</div><div class="dv-phase-d">Only paid off once the rest was in place.</div></div>
-          </div>
-        </div>
-      </div>
-      <p class="dv-note">The defensible cut: the two folded-in categories collapsed because they depended on the four phases above, not because they were quieter. Dependency ordered the roadmap, complaint volume did not.</p>
-    </div>
-
-    <div class="r-block">
-      <h3 class="r-h">The intelligence module, sequenced last on purpose</h3>
-      <p class="r-p">Beneath the analytics layer sat a 0→1 intelligence module: the part that did the thinking the product had been promising, scanning the portfolio for the one asset or anomaly that needed attention and saying so. I sequenced it after data quality on purpose. Intelligence pointed at a number nobody trusts is worse than none, it just makes the wrong figure louder.</p>
-
-      <div class="dv-seq">
-        <div class="dv-layer top">
-          <div class="dv-layer-tag">Layer on top</div>
-          <div class="dv-layer-t">Intelligence module · 0→1</div>
-          <div class="dv-layer-p">Surfaces the one asset or anomaly that needs attention, instead of leaving the user to read it out of a chart.</div>
-        </div>
-        <div class="dv-seq-link"><span class="dv-line"></span><span>only trustworthy if it sits on</span><span class="dv-line"></span></div>
-        <div class="dv-layer foundation">
-          <div class="dv-layer-tag">Foundation beneath</div>
-          <div class="dv-layer-t">Data quality module</div>
-          <div class="dv-layer-p">Coverage and completeness made visible, so a surfaced signal points at a number a user can actually trust.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ WIREFRAMES ══ -->
-<section class="wireframes" id="wireframes">
-  <div class="wrap">
-    <div class="sec-label">Wireframes</div>
-    <h2 class="sec-h">Wireframing the analytics surface</h2>
-    <p class="sec-sub">How the dashboard, drill-downs and target-setting flows took shape before the final UI.</p>
-
-    <div class="pwf-tabs-host" id="pwf-host">
-      <div class="pwf-tabs" id="pwf-tabs" role="tablist">
-        <button class="pwf-tab active" data-target="0" role="tab" aria-selected="true">Framing</button>
-        <button class="pwf-tab" data-target="1" role="tab" aria-selected="false">Fund dashboard</button>
-        <button class="pwf-tab" data-target="2" role="tab" aria-selected="false">Data quality</button>
-        <button class="pwf-tab" data-target="3" role="tab" aria-selected="false">Targets</button>
-        <button class="pwf-tab" data-target="4" role="tab" aria-selected="false">Drill-down</button>
-        <button class="pwf-tab" data-target="5" role="tab" aria-selected="false">Tradeoffs</button>
-      </div>
-
-    <!-- ── 01 · Framing ── -->
-    <div class="pwf active">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">The mess we walked into.</h3>
-          <p class="s-sub">The platform <em>had</em> the data. It just couldn't answer any of the questions a fund manager actually asks on a Tuesday morning. So before pushing pixels we mapped users, pain, and a single How-Might-We we could test every screen against.</p>
-        </div>
-      </div>
-
-      <div class="iters cols-2" style="margin-bottom:20px;">
-
-        <!-- as-is wireframe of the old screen, annotated -->
-        <div class="board tilt-l">
-          <div class="board-hdr">
-            <div><div class="b-version">v0 · as-is</div><div class="b-name">What we inherited</div></div>
-            <div class="b-tag">screen audit</div>
-          </div>
-          <div class="canvas tall" style="padding:14px;">
-            <div class="sk-row" style="margin-bottom:10px;">
-              <div class="sk-box" style="width:80px;">logo</div>
-              <div class="sk-box" style="flex:1;">tabs · tabs · tabs · tabs · tabs · tabs</div>
-              <div class="sk-box" style="width:60px;">user</div>
-            </div>
-            <div class="sk-box" style="margin-bottom:8px; padding:10px;">
-              <div class="sk-label">carbon &middot; gas &middot; electricity &middot; water (all on one)</div>
-              <div style="position:relative;height:90px;margin-top:4px;">
-                <svg viewBox="0 0 300 80" preserveAspectRatio="none" style="width:100%;height:100%;">
-                  <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,40 30,35 60,55 90,30 120,42 150,60 180,32 210,48 240,38 270,55 300,30"/>
-                  <polyline fill="none" stroke="#a8a195" stroke-width="2" points="0,60 30,45 60,40 90,55 120,30 150,42 180,55 210,40 240,52 270,38 300,46"/>
-                  <polyline fill="none" stroke="#c2bcb0" stroke-width="2" points="0,20 30,50 60,28 90,45 120,55 150,32 180,48 210,28 240,42 270,52 300,35"/>
-                  <polyline fill="none" stroke="#c6892b" stroke-width="2" points="0,72 30,30 60,62 90,40 120,68 150,28 180,58 210,55 240,30 270,62 300,40"/>
-                </svg>
-              </div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-              <div class="sk-box" style="flex:1;height:48px;"><div class="sk-line"></div><div class="sk-line thin" style="margin-top:4px;width:60%;"></div></div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box dashed" style="flex:1;height:38px;">table · 12 cols · no sort</div>
-            </div>
-
-            <div class="callout pink" style="top:90px; right:8px; transform:rotate(2deg);">
-              4 utilities on one chart, nobody can read it
-            </div>
-            <div class="callout" style="bottom:90px; left:8px; transform:rotate(-2deg);">
-              KPI tiles but no <b>variance</b>, no <b>target</b>, no <b>data quality</b>
-            </div>
-            <div class="callout amber" style="bottom:8px; right:8px; transform:rotate(1.5deg);">
-              "table of doom", no way to drill in
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">Charts displayed values without context, no benchmark, no trend direction.</div>
-            <div class="b-note bad">Data quality lived 4 clicks away, invisible to the people who needed it.</div>
-            <div class="b-note q">User quote: <i>"there is too much going on… no way to know what to look at first."</i></div>
-          </div>
-        </div>
-
-        <!-- User types diagram -->
-        <div class="board tilt-r">
-          <div class="board-hdr">
-            <div><div class="b-version">v0 · users</div><div class="b-name">Three people. Three loops.</div></div>
-            <div class="b-tag">user types</div>
-          </div>
-          <div class="canvas tall" style="padding:16px;overflow:visible;">
-            <div class="kp-list">
-              <div class="kp-row">
-                <div class="kp-av">FM</div>
-                <div class="kp-who">
-                  <div class="kp-nm">Fund manager</div>
-                  <div class="kp-qt">"Is my portfolio on track?"</div>
-                  <span class="kp-need">NEEDS · <b>descriptive analytics</b></span>
-                </div>
-              </div>
-              <div class="kp-row">
-                <div class="kp-av">ESG</div>
-                <div class="kp-who">
-                  <div class="kp-nm">ESG consultant</div>
-                  <div class="kp-qt">"Can I trust this number?"</div>
-                  <span class="kp-need">NEEDS · <b>diagnostic tools</b></span>
-                </div>
-              </div>
-              <div class="kp-row">
-                <div class="kp-av">ADM</div>
-                <div class="kp-who">
-                  <div class="kp-nm">Asset / data admin</div>
-                  <div class="kp-qt">"Why is this meter broken?"</div>
-                  <span class="kp-need">NEEDS · <b>data quality + fix path</b></span>
-                </div>
-              </div>
-              <div class="kp-foot">Three jobs, but they all hit the <b>same portfolio data</b>, which pushed us toward "same metrics at every level".</div>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note">Different jobs-to-be-done, but they all hit the <b>same</b> portfolio data. Pushed us toward "same metrics at every level".</div>
-            <div class="b-note">Big realization: the consultant escalation was a <b>tooling gap</b>, not a service gap. We could give it back to the manager.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Framing device: a single How-Might-We thesis -->
-      <h3 style="font:600 24px/1.2 var(--serif);color:var(--ink);margin:24px 0 8px;letter-spacing:-.01em;">It all reduced to one How-Might-We.</h3>
-      <p style="font:400 15px/1.6 var(--sans);color:var(--ink-2);margin-bottom:18px;">From eight interviews and a Dovetail-tagged synthesis. We taped one question to the wall, then every screen had to answer to it, tested three ways.</p>
-
-      <div class="kv-thesis">
-        <span class="kv-thesis-tag">The how-might-we</span>
-        <p class="kv-thesis-q">How might we hand a fund manager the <em>whole investigation loop</em>, spot it, diagnose it, trust it, without ever emailing a consultant?</p>
-      </div>
-
-      <div class="lane-notes">
-        <div>
-          <h4><small>Decision</small>The platform should do the consultant's job.</h4>
-          <p>Every red box above was an opportunity for tooling to remove a handoff. We re-scoped the brief from "redesign the dashboard" to "give the fund manager the investigation loop end-to-end".</p>
-          <p>That broke the work cleanly into two streams: <b>data viz</b> (Spot + Investigate) and a new <b>data quality module</b> (Verify + Resolve).</p>
-        </div>
-        <div>
-          <h4><small>Tradeoff</small>Slower phase 1 to save phase 3.</h4>
-          <p>We could have shipped a prettier dashboard in 4 weeks. Instead we spent the first 3 weeks on <b>business logic</b>: L/T scope rules, target-setting decision tree, coverage-vs-completeness definitions.</p>
-          <p>Painful to defend, but it meant the dashboard didn't get redesigned twice when the rules changed.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 02 · Fund dashboard ── -->
-    <div class="pwf">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">From "wall of data" to "answer a question".</h3>
-          <p class="s-sub">Four passes. The first overcorrected by deleting too much. The second overcorrected by adding it all back. The fourth one earned its place by making every tile answer "should I be worried, and where do I click?"</p>
-        </div>
-      </div>
-
-      <div class="iters cols-4">
-
-        <!-- v1: kill it all -->
-        <div class="board killed tilt-l">
-          <div class="board-hdr">
-            <div><div class="b-version">v1</div><div class="b-name">Just the totals</div></div>
-            <div class="b-tag">over-correct</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="margin-bottom:10px;">
-              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
-                <div class="sk-label">carbon</div>
-                <div class="sk-val">44.6</div>
-                <div class="sk-cap">kgCO₂e / m²</div>
-              </div>
-              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
-                <div class="sk-label">elec</div>
-                <div class="sk-val">131</div>
-                <div class="sk-cap">kWh / m²</div>
-              </div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
-                <div class="sk-label">gas</div>
-                <div class="sk-val">18.4</div>
-                <div class="sk-cap">kWh / m²</div>
-              </div>
-              <div class="sk-box" style="flex:1;text-align:center;padding:14px 4px;">
-                <div class="sk-label">water</div>
-                <div class="sk-val">0.84</div>
-                <div class="sk-cap">m³ / m²</div>
-              </div>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">User in test: "good… but compared to what?"</div>
-            <div class="b-note bad">No variance, no target, no DQ, useless for decisions.</div>
-          </div>
-        </div>
-
-        <!-- v2: KPI + sparkline -->
-        <div class="board dim">
-          <div class="board-hdr">
-            <div><div class="b-version">v2</div><div class="b-name">KPIs + variance</div></div>
-            <div class="b-tag">getting warmer</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="margin-bottom:8px;">
-              <div class="sk-box" style="flex:1;padding:10px;">
-                <div class="sk-label">carbon</div>
-                <div class="sk-val sm">44.6 <span style="color:var(--strike);font-size:12px;">↑11%</span></div>
-                <div class="sk-spark"><span style="height:30%"></span><span style="height:50%"></span><span style="height:40%"></span><span class="hi" style="height:70%"></span></div>
-              </div>
-              <div class="sk-box" style="flex:1;padding:10px;">
-                <div class="sk-label">elec</div>
-                <div class="sk-val sm">131 <span style="color:var(--good);font-size:12px;">↓14%</span></div>
-                <div class="sk-spark g"><span style="height:60%"></span><span style="height:50%"></span><span style="height:40%"></span><span class="hi" style="height:30%"></span></div>
-              </div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box" style="flex:1;padding:10px;">
-                <div class="sk-label">gas</div>
-                <div class="sk-val sm">18.4 <span style="color:var(--good);font-size:12px;">↓9%</span></div>
-                <div class="sk-spark g"><span style="height:55%"></span><span style="height:48%"></span><span style="height:40%"></span><span class="hi" style="height:32%"></span></div>
-              </div>
-              <div class="sk-box" style="flex:1;padding:10px;">
-                <div class="sk-label">water</div>
-                <div class="sk-val sm">0.84 <span style="color:var(--strike);font-size:12px;">↑9%</span></div>
-                <div class="sk-spark"><span style="height:30%"></span><span style="height:45%"></span><span style="height:38%"></span><span class="hi" style="height:60%"></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Variance arrows passed the hallway test.</div>
-            <div class="b-note bad">Still no <b>trend over years</b>, managers want 4yr context.</div>
-            <div class="b-note q">Where does data quality go?</div>
-          </div>
-        </div>
-
-        <!-- v3: KPIs + trend + ranked -->
-        <div class="board dim tilt-r">
-          <div class="board-hdr">
-            <div><div class="b-version">v3</div><div class="b-name">+ trend &amp; ranking</div></div>
-            <div class="b-tag">narrative</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="gap:3px;margin-bottom:6px;">
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">47</div></div>
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">131</div></div>
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">GAS</div><div class="sk-val sm">18</div></div>
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">H₂O</div><div class="sk-val sm">.84</div></div>
-            </div>
-            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
-              <div class="sk-cap">CARBON · 5yr trend</div>
-              <svg viewBox="0 0 200 56" preserveAspectRatio="none" style="width:100%;height:50px;">
-                <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,12 50,20 100,28 150,38 200,44"/>
-                <polyline fill="none" stroke="#c2bcb0" stroke-width="1.5" stroke-dasharray="3 3" points="0,14 50,22 100,30 150,40 200,42"/>
-                <circle cx="200" cy="44" r="3" fill="#8c8175"/>
-              </svg>
-            </div>
-            <div class="sk-box" style="padding:8px;">
-              <div class="sk-cap">ASSET RANKING</div>
-              <div style="display:flex;gap:2px;align-items:flex-end;height:36px;margin-top:6px;">
-                <div style="flex:1;height:40%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:52%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:60%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:72%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:84%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:96%;background:#d99891;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:70%;background:#b6c9bf;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:88%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Ranked bars surface "which asset is dragging us down" instantly.</div>
-            <div class="b-note good">Target dashed line gives every value a yardstick.</div>
-            <div class="b-note bad">DQ still buried, testers ignored it.</div>
-          </div>
-        </div>
-
-        <!-- v4 final -->
-        <div class="board win">
-          <div class="board-hdr">
-            <div><div class="b-version">v4 · final</div><div class="b-name">DQ joins the KPI row</div></div>
-            <div class="b-tag">shipped</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="gap:3px;margin-bottom:6px;">
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">47</div><div style="font-size:8px;color:var(--strike);">↑11%</div></div>
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">131</div><div style="font-size:8px;color:var(--good);">↓14%</div></div>
-              <div class="sk-box" style="flex:1;padding:5px 6px;"><div class="sk-cap">GAS</div><div class="sk-val sm">18</div><div style="font-size:8px;color:var(--good);">↓9%</div></div>
-              <div class="sk-box accent" style="flex:1;padding:5px 6px;"><div class="sk-cap" style="color:var(--accent);">DQ</div><div class="sk-val sm accent">72%</div><div style="font-size:8px;color:var(--accent);">portfolio</div></div>
-            </div>
-            <div class="sk-row" style="gap:6px;margin-bottom:6px;">
-              <div class="sk-box" style="flex:1.6;padding:8px;">
-                <div class="sk-cap">CARBON · 5yr · vs target</div>
-                <svg viewBox="0 0 180 48" preserveAspectRatio="none" style="width:100%;height:42px;">
-                  <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,8 45,16 90,24 135,32 180,38"/>
-                  <polyline fill="none" stroke="#c2bcb0" stroke-width="1.5" stroke-dasharray="3 3" points="0,10 45,18 90,26 135,34 180,36"/>
-                </svg>
-              </div>
-              <div class="sk-box" style="flex:1;padding:8px;display:flex;align-items:center;justify-content:center;">
-                <div class="sk-circle split-3"></div>
-              </div>
-            </div>
-            <div class="sk-box" style="padding:8px;">
-              <div class="sk-cap">ASSET RANKING · traffic-light</div>
-              <div style="display:flex;gap:2px;align-items:flex-end;height:32px;margin-top:6px;">
-                <div style="flex:1;height:40%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:52%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:60%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:72%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:84%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:96%;background:#d99891;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:70%;background:#7fb59b;border-radius:2px 2px 0 0;"></div>
-                <div style="flex:1;height:88%;background:#e2cd96;border-radius:2px 2px 0 0;"></div>
-              </div>
-            </div>
-            <div class="callout kova" style="bottom:100px; right:8px; transform:rotate(2deg);max-width:140px;">
-              <strong>DQ tile</strong> is the change, score sits with the rest.
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">DQ promoted to 6th KPI, principle: "quality is first-class".</div>
-            <div class="b-note good">Trend + donut + ranking = three answers in one screen.</div>
-            <div class="b-note good">Click any asset bar to drill down, inherits the same KPI row.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lane-notes lead">
-        <div>
-          <h4><small>The pivot</small>Stop showing data. Start answering questions.</h4>
-          <p>Between v2 and v3 we re-wrote the brief for every tile: <b>what question does this answer, and what action follows?</b></p>
-          <p>A KPI without a target was demoted. A chart without a benchmark was redrawn. A meter without a coverage % was flagged. The number of elements <i>went up</i>, but every one earned a job.</p>
-        </div>
-        <div>
-          <h4><small>Tradeoff</small>Six KPIs is one more than the design system wanted.</h4>
-          <p>The shadcn-ish KPI row pattern caps at 5. We pushed to 6 to fit the DQ score next to performance, which violated a token grid but held the principle.</p>
-          <p>Comp: we tightened the inner padding and dropped the trailing "kg" / "kWh" off mobile to keep it readable.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 03 · Data quality ── -->
-    <div class="pwf">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">Two ideas the platform had been calling one.</h3>
-          <p class="s-sub">The original "DQ score" was a single number that hid the actual problem. Splitting it into <em>coverage</em> (do we have meters?) and <em>completeness</em> (are they reporting?) was the design call that everything downstream depended on.</p>
-        </div>
-      </div>
-
-      <!-- The conceptual diagram first -->
-      <div class="board" style="margin-bottom:36px;">
-        <div class="board-hdr">
-          <div><div class="b-version">concept</div><div class="b-name">Coverage vs Completeness, drawn out for the customer</div></div>
-          <div class="b-tag">systems diagram</div>
-        </div>
-        <div class="canvas tall" style="padding:24px;">
-          <svg viewBox="0 0 1100 320" style="width:100%;height:auto;">
-            <g>
-              <rect x="40" y="40" width="420" height="240" rx="14" fill="#f3efe7" stroke="#cfc9bd" stroke-width="2"/>
-              <text x="60" y="74" font-family="Fira Sans" font-size="11" fill="#8c8175" letter-spacing=".14em">COVERAGE</text>
-              <text x="60" y="112" font-family="Fira Sans" font-size="26" font-weight="600" fill="#15110d">Do we have meters where</text>
-              <text x="60" y="142" font-family="Fira Sans" font-size="26" font-weight="600" fill="#15110d">we should have meters?</text>
-              <text x="60" y="180" font-family="Inter" font-size="14" fill="#3a342d">Answered against <tspan font-weight="600">expected floor area</tspan>.</text>
-              <text x="60" y="202" font-family="Inter" font-size="14" fill="#3a342d">Fails when an asset is brought in</text>
-              <text x="60" y="220" font-family="Inter" font-size="14" fill="#3a342d">without sub-metering procurement.</text>
-              <text x="60" y="252" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".08em">SURFACE: ring on DQ widget</text>
-            </g>
-            <g>
-              <rect x="640" y="40" width="420" height="240" rx="14" fill="#f3efe7" stroke="#cfc9bd" stroke-width="2"/>
-              <text x="660" y="74" font-family="Fira Sans" font-size="11" fill="#8c8175" letter-spacing=".14em">COMPLETENESS</text>
-              <text x="660" y="112" font-family="Fira Sans" font-size="26" font-weight="600" fill="#15110d">Of the meters we have,</text>
-              <text x="660" y="142" font-family="Fira Sans" font-size="26" font-weight="600" fill="#15110d">are they actually reporting?</text>
-              <text x="660" y="180" font-family="Inter" font-size="14" fill="#3a342d">Answered against <tspan font-weight="600">expected reads</tspan>.</text>
-              <text x="660" y="202" font-family="Inter" font-size="14" fill="#3a342d">Fails silently, a meter can go</text>
-              <text x="660" y="220" font-family="Inter" font-size="14" fill="#3a342d">offline and the totals still add up.</text>
-              <text x="660" y="252" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".08em">SURFACE: status bars + gap markers</text>
-            </g>
-            <g>
-              <path d="M 460 160 L 640 160" stroke="#57534c" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
-              <polygon points="635,155 645,160 635,165" fill="#8c8175"/>
-              <polygon points="465,155 455,160 465,165" fill="#8c8175"/>
-              <text x="550" y="150" text-anchor="middle" font-family="Fira Sans" font-size="18" fill="#8c8175" font-weight="600">independent</text>
-              <text x="550" y="172" text-anchor="middle" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".08em">TWO AXES</text>
-            </g>
-          </svg>
-          <div style="margin-top:18px;padding:14px 18px;border:1px solid #cfc9bd;border-left:3px solid #c6892b;background:#faf7f0;font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--ink-2);">Because they're independent, <b>100% coverage with 0% completeness is a real (and bad) state</b>, every meter exists, none of them is reporting. A single blended score hides exactly this failure.</div>
-        </div>
-      </div>
-
-      <div class="iters cols-4">
-        <!-- v1: one number -->
-        <div class="board killed tilt-l">
-          <div class="board-hdr">
-            <div><div class="b-version">v1</div><div class="b-name">One "DQ %"</div></div>
-            <div class="b-tag">inherited</div>
-          </div>
-          <div class="canvas" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:30px 12px;">
-            <div class="sk-label">data quality</div>
-            <div class="sk-val accent" style="font-size:64px;">72%</div>
-            <div class="sk-cap" style="text-align:center;">portfolio average</div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">Users: "72% of what?", coverage? reads? meters?</div>
-            <div class="b-note bad">Hides the actual failure mode.</div>
-          </div>
-        </div>
-
-        <!-- v2: two rings, side by side -->
-        <div class="board dim">
-          <div class="board-hdr">
-            <div><div class="b-version">v2</div><div class="b-name">Split rings</div></div>
-            <div class="b-tag">first split</div>
-          </div>
-          <div class="canvas" style="padding:14px;">
-            <div class="sk-row" style="gap:10px;justify-content:center;margin-top:16px;">
-              <div style="text-align:center;">
-                <div class="sk-circle" style="border-color:var(--accent);border-top-color:var(--paper-2);margin:0 auto;"></div>
-                <div class="sk-label" style="margin-top:8px;">coverage</div>
-                <div class="sk-val sm">74%</div>
-              </div>
-              <div style="text-align:center;">
-                <div class="sk-circle" style="border-color:#c6892b;border-top-color:var(--paper-2);border-right-color:var(--paper-2);margin:0 auto;"></div>
-                <div class="sk-label" style="margin-top:8px;">complete</div>
-                <div class="sk-val sm">62%</div>
-              </div>
-            </div>
-            <div class="sk-box dashed" style="margin-top:14px;font-size:9px;">no breakdown by utility yet</div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Concept finally legible.</div>
-            <div class="b-note bad">Two rings with no <b>per-utility</b> read, useless for triage.</div>
-            <div class="b-note q">Where's "automated vs estimated"?</div>
-          </div>
-        </div>
-
-        <!-- v3: utility breakdown + status donut -->
-        <div class="board dim tilt-r">
-          <div class="board-hdr">
-            <div><div class="b-version">v3</div><div class="b-name">+ per-utility + status</div></div>
-            <div class="b-tag">triage view</div>
-          </div>
-          <div class="canvas" style="padding:10px;">
-            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
-              <div class="sk-cap">COVERAGE × COMPLETENESS · per utility</div>
-              <div style="margin-top:6px;">
-                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
-                  <div style="width:34px;font-size:8px;color:var(--muted);">ELEC</div>
-                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:82%;height:100%;background:var(--accent);"></div></div>
-                  <div style="width:20px;font-size:8px;text-align:right;color:var(--ink-2);">82</div>
-                </div>
-                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
-                  <div style="width:34px;font-size:8px;color:var(--muted);">GAS</div>
-                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--accent);"></div></div>
-                  <div style="width:20px;font-size:8px;text-align:right;color:var(--ink-2);">64</div>
-                </div>
-                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px;">
-                  <div style="width:34px;font-size:8px;color:var(--muted);">H₂O</div>
-                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:73%;height:100%;background:var(--accent);"></div></div>
-                  <div style="width:20px;font-size:8px;text-align:right;color:var(--ink-2);">73</div>
-                </div>
-                <div style="display:flex;align-items:center;gap:4px;">
-                  <div style="width:34px;font-size:8px;color:var(--muted);">WST</div>
-                  <div style="flex:1;background:var(--paper-2);height:6px;border-radius:3px;overflow:hidden;"><div style="width:45%;height:100%;background:var(--strike);"></div></div>
-                  <div style="width:20px;font-size:8px;text-align:right;color:var(--strike);">45</div>
-                </div>
-              </div>
-            </div>
-            <div class="sk-box" style="padding:8px;display:flex;gap:8px;align-items:center;">
-              <div class="sk-circle" style="width:48px;height:48px;border-width:5px;border-color:var(--good);border-right-color:#c6892b;border-bottom-color:var(--strike);"></div>
-              <div style="flex:1;font-size:9px;line-height:1.4;color:var(--ink-2);">
-                <div><span style="color:var(--good);">●</span> actual 63%</div>
-                <div><span style="color:#c6892b;">●</span> estimated 18%</div>
-                <div><span style="color:var(--strike);">●</span> missing 19%</div>
-              </div>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Waste is now obviously the fire, instead of "72% average".</div>
-            <div class="b-note q">Still no per-asset drill, need table.</div>
-          </div>
-        </div>
-
-        <!-- final -->
-        <div class="board win">
-          <div class="board-hdr">
-            <div><div class="b-version">final</div><div class="b-name">+ asset table + statuses</div></div>
-            <div class="b-tag">shipped</div>
-          </div>
-          <div class="canvas" style="padding:8px;">
-            <div class="sk-row" style="gap:4px;margin-bottom:5px;">
-              <div class="sk-box" style="flex:1.4;padding:6px;">
-                <div class="sk-cap" style="font-size:7.5px;">CVG × CMP / utility</div>
-                <svg viewBox="0 0 100 30" style="width:100%;height:30px;margin-top:2px;">
-                  <rect x="0" y="2" width="82" height="4" fill="#8c8175" rx="2"/>
-                  <rect x="0" y="9" width="64" height="4" fill="#8c8175" rx="2"/>
-                  <rect x="0" y="16" width="73" height="4" fill="#8c8175" rx="2"/>
-                  <rect x="0" y="23" width="45" height="4" fill="#c64545" rx="2"/>
-                </svg>
-              </div>
-              <div class="sk-box" style="flex:1;padding:6px;display:flex;align-items:center;justify-content:center;">
-                <div class="sk-circle" style="width:44px;height:44px;border-width:4px;border-color:var(--good);border-right-color:#c6892b;border-bottom-color:var(--strike);"></div>
-              </div>
-            </div>
-            <div class="sk-box" style="padding:6px;">
-              <div class="sk-cap" style="font-size:7.5px;">ASSETS · sortable</div>
-              <div style="margin-top:3px;">
-                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px solid var(--border);padding:2px 0;color:var(--ink-2);"><span>Marlow Street</span><span style="color:var(--good);">94 ●</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px solid var(--border);padding:2px 0;color:var(--ink-2);"><span>Aldgate Row</span><span style="color:var(--good);">87 ●</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;border-bottom:1px solid var(--border);padding:2px 0;color:var(--ink-2);"><span>K. William</span><span style="color:#c6892b;">67 ●</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;padding:2px 0;color:var(--ink-2);"><span>Granary</span><span style="color:var(--strike);">38 ●</span></div>
-              </div>
-            </div>
-            <div class="callout kova" style="bottom:6px;right:8px;max-width:120px;transform:rotate(2deg);">
-              status pill = <strong>next action</strong>, not just a colour
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Status chip resolves to "Good / Review / Action needed", not just %.</div>
-            <div class="b-note good">Click row to open asset DQ deep-dive (same KPI row preserved).</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lane-notes band">
-        <div>
-          <h4><small>Why this mattered</small>The split was a UX rewrite of a data model.</h4>
-          <p>Engineering had to expose two scores from the warehouse instead of one. We pushed back on "ship the split as a tooltip", because the failure modes are <b>genuinely different problems</b> with different fixes.</p>
-        </div>
-        <div>
-          <h4><small>Tradeoff</small>Two rings is more visual weight on the dashboard.</h4>
-          <p>We considered hiding "completeness" behind a hover. Killed it: data quality is the principle, hiding the harder half undermines it.</p>
-          <p>Comp: we let the DQ widget be wider than the other KPI tiles when it's expanded.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 04 · Targets ── -->
-    <div class="pwf">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">Three target paths, none of which fit one form.</h3>
-          <p class="s-sub">Carbon targets can be set custom, imported from CRREM/NZC science-based pathways, or derived from an action plan. The same form can't ask for all three sets of inputs. We mapped the decision tree first, then designed around it.</p>
-        </div>
-      </div>
-
-      <!-- decision tree first -->
-      <div class="board" style="margin-bottom:36px;">
-        <div class="board-hdr">
-          <div><div class="b-version">logic</div><div class="b-name">Target-setting decision tree, mapped before any frame</div></div>
-          <div class="b-tag">business logic</div>
-        </div>
-        <div class="canvas tall" style="padding:24px;">
-          <svg viewBox="0 0 1100 280" style="width:100%;height:auto;">
-            <rect x="450" y="14" width="200" height="44" rx="22" fill="#46423b"/>
-            <text x="550" y="42" text-anchor="middle" font-family="Inter" font-size="14" font-weight="600" fill="#efeae2">Choose pathway</text>
-
-            <path d="M 550 60 L 180 110" stroke="#57534c" stroke-width="2" fill="none"/>
-            <path d="M 550 60 L 550 110" stroke="#57534c" stroke-width="2" fill="none"/>
-            <path d="M 550 60 L 920 110" stroke="#57534c" stroke-width="2" fill="none"/>
-
-            <rect x="60" y="110" width="260" height="64" rx="10" fill="#f3efe7" stroke="#cfc9bd" stroke-width="1.5"/>
-            <text x="80" y="134" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".1em">A · CUSTOM</text>
-            <text x="80" y="156" font-family="Inter" font-size="14" font-weight="600" fill="#15110d">Set your own % reduction</text>
-            <text x="80" y="170" font-family="Inter" font-size="12" fill="#6d675e">linear or stepped</text>
-
-            <rect x="420" y="110" width="260" height="64" rx="10" fill="#f3efe7" stroke="#57534c" stroke-width="2"/>
-            <text x="440" y="134" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".1em">B · NZC IMPORT</text>
-            <text x="440" y="156" font-family="Inter" font-size="14" font-weight="600" fill="#15110d">Science-based pathway</text>
-            <text x="440" y="170" font-family="Inter" font-size="12" fill="#6d675e">CRREM 1.5°C trajectory</text>
-
-            <rect x="780" y="110" width="260" height="64" rx="10" fill="#f3efe7" stroke="#cfc9bd" stroke-width="1.5"/>
-            <text x="800" y="134" font-family="Fira Sans" font-size="10" fill="#8c8175" letter-spacing=".1em">C · ACTION-BASED</text>
-            <text x="800" y="156" font-family="Inter" font-size="14" font-weight="600" fill="#15110d">From your action plan</text>
-            <text x="800" y="170" font-family="Inter" font-size="12" fill="#6d675e">derived from agreed actions</text>
-
-            <text x="80" y="208" font-family="Inter" font-size="12" fill="#3a342d">inputs:</text>
-            <text x="80" y="226" font-family="Fira Sans" font-size="11" fill="#6d675e">% / yr · curve</text>
-            <text x="80" y="244" font-family="Fira Sans" font-size="11" fill="#6d675e">baseline yr · end yr</text>
-
-            <text x="440" y="208" font-family="Inter" font-size="12" fill="#3a342d">inputs:</text>
-            <text x="440" y="226" font-family="Fira Sans" font-size="11" fill="#6d675e">asset class · region</text>
-            <text x="440" y="244" font-family="Fira Sans" font-size="11" fill="#6d675e">scope 1+2 only</text>
-
-            <text x="800" y="208" font-family="Inter" font-size="12" fill="#3a342d">inputs:</text>
-            <text x="800" y="226" font-family="Fira Sans" font-size="11" fill="#6d675e">action library · status</text>
-            <text x="800" y="244" font-family="Fira Sans" font-size="11" fill="#6d675e">avg savings/action</text>
-
-            <text x="550" y="270" text-anchor="middle" font-family="Inter" font-size="18" fill="#8c8175" font-weight="600">three different shapes of form. one wizard.</text>
-          </svg>
-        </div>
-      </div>
-
-      <div class="iters cols-3">
-        <!-- v1 flat -->
-        <div class="board killed tilt-l">
-          <div class="board-hdr">
-            <div><div class="b-version">v1</div><div class="b-name">All-in-one form</div></div>
-            <div class="b-tag">honest mess</div>
-          </div>
-          <div class="canvas" style="padding:12px;">
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">pathway type ▾</div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">% reduction</div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">curve type ▾</div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">CRREM asset class ▾ <span style="color:var(--muted);">(only B)</span></div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">region ▾ <span style="color:var(--muted);">(only B)</span></div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">action library <span style="color:var(--muted);">(only C)</span></div>
-            <div class="sk-box dashed" style="margin-bottom:6px;padding:6px;font-size:9px;">baseline year</div>
-            <div class="sk-box dashed" style="padding:6px;font-size:9px;">end year</div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">Half the fields are dead depending on path.</div>
-            <div class="b-note bad">Users abandoned before saving.</div>
-          </div>
-        </div>
-
-        <!-- v2 stepper -->
-        <div class="board dim">
-          <div class="board-hdr">
-            <div><div class="b-version">v2</div><div class="b-name">Stepper + radios</div></div>
-            <div class="b-tag">progressive</div>
-          </div>
-          <div class="canvas" style="padding:12px;">
-            <div class="sk-row" style="margin-bottom:8px;font-size:8px;gap:4px;">
-              <div class="sk-box accent" style="flex:1;padding:4px;text-align:center;">1</div>
-              <div class="sk-box" style="flex:1;padding:4px;text-align:center;">2</div>
-              <div class="sk-box" style="flex:1;padding:4px;text-align:center;">3</div>
-            </div>
-            <div style="font-family:var(--sans);font-size:12px;margin-bottom:6px;color:var(--ink);">Step 1, choose pathway</div>
-            <div class="sk-box" style="margin-bottom:4px;padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> Custom</div>
-            <div class="sk-box accent" style="margin-bottom:4px;padding:6px;font-size:9px;"><span style="color:var(--accent);">●</span> NZC science-based</div>
-            <div class="sk-box" style="padding:6px;font-size:9px;"><span style="color:var(--accent);">○</span> From action plan</div>
-            <div class="sk-box dashed" style="margin-top:10px;padding:6px;font-size:9px;color:var(--muted);">step 2 fields appear based on choice</div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Path locked in before asking for details.</div>
-            <div class="b-note bad">Radios feel small for a high-stakes decision.</div>
-          </div>
-        </div>
-
-        <!-- v3 card chooser -->
-        <div class="board win tilt-r">
-          <div class="board-hdr">
-            <div><div class="b-version">final</div><div class="b-name">Pathway cards + preview</div></div>
-            <div class="b-tag">shipped</div>
-          </div>
-          <div class="canvas" style="padding:10px;">
-            <div style="font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:6px;color:var(--ink);">Three ways to set a carbon target.</div>
-            <div class="sk-row" style="gap:4px;margin-bottom:8px;">
-              <div class="sk-box" style="flex:1;padding:8px 6px;text-align:center;">
-                <div style="width:18px;height:18px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:.1em;color:var(--accent);">A · CUSTOM</div>
-                <div style="font-family:var(--sans);font-size:10px;font-weight:600;margin-top:2px;color:var(--ink);">Set your own</div>
-              </div>
-              <div class="sk-box accent" style="flex:1;padding:8px 6px;text-align:center;border-width:2px;">
-                <div style="width:18px;height:18px;background:var(--accent);border-radius:4px;margin:0 auto 4px;"></div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:.1em;color:var(--accent);">B · NZC</div>
-                <div style="font-family:var(--sans);font-size:10px;font-weight:600;margin-top:2px;color:var(--ink);">Science-based</div>
-                <div style="font-family:var(--mono);font-size:7px;color:var(--accent);margin-top:2px;">USE THIS</div>
-              </div>
-              <div class="sk-box" style="flex:1;padding:8px 6px;text-align:center;">
-                <div style="width:18px;height:18px;background:var(--paper-2);border-radius:4px;margin:0 auto 4px;"></div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:.1em;color:var(--accent);">C · ACTION</div>
-                <div style="font-family:var(--sans);font-size:10px;font-weight:600;margin-top:2px;color:var(--ink);">Action plan</div>
-              </div>
-            </div>
-            <div class="sk-box" style="padding:8px;">
-              <div class="sk-cap" style="font-size:7.5px;">PATHWAY PROJECTION · 2020 to 2030</div>
-              <svg viewBox="0 0 200 56" preserveAspectRatio="none" style="width:100%;height:50px;margin-top:4px;">
-                <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,12 30,18 60,24 90,30"/>
-                <polyline fill="none" stroke="#7fb59b" stroke-width="2" stroke-dasharray="3 3" points="90,30 130,38 170,44 200,48"/>
-                <circle cx="90" cy="30" r="3" fill="#8c8175"/>
-              </svg>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Cards = legible compared to radios; CRREM badge sits inside chosen card.</div>
-            <div class="b-note good">Live pathway preview updates as choice changes, confidence before save.</div>
-            <div class="b-note good">"Use this" CTA inside the card = single-click commit.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lane-notes lead">
-        <div>
-          <h4><small>Decision</small>Cards over radios for high-stakes choices.</h4>
-          <p>The pattern library said radio. We broke pattern because the pathway choice anchors years of reporting, it deserved more pixels than a 16px circle.</p>
-        </div>
-        <div>
-          <h4><small>Tradeoff</small>One wizard for three flows is more engineering.</h4>
-          <p>Three discrete pages would have been simpler to build. We took the wizard hit to keep the user inside one mental model and to share the preview component across all three paths.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 05 · Drill-down ── -->
-    <div class="pwf">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">Portfolio to asset to meter. Don't break the chain.</h3>
-          <p class="s-sub">Three wrong answers before we landed on breadcrumb-driven drill with the <em>same</em> KPI row at every level. Each wrong answer taught us something we used in the next one.</p>
-        </div>
-      </div>
-
-      <div class="iters cols-4">
-        <!-- v1 modal -->
-        <div class="board killed tilt-l">
-          <div class="board-hdr">
-            <div><div class="b-version">v1</div><div class="b-name">Modal drawer</div></div>
-            <div class="b-tag">first try</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-box" style="padding:8px;margin-bottom:6px;opacity:.5;">portfolio view (dimmed)</div>
-            <div class="sk-box fill" style="padding:8px;border:2px solid var(--ink);">
-              <div class="sk-label">asset</div>
-              <div class="sk-val sm">Marlow Street</div>
-              <div class="sk-bar mid"></div>
-              <div class="sk-bar short"></div>
-              <div class="sk-bar full accent"></div>
-            </div>
-            <div class="callout pink" style="top:42%;right:8px;max-width:140px;transform:rotate(3deg);">
-              closes the drawer, you lose your place
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">Drawer hides portfolio context; can't compare assets.</div>
-            <div class="b-note bad">Browser back goes <i>way</i> back.</div>
-          </div>
-        </div>
-
-        <!-- v2 separate page -->
-        <div class="board killed dim">
-          <div class="board-hdr">
-            <div><div class="b-version">v2</div><div class="b-name">Separate page</div></div>
-            <div class="b-tag">router'd</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="margin-bottom:6px;font-size:9px;color:var(--muted);">/assets/marlow</div>
-            <div class="sk-box" style="padding:8px;margin-bottom:6px;">
-              <div class="sk-val sm">Marlow Street</div>
-              <div class="sk-cap">asset detail</div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
-              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
-              <div class="sk-box" style="flex:1;padding:6px;"><div class="sk-cap">DQ</div><div class="sk-val sm">94</div></div>
-            </div>
-            <div class="sk-box dashed" style="margin-top:6px;padding:6px;font-size:9px;color:var(--muted);">but: <b>different</b> tiles than the fund view</div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note bad">KPI tiles differed between levels, users re-oriented every page.</div>
-            <div class="b-note good">URL state worked for sharing.</div>
-          </div>
-        </div>
-
-        <!-- v3 tabs -->
-        <div class="board dim tilt-r">
-          <div class="board-hdr">
-            <div><div class="b-version">v3</div><div class="b-name">Tabbed asset view</div></div>
-            <div class="b-tag">close</div>
-          </div>
-          <div class="canvas">
-            <div class="sk-row" style="margin-bottom:6px;gap:2px;">
-              <div class="sk-box accent" style="flex:1;padding:5px;text-align:center;font-size:8px;">Overview</div>
-              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Meters</div>
-              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">DQ</div>
-              <div class="sk-box" style="flex:1;padding:5px;text-align:center;font-size:8px;">Targets</div>
-            </div>
-            <div class="sk-row" style="margin-bottom:6px;gap:3px;">
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">DQ</div><div class="sk-val sm">94</div></div>
-            </div>
-            <div class="sk-box" style="padding:6px;">
-              <svg viewBox="0 0 200 36" preserveAspectRatio="none" style="width:100%;height:32px;">
-                <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,10 30,16 60,22 90,18 120,26 150,20 180,24 200,18"/>
-              </svg>
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Same KPI strip at every level, orientation locked.</div>
-            <div class="b-note bad">Tabs hide context: you can't see Meters and DQ side by side.</div>
-          </div>
-        </div>
-
-        <!-- final breadcrumb -->
-        <div class="board win">
-          <div class="board-hdr">
-            <div><div class="b-version">final</div><div class="b-name">Breadcrumb + single page</div></div>
-            <div class="b-tag">shipped</div>
-          </div>
-          <div class="canvas">
-            <div style="font-family:var(--mono);font-size:8.5px;color:var(--muted);margin-bottom:6px;">
-              Castlebrook ▸ Marlow Street ▸ <b style="color:var(--accent);">Meter 04</b>
-            </div>
-            <div class="sk-row" style="margin-bottom:6px;gap:3px;">
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">CARB</div><div class="sk-val sm">38</div></div>
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">ELEC</div><div class="sk-val sm">119</div></div>
-              <div class="sk-box" style="flex:1;padding:5px;"><div class="sk-cap">GAS</div><div class="sk-val sm">14</div></div>
-              <div class="sk-box accent" style="flex:1;padding:5px;"><div class="sk-cap" style="color:var(--accent);">DQ</div><div class="sk-val sm accent">94</div></div>
-            </div>
-            <div class="sk-row" style="gap:4px;">
-              <div class="sk-box" style="flex:1;padding:6px;">
-                <div class="sk-cap">MONTHLY</div>
-                <svg viewBox="0 0 100 30" preserveAspectRatio="none" style="width:100%;height:24px;margin-top:2px;">
-                  <polyline fill="none" stroke="#57534c" stroke-width="2" points="0,18 12,14 24,10 36,8 48,6 60,8 72,10 84,14 96,16"/>
-                </svg>
-              </div>
-              <div class="sk-box" style="flex:1;padding:6px;">
-                <div class="sk-cap">METERS</div>
-                <div class="sk-bar full" style="margin-top:4px;"></div>
-                <div class="sk-bar mid"></div>
-                <div class="sk-bar short bad"></div>
-              </div>
-            </div>
-            <div class="callout kova" style="bottom:8px;right:8px;max-width:130px;transform:rotate(2deg);">
-              <strong>same row</strong>, every depth: fund · asset · meter
-            </div>
-          </div>
-          <div class="b-notes">
-            <div class="b-note good">Breadcrumb is the only nav, back/forward both work.</div>
-            <div class="b-note good">KPI row + DQ tile <b>identical</b> at every level (scope-aware values).</div>
-            <div class="b-note good">No tabs, vertical scroll keeps meters + DQ comparable.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lane-notes band">
-        <div>
-          <h4><small>Principle in action</small>"Same metrics at every level."</h4>
-          <p>This was one of the four design principles. v1 to v3 all violated it in subtle ways. Final makes it physical: the same component renders the KPI row at fund, asset and meter scope, just bound to different data.</p>
-        </div>
-        <div>
-          <h4><small>Tradeoff</small>One long page, not tabs.</h4>
-          <p>Tabs are tidier. But the user's job is to <b>compare</b> meter behaviour against DQ status, hiding one behind a tab broke the diagnostic workflow.</p>
-          <p>Vertical scroll won. Sticky breadcrumb + KPI row keep the top context in view.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 06 · Tradeoffs ── -->
-    <div class="pwf">
-      <div class="section-head">
-        <div>
-          <h3 class="s-title">The decisions that shaped the rest.</h3>
-          <p class="s-sub">Where we held the line, where we bent, and what we cut from scope. Every row here represents a debate that's still defensible today.</p>
-        </div>
-      </div>
-
-      <table class="trade-table">
-        <thead>
-          <tr>
-            <th>Decision</th>
-            <th>What we picked</th>
-            <th>What we gave up</th>
-            <th>Why</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>DQ on the dashboard</td>
-            <td><span class="chip kept">kept</span> A 6th KPI tile for the DQ score, alongside utility KPIs.</td>
-            <td><span class="chip cut">cut</span> Hiding DQ behind an admin tab to keep the grid at 5×.</td>
-            <td>Principle: "quality is first-class". If a number can't be trusted, performance numbers next to it can't be either.</td>
-          </tr>
-          <tr>
-            <td>Coverage vs completeness</td>
-            <td><span class="chip kept">kept</span> Two scores surfaced separately, with status pill.</td>
-            <td><span class="chip cut">cut</span> A single composite "DQ %" that the inherited UI used.</td>
-            <td>Different failure modes mean different fixes. A composite hid the actual problem.</td>
-          </tr>
-          <tr>
-            <td>Drill-down model</td>
-            <td><span class="chip kept">kept</span> Breadcrumb-driven, same KPI row at every depth, single scrolling page.</td>
-            <td><span class="chip cut">cut</span> Tabbed view (hid context), modal drawer (broke history), separate route per level (re-orientation tax).</td>
-            <td>Users diagnose by comparing, across utilities and across depth. Hiding either axis breaks the loop.</td>
-          </tr>
-          <tr>
-            <td>Target setting flow</td>
-            <td><span class="chip kept">kept</span> Three pathway cards + stepper + live pathway preview.</td>
-            <td><span class="chip cut">cut</span> All-in-one form with conditional fields; three separate pages.</td>
-            <td>One mental model, but inputs scoped per path. Preview = confidence before commit.</td>
-          </tr>
-          <tr>
-            <td>Investigation loop</td>
-            <td><span class="chip kept">kept</span> Self-service: anomaly to drill to gap-fill marker to escalate.</td>
-            <td><span class="chip def">deferred</span> Auto-resolution / one-click fixes.</td>
-            <td>Auto-fixing data is an audit risk in regulated ESG reporting. v1 surfaces; humans still commit.</td>
-          </tr>
-          <tr>
-            <td>L/T scope display</td>
-            <td><span class="chip kept">kept</span> Inline split on every utility chart (no extra drill required).</td>
-            <td><span class="chip cut">cut</span> A standalone "Scope" tab that buried the split.</td>
-            <td>L/T split <b>is</b> the question for procurement responsibility, it's not a secondary view.</td>
-          </tr>
-          <tr>
-            <td>Gap-filling visual</td>
-            <td><span class="chip kept">kept</span> Hatched/dashed line segments on charts, with hover detail.</td>
-            <td><span class="chip cut">cut</span> Footnote symbol that testers consistently missed.</td>
-            <td>Testers needed to <b>see</b> the gap, not be told about it in micro-copy.</td>
-          </tr>
-          <tr>
-            <td>Theme support</td>
-            <td><span class="chip def">deferred</span> Full dark mode as v1.2.</td>
-            <td><span class="chip cut">cut</span> Shipping light + dark in launch sprint.</td>
-            <td>Chart accessibility QA on dark surfaces was a whole research stream, held it for a follow-on.</td>
-          </tr>
-          <tr>
-            <td>Phased delivery</td>
-            <td><span class="chip kept">kept</span> Four phases: performance to dashboard to DQ to site-wide.</td>
-            <td><span class="chip cut">cut</span> Big-bang rewrite.</td>
-            <td>Let us test with consultants between phases. Adjustments to DQ flow came from phase-2 feedback.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 style="font:600 24px/1.2 var(--serif);color:var(--ink);margin:48px 0 8px;letter-spacing:-.01em;">If we did it again.</h3>
-      <p style="font:400 15px/1.6 var(--sans);color:var(--ink-2);margin-bottom:18px;max-width:none;">Three things we'd front-load on the next engagement, with the same shape of problem.</p>
-
-      <div class="stickies">
-        <div class="sticky k4">
-          <h5>Map the business logic <u>first</u>.</h5>
-          The L/T scope tree and target decision flow saved redesigns. We'd do that on day one next time, not week three.
-        </div>
-        <div class="sticky k3">
-          <h5>Define the metric in the wireframe.</h5>
-          "Data quality" meant six things to six people until we wrote the systems diagram. We'd put one in <b>every</b> wireframe for high-stakes metrics.
-        </div>
-        <div class="sticky k2">
-          <h5>Ship the principle, not the screen.</h5>
-          v1 dashboard looked great in isolation and violated three of our four principles. We'd test wireframes against principles before tests against users.
-        </div>
-      </div>
-    </div>
-
-    </div><!-- /.pwf-tabs-host -->
-  </div>
-</section>
-
-<!-- ══ FEATURES, FEATURED ══ -->
-<section class="features" id="features">
-  <div class="wrap">
-    <div class="sec-label">Product</div>
-    <h2 class="sec-h">Where the data started shaping decisions</h2>
-    <p class="sec-sub">The screens that did the heaviest lifting once the platform shipped, fund managers no longer exported to Power BI to figure out what their portfolio was telling them, data quality moved from an afterthought to a first-class metric, and the investigation loop closed inside the product.</p>
-  </div>
-
-  <div class="feat-stream" id="feat-featured">
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Drill-down</div>
-    <div class="frame-heading">Spot it, trace it, fix it, in three clicks</div>
-    <div class="frame-sub">From a healthy fund to the single asset dragging it down to the exact missing meter readings behind the anomaly. The hierarchy lets a manager move from "something's off" to "here's the cause" without leaving the screen.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:74px;left:120px;">1</div>
-      <div class="marker" style="top:74px;left:50%;transform:translateX(-50%);">2</div>
-      <div class="marker" style="top:74px;right:130px;">3</div>
-      <div class="screen">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / Castlebrook Capital / Granary House / main electric</span></div>
-        <div class="screen-body" style="padding:0">
-          <div class="drill">
-            <div class="level">
-              <span class="lvl-tag">L1 · FUND</span>
-              <div class="lvl-name">Castlebrook Capital</div>
-              <div class="lvl-sub">Fund · 32 assets</div>
-              <div class="kpipair">
-                <div class="kp"><div class="l">Carbon</div><div class="v">44.6</div><div class="d good">↓ 13%</div></div>
-                <div class="kp"><div class="l">DQ</div><div class="v">69</div><div class="d amber">+6</div></div>
-              </div>
-              <div class="arrow">→</div>
-            </div>
-            <div class="level">
-              <span class="lvl-tag">L2 · ASSET</span>
-              <div class="lvl-name">Granary House</div>
-              <div class="lvl-sub">Central London · 16,900 m²</div>
-              <div class="kpipair">
-                <div class="kp"><div class="l">Carbon</div><div class="v">57.4</div><div class="d bad">↑ 43%</div></div>
-                <div class="kp"><div class="l">Coverage</div><div class="v">41%</div><div class="d bad">low</div></div>
-              </div>
-              <div class="arrow">→</div>
-            </div>
-            <div class="level">
-              <span class="lvl-tag">L3 · METER</span>
-              <div class="lvl-name">Main electric</div>
-              <div class="lvl-sub">kWh · last 30 days</div>
-              <div class="gapchart">
-                <div class="b" style="height:60%"></div><div class="b" style="height:72%"></div><div class="b" style="height:55%"></div>
-                <div class="b miss" style="height:80%"></div><div class="b miss" style="height:80%"></div>
-                <div class="b" style="height:68%"></div><div class="b" style="height:74%"></div>
-                <div class="b miss" style="height:80%"></div><div class="b" style="height:62%"></div><div class="b" style="height:70%"></div>
-              </div>
-              <div class="missnote">14 gaps · flagged as gap-fill candidates</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Healthy at the top.</b> The fund reads well, carbon down 13%, DQ trending up. Nothing here says there's a problem.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>One asset breaks the pattern.</b> Granary House shows carbon up 43% on just 41% coverage, the anomaly hiding inside the fund average.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Down to the cause.</b> The meter view exposes 14 missing readings, the real reason the number looked wrong, ready to gap-fill.</div></div>
-  </div></div></article>
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Data quality</div>
-    <div class="frame-heading">A number you can't trust isn't an answer</div>
-    <div class="frame-sub">Coverage, completeness and automation, scored at portfolio level and broken down per asset. Data quality is treated as a headline metric, not a footnote, because every downstream chart inherits its reliability.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:200px;left:175px;">1</div>
-      <div class="marker" style="bottom:96px;left:120px;">2</div>
-      <div class="marker" style="top:300px;right:120px;">3</div>
-      <div class="screen">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / data quality / Castlebrook Capital</span></div>
-        <div class="screen-body">
-          <div class="panel dq">
-            <div class="ringbox">
-              <svg viewBox="-130 -130 260 260" width="240" height="240">
-                <!-- track rings -->
-                <circle r="110" fill="none" stroke="#f0ebe4" stroke-width="16"/>
-                <circle r="84" fill="none" stroke="#f0ebe4" stroke-width="16"/>
-                <circle r="58" fill="none" stroke="#f0ebe4" stroke-width="16"/>
-                <!-- value rings: dasharray = pct * circumference -->
-                <circle r="110" fill="none" stroke="#C81E4A" stroke-width="16" stroke-linecap="round" stroke-dasharray="511 691" transform="rotate(-90)"/>
-                <circle r="84" fill="none" stroke="#c6892b" stroke-width="16" stroke-linecap="round" stroke-dasharray="327 528" transform="rotate(-90)"/>
-                <circle r="58" fill="none" stroke="#2a7a5a" stroke-width="16" stroke-linecap="round" stroke-dasharray="149 364" transform="rotate(-90)"/>
-                <text x="0" y="-4" text-anchor="middle" style="font:600 40px var(--serif);fill:var(--ink)">69</text>
-                <text x="0" y="20" text-anchor="middle" style="font:400 11px var(--mono);fill:var(--muted)">DQ SCORE</text>
-              </svg>
-              <div class="ring-legend">
-                <div class="rl-row"><i style="background:#C81E4A"></i>Coverage <b>71%</b></div>
-                <div class="rl-row"><i style="background:#c6892b"></i>Completeness <b>65%</b></div>
-                <div class="rl-row"><i style="background:#2a7a5a"></i>Automated <b>44%</b></div>
-              </div>
-            </div>
-            <div class="assetlist">
-              <div class="al-head">By asset</div>
-              <div class="al-sub">lowest quality first</div>
-              <div class="arow"><div class="aname">Granary House<span>Central London · 16,900 m²</span></div><div class="minibar"><i style="width:41%;background:var(--red)"></i></div><div class="score">41</div><div class="flag">Flag</div></div>
-              <div class="arow"><div class="aname">Marlow Tower<span>Central London · 21,400 m²</span></div><div class="minibar"><i style="width:55%;background:var(--amber)"></i></div><div class="score">55</div></div>
-              <div class="arow"><div class="aname">Kingsway Point<span>Manchester · 10,300 m²</span></div><div class="minibar"><i style="width:71%;background:var(--amber)"></i></div><div class="score">71</div></div>
-              <div class="arow"><div class="aname">22 Marlow Street<span>Central London · 11,900 m²</span></div><div class="minibar"><i style="width:88%;background:var(--green)"></i></div><div class="score">88</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Three dimensions, one score.</b> Coverage, completeness and automation are scored separately then rolled into a single portfolio DQ figure of 72.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Automation is the weak link.</b> Only 41% of readings arrive automatically, the clearest lever for improving trust at scale.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Worst asset surfaces first.</b> Granary House at 38 is flagged for action, so attention goes where the data is least reliable.</div></div>
-  </div></div></article>
-<article class="feat"><div class="feat-inner"><div>
-    <div class="frame-label">Gap-filling</div>
-    <div class="frame-heading">Missing data, filled honestly</div>
-    <div class="frame-sub">When a meter goes dark, the gap doesn't get hidden. The platform proposes an estimate, names the method that produced it, attaches a confidence score, and writes the decision into an audit trail. Numbers stay reportable; trust stays auditable.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:200px;left:170px;">1</div>
-      <div class="marker" style="bottom:110px;left:60px;">2</div>
-      <div class="marker" style="bottom:110px;right:60px;">3</div>
-      <div class="screen">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / data quality / gap-filling · Granary House · main electric</span></div>
-        <div class="screen-body">
-          <div class="panel" style="padding:22px 24px">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-              <div>
-                <div class="panel-title">Monthly readings · main electric</div>
-                <div class="panel-sub">kWh · 12 months · 4 of 12 estimated</div>
-              </div>
-              <div style="font:500 11px/1 var(--mono);color:var(--accent);letter-spacing:.08em">METHOD · LAST-YEAR + HDD ADJUST</div>
-            </div>
-            <div style="position:relative;height:158px;margin-top:14px">
-              <svg viewBox="0 0 560 150" preserveAspectRatio="none" width="100%" height="100%">
-                <defs>
-                  <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-                    <line x1="0" y1="0" x2="0" y2="6" stroke="#C81E4A" stroke-width="2" opacity=".55"/>
-                  </pattern>
-                </defs>
-                <line x1="0" y1="20" x2="560" y2="20" stroke="#f0ebe4"/>
-                <line x1="0" y1="70" x2="560" y2="70" stroke="#f0ebe4"/>
-                <line x1="0" y1="120" x2="560" y2="120" stroke="#ebe6df"/>
-                <!-- bars: solid = actual, hatched = gap-filled -->
-                <rect x="6"   y="60"  width="38" height="60" rx="3" fill="#C81E4A"/>
-                <rect x="52"  y="48"  width="38" height="72" rx="3" fill="#C81E4A"/>
-                <rect x="98"  y="56"  width="38" height="64" rx="3" fill="#C81E4A"/>
-                <rect x="144" y="40"  width="38" height="80" rx="3" fill="url(#hatch)" stroke="#C81E4A" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <rect x="190" y="38"  width="38" height="82" rx="3" fill="url(#hatch)" stroke="#C81E4A" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <rect x="236" y="52"  width="38" height="68" rx="3" fill="#C81E4A"/>
-                <rect x="282" y="44"  width="38" height="76" rx="3" fill="#C81E4A"/>
-                <rect x="328" y="58"  width="38" height="62" rx="3" fill="url(#hatch)" stroke="#C81E4A" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <rect x="374" y="50"  width="38" height="70" rx="3" fill="#C81E4A"/>
-                <rect x="420" y="46"  width="38" height="74" rx="3" fill="#C81E4A"/>
-                <rect x="466" y="64"  width="38" height="56" rx="3" fill="url(#hatch)" stroke="#C81E4A" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <rect x="512" y="42"  width="38" height="78" rx="3" fill="#C81E4A"/>
-                <text x="25"  y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jan</text>
-                <text x="71"  y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Feb</text>
-                <text x="117" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Mar</text>
-                <text x="163" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Apr</text>
-                <text x="209" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">May</text>
-                <text x="255" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jun</text>
-                <text x="301" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Jul</text>
-                <text x="347" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Aug</text>
-                <text x="393" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Sep</text>
-                <text x="439" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Oct</text>
-                <text x="485" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#c64545">Nov</text>
-                <text x="531" y="138" text-anchor="middle" style="font:400 9px var(--mono);fill:#8a8278">Dec</text>
-              </svg>
-            </div>
-            <div class="legend">
-              <span class="leg"><i style="background:#C81E4A"></i>Actual reading</span>
-              <span class="leg"><i style="background:#C81E4A;background-image:repeating-linear-gradient(45deg,#C81E4A,#C81E4A 2px,#fff 2px,#fff 4px);"></i>Estimated · gap-filled</span>
-            </div>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px">
-            <div class="panel" style="padding:18px 20px">
-              <div class="panel-title">Confidence on this gap-fill</div>
-              <div class="panel-sub">Apr–May · 61 days estimated</div>
-              <div style="display:flex;align-items:center;gap:14px;margin-top:14px">
-                <div style="font:600 38px/1 var(--serif);color:var(--ink);letter-spacing:-.02em">84<span style="font:500 14px/1 var(--mono);color:var(--muted);margin-left:4px">/100</span></div>
-                <div style="flex:1">
-                  <div style="height:7px;background:var(--bg-2);border-radius:999px;overflow:hidden"><div style="width:84%;height:100%;background:linear-gradient(90deg,var(--amber),var(--green))"></div></div>
-                  <div style="font:400 11px/1.4 var(--mono);color:var(--muted);margin-top:8px">High · derived from prior-year same-month with HDD weather adjustment</div>
-                </div>
-              </div>
-            </div>
-            <div class="panel" style="padding:18px 20px">
-              <div class="panel-title">Audit trail</div>
-              <div class="panel-sub">last 3 events on this meter</div>
-              <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
-                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Apr–May estimated · last-year + HDD</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">auto · 14 May · awaiting sign-off</div></div></div>
-                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--green);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Aug gap accepted by S. Chen</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">signed · 03 Sep · conf 91</div></div></div>
-                <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:7px;height:7px;border-radius:50%;background:var(--muted-2);margin-top:6px;flex:0 0 7px"></div><div><div style="font:500 12px/1.35 var(--sans);color:var(--ink)">Nov gap flagged for review</div><div style="font:400 11px/1.4 var(--mono);color:var(--muted)">auto · 02 Dec · conf 67 · escalate?</div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>The gap doesn't hide.</b> Estimated months show as hatched bars on the same chart as actual readings, so the user always knows which days are inferred rather than measured.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>A named method, a confidence score.</b> Every estimate carries the rule that produced it (last-year + HDD adjustment) and a confidence figure, so the number is auditable, not magic.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>Sign-off lives next to the data.</b> The audit trail logs who accepted each gap-fill and when, with low-confidence events flagged to escalate, so the number on the report can survive a question from finance.</div></div>
-  </div></div></article>
-
-<article class="feat"><div class="feat-inner">
-  <div>
-    <div class="frame-label">Target setting</div>
-    <div class="frame-heading">Three ways to set a target, one to commit to it</div>
-    <div class="frame-sub">Fund managers choose a pathway, set their own reduction, import a science-based CRREM trajectory, or derive one from a costed action plan, and see the resulting curve before they commit. The target stops being a guess and becomes a decision.</div>
-    <div class="scr-wrap">
-      <div class="marker" style="top:296px;left:200px;">1</div>
-      <div class="marker" style="top:296px;left:480px;">2</div>
-      <div class="marker" style="top:438px;left:175px;">3</div>
-      <div class="screen">
-        <div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="crumb">kova / targets / new pathway</span></div>
-        <div class="screen-body" style="padding:0">
-          <div class="targ">
-            <div class="step">Step 1 of 3 · Choose a pathway</div>
-            <div class="paths">
-              <div class="path"><div class="pcheck"></div><div class="ptag">A · CUSTOM</div><div class="pname">Set your own</div><div class="pdesc">Custom % reduction against a chosen baseline year.</div></div>
-              <div class="path sel"><div class="pcheck"></div><div class="ptag">B · NZC IMPORT</div><div class="pname">Science-based pathway</div><div class="pdesc">Import the CRREM 1.5°C trajectory for the asset type.</div></div>
-              <div class="path"><div class="pcheck"></div><div class="ptag">C · ACTION-BASED</div><div class="pname">From your action plan</div><div class="pdesc">Derived from the costed interventions you've scheduled.</div></div>
-            </div>
-            <div class="traj">
-              <div class="t-head"><div class="t-title">Resulting trajectory</div><div class="t-val">kgCO₂e / m² · to 2050</div></div>
-              <div class="traj-chart">
-                <svg viewBox="0 0 860 130" preserveAspectRatio="none">
-                  <line x1="0" y1="30" x2="860" y2="30" stroke="#f0ebe4"/>
-                  <line x1="0" y1="80" x2="860" y2="80" stroke="#f0ebe4"/>
-                  <line x1="0" y1="125" x2="860" y2="125" stroke="#ebe6df"/>
-                  <!-- BAU -->
-                  <path d="M0,40 C300,55 500,60 860,72" stroke="#b4ab9f" stroke-width="2" stroke-dasharray="4 6" fill="none"/>
-                  <!-- selected science-based -->
-                  <path d="M0,40 C260,70 520,100 860,118" stroke="#C81E4A" stroke-width="3" fill="none" stroke-linecap="round"/>
-                  <circle cx="0" cy="40" r="4" fill="#C81E4A"/>
-                  <circle cx="860" cy="118" r="5" fill="#C81E4A"/>
-                </svg>
-              </div>
-              <div class="legend">
-                <span class="leg"><i style="background:#C81E4A"></i>Selected pathway (1.5°C)</span>
-                <span class="leg"><i style="background:#b4ab9f"></i>Business-as-usual</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="callouts">
-    <div class="callout"><div class="cnum">1</div><div class="ctext"><b>Three routes, plain language.</b> Custom, science-based or action-derived, named the way managers actually think about targets.</div></div>
-    <div class="callout"><div class="cnum">2</div><div class="ctext"><b>Science-based is the default nudge.</b> The CRREM 1.5°C import is pre-selected, steering toward a credible commitment rather than an arbitrary number.</div></div>
-    <div class="callout"><div class="cnum">3</div><div class="ctext"><b>See the curve before committing.</b> The chosen pathway redraws live against business-as-usual, so the consequence of the choice is visible up front.</div></div>
-  </div>
-</div></article>
-  </div>
-</section>
-
-
-
-
-<!-- ══ IMPACT ══ -->
-<section class="impact" id="impact">
-  <div class="wrap">
-    <div class="sec-label">Impact</div>
-    <h2 class="impact-h">From a passive data repository to something that answered questions.</h2>
-    <div class="impact-grid">
-      <div class="ist"><div class="iv">8 of 12</div><div class="il">Fund managers who stopped exporting to Power BI within a quarter of launch</div></div>
-      <div class="ist"><div class="iv">0→1</div><div class="il">Data quality module, a net new capability the platform had never had</div></div>
-      <div class="ist"><div class="iv">4</div><div class="il">Analytics modules shipped across phased delivery</div></div>
-      <div class="ist"><div class="iv">50%+</div><div class="il">Fewer review rounds after four design principles were agreed before any wireframe began</div></div>
-    </div>
-    <p class="impact-note">The clearest signal was behavioural: fund managers stopped exporting raw data into Power BI. The platform was finally doing the thinking it had always promised to do. Data quality became a metric users actively watched, the first time the platform's own reliability was visible at all.</p>
-  </div>
-</section>
-
-<!-- ══ FOOTER / SIBLINGS ══ -->
-<section class="siblings">
-  <div class="section-head">
-    <h2 class="section-head__title">Other Work</h2>
-    <p class="section-head__sub">The rest of the work, from greenfield builds to systemic redesigns.</p>
-  </div>
-  <div class="grid-wrap">
-    <div class="grid">
-      <a class="proj f-card" href="../design-system/index.html"><div class="proj-inner"><span class="proj-badge">30+ shared components</span><img src="../assets/logos/evora-card.png" alt="SIERA Design System" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Design system</span><span class="proj-label__desc">The design system behind the SIERA platform: tokens, components, patterns and the design-to-dev workflow that keeps design and engineering in step.</span></div></a>
-      <a class="proj f-card" href="../verde/verde.html"><div class="proj-inner"><span class="proj-badge">32% less reconciliation time</span><img src="../assets/logos/evora-card.png" alt="Verde" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Verde</span><span class="proj-label__desc">A live, governed, traceable ESG reporting workspace. From raw portfolio data to filed disclosure, with a paper trail on every number.</span></div></a>
-      <a class="proj f-card" href="../arbor/arbor.html"><div class="proj-inner"><span class="proj-badge">66.7% faster onboarding</span><img src="../assets/logos/evora-card.png" alt="Arbor" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Arbor</span><span class="proj-label__desc">Rebuilding the entity foundation the whole asset platform stands on. From the data model up through onboarding and the interface.</span></div></a>
-      <a class="proj f-card" href="../plio/plio.html"><div class="proj-inner"><span class="proj-badge">86% parsing accuracy</span><img src="../assets/logos/evora-card.png" alt="Plio" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Plio</span><span class="proj-label__desc">AI-assisted invoice ingestion with guardrails, not a black box. Confidence-graded and human-in-the-loop across a multi-country portfolio.</span></div></a>
-      <a class="proj f-card" href="../finning/finning.html"><div class="proj-inner"><span class="proj-badge">Self-serve quoting and finance</span><img src="../assets/logos/finning-card.png" alt="Finning UK" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">Finning UK</span><span class="proj-label__desc">Dealer portal and finance calculator for a major Caterpillar dealer. Turning multi-step, sales-gated quotes into a self-serve estimate and repayment flow.</span></div></a>
-      <a class="proj f-card" href="../onbuy/onbuy.html"><div class="proj-inner" style="background:#3366cc"><span class="proj-badge">8M+ marketplace buyers</span><img src="../assets/logos/onbuy.png" alt="OnBuy" loading="lazy"></div><div class="proj-label"><span class="proj-label__client">OnBuy</span><span class="proj-label__desc">Checkout and discovery for one of the UK's largest marketplaces, 8M+ buyers. A shorter, more trustworthy path from basket to confirmed order across millions of listings.</span></div></a>
-    </div>
-  </div>
-</section>
 
 </main>
 <footer class="footer" id="contact" style="scroll-margin-top:72px">
@@ -2372,7 +1427,7 @@ html[data-theme="blue"] .pwf .sk-box,html[data-theme="green"] .pwf .sk-box,html[
   <div class="footer__body" id="footerBody">
     <p class="footer__contact">CONTACT</p>
     <div class="footer__links">
-      <a class="footer__link" href="mailto:thomascmbanefo@gmail.com">thomascmbanefo@gmail.com</a>
+      <a class="footer__link" href="mailto:tmbanefo@vividvault.studio">tmbanefo@vividvault.studio</a>
       <a class="footer__link" href="https://linkedin.com/in/thomas-mbanefo" target="_blank" rel="noopener">LinkedIn</a>
       <a class="footer__link" href="../Thomas_Mbanefo_CV.pdf" target="_blank" rel="noopener">Resume</a>
       <span class="footer__copy">&copy; 2026 Thomas Mbanefo. All rights reserved.</span>
@@ -2734,8 +1789,8 @@ document.querySelectorAll('.swatch').forEach(sw=>{ sw.addEventListener('click', 
 <script id="topnav-js" src="../assets/site-nav.js" defer></script>
 <script>
 const assets=[
- {lat:51.5388,lon:-0.1102,name:'Granary House',city:'London',dq:41,carbon:57.4,tone:'bad',featured:true},
- {lat:51.4978,lon:-0.1003,name:'22 Marlow Street',city:'London',dq:92,carbon:39.6,tone:'good'},
+ {lat:51.5388,lon:-0.1102,name:'Wexcombe House',city:'London',dq:41,carbon:57.4,tone:'bad',featured:true},
+ {lat:51.4978,lon:-0.1003,name:'22 Harrow Street',city:'London',dq:92,carbon:39.6,tone:'good'},
  {lat:51.5331,lon:-0.0974,name:'8 Aldgate Row',city:'London',dq:85,carbon:42.7,tone:'good'},
  {lat:51.4961,lon:-0.1187,name:'Beacon Court',city:'London',dq:63,carbon:54.2,tone:'amber'},
  {lat:51.5273,lon:-0.0651,name:'Regent Wharf',city:'London',dq:66,carbon:50.8,tone:'amber'},
@@ -2762,5 +1817,7 @@ assets.forEach(a=>{
   }
 });
 </script>
+<script src="../assets/particles.js" defer></script>
+<script src="../assets/case-study.js" defer></script>
 </body>
 </html>

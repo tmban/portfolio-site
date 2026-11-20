@@ -33,11 +33,24 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Collect the public site
+        # Only the pages and the files they use go live: no build scripts, notes,
+        # tool settings or full-size original images.
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude '.git' --exclude '.github' --exclude '.claude' --exclude '.agents' \
+            --exclude '_site' --exclude '_sources' --exclude '_dev' \
+            --exclude '*.md' --exclude '*.py' --exclude '*.docx' \
+            --exclude 'skills-lock.json' --exclude 'deck-stage.js' --exclude '.gitignore' --exclude '.DS_Store' \
+            --exclude '*.HEIC' --exclude '*.heic' \
+            --exclude 'assets/about/*.JPG' --exclude 'assets/about/*.jpeg' --exclude 'assets/about/*.jpg' \
+            --exclude 'assets/home-projects/*.png' --exclude 'assets/recommendations/*.png' \
+            --exclude 'assets/OLX-logo.webp'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

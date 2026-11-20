@@ -1,0 +1,375 @@
+/*
+  Case study template: hero, context, approach, key decisions, outcome, gallery, then the
+  next project, then the folded Full process. Uses only the portfolio's own theme variables
+  (--p background, --s accent, --c text), so it follows the theme picker. Fonts come from
+  the page (Fira Sans headings, Inter body).
+*/
+.cs {
+  --cs-line: color-mix(in srgb, var(--c) 14%, transparent);
+  --cs-muted: color-mix(in srgb, var(--c) 68%, var(--p));
+  --cs-tint: color-mix(in srgb, var(--s) 7%, var(--p));
+  color: var(--c);
+}
+.cs-wrap { max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+.cs-col { max-width: none; }
+
+.cs-hero { background: transparent; padding: calc(60px + clamp(40px, 7vw, 96px)) 0 clamp(32px, 5vw, 56px); }
+.cs-hero__title { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; margin: 0 0 18px; }
+.cs-hero__summary { font-size: clamp(1.1rem, 1rem + .4vw, 1.35rem); line-height: 1.45; margin: 0 0 32px; }
+.cs-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px 32px;
+  margin: 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--cs-line);
+}
+.cs-meta dt { font-size: .8rem; font-weight: 600; color: var(--cs-muted); margin: 0 0 4px; }
+.cs-meta dd { margin: 0; font-size: .95rem; line-height: 1.45; }
+.cs-plate { margin: clamp(28px, 4vw, 48px) 0 0; }
+.cs-plate img, .cs-gallery img { display: block; width: 100%; height: auto; border-radius: 14px; }
+
+.cs-block { padding: clamp(40px, 6vw, 72px) 0 0; }
+.cs-block h2 { font-size: .85rem; font-weight: 700; letter-spacing: .02em; color: var(--c); margin: 0 0 14px; }
+.cs-block p { font-size: 1.0625rem; line-height: 1.65; margin: 0 0 14px; }
+.cs-list { list-style: none; margin: 0; padding: 0; }
+.cs-list li { font-size: 1.0625rem; line-height: 1.55; padding: 14px 0; border-top: 1px solid var(--cs-line); }
+.cs-list li:last-child { border-bottom: 1px solid var(--cs-line); }
+.cs-list strong { font-weight: 600; }
+.cs-list .cs-cut { color: var(--cs-muted); }
+.cs-outcome-line { margin: 18px 0 0 !important; }
+
+/* Context and Approach side by side above the gallery, Key decisions and Outcome below it. */
+.cs-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 5vw, 80px); }
+@media (max-width: 860px) { .cs-pair { grid-template-columns: 1fr; } }
+.cs-wrap > .cs-pair:last-child { padding-bottom: clamp(24px, 3vw, 40px); }
+
+.cs-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 28px); }
+.cs-gallery figure { margin: 0; }
+.cs-gallery img { cursor: zoom-in; }
+.cs-gallery figure:first-child { grid-column: 1 / -1; }
+.cs-gallery figcaption { font-size: .9rem; line-height: 1.45; color: var(--cs-muted); margin-top: 10px; }
+.cs-block .cs-gallery__note { font-size: .8rem; color: var(--cs-muted); margin: clamp(28px, 4vw, 48px) 0 0 !important; }
+
+.cs-end { padding: clamp(48px, 7vw, 88px) 0; }
+.cs-end a { max-width: 560px; }
+.cs-end a {
+  display: block;
+  text-decoration: none;
+  color: var(--c);
+  border: 1px solid var(--cs-line);
+  border-radius: 14px;
+  padding: clamp(20px, 3vw, 32px);
+  min-height: 140px;
+  transition: border-color .25s, background-color .25s;
+}
+.cs-end a:hover { border-color: var(--s); background: var(--cs-tint); }
+.cs-end small { display: block; font-size: .8rem; font-weight: 600; color: var(--cs-muted); margin-bottom: 10px; }
+.cs-end span { display: block; font-size: clamp(1.3rem, 1.1rem + .8vw, 1.9rem); font-weight: 700; line-height: 1.15; }
+.cs-end em { display: block; font-style: normal; font-size: .95rem; color: var(--cs-muted); margin-top: 8px; }
+
+/* Full process: the long page, folded */
+.cs-process { border-top: 1px solid color-mix(in srgb, var(--c) 14%, transparent); }
+.cs-process > summary {
+  list-style: none;
+  cursor: pointer;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 28px clamp(20px, 5vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: clamp(1.3rem, 1.1rem + .8vw, 1.9rem);
+  font-weight: 700;
+}
+.cs-process > summary::-webkit-details-marker { display: none; }
+.cs-process > summary::after {
+  content: '';
+  width: 14px; height: 14px; flex: 0 0 14px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-3px, -3px);
+  transition: transform .25s;
+}
+.cs-process[open] > summary::after { transform: rotate(225deg); }
+.cs-process > summary:focus-visible { outline: 2px solid var(--s); outline-offset: -2px; }
+
+/* Motion demos: lifted out of the long page to sit just above Full process. */
+.cs-motion .hero { padding: 0 0 clamp(40px, 6vw, 72px) !important; min-height: 0 !important; background: none !important; }
+.cs-motion .hero .wrap { max-width: 1320px; }
+
+/* Full process type and spacing: the same scale as the main view above it. */
+.cs-process section { padding: clamp(40px, 6vw, 72px) 0 0 !important; margin: 0 !important; min-height: 0 !important; }
+.cs-process section:last-of-type { padding-bottom: clamp(40px, 6vw, 72px) !important; }
+.cs-process .sec-label {
+  font-size: .85rem !important; font-weight: 700 !important; letter-spacing: .02em !important;
+  text-transform: none !important; color: var(--c) !important; margin: 0 0 14px !important;
+}
+.cs-process .sec-h, .cs-process .s-title, .cs-process .pwf-section-h, .cs-process .impact-h {
+  font-size: clamp(1.3rem, 1.1rem + .8vw, 1.9rem) !important; font-weight: 700 !important;
+  line-height: 1.2 !important; letter-spacing: -.01em !important; margin: 0 0 12px !important; max-width: 32ch;
+}
+.cs-process .r-h, .cs-process .section-head h3, .cs-process .lane-notes h4, .cs-process .pb-card h4, .cs-process .pwf h3 {
+  font-size: 1.15rem !important; font-weight: 700 !important; line-height: 1.3 !important; letter-spacing: 0 !important;
+}
+.cs-process .sec-sub, .cs-process .s-sub, .cs-process .r-p, .cs-process .pb-card p, .cs-process .lane-notes p,
+.cs-process .pwf > p, .cs-process .r-block > p {
+  font-size: 1.0625rem !important; line-height: 1.65 !important; max-width: 720px;
+}
+
+/* Before screens: smaller, so they support the text rather than lead it. */
+.cs-process .before-pair, .cs-process .before-single, .cs-process .research-grid { max-width: 760px !important; gap: 16px !important; }
+.cs-process .before-pair img, .cs-process .before-single img, .cs-process .research-grid img { width: 100%; max-height: 280px; object-fit: cover; object-position: top; }
+.cs-process figcaption { font-size: .85rem !important; }
+/* Small labels left inside cards and tables */
+.cs-process h3:not(.r-h), .cs-process h4, .cs-process h5 { font-size: .95rem !important; font-weight: 600 !important; line-height: 1.35 !important; }
+.cs-process .r-p b, .cs-process .lane-notes p b { font-weight: 600; }
+
+/* More projects: two cards side by side, under Full process. */
+.cs-next { border-top: 1px solid color-mix(in srgb, var(--c) 14%, transparent); padding: clamp(32px, 5vw, 56px) 0 clamp(48px, 7vw, 88px); }
+.cs-next__label { font-size: .85rem; font-weight: 700; letter-spacing: .02em; color: var(--c); margin: 0 0 14px; }
+.cs-next__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 20px); }
+.cs-next__card {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 20px);
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--c) 14%, transparent);
+  border-radius: 14px;
+  color: var(--c);
+  text-decoration: none;
+  transition: border-color .25s, background-color .25s;
+}
+.cs-next__card:hover { border-color: var(--s); background: color-mix(in srgb, var(--s) 7%, var(--p)); }
+.cs-next__card img { width: clamp(72px, 9vw, 112px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 10px; flex: 0 0 auto; }
+.cs-next__card span { display: flex; flex-direction: column; font-size: clamp(1.1rem, 1rem + .5vw, 1.4rem); font-weight: 700; line-height: 1.2; }
+.cs-next__card small { font-size: .85rem; font-weight: 400; color: color-mix(in srgb, var(--c) 68%, var(--p)); margin-top: 4px; }
+@media (max-width: 700px) { .cs-next__grid { grid-template-columns: 1fr; } }
+.cs-wrap > .cs-block:last-child { padding-bottom: clamp(48px, 7vw, 88px); }
+
+/* The section dots only make sense inside the long page. */
+html:not(.process-open) .sectnav { display: none !important; }
+
+/* Vivid Vault lockup in the footer */
+.footer__studio { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; color: var(--c); text-decoration: none; font-size: .72rem; }
+.footer__studio img { width: 24px; height: 24px; }
+.footer__studio:hover span { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .cs-hero { padding-top: 36px; border-radius: 14px; }
+}
+@media (max-width: 700px) {
+  .cs-gallery { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-next__card, .cs-end a, .cs-process > summary::after { transition: none; }
+}
+
+/* Work menu: client names in one column, regular weight, no images. */
+.topnav__dropdown { width: max-content !important; min-width: 0 !important; grid-template-columns: 1fr !important; padding: 6px !important; background: var(--p) !important; }
+.topnav__dd-item { padding: 9px 14px !important; }
+.topnav__dd-name { font-weight: 400 !important; font-size: .95rem !important; color: var(--c) !important; }
+.topnav__mgrid { grid-template-columns: 1fr !important; gap: 0 !important; }
+.topnav__mgrid .topnav__mproj { padding: 12px 4px !important; }
+.topnav__mproj .topnav__mname { font-weight: 400 !important; color: var(--c) !important; }
+
+/* Nav: no logo, so the links sit on the right. */
+.topnav { justify-content: flex-end !important; }
+
+/* Mobile and tablet menu: Work opens the project list. */
+.topnav__mwork { display: flex; align-items: center; justify-content: space-between; width: 100%; font: 500 1.05rem/1 'Inter', sans-serif; color: var(--c); background: none; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--c) 12%, transparent); padding: 15px 4px; cursor: pointer; text-align: left; }
+.topnav__mwork svg { width: 12px; height: 8px; transition: transform .25s; }
+.topnav__mobile.work-open .topnav__mwork svg { transform: rotate(180deg); }
+.topnav__mobile .topnav__mgrid { display: none !important; margin: 0 !important; padding: 4px 0 4px 14px; }
+.topnav__mobile.work-open .topnav__mgrid { display: grid !important; }
+
+/* Brand colour (Vivid Vault orange). Fixed across themes. */
+:root { --brand: #ff5629; --brand-on: #fff4ec; }
+
+/* Footer in the brand orange, warm off-white text. */
+.footer__body { background: var(--brand) !important; }
+.footer__contact, .footer__link, .footer__copy { color: var(--brand-on) !important; }
+.footer__link:hover { opacity: .75; }
+.footer__copy { opacity: .7 !important; }
+
+/* When the footer reaches the nav, the nav takes the footer's colour. */
+.topnav.on-footer { background: var(--brand) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border-bottom-color: transparent !important; box-shadow: none !important; }
+.topnav.on-footer .topnav__link, .topnav.on-footer .topnav__work-btn { color: var(--brand-on) !important; }
+.topnav.on-footer .topnav__burger span { background: var(--brand-on) !important; }
+.topnav { transition: background-color .3s; }
+
+/* Background particles (assets/particles.js) sit behind the page, so the page colour lives on <html>. */
+html { background: var(--p); }
+body { background: transparent !important; }
+
+/* Full process: text fills the same container as the main view above it. */
+.cs-process .wrap { max-width: 1320px !important; padding-left: clamp(20px, 5vw, 48px) !important; padding-right: clamp(20px, 5vw, 48px) !important; }
+.cs-process p, .cs-process .sec-h, .cs-process .sec-sub, .cs-process .s-title, .cs-process .s-sub, .cs-process .r-h, .cs-process .r-p,
+.cs-process .r-block, .cs-process blockquote, .cs-process .impact-h, .cs-process .lane-notes, .cs-process .section-head,
+.cs-process .pb-card p { max-width: none !important; }
+
+/* Gallery lightbox (assets/case-study.js) */
+.cs-lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: clamp(16px, 4vw, 56px); background: rgba(0,0,0,.86); opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+.cs-lightbox.open { opacity: 1; visibility: visible; }
+.cs-lightbox figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.cs-lightbox img { max-width: 100%; max-height: calc(100vh - 140px); width: auto; height: auto; border-radius: 12px; display: block; }
+.cs-lightbox figcaption { color: #fff; font-size: .9rem; line-height: 1.45; text-align: center; max-width: 70ch; opacity: .85; }
+.cs-lightbox button { position: absolute; background: rgba(255,255,255,.12); color: #fff; border: 0; border-radius: 999px; width: 44px; height: 44px; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.cs-lightbox button:hover { background: rgba(255,255,255,.24); }
+.cs-lightbox button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.cs-lightbox__close { top: 16px; right: 16px; }
+.cs-lightbox__prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.cs-lightbox__next { right: 16px; top: 50%; transform: translateY(-50%); }
+@media (prefers-reduced-motion: reduce) { .cs-lightbox { transition: none; } }
+
+/* Titles all in Fira Sans (body text stays Inter). The page's catch-all font rule uses
+   !important on *, so these need !important too. */
+.cs-process > summary, .cs-process > summary *, .cs-process .sec-label, .proj-label__client { font-family: 'Fira Sans', sans-serif !important; }
+
+/* Projects menu: hovering a client fans out three small screens just to the left of the menu. */
+.topnav__tiles { position: absolute; inset: 0; pointer-events: none; }
+.topnav__tilegroup { position: absolute; inset: 0; }
+.topnav__tilegroup img { position: absolute; width: 104px; height: 104px; border-radius: 10px; object-fit: cover; box-shadow: 0 12px 28px rgba(0,0,0,.2), 0 3px 8px rgba(0,0,0,.1); opacity: 0; transform: scale(.8) rotate(0deg); transition: opacity .3s var(--ease, ease), transform .55s cubic-bezier(.32, 1.6, .5, 1); }
+/* one under the menu, one off to the lower left, one off to the upper left */
+.topnav__tilegroup img:nth-child(1) { top: calc(100% + 16px); right: 18px; --rot: 4deg; }
+.topnav__tilegroup img:nth-child(2) { top: calc(50% + 18px); right: calc(100% + 22px); --rot: -7deg; transition-delay: .05s; }
+.topnav__tilegroup img:nth-child(3) { top: calc(50% - 112px); right: calc(100% + 72px); --rot: 6deg; transition-delay: .1s; }
+.topnav__dropdown[data-hover="olx"] [data-tiles="olx"] img,
+.topnav__dropdown[data-hover="esg-analytics-reporting"] [data-tiles="esg-analytics-reporting"] img,
+.topnav__dropdown[data-hover="portfolio-data-model"] [data-tiles="portfolio-data-model"] img,
+.topnav__dropdown[data-hover="finning"] [data-tiles="finning"] img,
+.topnav__dropdown[data-hover="marketplace-checkout"] [data-tiles="marketplace-checkout"] img { opacity: 1; transform: rotate(var(--rot)); }
+@media (prefers-reduced-motion: reduce) { .topnav__tilegroup img { transition: opacity .2s; transform: rotate(var(--rot)); } }
+@media (max-width: 860px) { .topnav__tiles { display: none; } }
+
+/* Section titles like What I Do / Experience / Recommendations on About: big, uppercase Fira, centred.
+   One block after another, body text justified. Same in Full process. */
+.cs-block h2, .cs-process .sec-label {
+  font-family: 'Fira Sans', sans-serif !important; font-size: clamp(1.6rem, 3.6vw, 52px) !important; font-weight: 900 !important;
+  text-transform: uppercase !important; letter-spacing: .02em !important; line-height: 1 !important; text-align: center !important;
+  color: var(--c) !important; margin: 0 0 clamp(20px, 3vw, 32px) !important; opacity: 1 !important;
+}
+.cs-block p, .cs-process p, .cs-process .sec-sub, .cs-process .s-sub, .cs-process .r-p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.cs-process figcaption, .cs-process td p, .cs-process th p, .cs-gallery figcaption, .cs-block .cs-gallery__note { text-align: left; }
+.cs-wrap > .cs-block:last-child { padding-bottom: clamp(24px, 3vw, 40px); }
+
+/* Text sections in a narrower column (the gallery stays wide). */
+.cs-block:not(.cs-gallery-block) { max-width: 760px; margin-left: auto; margin-right: auto; }
+/* More room between sections */
+.cs-wrap > .cs-block { padding-top: clamp(64px, 9vw, 120px); }
+
+/* Full process: the problem-card tags filled the same way on every project. */
+.cs-process .pb-tag { display: inline-block; font-family: 'Inter', sans-serif !important; font-size: 11px !important; font-weight: 600 !important; letter-spacing: .1em !important; text-transform: uppercase !important; line-height: 1 !important; color: var(--c) !important; background: color-mix(in srgb, var(--c) 7%, var(--p)) !important; border: 0 !important; border-radius: 6px !important; padding: 8px 12px !important; margin-bottom: 16px !important; }
+
+/* Full process: the same column as Context, Approach, Key decisions and Outcome above it. */
+.cs-process .wrap { width: min(760px, 100% - 2 * clamp(20px, 5vw, 48px)) !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; margin-left: auto !important; margin-right: auto !important; }
+
+/* ===================================================================================
+   Full process, rewritten: one template for every project (_sources/pages/process_lib.py).
+   Same column, type scale and colours as the main view above it.
+   =================================================================================== */
+.fp { --fp-line: color-mix(in srgb, var(--c) 12%, transparent); --fp-muted: color-mix(in srgb, var(--c) 62%, var(--p)); --fp-tint: color-mix(in srgb, var(--c) 4%, var(--p));
+  width: min(760px, 100% - 2 * clamp(20px, 5vw, 48px)); margin: 0 auto; padding: 0 0 clamp(48px, 7vw, 96px); color: var(--c); }
+.fp-sec { padding-top: clamp(64px, 9vw, 120px); }
+.fp .fp-title { font-family: 'Fira Sans', sans-serif !important; font-size: clamp(1.6rem, 3.6vw, 52px) !important; font-weight: 900 !important; text-transform: uppercase; letter-spacing: .02em; line-height: 1; text-align: center; color: var(--c); margin: 0 0 clamp(20px, 3vw, 32px); }
+.fp .fp-h { font-family: 'Fira Sans', sans-serif !important; font-size: 1.25rem !important; font-weight: 700 !important; line-height: 1.25; letter-spacing: -.005em; color: var(--c); margin: clamp(40px, 5vw, 56px) 0 12px; text-align: left; }
+.fp p { font-family: 'Inter', sans-serif; font-size: 1.0625rem; line-height: 1.65; color: var(--c); margin: 0 0 14px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; max-width: none; opacity: 1; }
+.fp figure { margin: clamp(24px, 3vw, 36px) 0; }
+.fp figcaption { font-family: 'Inter', sans-serif; font-size: .85rem; line-height: 1.45; color: var(--fp-muted); margin-top: 10px; text-align: left; }
+.fp-fig img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--fp-line); background: #f6f6f6; cursor: zoom-in; }
+.fp-fig.fp-before img { filter: grayscale(1); }
+.fp-wide { position: relative; left: 50%; transform: translateX(-50%); width: min(1224px, 100vw - 2 * clamp(20px, 5vw, 48px)); max-width: none; }
+.fp-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: clamp(24px, 3vw, 36px) 0; }
+.fp-pair figure { margin: 0; }
+.fp-pair img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+@media (max-width: 640px) { .fp-pair { grid-template-columns: 1fr; } }
+
+/* The three problem tags, filled */
+.fp-tags { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: clamp(24px, 3vw, 36px) 0; }
+.fp-card { background: var(--fp-tint); border: 1px solid var(--fp-line); border-radius: 14px; padding: 18px 18px 20px; }
+.fp-card p { font-size: .95rem; line-height: 1.55; text-align: left; margin: 0; }
+@media (max-width: 760px) { .fp-tags { grid-template-columns: 1fr; } }
+
+/* Quotes */
+.fp-quote { margin: clamp(28px, 4vw, 44px) 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--brand, #ff5629); }
+.fp .fp-quote p { font-family: 'Fira Sans', sans-serif !important; font-size: clamp(1.2rem, 1rem + .8vw, 1.5rem); line-height: 1.4; font-weight: 500; text-align: left; margin: 0 0 10px; }
+.fp-quote cite { font-style: normal; font-size: .85rem; color: var(--fp-muted); }
+
+/* Sticky-note boards */
+.fp-board { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 14px; padding: clamp(18px, 2.5vw, 28px); border-radius: 14px; background: #f5f5f3; border: 1px solid var(--fp-line); }
+.fp-col h4 { font-family: 'Fira Sans', sans-serif !important; font-size: .95rem !important; font-weight: 700 !important; color: #1a1a1a; margin: 0 0 10px; text-align: center; }
+.fp-sticky { font-family: 'Inter', sans-serif; font-size: .82rem; line-height: 1.4; color: #1a1a1a; padding: 12px 12px 14px; border-radius: 4px; margin: 0 0 10px; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 14px -8px rgba(0,0,0,.25); }
+.fp-col:nth-child(odd) .fp-sticky:nth-child(even) { transform: rotate(-1deg); }
+.fp-col:nth-child(even) .fp-sticky:nth-child(odd) { transform: rotate(1deg); }
+.fp-yellow { background: #fff4b8; } .fp-blue { background: #dcecff; } .fp-green { background: #d9f2e3; } .fp-pink { background: #ffdede; } .fp-purple { background: #ece3ff; } .fp-white { background: #fff; border: 1px solid #e3e3e3; }
+.fp-sticky.fp-hot { outline: 2px solid var(--brand, #ff5629); outline-offset: 2px; }
+@media (max-width: 760px) { .fp-board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Flows: boxes and arrows */
+.fp-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 28px; counter-reset: fp; }
+.fp-flow li { position: relative; background: var(--p); border: 1.5px solid color-mix(in srgb, var(--c) 30%, transparent); border-radius: 10px; padding: 14px 14px 16px; counter-increment: fp; }
+.fp-flow li::before { content: counter(fp); display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--brand, #ff5629); color: #fff; font: 700 .72rem/1 'Inter', sans-serif; margin-bottom: 8px; }
+.fp-flow li:not(:last-child)::after { content: ''; position: absolute; top: 50%; right: -24px; width: 20px; height: 2px; background: color-mix(in srgb, var(--c) 45%, transparent); }
+.fp-flow li:not(:last-child) b::after { content: ''; position: absolute; top: calc(50% - 4px); right: -25px; border: 5px solid transparent; border-left: 6px solid color-mix(in srgb, var(--c) 45%, transparent); }
+.fp-flow b { display: block; font-family: 'Fira Sans', sans-serif; font-weight: 700; font-size: .98rem; margin-bottom: 4px; }
+.fp-flow span { display: block; font-size: .85rem; line-height: 1.45; color: var(--fp-muted); }
+@media (max-width: 760px) { .fp-flow { grid-auto-flow: row; gap: 22px; } .fp-flow li:not(:last-child)::after { top: auto; bottom: -18px; right: auto; left: 24px; width: 2px; height: 14px; } .fp-flow li:not(:last-child) b::after { display: none; } }
+
+/* Benchmark table */
+.fp-matrix { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .9rem; border: 1px solid var(--fp-line); border-radius: 12px; overflow: hidden; }
+.fp-matrix th, .fp-matrix td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--fp-line); }
+.fp-matrix tr:last-child th, .fp-matrix tr:last-child td { border-bottom: 0; }
+.fp-matrix tr:first-child th { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--fp-muted); background: var(--fp-tint); }
+.fp-matrix tbody th, .fp-matrix tr th:first-child { font-weight: 600; }
+.fp-matrix .fp-yes { color: #2a7a5a; } .fp-matrix .fp-no { color: #c81e4a; font-weight: 600; } .fp-matrix .fp-part { color: var(--fp-muted); }
+.fp-matrix .fp-hl { background: color-mix(in srgb, var(--brand, #ff5629) 9%, var(--p)); }
+
+/* Personas */
+.fp-personas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fp-persona { background: var(--fp-tint); border: 1px solid var(--fp-line); border-radius: 14px; padding: 20px; }
+.fp-persona__head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.fp-persona__head b { display: block; font-family: 'Fira Sans', sans-serif; font-size: 1.05rem; }
+.fp-persona__head span { font-size: .82rem; color: var(--fp-muted); }
+.fp-avatar { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--brand, #ff5629); color: #fff; font: 700 .85rem/1 'Inter', sans-serif; }
+.fp-persona h5 { font-size: .72rem !important; font-weight: 600 !important; letter-spacing: .08em; text-transform: uppercase; color: var(--fp-muted); margin: 12px 0 6px; }
+.fp-persona ul { margin: 0; padding-left: 18px; }
+.fp-persona li { font-size: .88rem; line-height: 1.5; margin-bottom: 4px; }
+.fp .fp-persona__q { font-size: .92rem; font-style: italic; text-align: left; margin: 14px 0 0; }
+@media (max-width: 640px) { .fp-personas { grid-template-columns: 1fr; } }
+
+/* Journey strip */
+.fp-journey { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 10px; }
+.fp-stage { border-radius: 12px; padding: 16px 14px; border: 1px solid var(--fp-line); background: var(--p); display: flex; flex-direction: column; gap: 8px; }
+.fp-stage h4 { font-family: 'Fira Sans', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; margin: 0; }
+.fp .fp-doing { font-size: .85rem; line-height: 1.45; text-align: left; margin: 0; }
+.fp .fp-thinking { font-size: .85rem; line-height: 1.45; font-style: italic; text-align: left; margin: 0; color: var(--fp-muted); }
+.fp-friction { margin-top: auto; align-self: flex-start; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 9px; border-radius: 6px; }
+.fp-low .fp-friction { background: #d9f2e3; color: #1d5c41; } .fp-mid .fp-friction { background: #fff0c2; color: #6b5200; } .fp-high .fp-friction { background: #ffd9d9; color: #8a1f1f; }
+.fp-high { border-color: #f2a3a3; }
+@media (max-width: 760px) { .fp-journey { grid-template-columns: 1fr; } }
+
+/* Two paths */
+.fp-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fp-splitbox { border: 1.5px dashed color-mix(in srgb, var(--c) 30%, transparent); border-radius: 12px; padding: 18px; }
+.fp-splitbox b { display: block; font-family: 'Fira Sans', sans-serif; font-size: 1.1rem; margin-bottom: 6px; }
+.fp-splitbox span { font-size: .92rem; line-height: 1.5; }
+@media (max-width: 640px) { .fp-split { grid-template-columns: 1fr; } }
+/* the older .cs-process rules above are broader; these keep the new template in charge */
+.cs-process .fp section.fp-sec { padding: clamp(64px, 9vw, 120px) 0 0 !important; margin: 0 !important; }
+.cs-process .fp h3.fp-h { font-size: 1.25rem !important; font-weight: 700 !important; line-height: 1.25 !important; }
+.cs-process .fp h4 { font-size: .95rem !important; font-weight: 700 !important; }
+.cs-process .fp .fp-stage h4 { font-size: 1rem !important; }
+.cs-process .fp h5 { font-size: .72rem !important; font-weight: 600 !important; }
+.cs-process .fp figcaption { font-size: .85rem !important; }
+.fp-fig.fp-tall { max-width: 440px; margin-left: auto; margin-right: auto; }
+
+/* Before screens at their natural shape (the Finance and Checkout ones are wide, the Evora ones square). */
+.fp-pair img { aspect-ratio: auto !important; object-fit: initial !important; height: auto !important; }
+.fp-pair { align-items: start; }
+/* Less space between the end of Full process and the footer. */
+.fp { padding-bottom: clamp(16px, 2.5vw, 32px) !important; }
+
+/* Smaller screens: the title starts clear of the fixed nav. */
+@media (max-width: 860px) { .cs-hero { padding-top: calc(60px + clamp(32px, 6vw, 56px)) !important; } }
+/* Mobile and tablet menu: no divider above the opened project list. */
+.topnav__mobile.work-open .topnav__mwork { border-bottom-color: transparent !important; }
