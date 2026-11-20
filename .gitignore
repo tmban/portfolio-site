@@ -22,3 +22,6 @@ _ref/
 
 # Build scripts, Figma exports and notes: kept on this Mac only, never in the GitHub repo
 _sources/
+
+# Local MCP servers (Rotato runs on this Mac only)
+.mcp.json
