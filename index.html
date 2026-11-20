@@ -757,6 +757,14 @@ html body .hero .hero-center h1, html body .hero h2.hero-statement { font-weight
   html body .hero .hero-center h1, html body .hero h2.hero-statement { font-size: clamp(2.6rem, 9.1vw, 182px) !important; }
   html body .hero .hero-images { zoom: 1.6; }
 }
+/* Card spread in card widths, not screen widths, so the cards keep the same overlap at any size
+   (on tall wide screens the cards shrink to fit the height but vw offsets kept growing). */
+@media (min-width: 701px) {
+  html body .hero .hero-img:nth-child(1) { --tx: -113% !important; }
+  html body .hero .hero-img:nth-child(2) { --tx: -35% !important; }
+  html body .hero .hero-img:nth-child(3) { --tx: 47% !important; }
+  html body .hero .hero-img:nth-child(4) { --tx: 124% !important; }
+}
 /* Tall screens: keep name, cards and title on one screen (sizes are before the 2x zoom). */
 @media (min-width: 701px) and (min-height: 961px) {
   html body .hero .hero-images { height: min(clamp(340px, 34vw, 470px), calc((100vh - 690px) / 2)) !important; }
@@ -908,7 +916,7 @@ html body .featured-grid .head-row .section-head { text-align: center !important
         <div class="proj-label"><span class="proj-label__row"><span class="proj-label__title">Dealer Permissions</span><span class="proj-year">2026</span></span><span class="proj-label__desc">Who can do what, at which location, and what happens when an account changes, for dealers on an automotive marketplace.</span><span class="proj-label__clientline">OLX</span></div>
       </a>
       <a class="proj f-card" href="assistant/assistant.html" style="--idx:1">
-        <div class="proj-inner"><img src="assets/work/ai-assistant/hero.webp" alt="The dealer tool assistant open over the dashboard." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="proj-inner"><img src="assets/home-projects/ai-assistant.webp" alt="A phone showing an assistant chat with a photo of a car." loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="proj-label"><span class="proj-label__row"><span class="proj-label__title">AI Assistant</span><span class="proj-year">2026</span></span><span class="proj-label__desc">How a dealer tool's AI assistant answers: facts that fit the chat, actions with the right friction, and failures that say what happened.</span><span class="proj-label__clientline">OLX</span></div>
       </a>
       <a class="proj f-card" href="kova/index.html" style="--idx:1">
